@@ -1,6 +1,4 @@
-$fontfamily:'Montserrat', sans-serif;
 page-teacherregister3 {
-    font-family: $fontfamily;
     #registerpage ion-label {
       color: $themecolorw;
     }
@@ -107,4 +105,10 @@ page-teacherregister3 {
       box-shadow: none !important;
       margin: 0;
   }
+  .registerchoice ion-checkbox button {
+    border: none !important;
+    color: unset !important;
+    background: unset !important;
+    height: 60px !important;
+}
 }

@@ -45,13 +45,13 @@
         </ion-label>
         <ion-input type="text" placeholder="Billing Country"  [(ngModel)]="user.socialcode" class="marginset" style="font-size: 16px;"></ion-input>
       </ion-item>
-      <ion-item class="p-0 itmm" >
+      <ion-item class="p-0 itmm"  style="height:60px;">
         <ion-label style="color: black;white-space: unset;font-weight: 300;font-size: 16px;">I confirm that I am over 18 years of age</ion-label>
-        <ion-checkbox color="dark" checked="false" style="margin-right: 9px;" (click)="ageconsole()" [(ngModel)]="ageconfirm"></ion-checkbox>
+        <ion-checkbox color="dark" checked="false" style="margin: 10px;" (click)="ageconsole()" [(ngModel)]="ageconfirm"></ion-checkbox>
       </ion-item>
-      <ion-item class="p-0 itmm" style="    margin-top: -2px;border-bottom: unset;">
+      <ion-item class="p-0 itmm" style="    margin-top: -2px;border-bottom: unset;height:60px;">
         <ion-label style="color: black;white-space: unset;font-weight: 300;font-size: 16px;">By signing up, I agree to SubsTeach Terms and Conditions</ion-label>
-        <ion-checkbox color="dark" checked="false" style="margin-right: 9px;margin-top: -7px;" (click)="ageconsole()" [(ngModel)]="termcondition"></ion-checkbox>
+        <ion-checkbox color="dark" checked="false" style="margin: 10px;" (click)="ageconsole()" [(ngModel)]="termcondition"></ion-checkbox>
       </ion-item>
     </ion-list>
     <button ion-button block class="registerbtn colfaded" (click)="registerchoice()">REGISTER</button>

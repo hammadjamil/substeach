@@ -1,9 +1,5 @@
 $themecolor: #38d345;
 $themecolorw: #38d345;
-$fontfamily:'Montserrat', sans-serif;
-ion-app.md{
-    font-family: $fontfamily;
-}
 page-home {
     
     .home_teachers{
@@ -85,9 +81,9 @@ page-home {
         background: $themecolor;
         opacity: 1;
     }
-    .scroll-content {
-        background: #e8e8e8;
-    }
+    // .scroll-content {
+    //     background: #e8e8e8;
+    // }
     .menubtn {
         box-shadow: none !important;
     }
