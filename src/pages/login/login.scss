@@ -5,6 +5,7 @@ $gradiantcolor:linear-gradient(45deg, #39a02b 0%,#31b247 41%,#3ad83a 70%,#42f44e
 button{
   border-radius:45px !important; 
   background: $themecolor !important;
+  box-shadow: none !important;
   // background: $gradiantcolor !important;
   // font-weight: 700 !important;
   // box-shadow: 1px 1px 2px #444 !important;
