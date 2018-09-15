@@ -1,0 +1,25 @@
+<ion-header>
+  <p  text-left><span (click)="backtologin()">Back to Login</span><span (click)="skip()" float-right >Skip</span></p>
+</ion-header>
+<ion-content padding id="registerpage">
+    <div class="registerchoice">
+        <h3 text-center style="padding-bottom: 30px;">Specify Region</h3>
+        <ion-list>
+          <ion-item class="p-0">
+            <ion-label style="margin-bottom: 0;margin-right: 10px;">
+              <ion-icon name="md-person"></ion-icon>
+            </ion-label>
+            <ion-input type="text" placeholder="Select Region" class="marginset" style="font-size: 16px;"></ion-input>
+          </ion-item>
+          <ion-item class="p-0 itmm" >
+            <ion-label style="color: black;white-space: unset;font-weight: 300;font-size: 16px;">I confirm that I am over 18 years of age</ion-label>
+            <ion-checkbox color="dark" checked="false" style="margin-right: 9px;"></ion-checkbox>
+          </ion-item>
+          <ion-item class="p-0 itmm" style="margin-top: -2px;border-bottom: unset;">
+            <ion-label style="color: black;white-space: unset;font-weight: 300;font-size: 16px;">By signing up, I agree to SubsTeach Terms and Conditions</ion-label>
+            <ion-checkbox color="dark" checked="false" style="margin-right: 9px;margin-top: -7px;"></ion-checkbox>
+          </ion-item>
+        </ion-list>
+        <button ion-button block class="registerbtn colfaded" (click)="registerchoice()">REGISTER</button>
+    </div>
+</ion-content>

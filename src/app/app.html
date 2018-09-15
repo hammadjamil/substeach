@@ -1,0 +1,25 @@
+<ion-menu [content]="content">
+  <ion-header id="sidemenu" class="container" style="">
+    <ion-toolbar  id="menutoolbar" class="row"style="">
+        <div class="profileimg">
+            <img src="../assets/imgs/profileimg.jpg" alt="">
+            <p>USERNAME</p>
+        </div>
+        <div class="edit_btn">
+          <button style="    background: #f7b800;    color: white;">Edit Profile</button>
+        </div>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="sidemenucontent" no-bounce>
+    <ion-list>
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" class="sidemenubutton" style="     background-color: beige;   color: #2b221f !important;">
+        <ion-icon name="{{p.icon}}" class="sidemenuicon"></ion-icon> {{p.title}}
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

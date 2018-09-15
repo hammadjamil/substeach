@@ -1,0 +1,84 @@
+$fontfamily:'Montserrat', sans-serif;
+page-register {
+  font-family: $fontfamily;
+  #registerpage ion-label {
+    color: $themecolorw;
+  }
+  #registerpage ion-title .toolbar-title {
+    color: $themecolorw;
+    font-weight: 700;
+    font-size: 24px;
+  }
+  .registerbtn {
+    background-color: $themecolor !important;
+    color: #fff;
+    border-radius: 0px;
+    box-shadow: unset;
+    height: 48px;
+  }
+  #registerpage button span {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+  #registerpage span {
+    color: $themecolorw;
+    font-weight: 700;
+    font-size: 17px;
+  }
+  #registerpage p {
+    font-size: 17px;
+    font-weight: 400;
+  }
+  #registerpage ion-item.item-checkbox .item-inner {
+      border-bottom: 0;
+  }
+  #registerpage ion-item .item-inner {
+    border-bottom: 2px solid $themecolor;
+  }
+  #registerpage .item-md.item-input.item-input-has-focus .item-inner,
+  .item-md.item-input.input-has-focus .item-inner {
+    border-bottom-color: $themecolor;
+    -webkit-box-shadow: unset;
+    box-shadow: unset;
+  }
+  #registerpage .checkbox-checked {
+    border-color: $themecolor !important;
+    background-color: $themecolor !important;
+  }
+  #registerpage .checkbox-icon{
+      border-color: $themecolor !important;
+  }
+  .platform-ios .labeldp{
+    margin-top: 6px;
+  }
+   #registerpage ion-spinner {
+     position: absolute;
+     display: inline-block;
+     width: 28px;
+     height: 28px;
+     right: 10px;
+     top:10px;
+   }
+  page-register .scroll-content {
+    overflow-y: auto !important;
+  }
+  .item-input-has-focus,
+  .input-has-focus {
+    pointer-events: unset !important;
+  }
+  .marginset{
+  pointer-events: unset !important;
+  }
+  .itmm .item-inner{
+    background-color: $themecolor !important;
+  }
+  ion-checkbox button{
+    box-shadow: none !important;
+  }
+  ion-datetime button{
+    box-shadow: none !important;
+  }
+}
+

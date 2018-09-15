@@ -1,0 +1,95 @@
+$themecolor: #38d345;
+$themecolorw: #38d345;
+$fontfamily:'Montserrat', sans-serif;
+ion-app.md{
+    font-family: $fontfamily;
+}
+page-home {
+    
+    .home_teachers{
+        text-align: left;
+    }
+    .home_teachers_slide .slide-zoom{
+        text-align: left;
+        margin-top: -15px;
+    }
+    .home_teachers_slide_name {
+        color: $themecolor;
+        padding-left: 15px;
+    padding-right: 15px;
+    }
+    
+    button.sidemenubutton {
+        background: #fb6542;
+    }    
+    .home_teachers_slide_reviews{
+        font-size: 20px;
+        color: #ce3232;
+        font-weight: 500;
+        padding-left: 15px;
+    padding-right: 15px;
+    }
+    .home_teachers_slide_desc{
+        color:#444;
+        padding-left: 15px;
+    padding-right: 15px;
+    }
+    .home_teachers_slide_cost {
+        font-size: 22px;
+        font-weight: 700;
+        color: #a5745f;
+        padding-left: 15px;
+    padding-right: 15px;
+    }
+    .home_teachers_slide_view {
+        font-size: 14px;
+        text-decoration: underline;
+        color: $themecolor;
+        padding-left: 15px;
+    padding-right: 15px;
+    }
+    button.home_teachers_slide_btn {
+        background-color: $themecolor;
+    font-size: 18px;
+    font-weight: 700;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding: 0;
+    width: 80%;
+    text-align: center;
+    margin: auto;
+    // margin-bottom: 15px;
+    margin-bottom: 65px;
+    }
+    .toolbar-background{
+        background: $themecolor;
+    }
+    .toolbar-title {
+        color: white;
+    }
+    .bar-button-default {
+        color: #d4dcdf !important;
+        background-color: transparent;
+    }
+    ion-slide.home_teachers_slide {
+        background: white;
+        // padding: 20px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .swiper-pagination.hide{
+        display: block !important;
+        bottom: 10px !important;
+    }
+    .swiper-pagination-bullet-active {
+        background: $themecolor;
+        opacity: 1;
+    }
+    .scroll-content {
+        background: #e8e8e8;
+    }
+    .menubtn {
+        box-shadow: none !important;
+    }
+    
+}

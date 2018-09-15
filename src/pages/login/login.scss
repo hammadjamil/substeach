@@ -1,0 +1,117 @@
+$themecolor: #38d345;
+$themecolorw: #38d345;
+$fontfamily:'Montserrat', sans-serif;
+button{
+  border-radius:10px !important; 
+  box-shadow: 1px 1px 2px #444 !important;
+}
+ion-item{
+  border: 2px solid $themecolor !important;
+    border-radius: 5px !important;
+    margin-bottom: 10px !important;
+    box-shadow: 1px 1px 2px #444 !important;
+}
+.item-inner{
+  // padding-left: 10px;
+  border-bottom: 0 !important;
+}
+ion-label {
+    color: white !important;
+    background: $themecolor;
+    padding: 13px;
+    margin: 0 !important;
+    margin-right: 10px !important;
+}
+// .scroll-content{
+//  background: url('../../assets/imgs/bgimg.png');
+//   background-size: 100% 100%;
+// }
+
+page-login {
+  font-family: $fontfamily;
+ #loginpage ion-label{
+    color: $themecolorw;
+}
+#loginpage ion-title .toolbar-title {
+    color: $themecolorw;
+    font-weight: 700;
+    font-size: 24px;
+}
+#loginpage button{
+    background-color: $themecolor;
+    color:#fff;
+    border-radius: 0px;
+    box-shadow: unset;
+    height: 48px;
+}
+#loginpage button span{
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+#loginpage span {
+  color: $themecolorw;
+  font-weight: 700;
+  font-size: 17px;
+
+}
+#loginpage p {
+  font-size: 17px;
+  font-weight: 300;
+  margin-bottom: 0;
+}
+
+ #loginpage ion-item .item-inner {
+
+   border-bottom: 2px solid $themecolor;
+ }
+.item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner,
+.item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+  border-bottom-color: $themecolor;
+
+  -webkit-box-shadow: inset 0 -1px 0 0 $themecolor;
+
+  box-shadow: inset 0 -1px 0 0 $themecolor;
+
+}
+.list-md .item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child,
+.list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child {
+  border-bottom-color: $themecolor;
+
+  -webkit-box-shadow: inset 0 -1px 0 0 $themecolor;
+
+  box-shadow: inset 0 -1px 0 0 $themecolor;
+
+}
+.marginset .text-input {
+  margin: 0;
+  // margin-bottom: 0;
+  // margin-left: 0;
+}
+
+ #loginpage ion-spinner {
+  position: absolute;
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  right: 10px;
+  top:10px;
+}
+.scroll-content {
+      overflow-y: hidden !important;
+}
+.sociallogin{
+  text-align: center;
+  padding-top: 50px;
+  // font-size: 30px;
+  font-size: 30px !important;
+  color: $themecolorw;
+}
+}
+
+
+
+
+   

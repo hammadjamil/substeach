@@ -1,0 +1,31 @@
+$themecolor: #38d345;
+$themecolorw: #38d345;
+page-teacherregister1 {
+    ion-header ion-navbar .toolbar-background {
+        background: $themecolor;
+    }
+    .registerchoice button{
+        background: $themecolor !important;
+    }
+    .registerchoice{
+        width: 100vw;
+        height: 80vh;
+        display: table-cell;
+        vertical-align: middle;
+    }
+    .registerbtn{
+        background: $themecolor  !important;
+    }
+    ion-header{
+        background: white;
+        box-shadow: none !important;
+    }
+    ion-header p{
+        width: 100%;
+        text-align: left !important;
+        padding: 10px;
+        background: white;
+        box-shadow: none !important;
+        margin: 0;
+    }
+}

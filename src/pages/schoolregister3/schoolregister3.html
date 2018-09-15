@@ -1,0 +1,59 @@
+
+<ion-header>
+  <p  text-left><span (click)="backtologin()">Back to Login</span><span (click)="skip()" float-right >Skip</span></p>
+</ion-header>
+<ion-content padding id="registerpage">
+    <ion-title class="text-center pb-3">STEP 3</ion-title>
+    <p class="text-center">
+      Already have an account? 
+      <span class="h4" (click)="loginpage()">Login</span>
+    </p>
+    <ion-list>
+      <ion-item class="p-0">
+        <ion-label style="margin-bottom: 0;margin-right: 10px;">
+          <ion-icon name="md-person"></ion-icon>
+        </ion-label>
+        <ion-input type="text" placeholder="Billing Address 1"  [(ngModel)]="user.username" class="marginset" style="font-size: 16px;"></ion-input>
+      </ion-item>
+      <ion-item class="p-0">
+        <ion-label style="margin-bottom: 0;margin-right: 10px;">
+          <ion-icon name="ios-mail"></ion-icon>
+        </ion-label>
+        <ion-input type="text" placeholder="Billing Address 1"  [(ngModel)]="user.email" class="marginset" style="font-size: 16px;"></ion-input>
+      </ion-item>
+      <ion-item class="p-0">
+        <ion-label style="margin-bottom: 0;margin-right: 10px;">
+          <ion-icon name="md-unlock"></ion-icon>
+        </ion-label>
+        <ion-input type="text" placeholder="Billing Address 1"  [(ngModel)]="user.pswd" class="marginset" style="font-size: 16px;"></ion-input>
+      </ion-item>
+      <ion-item class="p-0">
+        <ion-label style="margin-bottom: 0;margin-right: 10px;">
+          <ion-icon name="md-unlock"></ion-icon>
+        </ion-label >
+        <ion-input type="text" placeholder="Billing City"  [(ngModel)]="user.rpswd" class="marginset" style="font-size: 16px;"></ion-input>
+      </ion-item>
+      <ion-item class="p-0">
+        <ion-label style="margin-bottom: 0;margin-right: 10px;">
+          <ion-icon name="ios-contact"></ion-icon>
+        </ion-label>
+        <ion-input type="text" placeholder="Billing Postal Code"  [(ngModel)]="user.referusername" class="marginset" style="font-size: 16px;"></ion-input>
+      </ion-item>
+      <ion-item class="p-0">
+        <ion-label style="margin-bottom: 0;margin-right: 10px;">
+          <ion-icon name="ios-contact"></ion-icon>
+        </ion-label>
+        <ion-input type="text" placeholder="Billing Country"  [(ngModel)]="user.socialcode" class="marginset" style="font-size: 16px;"></ion-input>
+      </ion-item>
+      <ion-item class="p-0 itmm" >
+        <ion-label style="color: black;white-space: unset;font-weight: 300;font-size: 16px;">I confirm that I am over 18 years of age</ion-label>
+        <ion-checkbox color="dark" checked="false" style="margin-right: 9px;" (click)="ageconsole()" [(ngModel)]="ageconfirm"></ion-checkbox>
+      </ion-item>
+      <ion-item class="p-0 itmm" style="    margin-top: -2px;border-bottom: unset;">
+        <ion-label style="color: black;white-space: unset;font-weight: 300;font-size: 16px;">By signing up, I agree to SubsTeach Terms and Conditions</ion-label>
+        <ion-checkbox color="dark" checked="false" style="margin-right: 9px;margin-top: -7px;" (click)="ageconsole()" [(ngModel)]="termcondition"></ion-checkbox>
+      </ion-item>
+    </ion-list>
+    <button ion-button block class="registerbtn colfaded" (click)="registerchoice()">REGISTER</button>
+    </ion-content>
+        
