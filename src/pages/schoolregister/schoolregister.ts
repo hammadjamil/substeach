@@ -5,20 +5,14 @@ import { LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { Services } from '../../assets/providers/services';
 import { LoginPage } from '../login/login';
-import { Schoolregister2Page } from '../schoolregister2/schoolregister2';
-/**
- * Generated class for the Schoolregister1Page page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Schoolregister1Page } from '../schoolregister1/schoolregister1';
 
 @IonicPage()
 @Component({
-  selector: 'page-schoolregister1',
-  templateUrl: 'schoolregister1.html',
+  selector: 'page-schoolregister',
+  templateUrl: 'schoolregister.html',
 })
-export class Schoolregister1Page {
+export class SchoolregisterPage {
   emailcheck:boolean;
   spin: any = 0;
   minDate:any;
@@ -221,12 +215,6 @@ export class Schoolregister1Page {
     this.navCtrl.push(LoginPage);
   }
   schoolregister2(){
-    this.navCtrl.push(Schoolregister2Page);
-  }
-  backtologin(){
-    this.navCtrl.push(LoginPage);
-  }
-  skip(){
-    this.navCtrl.push(Schoolregister2Page);
+    this.navCtrl.push(Schoolregister1Page);
   }
 }

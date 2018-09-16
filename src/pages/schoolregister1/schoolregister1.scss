@@ -78,4 +78,16 @@ page-schoolregister1 {
     ion-datetime button{
       box-shadow: none !important;
     }
+    ion-header{
+      background: white;
+      box-shadow: none !important;
+  }
+  ion-header p{
+      width: 100%;
+      text-align: left !important;
+      padding: 10px;
+      background: white;
+      box-shadow: none !important;
+      margin: 0;
+  }
 }
