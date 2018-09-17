@@ -10,4 +10,10 @@ page-registrationchoice {
         display: table-cell;
         vertical-align: middle;
     }
+    .registerchoice button{
+        background: #ffffff !important;
+        color: $themecolor !important;
+        border: 2px solid $themecolor !important;
+        font-size: 18px !important;
+      }
 }
