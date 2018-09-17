@@ -4,10 +4,12 @@ import { AlertController ,Events} from 'ionic-angular';
 import { LoadingController, Platform } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { MyStorage } from '../../app/localstorage';
+import { Auth } from '../../providers/auth';
+import { MyTools } from '../../providers/tools';
+import { Services } from '../../providers/services';
 import { RegisterPage } from '../register/register';
 import { ForgotpasswordPage } from '../forgotpassword/forgotpassword';
-import { Services } from '../../assets/providers/services';
 import { HomePage } from '../home/home';
 import { RegistrationchoicePage } from '../registrationchoice/registrationchoice';
 
@@ -15,39 +17,27 @@ import { RegistrationchoicePage } from '../registrationchoice/registrationchoice
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
+  providers: [Services, Auth, MyTools],
 })
 export class LoginPage {
-  user:any={username:'', password:''};
-  spin:any=0;
-  disableButton; 
-  updateprofileinfo:any;
-  url: any ='https://staging.pixxpros.com/user/login';
+   //Class Properties
+   user = { username: '', password: '', udid: '',platform:'' };
+   loader: any;
+   rootPage: any;
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public loadingCtrl: LoadingController,
-              private storage: Storage,
               public services: Services,
               private menu: MenuController,
               public platform: Platform,
               public splashScreen: SplashScreen,
               public events: Events,
+              private auth: Auth,
+              private storage: MyStorage,
+              
+              public tools: MyTools,
               private alertCtrl: AlertController) {
-                // platform.ready().then(() => {
-                //   this.storage.get('username').then((username) => {
-                //     this.storage.get('passwordd').then((passwordd) => {
-                //       this.user.username=username;
-                //       this.user.password=passwordd;
-                //       console.log('username::',this.user.username,'password',this.user.password)
-                //       if (this.user.password == '' || this.user.username == ''|| this.user.password == null ||this.user.username == null){
-                //         this.splashScreen.hide();
-                //       }
-                //       else{
-                //         this.login();
-                //       }
-                //     });
-                //   });
-                //   // this.splashScreen.hide();
-                // });
+                
   }
   ionViewDidEnter() {
     this.menu.swipeEnable(false);
@@ -62,6 +52,60 @@ export class LoginPage {
   Forgotpswdpage(){
     this.navCtrl.push(ForgotpasswordPage);    
   }
+
+    //Show Loader
+    showLoader() {
+      this.loader = this.tools.getLoader();
+      this.loader.present();
+    }
+
+//Login
+loginService() {
+  this.showLoader();
+  //Applying Validations
+  if (this.user.username == '') {
+    this.presentAlert('Alert!', 'Please enter your email or username');
+    this.loader.dismiss();
+    return;
+  }
+  else if (this.user.password == '') {
+    this.presentAlert('Alert!', 'Please enter your password');
+    this.loader.dismiss();
+    return;
+  }
+   
+  //Requesting API 
+  else {
+
+    this.storage.get('deviceID').then((val) => {
+      console.log('device ID',val);
+      
+        this.user.udid = val;
+        this.storage.get('devicePlatform').then((val) => {
+          this.user.platform = val;
+          this.services.login(this.user).subscribe(
+            //Successfully Logged in
+            success => {
+              console.log('success bhai', success);
+              this.auth.loginUser(success.data);
+              this.auth.setUserImage(success.data.profile_image);
+              setTimeout(() => {
+                this.loader.dismiss();
+                this.navCtrl.setRoot(HomePage);
+              }, 2000);
+    
+            },
+            error => {
+              this.loader.dismiss();
+              console.log('error bhai', error);
+              this.presentAlert('Alert!', error.data);
+            }
+          )
+        });
+    });
+  }
+}
+
   registerpage(){
     // this.navCtrl.push(RegisterPage);
     this.navCtrl.push(RegistrationchoicePage);

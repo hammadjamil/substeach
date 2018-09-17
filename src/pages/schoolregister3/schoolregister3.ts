@@ -27,8 +27,19 @@ export class Schoolregister3Page {
   ageconfirm:any;
   termcondition:any;
   disableButton;
-  user: any = { username: '', email: '', pswd: '', rpswd: '', referusername: '', socialcode: '', birthday:'' };
-  url: any = 'https://staging.pixxpros.com/service/register-service';
+  user: any = 
+  { 
+      
+      "BillingAddress1": "",
+      "BillingAddress2": "",
+      "BillingAddress3": "",
+      "BillingCity": "",
+      "BillingPostalCode": "",
+      "BillingCountry": "",
+      "AgreeOnTermsAndConditions": true,
+      "isAdult": true,
+    
+  };
   constructor(public navCtrl: NavController,
               public loadingCtrl: LoadingController,
               private storage: Storage,
@@ -45,8 +56,6 @@ export class Schoolregister3Page {
     this.menu.swipeEnable(true);
   }
   ageconsole(){
-    console.log('age check', this.ageconfirm);
-    console.log('age check', this.termcondition);
   }
   presentAlert(title, msgs) {
     let alert = this.alertCtrl.create({
@@ -78,83 +87,60 @@ export class Schoolregister3Page {
   }
   // loader
   //Login
-  register() {
-    this.spin=1;
-    this.disableButton = true;
-    //Applying Validations
-    this.emailcheck=this.validateEmail(this.user.email);
-    // if (this.user.email == '')
-    if (this.user.username == '') {
-      this.spin = 0;
+  RegisterStepThree() {
+    if (this.user.BillingAddress1 == '') {
       // this.loader.dismiss();
       setTimeout(() => {
-        this.presentAlert('Alert!', 'Please enter your username');
+        this.presentAlert('Alert!', 'Please enter your Billing Address 1');
         this.disableButton = false;
       }, 1000);
       return;
     }
-    else if (this.user.email == '') {
-      this.spin = 0;
-      // this.loader.dismiss();
+    else if (this.user.BillingAddress1 == '') {
       setTimeout(() => {
-        this.presentAlert('Alert!', 'Please enter your email');
+        this.presentAlert('Alert!', 'Please enter your Billing Address 2');
         this.disableButton = false;
       }, 1000);
       return;
     }
     else if (this.emailcheck == false) {
-      this.spin = 0;
       setTimeout(() => {
-        this.presentAlert('Alert!', 'Please enter valid email address');
+        this.presentAlert('Alert!', 'Please enter your Billing Address 3');
         this.disableButton = false;
       }, 1000);
       return;
     }
-    else if (this.user.pswd == '') {
-      console.log('service check');
-      this.spin = 0;
+    else if (this.user.BillingCity == '') {
       setTimeout(() => {
-        this.presentAlert('Alert!', 'Please enter your Password');
+        this.presentAlert('Alert!', 'Please enter your Billing City');
         this.disableButton = false;
       }, 1000);
       return;
     }
-    else if (this.user.rpswd == '') {
-      this.spin = 0;
+    else if (this.user.BillingPostalCode == '') {
       setTimeout(() => {
-        this.presentAlert('Alert!', 'Please enter your Repassword');
+        this.presentAlert('Alert!', 'Please enter your Billing Postal Code');
         this.disableButton = false;
       }, 1000);
       return;
     }
-    else if (this.user.birthday == '') {
-      this.spin = 0;
+    else if (this.user.BillingCountry == '') {
       setTimeout(() => {
-        this.presentAlert('Alert!', 'Please enter your birthday');
+        this.presentAlert('Alert!', 'Please enter your Billing Country');
         this.disableButton = false;
       }, 1000);
       return;
     }
-    else if (this.user.pswd != this.user.rpswd) {
-      this.spin = 0;
+    else if (this.user.isAdult) {
       setTimeout(() => {
-        this.presentAlert('Alert!', 'The two passwords must match');
+        this.presentAlert('Alert!', 'Please confirm your age');
         this.disableButton = false;
       }, 1000);
       return;
     }
-    else if (this.ageconfirm != true) {
-      this.spin = 0;
+    else if (this.user.AgreeOnTermsAndConditions != true) {
       setTimeout(() => {
-        this.presentAlert('Alert!', 'Please confirm that you are over 18 years');
-        this.disableButton = false;
-      }, 1000);
-      return;
-    }
-    else if (this.termcondition != true) {
-      this.spin = 0;
-      setTimeout(() => {
-        this.presentAlert('Alert!', 'Please agree to PixxPros Terms and Conditions');
+        this.presentAlert('Alert!', 'Please agree to our Terms and Conditions');
         this.disableButton = false;
       }, 1000);
       return;
@@ -162,47 +148,47 @@ export class Schoolregister3Page {
     //Requesting API birthday
     else {
       console.log('service check');
-      let body = new FormData();
-      body.append('Username', this.user.username);
-      body.append('Email', this.user.email);
-      body.append('Password', this.user.pswd);
-      body.append('confirmPassword', this.user.rpswd);
-      body.append('ReferrerId', this.user.referusername);
-      body.append('FameCode', this.user.socialcode);
-      body.append('DOB', this.user.birthday);
-      body.append('Age', '1');
-      body.append('TOS', '1');
-      this.storage.get('deviceID').then((val) => {
-        this.user.udid = val;
-        this.storage.get('devicePlatform').then((val) => {
-          this.user.platform = val;
-          this.services.register(this.url,body).subscribe(
-            //Successfully Logged in
-            success => {
-              console.log('hamzaaaaaaa register success');
-              setTimeout(() => {
-              }, 500);
-              setTimeout(() => {
-                this.spin = 0;
-                this.presentAlert('Success!', 'You are successfully registered. Please verify your account to login.');
-                this.disableButton = false;
-                this.navCtrl.push(LoginPage);
-              }, 2000);
-            },
-            error => {
-              this.spin = 0;
-              console.log('error bhai', error);
-              setTimeout(() => {
-                // if (error.message.length==1){
-                  this.presentAlert('Alert!', error.message[0]);
-                  this.disableButton = false;
-                // }
+      // let body = new FormData();
+      // body.append('Username', this.user.username);
+      // body.append('Email', this.user.email);
+      // body.append('Password', this.user.pswd);
+      // body.append('confirmPassword', this.user.rpswd);
+      // body.append('ReferrerId', this.user.referusername);
+      // body.append('FameCode', this.user.socialcode);
+      // body.append('DOB', this.user.birthday);
+      // body.append('Age', '1');
+      // body.append('TOS', '1');
+      // this.storage.get('deviceID').then((val) => {
+      //   this.user.udid = val;
+      //   this.storage.get('devicePlatform').then((val) => {
+      //     this.user.platform = val;
+      //     this.services.register(this.url,body).subscribe(
+      //       //Successfully Logged in
+      //       success => {
+      //         console.log('hamzaaaaaaa register success');
+      //         setTimeout(() => {
+      //         }, 500);
+      //         setTimeout(() => {
+      //           this.spin = 0;
+      //           this.presentAlert('Success!', 'You are successfully registered. Please verify your account to login.');
+      //           this.disableButton = false;
+      //           this.navCtrl.push(LoginPage);
+      //         }, 2000);
+      //       },
+      //       error => {
+      //         this.spin = 0;
+      //         console.log('error bhai', error);
+      //         setTimeout(() => {
+      //           // if (error.message.length==1){
+      //             this.presentAlert('Alert!', error.message[0]);
+      //             this.disableButton = false;
+      //           // }
                 
-              }, 500);
-            }
-          )
-        });
-      });
+      //         }, 500);
+      //       }
+      //     )
+      //   });
+      // });
     }
   }
 

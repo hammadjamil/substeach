@@ -13,47 +13,47 @@
         <ion-label style="margin-bottom: 0;margin-right: 10px;">
           <ion-icon name="md-person"></ion-icon>
         </ion-label>
-        <ion-input type="text" placeholder="Billing Address 1"  [(ngModel)]="user.username" class="marginset" style="font-size: 16px;"></ion-input>
+        <ion-input type="text" placeholder="Billing Address 1"  [(ngModel)]="user.BillingAddress1" class="marginset" style="font-size: 16px;"></ion-input>
       </ion-item>
       <ion-item class="p-0">
         <ion-label style="margin-bottom: 0;margin-right: 10px;">
           <ion-icon name="ios-mail"></ion-icon>
         </ion-label>
-        <ion-input type="text" placeholder="Billing Address 1"  [(ngModel)]="user.email" class="marginset" style="font-size: 16px;"></ion-input>
+        <ion-input type="text" placeholder="Billing Address 2"  [(ngModel)]="user.BillingAddress2" class="marginset" style="font-size: 16px;"></ion-input>
       </ion-item>
       <ion-item class="p-0">
         <ion-label style="margin-bottom: 0;margin-right: 10px;">
           <ion-icon name="md-unlock"></ion-icon>
         </ion-label>
-        <ion-input type="text" placeholder="Billing Address 1"  [(ngModel)]="user.pswd" class="marginset" style="font-size: 16px;"></ion-input>
+        <ion-input type="text" placeholder="Billing Address 3"  [(ngModel)]="user.BillingAddress3" class="marginset" style="font-size: 16px;"></ion-input>
       </ion-item>
       <ion-item class="p-0">
         <ion-label style="margin-bottom: 0;margin-right: 10px;">
           <ion-icon name="md-unlock"></ion-icon>
         </ion-label >
-        <ion-input type="text" placeholder="Billing City"  [(ngModel)]="user.rpswd" class="marginset" style="font-size: 16px;"></ion-input>
+        <ion-input type="text" placeholder="Billing City"  [(ngModel)]="user.BillingCity" class="marginset" style="font-size: 16px;"></ion-input>
       </ion-item>
       <ion-item class="p-0">
         <ion-label style="margin-bottom: 0;margin-right: 10px;">
           <ion-icon name="ios-contact"></ion-icon>
         </ion-label>
-        <ion-input type="text" placeholder="Billing Postal Code"  [(ngModel)]="user.referusername" class="marginset" style="font-size: 16px;"></ion-input>
+        <ion-input type="text" placeholder="Billing Postal Code"  [(ngModel)]="user.BillingPostalCode" class="marginset" style="font-size: 16px;"></ion-input>
       </ion-item>
       <ion-item class="p-0">
         <ion-label style="margin-bottom: 0;margin-right: 10px;">
           <ion-icon name="ios-contact"></ion-icon>
         </ion-label>
-        <ion-input type="text" placeholder="Billing Country"  [(ngModel)]="user.socialcode" class="marginset" style="font-size: 16px;"></ion-input>
+        <ion-input type="text" placeholder="Billing Country"  [(ngModel)]="user.BillingCountry" class="marginset" style="font-size: 16px;"></ion-input>
       </ion-item>
       <ion-item class="p-0 itmm"  style="height:60px;">
         <ion-label style="color: black;white-space: unset;font-weight: 300;font-size: 16px;">I confirm that I am over 18 years of age</ion-label>
-        <ion-checkbox color="dark" checked="false" style="margin: 10px;" (click)="ageconsole()" [(ngModel)]="ageconfirm"></ion-checkbox>
+        <ion-checkbox color="dark" checked="false" style="margin: 10px;" (click)="ageconsole()" [(ngModel)]="user.isAdult"></ion-checkbox>
       </ion-item>
       <ion-item class="p-0 itmm" style="    margin-top: -2px;border-bottom: unset;height:60px;">
         <ion-label style="color: black;white-space: unset;font-weight: 300;font-size: 16px;">By signing up, I agree to SubsTeach Terms and Conditions</ion-label>
-        <ion-checkbox color="dark" checked="false" style="margin: 10px;" (click)="ageconsole()" [(ngModel)]="termcondition"></ion-checkbox>
+        <ion-checkbox color="dark" checked="false" style="margin: 10px;" (click)="ageconsole()" [(ngModel)]="user.AgreeOnTermsAndConditions"></ion-checkbox>
       </ion-item>
     </ion-list>
-    <button ion-button block class="registerbtn colfaded" (click)="registerchoice()">REGISTER</button>
+    <button ion-button block class="registerbtn colfaded" (click)="RegisterStepThree()">REGISTER</button>
     </ion-content>
         

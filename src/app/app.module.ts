@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
 
+import { MyStorage } from '../app/localstorage';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
@@ -18,6 +19,7 @@ import { Teacherregister1Page } from '../pages/teacherregister1/teacherregister1
 import { Teacherregister2Page } from '../pages/teacherregister2/teacherregister2';
 import { Teacherregister3Page } from '../pages/teacherregister3/teacherregister3';
 
+import { MyTools } from '../providers/tools';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Services } from '../assets/providers/services';
@@ -67,6 +69,10 @@ import { HttpModule } from '@angular/http';
     StatusBar,
     SplashScreen,
     Services,
+    MyStorage,
+    // Facebook,
+    // GooglePlus,
+    MyTools,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

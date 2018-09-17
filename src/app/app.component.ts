@@ -10,18 +10,26 @@ import { RegisterPage } from '../pages/register/register';
 import { ForgotpasswordPage } from '../pages/forgotpassword/forgotpassword';
 import { LogoutPage } from '../pages/logout/logout';
 
+import { MyStorage } from '../app/localstorage';
+import { Auth } from '../providers/auth';
+import { LoadingController } from 'ionic-angular/index';
+import { MyTools } from '../providers/tools';
+import { Services } from '../providers/services';
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+  providers: [Auth, Services]
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // rootPage: any = HomePage;
   rootPage: any = LoginPage;  
-
+  loader: any;
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(private services: Services,
+    private lodingctrl: LoadingController, private auth: Auth,
+    public tools: MyTools,private storage: MyStorage,public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -38,6 +46,13 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+      if(this.platform.is('ios'))
+      this.storage.set('devicePlatform', 'ios');
+    else
+      this.storage.set('devicePlatform', 'android');
+
+
     });
   }
 
