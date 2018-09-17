@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "511898450722",
+    "firebase_url": "https://substeach-216719.firebaseio.com",
+    "project_id": "substeach-216719",
+    "storage_bucket": "substeach-216719.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:511898450722:android:ba93c02d2fbdcdfb",
+        "android_client_info": {
+          "package_name": "io.ionic.Substeach"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "511898450722-7dsto0cild6f9e5joll0v5revrm3nb59.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.ionic.Substeach",
+            "certificate_hash": "74c8e8a30b4b4eb4828835ffb6dd8585c58ca9a8"
+          }
+        },
+        {
+          "client_id": "511898450722-p37neueatg7980t4hfv4b55lqvgpfpip.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAze3MQ_YYv9pPQeGviEXyjIIJzLvcOId4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "511898450722-p37neueatg7980t4hfv4b55lqvgpfpip.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

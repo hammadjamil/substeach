@@ -26,7 +26,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Services } from '../assets/providers/services';
 import { HttpModule } from '@angular/http';
-
+import { Facebook } from '@ionic-native/facebook';
+import { GooglePlus } from '@ionic-native/google-plus';
 @NgModule({
   declarations: [
     MyApp,
@@ -76,8 +77,8 @@ import { HttpModule } from '@angular/http';
     SplashScreen,
     Services,
     MyStorage,
-    // Facebook,
-    // GooglePlus,
+    Facebook,
+    GooglePlus,
     MyTools,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

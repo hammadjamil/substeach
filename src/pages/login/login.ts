@@ -12,6 +12,9 @@ import { RegisterPage } from '../register/register';
 import { ForgotpasswordPage } from '../forgotpassword/forgotpassword';
 import { HomePage } from '../home/home';
 import { RegistrationchoicePage } from '../registrationchoice/registrationchoice';
+import { AppSettings } from '../../app/appSettings';
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
+import { GooglePlus } from '@ionic-native/google-plus';
 
 @IonicPage()
 @Component({
@@ -21,7 +24,7 @@ import { RegistrationchoicePage } from '../registrationchoice/registrationchoice
 })
 export class LoginPage {
    //Class Properties
-   user = { username: '', password: '', udid: '',platform:'' };
+   user = { username: '', password: '' };
    loader: any;
    rootPage: any;
   constructor(public navCtrl: NavController,
@@ -34,9 +37,13 @@ export class LoginPage {
               public events: Events,
               private auth: Auth,
               private storage: MyStorage,
-              
+              public fb: Facebook,
+              public google: GooglePlus,
               public tools: MyTools,
               private alertCtrl: AlertController) {
+                //initializing facebook
+    // this.fb.browserInit(476300759536162, "v2.10");
+    
                 
   }
   ionViewDidEnter() {
@@ -48,6 +55,9 @@ export class LoginPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
+
+  
+
 
   Forgotpswdpage(){
     this.navCtrl.push(ForgotpasswordPage);    
@@ -77,12 +87,7 @@ loginService() {
   //Requesting API 
   else {
 
-    this.storage.get('deviceID').then((val) => {
-      console.log('device ID',val);
-      
-        this.user.udid = val;
-        this.storage.get('devicePlatform').then((val) => {
-          this.user.platform = val;
+        
           this.services.login(this.user).subscribe(
             //Successfully Logged in
             success => {
@@ -101,8 +106,7 @@ loginService() {
               this.presentAlert('Alert!', error.data);
             }
           )
-        });
-    });
+      
   }
 }
 
@@ -122,93 +126,132 @@ loginService() {
     });
     alert.present();
   }
+  //Facebook Login
+  fbSignIn() {
+    this.fb.logout().then(
+        (success) => {
+            console.log(success);
+            this.facebookLogin();
+        }
+    ).catch(e => {
+        console.log('Error logging into Facebook %O', e);
+        this.facebookLogin();
+    });
+    let str = {
+        asdfasdf: 'asdfasdfasdf'
+    };
 
-  //Login
-  // login() {
-  //   this.spin = 1;
-  //   this.disableButton = true;
-  //   //Applying Validations
-  //   if (this.user.password == '' && this.user.username == '') {
-  //     this.splashScreen.hide();
-  //     this.spin = 0;
-  //     setTimeout(() => {
-  //       this.presentAlert('Alert!', 'Please enter your login information.');
-  //       this.disableButton = false;
-  //     }, 1000);
-  //     return;
-  //   }
-  //   else if (this.user.password == '') {
-  //     this.splashScreen.hide();
-  //     this.spin = 0;
-  //     setTimeout(() => {
-  //       this.presentAlert('Alert!','Please enter your password.');
-  //       this.disableButton = false;
-  //     }, 1000);
-  //     return;
-  //   }
-  //   else if (this.user.username == '') {
-  //     this.splashScreen.hide();
-  //     this.spin = 0;
-  //     setTimeout(() => {
-  //       this.presentAlert('Alert!', 'Please enter your email/username.');
-  //       this.disableButton = false;
-  //     }, 1000);
-  //     return;
-  //   }
-  //   //Requesting API 
-  //   else {
-  //     let body = new FormData();
-  //     body.append('Username', this.user.username);
-  //     body.append('Password', this.user.password);
-  //     this.storage.get('deviceID').then((val) => {
-  //       this.user.udid = val;
-  //       this.storage.get('devicePlatform').then((val) => {
-  //         this.user.platform = val;
-  //         this.services.login(this.url, body).subscribe(
-  //           //Successfully Logged in
-  //           success => {
-  //             console.log('hamzaaaaaaa login success', success);
-  //             console.log('iddddd', success.ID)
-  //             this.storage.set('userid', success.ID);
-  //             // this.storage.set('passwordd', this.user.password);
-  //             this.services.getuserdata(success.ID).subscribe(
-  //               success => {
-                    
-  //                 // this.updateprofileinfo.emit(success);
-  //                 console.log('hamza data', success);
-  //                 this.storage.set('thumbnail', success.data.thumbnail);
-  //                 this.storage.set('dollaramount', success.data.dollarAmount);
-  //                 this.storage.set('pixxamount', success.data.pixxAmount);
-  //                 this.storage.set('username', success.data.username);
-  //                 this.storage.set('passwordd', this.user.password);
-  //                 setTimeout(() => {                  
-  //                 this.events.publish('user:login');
-  //                   }, 500);
-  //               },
-  //               err => {
-  //                 console.log('error', err);
-  //               }
-  //             )
-  //             setTimeout(() => {
-  //             }, 500);
-  //             setTimeout(() => {
-  //               this.spin = 0;
-  //               this.disableButton = false;
-  //               this.navCtrl.setRoot(HomePage,{fromlogin: 'l'});
-  //             }, 2000);
-  //           },
-  //           error => {
-  //             this.splashScreen.hide();
-  //             this.spin = 0;
-  //             console.log('error bhai', error);
-  //             setTimeout(() => {
-  //               this.presentAlert('Alert!', error.message);
-  //               this.disableButton = false;
-  //             }, 500);
-  //           }
-  //         )
-  //       });
-  //     });
-  //   }
-  // }
+  }
+
+  //Google Login
+  googlePlusLogin() {
+    this.google.logout().then(
+        (success) => {
+            this.googleLogin();
+        },
+        (err) => {
+          
+            console.log(err);
+            this.googleLogin();
+        }
+    )
+  }
+
+  facebookLogin() {
+    this.fb.login(['public_profile', 'email'])
+        .then(
+        (res: FacebookLoginResponse) => {
+            console.log('FacebookLoginResponse : ',res);
+            let userId = res.authResponse.userID;
+            let accessToken = res.authResponse.accessToken;
+            let params = new Array<string>();
+            //Getting name and gender properties
+            this.fb.api("/me?fields=name,gender,first_name,last_name,email,location,picture", params).then(
+                (success) => {
+                    console.log('facebook user data is ', success);
+                    success.social_type = 'facebook';
+                    this.registerViaSocial(success);
+                },
+                (err) => {
+                    console.log('err is ', err);
+                }
+            )
+            console.log('Logged into Facebook!', res);
+        })
+        .catch(e => {
+            console.log('Alert! logging into Facebook %O', e);
+        });
+    }
+
+    googleLogin() {
+        this.google.login({
+            // 'scopes': '', // optional, space-separated list of scopes, If not included or empty, defaults to `profile` and `email`.
+            'webClientId': AppSettings.GOOGLE_WEB_CLIENT_ID, // optional clientId of your Web application from Credentials settings of your project - On Android, this MUST be included to get an idToken. On iOS, it is not required.
+            'offline': true
+        }).then(
+            (success) => {
+              console.log('googleplus success : ',success);
+              
+                let user = {
+                    //success.displayName.split(' ');
+                    first_name: success.displayName.split(' ')[0],
+                    last_name: success.displayName.split(' ')[1],
+                    email: success.email,
+                    userID: success.userId,
+                    idToken: success.idToken,
+                    social_type: 'google',
+                    id: success.userId,
+                    imageUrl: success.imageUrl
+                }
+                console.log('success is user ', user);
+                this.registerViaSocial(user);
+            },
+            (err) => {
+                console.log('error is ', err);
+            }
+            )
+    }
+
+
+
+    //Register step for social login 
+    registerViaSocial(user) {
+      this.showLoader();
+      console.log('registerViaSocial recieved the data', user);
+      user.social_type = user.social_type;
+      user.social_id = user.id;
+      user.imageUrl = user.imageUrl || '';
+      user.socialLogin = 1;
+
+      let body = new FormData();
+      body.append('social_type', user.social_type);
+      body.append('social_id', user.id);
+
+      this.services.socialUserExist(body).subscribe(
+          success => {
+              console.log('success ++++');
+              this.loginSocialUser(success);
+          },
+          err => {
+              console.log('error ++++');
+              this.loader.dismiss();
+              // this.sendDataToParent(user);
+          }
+      )
+  }
+
+  loginSocialUser(success) {
+      console.log('success bhai', success);
+      
+      this.auth.loginUser(success.data);
+      this.auth.setDashInfo(success.data.related_info);
+      this.auth.setUserImage(success.data.profile_image);
+      setTimeout(() => {
+          this.loader.dismiss();
+          // this.navCtrl.setRoot(DashboardPage);
+      }, 2000);
+
+  }
+
+
 }
