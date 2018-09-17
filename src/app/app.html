@@ -1,23 +1,24 @@
 <ion-menu [content]="content">
-  <ion-header id="sidemenu" class="container" style="">
-    <ion-toolbar  id="menutoolbar" class="row"style="">
-        <div class="profileimg">
-            <img src="../assets/imgs/profileimg.jpg" alt="">
-            <p>USERNAME</p>
-        </div>
-        <div class="edit_btn">
-          <button style="    background: #f7b800;    color: white;">Edit Profile</button>
-        </div>
-    </ion-toolbar>
+  <ion-header id="sidemenu">
+      <div class="" text-center padding-top padding-bottom>
+          <img src="../assets/imgs/profileimg.jpg" alt="" width="80px" height="80px" style="object-fit: cover;border: 2px solid black;
+          border-radius: 100%;">
+          <p style="font-size: 20px;padding-top: 10px;">USERNAME</p>
+          <button style="background: #f7b800 !important;color: white ;background: #f7b800 !important;object-fit: cover;color: white;margin: auto;width: 150px;" ion-button block>Edit Profile</button>
+      </div>
+    
   </ion-header>
 
   <ion-content class="sidemenucontent" no-bounce>
     <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" class="sidemenubutton" style="     background-color: beige;   color: #2b221f !important;">
-        <ion-icon name="{{p.icon}}" class="sidemenuicon"></ion-icon> {{p.title}}
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" class="sidemenubutton" style="background-color: white !important;border-bottom: 1px solid;border-radius: 0 !important;color: #2b221f !important;">
+        {{p.title}}
       </button>
     </ion-list>
   </ion-content>
+  <ion-footer>
+    <p text-center style="color:black;">Substeach App</p>
+  </ion-footer>
 
 </ion-menu>
 

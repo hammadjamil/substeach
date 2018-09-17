@@ -9,6 +9,8 @@ import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { ForgotpasswordPage } from '../pages/forgotpassword/forgotpassword';
 import { LogoutPage } from '../pages/logout/logout';
+import { FavouritesPage } from '../pages/favourites/favourites';
+import { SettingsPage } from '../pages/settings/settings';
 
 @Component({
   templateUrl: 'app.html'
@@ -16,8 +18,8 @@ import { LogoutPage } from '../pages/logout/logout';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  // rootPage: any = HomePage;
-  rootPage: any = LoginPage;  
+  rootPage: any = HomePage;
+  // rootPage: any = LoginPage;  
 
   pages: Array<{title: string, component: any}>;
 
@@ -27,6 +29,8 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
+      { title: 'Favourites', component: FavouritesPage },
+      { title: 'Settings', component: SettingsPage },
       { title: 'Logout', component: LogoutPage }
     ];
 
