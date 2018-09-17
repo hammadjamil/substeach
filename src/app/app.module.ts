@@ -20,6 +20,8 @@ import { TeacherregisterPage } from '../pages/teacherregister/teacherregister';
 import { Teacherregister1Page } from '../pages/teacherregister1/teacherregister1';
 import { Teacherregister2Page } from '../pages/teacherregister2/teacherregister2';
 import { Teacherregister3Page } from '../pages/teacherregister3/teacherregister3';
+import { FavouritesPage } from '../pages/favourites/favourites';
+import { SettingsPage } from '../pages/settings/settings';
 
 import { MyTools } from '../providers/tools';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -46,6 +48,8 @@ import { GooglePlus } from '@ionic-native/google-plus';
     Teacherregister1Page,
     Teacherregister2Page,
     Teacherregister3Page,
+    FavouritesPage,
+    SettingsPage
   ],
   imports: [
     BrowserModule,
@@ -71,6 +75,8 @@ import { GooglePlus } from '@ionic-native/google-plus';
     Teacherregister1Page,
     Teacherregister2Page,
     Teacherregister3Page,
+    FavouritesPage,
+    SettingsPage
   ],
   providers: [
     StatusBar,

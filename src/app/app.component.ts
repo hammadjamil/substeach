@@ -9,6 +9,9 @@ import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { ForgotpasswordPage } from '../pages/forgotpassword/forgotpassword';
 import { LogoutPage } from '../pages/logout/logout';
+import { Teacherregister3Page } from '../pages/teacherregister3/teacherregister3';
+import { FavouritesPage } from '../pages/favourites/favourites';
+import { SettingsPage } from '../pages/settings/settings';
 
 import { MyStorage } from '../app/localstorage';
 import { Auth } from '../providers/auth';
@@ -35,6 +38,8 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
+      { title: 'Favourites', component: FavouritesPage },
+      { title: 'Settings', component: SettingsPage },
       { title: 'Logout', component: LogoutPage }
     ];
 
