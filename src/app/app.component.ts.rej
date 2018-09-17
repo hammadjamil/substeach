@@ -1,0 +1,10 @@
+diff a/src/app/app.component.ts b/src/app/app.component.ts	(rejected hunks)
+@@ -9,6 +9,8 @@
+ import { RegisterPage } from '../pages/register/register';
+ import { ForgotpasswordPage } from '../pages/forgotpassword/forgotpassword';
+ import { LogoutPage } from '../pages/logout/logout';
++import { FavouritesPage } from '../pages/favourites/favourites';
++import { SettingsPage } from '../pages/settings/settings';
+ 
+ @Component({
+   templateUrl: 'app.html'
