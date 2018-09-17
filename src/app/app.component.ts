@@ -9,6 +9,9 @@ import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { ForgotpasswordPage } from '../pages/forgotpassword/forgotpassword';
 import { LogoutPage } from '../pages/logout/logout';
+import { Teacherregister3Page } from '../pages/teacherregister3/teacherregister3';
+import { FavouritesPage } from '../pages/favourites/favourites';
+import { SettingsPage } from '../pages/settings/settings';
 
 import { MyStorage } from '../app/localstorage';
 import { Auth } from '../providers/auth';
@@ -22,15 +25,9 @@ import { Services } from '../providers/services';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-<<<<<<< HEAD
-  rootPage: any = HomePage;
-  // rootPage: any = LoginPage;  
-
-=======
   // rootPage: any = HomePage;
   rootPage: any = LoginPage;  
   loader: any;
->>>>>>> 25879da0052a18901d4be9bf8be61e390312a3ab
   pages: Array<{title: string, component: any}>;
 
   constructor(private services: Services,
