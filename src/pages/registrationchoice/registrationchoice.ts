@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Schoolregister1Page } from '../schoolregister1/schoolregister1';
+import { SchoolregisterPage } from '../schoolregister/schoolregister';
 import { Teacherregister1Page } from '../teacherregister1/teacherregister1';
 import { LoginPage } from '../login/login';
 
@@ -28,7 +28,7 @@ export class RegistrationchoicePage {
     this.navCtrl.push(Teacherregister1Page);
   }
   schoolregister1(){
-    this.navCtrl.push(Schoolregister1Page);
+    this.navCtrl.push(SchoolregisterPage);
   }
   backtologin(){
     this.navCtrl.push(LoginPage);    

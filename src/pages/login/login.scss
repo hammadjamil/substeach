@@ -29,11 +29,12 @@ ion-item{
   border-bottom: 0 !important;
 }
 ion-label {
-    color: white !important;
-    background: $themecolor !important;
-    padding: 13px;
-    margin: 0 !important;
-    margin-right: 10px !important;
+  color: white !important;
+  background: #38d345 !important;
+  padding: 13px 0;
+  margin: 0 !important;
+  text-align: center;
+  width: 50px;
 }
 // ion-title .toolbar-title{
 //   background: -webkit-linear-gradient(#38d345, #048820);
@@ -55,9 +56,9 @@ padding: 25px !important;
   font-size: 25px;
 }
 .registerchoice button{
-  background: white !important;
-  color: $themecolor !important;
-  border: 2px solid $themecolor !important;
+  background: #ffffff !important;
+  color: #909695 !important;
+  border: 2px solid #909695 !important;
   font-size: 18px !important;
 }
 ion-checkbox button{

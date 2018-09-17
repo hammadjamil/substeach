@@ -1,64 +1,67 @@
+<ion-header>
+    <p  text-left><span (click)="backtologin()">Back to Login</span><span (click)="skip()" float-right >Skip</span></p>
+  </ion-header>
 <ion-content padding id="registerpage">
   <ion-list>
     <!-- <div class="text-center pt-5 pb-3">
       <img src="./assets/imgs/loginlogo.png" alt="" class="w-60">
     </div> -->
-    <ion-title class="text-center pb-3">REGISTRATION</ion-title>
-    <p class="text-center">
+    <ion-title class="text-center pb-3">STEP 2</ion-title>
+    <!-- <p class="text-center">
       Already have an account? 
       <span class="h4" (click)="loginpage()">Login</span>
-    </p>
+    </p> -->
     <ion-item class="p-0">
       <ion-label style="margin-bottom: 0;margin-right: 10px;">
-        <ion-icon name="md-person"></ion-icon>
+        <ion-icon name="ios-school"></ion-icon>
       </ion-label>
       <ion-input type="text" placeholder="School Name"  [(ngModel)]="user.SchoolName" class="marginset" style="font-size: 16px;"></ion-input>
     </ion-item>
     <ion-item class="p-0">
       <ion-label style="margin-bottom: 0;margin-right: 10px;">
-        <ion-icon name="ios-mail"></ion-icon>
+        <ion-icon name="md-home"></ion-icon>
       </ion-label>
       <ion-input type="text" placeholder="Visiting Address 1"  [(ngModel)]="user.VisitingAddress1" class="marginset" style="font-size: 16px;"></ion-input>
     </ion-item>
     <ion-item class="p-0">
       <ion-label style="margin-bottom: 0;margin-right: 10px;">
-        <ion-icon name="md-unlock"></ion-icon>
+        <ion-icon name="md-home"></ion-icon>
       </ion-label>
       <ion-input type="text" placeholder="Visiting Address 2"  [(ngModel)]="user.VisitingAddress2" class="marginset" style="font-size: 16px;"></ion-input>
     </ion-item>
     <ion-item class="p-0">
       <ion-label style="margin-bottom: 0;margin-right: 10px;">
-        <ion-icon name="md-unlock"></ion-icon>
+        <ion-icon name="md-home"></ion-icon>
       </ion-label >
       <ion-input type="text" placeholder="Visiting Address 3"  [(ngModel)]="user.VisitingAddress3" class="marginset" style="font-size: 16px;"></ion-input>
     </ion-item>
     <ion-item class="p-0">
       <ion-label style="margin-bottom: 0;margin-right: 10px;">
-        <ion-icon name="ios-contact"></ion-icon>
+        <ion-icon name="md-train"></ion-icon>
       </ion-label>
       <ion-input type="text" placeholder="Visiting City"  [(ngModel)]="user.VisitingCity" class="marginset" style="font-size: 16px;"></ion-input>
     </ion-item>
     <ion-item class="p-0">
       <ion-label style="margin-bottom: 0;margin-right: 10px;">
-        <ion-icon name="ios-contact"></ion-icon>
+        <ion-icon name="md-mail-open"></ion-icon>
       </ion-label>
       <ion-input type="text" placeholder="Visiting Postal Code"  [(ngModel)]="user.VisitingPostalCode" class="marginset" style="font-size: 16px;"></ion-input>
     </ion-item>
     <ion-item class="p-0">
       <ion-label style="margin-bottom: 0;margin-right: 10px;">
-        <ion-icon name="ios-contact"></ion-icon>
+        <ion-icon name="ios-flag"></ion-icon>
       </ion-label>
       <ion-input type="text" placeholder="Visiting Country"  [(ngModel)]="user.VisitingCountry" class="marginset" style="font-size: 16px;"></ion-input>
     </ion-item>
     <ion-item class="p-0">
       <ion-label style="margin-bottom: 0;margin-right: 10px;">
-        <ion-icon name="ios-contact"></ion-icon>
+        <ion-icon name="ios-card"></ion-icon>
       </ion-label>
       <ion-input type="text" placeholder="Govt Issued ID"  [(ngModel)]="user.GovtIssuedID" class="marginset" style="font-size: 16px;"></ion-input>
     </ion-item>
     <ion-item class="p-0">
       <ion-label style="margin-bottom: 0;margin-right: 10px;">
-        <ion-icon name="ios-contact"></ion-icon>
+        <i class="fa fa-graduation-cap"></i>
       </ion-label>
       <ion-input type="text" placeholder="School Type"  [(ngModel)]="user.SchoolType" class="marginset" style="font-size: 16px;"></ion-input>
     </ion-item>
