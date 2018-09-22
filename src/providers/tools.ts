@@ -80,7 +80,7 @@ export class MyTools {
             showBackdrop: false,
             content: `
       <div class="custom-spinner-container" style="width:70px">
-        <img src = "assets/image/loader.gif">
+        <img src = "../../assets/imgs/loader2.gif">
       </div>`
         });
 
