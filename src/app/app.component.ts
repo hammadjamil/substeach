@@ -40,7 +40,7 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'Favourites', component: FavouritesPage },
       { title: 'Settings', component: SettingsPage },
-      { title: 'Logout', component: null }
+      { title: 'Logout', component: LogoutPage }
     ];
 
   }
@@ -58,46 +58,53 @@ export class MyApp {
       this.storage.set('devicePlatform', 'android');
 
 
-      this.platform.registerBackButtonAction(() => {
+      // this.platform.registerBackButtonAction(() => {
         
         
-        if (this.nav.getActive().name == 'DashboardPage' || this.nav.getActive().name == 'SignupPage' || this.nav.getActive().name == 'LoginPage') {
+      //   if (this.nav.getActive().name == 'HomePage' || this.nav.getActive().name == 'LoginPage') {
           
-          if (this.exitApp === 1) {
-            this.platform.exitApp();
-          }else {
-            this.presentToast('Please press again to exit the app');
-            this.exitApp++;
+      //     if (this.exitApp === 1) {
+      //       this.platform.exitApp();
+      //     }else {
+      //       this.presentToast('Please press again to exit the app');
+      //       this.exitApp++;
 
-            setTimeout(() => {
-              this.exitApp = 0;
-            }, 3000)
-          }
-        }
-        else {
-          this.nav.pop();
+      //       setTimeout(() => {
+      //         this.exitApp = 0;
+      //       }, 3000)
+      //     }
+      //   }
+      //   else {
+      //     this.nav.pop();
+      //   }
+
+      // });
+
+
+
+
+
+      this.storage.get('user').then((val) => {
+        if(val!='' && val!=null){
+          this.rootPage = HomePage;
+        }else{
+          this.rootPage = LoginPage;
         }
 
       });
 
 
 
-
-
-
-
-
-
       
-      this.auth.userLoggedIn().then(
-        (data) => {
-          this.rootPage = HomePage;
+      // this.auth.userLoggedIn().then(
+      //   (data) => {
+      //     this.rootPage = HomePage;
 
-        }
-      ).catch((err) => {
-          console.log('User Not logged in ', err);
-          this.rootPage = LoginPage;
-        })
+      //   }
+      // ).catch((err) => {
+      //     console.log('User Not logged in ', err);
+      //     this.rootPage = LoginPage;
+      //   })
 
 
 

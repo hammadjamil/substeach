@@ -12,7 +12,8 @@ export class LogoutPage {
 
   constructor(public navCtrl: NavController, private storage: Storage,public navParams: NavParams) {
     this.storage.set('username', '');
-    this.storage.set('passwordd', '');
+    this.storage.set('password', '');
+    this.storage.set('user', '');
     this.navCtrl.push(LoginPage);
   }
 

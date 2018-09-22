@@ -211,6 +211,8 @@ export class Schoolregister2Page {
 
     const fileTransfer: TransferObject = this.transfer.create();
     fileTransfer.upload(targetPath, url, options).then(data => {
+      console.log('updateProfilePic data : ',data);
+      
       this.loader.dismiss();
       let p_data = JSON.parse(data.response);
       this.storage.set('profile_image',p_data.data.profile_image);
