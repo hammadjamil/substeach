@@ -19,6 +19,10 @@ $fontfamily:'Noto Sans KR', sans-serif;
     background: transparent !important;
     width: 170px;
 }
+.alert-button-group button {
+    background: white !important;
+    color: black !important;
+}
 ion-app {
     font-family: $fontfamily !important;
 }
