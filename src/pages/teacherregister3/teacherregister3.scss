@@ -111,4 +111,17 @@ page-teacherregister3 {
     background: unset !important;
     height: 60px !important;
 }
+.registerchoice ion-datetime button{
+  border: 0 !important;
+  height: auto !important;
+}
+ion-datetime {
+  padding-left: 15px !important;
+}
+}
+.picker-button, .picker-button.activated {
+  margin: 0;
+  height: 44px;
+  color: #488aff;
+  background: transparent !important;
 }
