@@ -27,16 +27,16 @@ export class Schoolregister1Page {
   disableButton;
   user: any = 
   { 
-      "ClientID": "",
-      "SchoolName": "",
-      "Details": "",
-      "VisitingAddress1": "",
-      "VisitingAddress2": "",
-      "VisitingAddress3": "",
-      "VisitingCity": "",
-      "VisitingPostalCode": "",
-      "GovtIssuedID": "",
-      "SchoolType": 0,
+      
+      "SchoolName": "DPS",
+      "Details": "Some detail",
+      "VisitingAddress1": "VisitingAddress1",
+      "VisitingAddress2": "VisitingAddress2",
+      "VisitingCity": "city some",
+      "VisitingCountry": "country some",
+      "VisitingPostalCode": "567888",
+      "GovtIssuedID": "6658879876854656876",
+      "SchoolType": 'one',
       // "LogoPath": "",
       // "BillingAddress1": "",
       // "BillingAddress2": "",
@@ -95,11 +95,6 @@ export class Schoolregister1Page {
     }
     else if (this.user.VisitingAddress2 == '') {
       this.presentAlert('Alert!', 'Please enter your VisitingAddress2');
-      this.loader.dismiss();
-      return;
-    }
-    else if (this.user.VisitingAddress3 == '') {
-      this.presentAlert('Alert!', 'Please enter your VisitingAddress3');
       this.loader.dismiss();
       return;
     }

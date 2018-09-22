@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, Platform } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
-import { Services } from '../../assets/providers/services';
+import { Services } from '../../providers/services';
 import { LoginPage } from '../login/login';
 import { RegistrationchoicePage } from '../registrationchoice/registrationchoice';
 
@@ -18,7 +18,7 @@ import { RegistrationchoicePage } from '../registrationchoice/registrationchoice
 @IonicPage()
 @Component({
   selector: 'page-schoolregister3',
-  templateUrl: 'schoolregister3.html',
+  templateUrl: 'schoolregister3.html'
 })
 export class Schoolregister3Page {
   emailcheck:boolean;
@@ -27,27 +27,29 @@ export class Schoolregister3Page {
   ageconfirm:any;
   termcondition:any;
   disableButton;
+  
   user: any = 
   { 
       
-      "BillingAddress1": "",
-      "BillingAddress2": "",
-      "BillingAddress3": "",
-      "BillingCity": "",
-      "BillingPostalCode": "",
-      "BillingCountry": "",
+      "BillingAddress1": "BillingAddress1",
+      "BillingAddress2": "BillingAddress2",
+      "BillingCity": "BillingCityBillingCity",
+      "BillingPostalCode": "56678900",
+      "BillingCountry": "Pakistan",
       "AgreeOnTermsAndConditions": true,
       "isAdult": true,
     
   };
-  constructor(public navCtrl: NavController,
+  schoolDetail : any;
+  userDetail: any;
+   constructor(public navCtrl: NavController,
               public loadingCtrl: LoadingController,
               private storage: Storage,
               public services: Services,
               private alertCtrl: AlertController,
               private menu: MenuController,
-              public navParams: NavParams) {
-    this.minDate = new Date().toISOString();
+              public navParams: NavParams,
+              ) {
   }
   ionViewDidEnter() {
     this.menu.swipeEnable(false);
@@ -56,6 +58,26 @@ export class Schoolregister3Page {
     this.menu.swipeEnable(true);
   }
   ageconsole(){
+    console.log('this.user.isAdult',this.user.isAdult);
+    
+    if(this.user.isAdult){
+      this.user.isAdult = false;
+
+    }else{
+      this.user.isAdult = true;
+    }
+    
+  }
+  AgreeOnTermsAndConditions(){
+    console.log('this.user.AgreeOnTermsAndConditions',this.user.AgreeOnTermsAndConditions);
+    
+    if(this.user.AgreeOnTermsAndConditions){
+      this.user.AgreeOnTermsAndConditions = false;
+
+    }else{
+      this.user.AgreeOnTermsAndConditions = true;
+    }
+    
   }
   presentAlert(title, msgs) {
     let alert = this.alertCtrl.create({
@@ -96,20 +118,6 @@ export class Schoolregister3Page {
       }, 1000);
       return;
     }
-    else if (this.user.BillingAddress1 == '') {
-      setTimeout(() => {
-        this.presentAlert('Alert!', 'Please enter your Billing Address 2');
-        this.disableButton = false;
-      }, 1000);
-      return;
-    }
-    else if (this.emailcheck == false) {
-      setTimeout(() => {
-        this.presentAlert('Alert!', 'Please enter your Billing Address 3');
-        this.disableButton = false;
-      }, 1000);
-      return;
-    }
     else if (this.user.BillingCity == '') {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please enter your Billing City');
@@ -131,14 +139,14 @@ export class Schoolregister3Page {
       }, 1000);
       return;
     }
-    else if (this.user.isAdult) {
+    else if (!this.user.isAdult) {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please confirm your age');
         this.disableButton = false;
       }, 1000);
       return;
     }
-    else if (this.user.AgreeOnTermsAndConditions != true) {
+    else if (!this.user.AgreeOnTermsAndConditions) {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please agree to our Terms and Conditions');
         this.disableButton = false;
@@ -147,48 +155,84 @@ export class Schoolregister3Page {
     }
     //Requesting API birthday
     else {
-      console.log('service check');
-      // let body = new FormData();
-      // body.append('Username', this.user.username);
-      // body.append('Email', this.user.email);
-      // body.append('Password', this.user.pswd);
-      // body.append('confirmPassword', this.user.rpswd);
-      // body.append('ReferrerId', this.user.referusername);
-      // body.append('FameCode', this.user.socialcode);
-      // body.append('DOB', this.user.birthday);
-      // body.append('Age', '1');
-      // body.append('TOS', '1');
-      // this.storage.get('deviceID').then((val) => {
-      //   this.user.udid = val;
-      //   this.storage.get('devicePlatform').then((val) => {
-      //     this.user.platform = val;
-      //     this.services.register(this.url,body).subscribe(
-      //       //Successfully Logged in
-      //       success => {
-      //         console.log('hamzaaaaaaa register success');
-      //         setTimeout(() => {
-      //         }, 500);
-      //         setTimeout(() => {
-      //           this.spin = 0;
-      //           this.presentAlert('Success!', 'You are successfully registered. Please verify your account to login.');
-      //           this.disableButton = false;
-      //           this.navCtrl.push(LoginPage);
-      //         }, 2000);
-      //       },
-      //       error => {
-      //         this.spin = 0;
-      //         console.log('error bhai', error);
-      //         setTimeout(() => {
-      //           // if (error.message.length==1){
-      //             this.presentAlert('Alert!', error.message[0]);
-      //             this.disableButton = false;
-      //           // }
-                
-      //         }, 500);
-      //       }
-      //     )
-      //   });
-      // });
+      this.showLoader();
+      this.storage.get('RegisterSchoolUserStep').then((val) => {
+        this.userDetail = val;
+        this.storage.get('RegisterSchoolStepOne').then((val) => {
+          this.schoolDetail = val;
+          
+
+
+          
+          let body = new FormData();
+          body.append('UserName', this.userDetail.username);
+          body.append('Email', this.userDetail.email);
+          body.append('EmailConfirmed', this.userDetail.confemail);
+          body.append('PasswordHash', this.userDetail.pswd);
+          // body.append('Rpswd', this.userDetail.rpswd);
+          body.append('PhoneNumber', this.userDetail.phonenumber);
+          body.append('PhoneNumberConfirmed', this.userDetail.confphonenumber);
+          body.append('SocialID', this.userDetail.socialID);
+
+
+          body.append('SchoolName', this.schoolDetail.SchoolName);
+          body.append('Details', this.schoolDetail.Details);
+          body.append('GovtIssuedID', this.schoolDetail.GovtIssuedID);
+          body.append('SchoolType', this.schoolDetail.SchoolType);
+          body.append('VisitingAddress1', this.schoolDetail.VisitingAddress1);
+          body.append('VisitingAddress2', this.schoolDetail.VisitingAddress2);
+          body.append('VisitingCity', this.schoolDetail.VisitingCity);
+          body.append('VisitingCountry', this.schoolDetail.VisitingCountry);
+          body.append('VisitingPostalCode', this.schoolDetail.VisitingPostalCode);
+          body.append('LogoPath', '');
+
+
+          body.append('BillingAddress1', this.user.BillingAddress1);
+          body.append('BillingAddress2', this.user.BillingAddress2);
+          body.append('BillingCity', this.user.BillingCity);
+          body.append('BillingCountry', this.user.BillingCountry);
+          body.append('BillingPostalCode', this.user.BillingPostalCode);
+          body.append('isAdult', this.user.isAdult);
+          body.append('AgreeOnTermsAndConditions', this.user.AgreeOnTermsAndConditions);
+          
+              this.services.register(body).subscribe(
+                //Successfully Logged in
+                success => {
+                  setTimeout(() => {
+                  }, 500);
+                  setTimeout(() => {
+                    this.presentAlert('Success!', 'You are successfully registered. Please login now');
+                    this.loader.dismiss();
+                    // this.disableButton = false;
+                     this.navCtrl.push(LoginPage);
+                  }, 2000);
+                },
+                error => {
+                  this.spin = 0;
+                  console.log('error bhai', error);
+                  setTimeout(() => {
+                    // if (error.message.length==1){
+                      this.presentAlert('Alert!', error.message[0]);
+                      this.loader.dismiss();
+                    // }
+                    
+                  }, 500);
+                }
+              )
+
+
+
+
+
+
+        });
+      });
+     
+      
+
+
+
+
     }
   }
 
@@ -219,4 +263,14 @@ export class Schoolregister3Page {
   skip(){
     this.navCtrl.push(Schoolregister3Page);
   }
+
+
+
+  
+
+
+
+
+
+
 }

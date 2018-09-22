@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage';
 import { Services } from '../../assets/providers/services';
 import { LoginPage } from '../login/login';
 import { Schoolregister1Page } from '../schoolregister1/schoolregister1';
+import { VerifyphonePage } from '../verifyphone/verifyphone';
 
 @IonicPage()
 @Component({
@@ -19,8 +20,18 @@ export class SchoolregisterPage {
   ageconfirm:any;
   termcondition:any;
   disableButton;
-  user: any = { username: '', email: '',confemail:'', pswd: '', rpswd: '', referusername: '', phonenumber: '', confphonenumber:'' };
-  url: any = 'https://staging.pixxpros.com/service/register-service';
+  user: any = 
+  { 
+    username: 'hammad', 
+    email: 'hammad@gmail.com',
+    confemail:'hammad@gmail.com', 
+    pswd: '12345', 
+    rpswd: '12345',  
+    phonenumber: '923455252632', 
+    confphonenumber:'923455252632' ,
+    socialID:'' 
+  };
+
   constructor(public navCtrl: NavController,
               public loadingCtrl: LoadingController,
               private storage: Storage,
@@ -28,7 +39,17 @@ export class SchoolregisterPage {
               private alertCtrl: AlertController,
               private menu: MenuController,
               public navParams: NavParams) {
-    this.minDate = new Date().toISOString();
+                this.storage.get('SocialRegisteration').then((val) => {
+                  console.log('val',val);
+                  
+                  if(val!='' && val!=null){
+                    this.user.username= val.first_name+val.last_name; 
+                    this.user.email= val.email;
+                    this.user.confemail= val.email;
+                    this.user.socialID= val.userID;
+                    this.storage.set('SocialRegisteration','');
+                  }
+                });
   }
   ionViewDidEnter() {
     this.menu.swipeEnable(false);
@@ -37,8 +58,7 @@ export class SchoolregisterPage {
     this.menu.swipeEnable(true);
   }
   ageconsole(){
-    console.log('age check', this.ageconfirm);
-    console.log('age check', this.termcondition);
+    
   }
   presentAlert(title, msgs) {
     let alert = this.alertCtrl.create({
@@ -52,7 +72,6 @@ export class SchoolregisterPage {
 
   // loader
   getLoader() {
-    console.log('showing loader now');
     let loader = this.loadingCtrl.create({
       spinner: 'hide',
       showBackdrop: false,
@@ -84,7 +103,7 @@ export class SchoolregisterPage {
       this.loader.dismiss();
       return;
     }
-    else if (this.user.confemail == this.user.email) {
+    else if (this.user.confemail != this.user.email) {
       this.presentAlert('Alert!', 'Please match your email');
       this.loader.dismiss();
       return;
@@ -94,7 +113,7 @@ export class SchoolregisterPage {
       this.loader.dismiss();
       return;
     }
-    else if (this.user.rpswd == this.user.pswd) {
+    else if (this.user.rpswd != this.user.pswd) {
       this.presentAlert('Alert!', 'Please match your password');
       this.loader.dismiss();
       return;
@@ -104,7 +123,7 @@ export class SchoolregisterPage {
       this.loader.dismiss();
       return;
     }
-    else if (this.user.confphonenumber == this.user.phonenumber) {
+    else if (this.user.confphonenumber != this.user.phonenumber) {
       this.presentAlert('Alert!', 'Please confirm your phonenumber');
       this.loader.dismiss();
       return;
@@ -114,7 +133,7 @@ export class SchoolregisterPage {
     console.log('setting this user data ',this.user);
     this.storage.set('RegisterSchoolUserStep', this.user);
     this.loader.dismiss();
-    this.schoolregister2();
+    this.verifyPhone();
   }
   //Validate Email using regex
   validateEmail(email) {
@@ -135,5 +154,8 @@ export class SchoolregisterPage {
   }
   schoolregister2(){
     this.navCtrl.push(Schoolregister1Page);
+  }
+  verifyPhone(){
+    this.navCtrl.push(VerifyphonePage);
   }
 }

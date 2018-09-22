@@ -32,11 +32,11 @@ export class Services {
   login(credentials) {
 
     if (!credentials.username || !credentials.password) {
-      Observable.throw('Please provice credentials');
+      Observable.throw('Please provide credentials');
     }
     else {
       let params: URLSearchParams = new URLSearchParams();
-      params.set('userNameOrEmail', credentials.username);
+      params.set('username', credentials.username);
       params.set('password', credentials.password);
       return Observable.create(observer => {
         const url = this.baseUrl + 'login';
@@ -115,13 +115,83 @@ export class Services {
   /**
    * Registration
    */
-  register(user) {
+  register(user) { 
 
     console.log('user is ', user);
     if (user) {
       return Observable.create(observer => {
-        const url = this.baseUrl + 'register';
+        const url = this.baseUrl + 'schoolRegister';
         this.http.post(url, user)
+          .map(res => res.json())
+          .subscribe(
+          (response) => {
+            console.log('responaw L: ',response);
+            
+            if (response.code != '200') {
+              observer.error(response);
+            }
+            else {
+              observer.next(response);
+
+            }
+            observer.complete();
+
+          },
+          (error) => {
+            console.log('errrrror',error);
+            
+            observer.error(error);
+          }
+          )
+      })
+    }
+  }
+
+/**
+   * Registration
+   */
+  addToFav(data) { 
+
+    console.log('user is ', data);
+    if (data) {
+      return Observable.create(observer => {
+        const url = this.baseUrl + 'addToFav';
+        this.http.post(url, data)
+          .map(res => res.json())
+          .subscribe(
+          (response) => {
+            console.log('responaw L: ',response);
+            
+            if (response.code != '200') {
+              observer.error(response);
+            }
+            else {
+              observer.next(response);
+
+            }
+            observer.complete();
+
+          },
+          (error) => {
+            console.log('errrrror',error);
+            
+            observer.error(error);
+          }
+          )
+      })
+    }
+  }
+  /**
+   * Login Service
+   */
+  getTeachers() {
+
+   
+      return Observable.create(observer => {
+        const url = this.baseUrl + 'getTeachers';
+        this.http.get(url, {
+          search: ''
+        })
           .map(res => res.json())
           .subscribe(
           (response) => {
@@ -140,7 +210,7 @@ export class Services {
           }
           )
       })
-    }
+    
   }
 
 
@@ -427,7 +497,7 @@ export class Services {
 
   socialUserExist(params) {
     return Observable.create(observer => {
-      const url = this.baseUrl + 'userAlreadyExist';
+      const url = this.baseUrl + 'socialUserExist';
       this.http.post(url, params)
         .map(res => res.json())
         .subscribe(

@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, ToastController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -29,8 +29,8 @@ export class MyApp {
   rootPage: any = LoginPage;  
   loader: any;
   pages: Array<{title: string, component: any}>;
-
-  constructor(private services: Services,
+  exitApp = 0;
+  constructor(private services: Services,   public toastCtrl: ToastController,
     private lodingctrl: LoadingController, private auth: Auth,
     public tools: MyTools,private storage: MyStorage,public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
@@ -40,7 +40,7 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'Favourites', component: FavouritesPage },
       { title: 'Settings', component: SettingsPage },
-      { title: 'Logout', component: LogoutPage }
+      { title: 'Logout', component: null }
     ];
 
   }
@@ -58,8 +58,100 @@ export class MyApp {
       this.storage.set('devicePlatform', 'android');
 
 
+      this.platform.registerBackButtonAction(() => {
+        
+        
+        if (this.nav.getActive().name == 'DashboardPage' || this.nav.getActive().name == 'SignupPage' || this.nav.getActive().name == 'LoginPage') {
+          
+          if (this.exitApp === 1) {
+            this.platform.exitApp();
+          }else {
+            this.presentToast('Please press again to exit the app');
+            this.exitApp++;
+
+            setTimeout(() => {
+              this.exitApp = 0;
+            }, 3000)
+          }
+        }
+        else {
+          this.nav.pop();
+        }
+
+      });
+
+
+
+
+
+
+
+
+
+      
+      this.auth.userLoggedIn().then(
+        (data) => {
+          this.rootPage = HomePage;
+
+        }
+      ).catch((err) => {
+          console.log('User Not logged in ', err);
+          this.rootPage = LoginPage;
+        })
+
+
+
+
+
+
+
     });
   }
+
+
+
+
+
+  logout() {
+    this.auth.logout();
+    console.log('showing loader now');
+    this.showLoader();
+    this.logoutNow(this.loader);
+            
+  }
+
+  logoutNow(loader) {
+    setTimeout(() => {
+      loader.dismiss();
+      this.auth.logout();
+      this.nav.push(LoginPage);
+    }, 2000);
+  }
+
+
+
+
+   //Loader 
+   showLoader() {
+    this.loader = this.tools.getLoader();
+    this.loader.present();
+  }
+
+  presentToast(msg) {
+    const toast = this.toastCtrl.create({
+      message: msg,
+      duration: 3000,
+      position: 'bottom'
+    });
+
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+
+    toast.present();
+
+  }
+
 
   openPage(page) {
     // Reset the content nav to have just this page

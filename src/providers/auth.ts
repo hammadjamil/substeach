@@ -18,10 +18,8 @@ export class Auth {
   }
 
   loginUser(data) {
-    console.log('insetting in local storage ', data.token , ' and ', data.user_data);
-    this.storage.set('token', data.token);
-    this.storage.set('user', data.user_data);
-    this.storage.set('dash_info', data.related_info);
+    console.log('insetting in local storage ', data.userData);
+    this.storage.set('user', data.userData);
   }
 
   setUserData(data){
