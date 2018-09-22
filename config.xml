@@ -84,13 +84,5 @@
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
     <plugin name="cordova-plugin-nativestorage" spec="^2.3.2" />
     <plugin name="cordova-sqlite-storage" spec="^2.4.0" />
-    <plugin name="cordova-plugin-facebook4" spec="^3.0.0">
-        <variable name="APP_ID" value="476300759536162" />
-        <variable name="APP_NAME" value="Substeach" />
-        <variable name="FACEBOOK_ANDROID_SDK_VERSION" value="4.36.0" />
-    </plugin>
-    <plugin name="cordova-plugin-googleplus" spec="^5.3.1">
-        <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.511898450722-p37neueatg7980t4hfv4b55lqvgpfpip" />
-    </plugin>
     <engine name="android" spec="7.0.0" />
 </widget>
