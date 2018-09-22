@@ -22,7 +22,7 @@ import { Teacherregister2Page } from '../pages/teacherregister2/teacherregister2
 import { Teacherregister3Page } from '../pages/teacherregister3/teacherregister3';
 import { FavouritesPage } from '../pages/favourites/favourites';
 import { SettingsPage } from '../pages/settings/settings';
-
+import { VerifyphonePage } from '../pages/verifyphone/verifyphone';
 import { MyTools } from '../providers/tools';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -49,7 +49,8 @@ import { GooglePlus } from '@ionic-native/google-plus';
     Teacherregister2Page,
     Teacherregister3Page,
     FavouritesPage,
-    SettingsPage
+    SettingsPage,
+    VerifyphonePage
   ],
   imports: [
     BrowserModule,
@@ -76,7 +77,8 @@ import { GooglePlus } from '@ionic-native/google-plus';
     Teacherregister2Page,
     Teacherregister3Page,
     FavouritesPage,
-    SettingsPage
+    SettingsPage,
+    VerifyphonePage
   ],
   providers: [
     StatusBar,

@@ -86,26 +86,24 @@ loginService() {
    
   //Requesting API 
   else {
-
         
-          this.services.login(this.user).subscribe(
-            //Successfully Logged in
-            success => {
-              console.log('success bhai', success);
-              this.auth.loginUser(success.data);
-              this.auth.setUserImage(success.data.profile_image);
-              setTimeout(() => {
-                this.loader.dismiss();
-                this.navCtrl.setRoot(HomePage);
-              }, 2000);
-    
-            },
-            error => {
-              this.loader.dismiss();
-              console.log('error bhai', error);
-              this.presentAlert('Alert!', error.data);
-            }
-          )
+      this.services.login(this.user).subscribe(
+        //Successfully Logged in
+        success => {
+          console.log('success bhai', success);
+          this.auth.loginUser(success);
+          setTimeout(() => {
+            this.loader.dismiss();
+            this.navCtrl.setRoot(HomePage);
+          }, 2000);
+
+        },
+        error => {
+          this.loader.dismiss();
+          console.log('error bhai', error);
+          this.presentAlert('Alert!', error.data);
+        }
+      )
       
   }
 }
@@ -161,7 +159,6 @@ loginService() {
     this.fb.login(['public_profile', 'email'])
         .then(
         (res: FacebookLoginResponse) => {
-            console.log('FacebookLoginResponse : ',res);
             let userId = res.authResponse.userID;
             let accessToken = res.authResponse.accessToken;
             let params = new Array<string>();
@@ -170,6 +167,8 @@ loginService() {
                 (success) => {
                     console.log('facebook user data is ', success);
                     success.social_type = 'facebook';
+                    success.userID = success.id;
+                    success.social_id = success.id;
                     this.registerViaSocial(success);
                 },
                 (err) => {
@@ -200,7 +199,7 @@ loginService() {
                     userID: success.userId,
                     idToken: success.idToken,
                     social_type: 'google',
-                    id: success.userId,
+                    social_id: success.userId,
                     imageUrl: success.imageUrl
                 }
                 console.log('success is user ', user);
@@ -218,19 +217,31 @@ loginService() {
     registerViaSocial(user) {
       this.showLoader();
       console.log('registerViaSocial recieved the data', user);
-      user.social_type = user.social_type;
-      user.social_id = user.id;
+      
       user.imageUrl = user.imageUrl || '';
       user.socialLogin = 1;
 
       let body = new FormData();
       body.append('social_type', user.social_type);
-      body.append('social_id', user.id);
+      body.append('social_id', user.userID);
+      body.append('email', user.email);
 
       this.services.socialUserExist(body).subscribe(
           success => {
-              console.log('success ++++');
-              this.loginSocialUser(success);
+              console.log('fb success ++++',success);
+              if(success.userData!=''){
+                this.auth.loginUser(success);
+                setTimeout(() => {
+                  this.loader.dismiss();
+                  this.navCtrl.setRoot(HomePage);
+                  this.loader.dismiss();
+                }, 2000);
+              }else{
+                this.storage.set('SocialRegisteration', user);
+               this.registerpage();
+               this.loader.dismiss();
+              }
+              
           },
           err => {
               console.log('error ++++');
@@ -240,18 +251,7 @@ loginService() {
       )
   }
 
-  loginSocialUser(success) {
-      console.log('success bhai', success);
-      
-      this.auth.loginUser(success.data);
-      this.auth.setDashInfo(success.data.related_info);
-      this.auth.setUserImage(success.data.profile_image);
-      setTimeout(() => {
-          this.loader.dismiss();
-          // this.navCtrl.setRoot(DashboardPage);
-      }, 2000);
-
-  }
+  
 
 
 }
