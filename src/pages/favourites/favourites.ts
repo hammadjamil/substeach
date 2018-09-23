@@ -1,5 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AlertController ,Events} from 'ionic-angular';
+import { Services } from '../../providers/services';
+import { MyStorage } from '../../app/localstorage';
+import { Auth } from '../../providers/auth';
+import { MyTools } from '../../providers/tools';
+import { LoadingController, Platform } from 'ionic-angular';
+import { AppSettings } from '../../app/appSettings';
 
 /**
  * Generated class for the FavouritesPage page.
@@ -14,10 +21,62 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'favourites.html',
 })
 export class FavouritesPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  loader: any;
+  favList: any;
+  userDetail: any;
+  LogoUrl = AppSettings.LogoUrl;
+  constructor(public navCtrl: NavController, public navParams: NavParams,public loadingCtrl: LoadingController,
+    public services: Services, private storage: MyStorage,
+    public tools: MyTools,
+    private alertCtrl: AlertController) {
+      this.storage.get('user').then(
+        (val) => {
+          if (val != null) {
+            console.log('val',val);
+            this.userDetail = val;
+            this.getFav();
+          }
+        }
+      )
   }
 
+  //Login
+getFav() {
+  
+  this.showLoader();
+  let body = new FormData();
+  body.append('UserID',this.userDetail.Id);
+        
+      this.services.getFav(body).subscribe(
+        //Successfully Logged in
+        success => {
+          console.log('success bhai', success);
+          this.favList = success.data;
+            this.loader.dismiss();
+
+        },
+        error => {
+          this.loader.dismiss();
+          console.log('error bhai', error);
+          this.presentAlert('Alert!', error.data);
+        }
+      )
+      
+  
+}
+presentAlert(title1,msgs) {
+  let alert = this.alertCtrl.create({
+    title: title1,
+    message: msgs,
+    buttons: ['Dismiss']
+  });
+  alert.present();
+}
+//Show Loader
+showLoader() {
+  this.loader = this.tools.getLoader();
+  this.loader.present();
+}
   ionViewDidLoad() {
     console.log('ionViewDidLoad FavouritesPage');
   }

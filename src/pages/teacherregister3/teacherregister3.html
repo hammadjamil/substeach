@@ -9,42 +9,54 @@
             <ion-label style="margin-bottom: 0;margin-right: 10px;">
               <ion-icon name="md-navigate"></ion-icon>
             </ion-label>
-            <ion-input type="text" placeholder="Select Region" class="marginset" style="font-size: 16px;"></ion-input>
+            <ion-input type="text"  [(ngModel)]="user.FirstName" placeholder="Enter First Name" class="marginset" style="font-size: 16px;"></ion-input>
+          </ion-item>
+          <ion-item class="p-0">
+            <ion-label style="margin-bottom: 0;margin-right: 10px;">
+              <ion-icon name="md-navigate"></ion-icon>
+            </ion-label>
+            <ion-input type="text"  [(ngModel)]="user.LastName" placeholder="Enter LastName" class="marginset" style="font-size: 16px;"></ion-input>
+          </ion-item>
+          <ion-item class="p-0">
+            <ion-label style="margin-bottom: 0;margin-right: 10px;">
+              <ion-icon name="md-navigate"></ion-icon>
+            </ion-label>
+            <ion-input type="text"  [(ngModel)]="user.region" placeholder="Select Region" class="marginset" style="font-size: 16px;"></ion-input>
           </ion-item>
           <p style="color:rgb(182, 24, 24);font-size: 10px;">*You can update your available date and time from home page anytime after registration</p>
           <ion-item  class="p-0">
             <ion-label style="margin-bottom: 0;margin-right: 10px;">
               <ion-icon name="md-calendar"></ion-icon>
             </ion-label>
-            <ion-datetime displayFormat="MM/DD/YYYY" placeholder="From Available Date" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>
+            <ion-datetime  [(ngModel)]="user.DOB" displayFormat="MM/DD/YYYY" placeholder="From Available Date" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>
           </ion-item>
-          <ion-item  class="p-0">
+          <!-- <ion-item  class="p-0">
             <ion-label style="margin-bottom: 0;margin-right: 10px;">
               <ion-icon name="md-calendar"></ion-icon>
             </ion-label>
-            <ion-datetime displayFormat="MM/DD/YYYY" placeholder="To Available Date" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>            
+            <ion-datetime [(ngModel)]="user.DOB" displayFormat="MM/DD/YYYY" placeholder="To Available Date" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>            
+          </ion-item> -->
+          <ion-item  class="p-0">
+            <ion-label style="margin-bottom: 0;margin-right: 10px;">
+              <ion-icon name="md-clock"></ion-icon>
+            </ion-label>
+            <ion-datetime [(ngModel)]="user.TimeOfAvaliabilityFrom" displayFormat="HH:mm" placeholder="From Available Time" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>            
           </ion-item>
           <ion-item  class="p-0">
             <ion-label style="margin-bottom: 0;margin-right: 10px;">
               <ion-icon name="md-clock"></ion-icon>
             </ion-label>
-            <ion-datetime displayFormat="HH:mm" placeholder="From Available Time" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>            
-          </ion-item>
-          <ion-item  class="p-0">
-            <ion-label style="margin-bottom: 0;margin-right: 10px;">
-              <ion-icon name="md-clock"></ion-icon>
-            </ion-label>
-            <ion-datetime displayFormat="HH:mm" placeholder="To Available Time" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>            
+            <ion-datetime [(ngModel)]="user.TimeOfAvaliabilityTo" displayFormat="HH:mm" placeholder="To Available Time" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>            
           </ion-item>
           <ion-item class="p-0 itmm"  style=" height:60px;">
             <ion-label style="color: black;white-space: unset;font-weight: 300;font-size: 16px;padding: 0px 0 0 10px !important;text-align: left;">I confirm that I am over 18 years of age</ion-label>
-            <ion-checkbox color="dark" checked="false" style="    margin: 10px;"></ion-checkbox>
+            <ion-checkbox (click)="ageconsole()"  [(ngModel)]="user.age" color="dark" checked="false" style="    margin: 10px;"></ion-checkbox>
           </ion-item>
           <ion-item class="p-0 itmm" style="margin-top: -2px;border-bottom: unset;height:60px;">
             <ion-label style="color: black;white-space: unset;font-weight: 300;font-size: 16px;padding: 0px 0 0 10px !important;text-align: left;">By signing up, I agree to SubsTeach Terms and Conditions</ion-label>
-            <ion-checkbox color="dark" checked="false" style="    margin: 10px;"></ion-checkbox>
+            <ion-checkbox (click)="AgreeOnTermsAndConditions()" [(ngModel)]="user.terms" color="dark" checked="false" style="    margin: 10px;"></ion-checkbox>
           </ion-item>
         </ion-list>
-        <button ion-button block class="registerbtn colfaded" (click)="registerchoice()">REGISTER</button>
+        <button ion-button block class="registerbtn colfaded" (click)="RegisterStepThree()">REGISTER</button>
     </div>
 </ion-content>

@@ -67,14 +67,14 @@ export class VerifyphonePage {
     this.showLoader();
     if(this.user.code == '12345'){
       this.loader.dismiss();
-      this.schoolregister2();
+      this.schoolregister3();
     }else{
       this.presentAlert('Alert!', 'Code does not match');
       this.loader.dismiss();
     }
   }
 
-  schoolregister2(){
+  schoolregister3(){
     this.navCtrl.push(Schoolregister1Page);
   }
 

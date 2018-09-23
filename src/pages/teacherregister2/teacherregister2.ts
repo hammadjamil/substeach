@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Schoolregister3Page } from '../schoolregister3/schoolregister3';
-import { Teacherregister3Page } from '../teacherregister3/teacherregister3';
+import { Teacherregister4Page } from '../teacherregister4/teacherregister4';
 import { LoginPage } from '../login/login';
 
 @IonicPage()
@@ -18,12 +18,12 @@ export class Teacherregister2Page {
     console.log('ionViewDidLoad Schoolregister2Page');
   }
   teacherregister3(){
-    this.navCtrl.push(Teacherregister3Page);
+    this.navCtrl.push(Teacherregister4Page);
   }
   backtologin(){
     this.navCtrl.push(LoginPage);
   }
   skip(){
-    this.navCtrl.push(Teacherregister3Page);
+    this.navCtrl.push(Teacherregister4Page);
   }
 }

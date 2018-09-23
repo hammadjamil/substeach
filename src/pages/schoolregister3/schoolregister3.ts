@@ -31,11 +31,11 @@ export class Schoolregister3Page {
   user: any = 
   { 
       
-      "BillingAddress1": "BillingAddress1",
-      "BillingAddress2": "BillingAddress2",
-      "BillingCity": "BillingCityBillingCity",
-      "BillingPostalCode": "56678900",
-      "BillingCountry": "Pakistan",
+      "BillingAddress1": "",
+      "BillingAddress2": "",
+      "BillingCity": "",
+      "BillingPostalCode": "",
+      "BillingCountry": "",
       "AgreeOnTermsAndConditions": true,
       "isAdult": true,
     
