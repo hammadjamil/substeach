@@ -1,0 +1,52 @@
+<ion-header class="container p-0" style="width: 100%;max-width: 100%;">
+  <ion-navbar hideBackButton class="row navmenu m-0" style="width: 100%;max-width:100%;">
+    <ion-item class="col-12  text-center p-0 homelobbytxt changeprofileheader">
+        <button ion-button style="float: left;width: 13%;background: #ff4222;box-shadow: unset;" (click)="emptyback()">
+          BACK
+        </button>
+        <p style="float: left;width: 70%;font-size: 15px;color: white;padding-top: 3px;">CHANGE BILLING ADDRESS</p> 
+        <button ion-button style="float: right;width: 13%;background: #ff4222;box-shadow: unset;" (click)="changebackpost()"  [disabled]="disableButton">
+            DONE
+        </button>
+    </ion-item>
+  </ion-navbar>
+</ion-header> 
+
+
+<ion-content padding>
+    <p style="font-size: 16px;color: #ff4222;padding-top: 0;margin-bottom: 0px;text-align: center;">ADDRESS INFORMATION</p>
+    <p class="inputfieldpara">Address</p>
+    <div class="inputfieldfilter">
+      <ion-input type="text" placeholder="Address" [(ngModel)]="newbillinginfo.Address" class="searchinput filterinput inputfieldchange" style="font-size: 16px;"></ion-input>
+    </div>
+    <p class="inputfieldpara">City</p>
+  <div class="inputfieldfilter">
+    <ion-input type="text" placeholder="City" [(ngModel)]="newbillinginfo.City" class="searchinput filterinput inputfieldchange" style="font-size: 16px;"></ion-input>
+  </div>
+  <p class="inputfieldpara">State</p>
+  <div class="inputfieldfilter">
+    <ion-input type="text" placeholder="State" [(ngModel)]="newbillinginfo.State" class="searchinput filterinput inputfieldchange" style="font-size: 16px;"></ion-input>
+  </div>
+  <p class="inputfieldpara">Zip</p>
+  <div class="inputfieldfilter">
+    <ion-input type="text" placeholder="Zip" [(ngModel)]="newbillinginfo.Zip" class="searchinput filterinput inputfieldchange" style="font-size: 16px;"></ion-input>
+  </div>
+
+  <p style="font-size: 18px;color: #ff4222;padding-top: 15px;margin-bottom: 0px;text-align: center;">PAYMENT INFORMATION</p>
+  <p class="inputfieldpara">Credit Card Number</p>
+  <div class="inputfieldfilter">
+    <ion-input type="number" pattern = "[0-9]" placeholder="CC Number" [(ngModel)]="newbillinginfo.CCNumber" class="searchinput filterinput inputfieldchange" style="font-size: 16px;"></ion-input>
+  </div>
+  <p class="inputfieldpara">Ex Date (Mo/Yr)</p>
+  <div class="inputfieldfilter">
+    <ion-input type="text" placeholder="MM/YYYY" [(ngModel)]="newbillinginfo.ExpiryDate" class="searchinput filterinput inputfieldchange" style="font-size: 16px;"></ion-input>
+  </div>
+  <p class="inputfieldpara">Authorization Code</p>
+  <div class="inputfieldfilter">
+    <ion-input type="number" pattern = "[0-9]" placeholder="Authorization Code" [(ngModel)]="newbillinginfo.AuthorizationCode" class="searchinput filterinput inputfieldchange" style="font-size: 16px;"></ion-input>
+  </div>
+  <p class="inputfieldpara">Cardholder Name</p>
+  <div class="inputfieldfilter">
+    <ion-input type="text" placeholder="Cardholder Name" [(ngModel)]="newbillinginfo.CardholderName" class="searchinput filterinput inputfieldchange" style="font-size: 16px;"></ion-input>
+  </div>
+</ion-content>

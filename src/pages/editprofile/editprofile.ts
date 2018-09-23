@@ -21,14 +21,14 @@ import { SubscriptionPage } from '../subscription/subscription';
 
 @IonicPage()
 @Component({
-  selector: 'page-settings',
-  templateUrl: 'settings.html',
+  selector: 'page-editprofile',
+  templateUrl: 'editprofile.html',
   providers: [
     File,
     FileTransfer,
     Camera]
 })
-export class SettingsPage {
+export class EditprofilePage {
   editprofilelist:any='';
   profileimgurl:any='';
   uid:any='';
@@ -85,7 +85,6 @@ export class SettingsPage {
       
     });
   }
-
   opencamera(){
     const options: CameraOptions = {
       quality: 50,
@@ -238,5 +237,4 @@ export class SettingsPage {
   viewsubscription(){
     this.navCtrl.push(SubscriptionPage, {subscription: ''});
   }
-
 }

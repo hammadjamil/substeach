@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-slides class="home_teachers">
+  <ion-slides class="home_teachers"  slidesPerView="1.1" spaceBetween="10">
     <ion-slide class="home_teachers_slide" *ngFor="let teacher of teacherList">
       <img src="{{LogoUrl+teacher.ImagePath}}" alt="" class="home_teachers_slide_img">
       <h1 class="home_teachers_slide_name">{{teacher.FirstName+' '+teacher.LastName}} <span><ion-icon float-right (click)="addToFav(teacher.DeputyPersonId)" name="ios-heart-outline"></ion-icon></span></h1>

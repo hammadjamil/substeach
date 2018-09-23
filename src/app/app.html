@@ -1,10 +1,9 @@
 <ion-menu [content]="content">
   <ion-header id="sidemenu">
       <div class="" text-center padding-top padding-bottom>
-          <img src="../assets/imgs/profileimg.jpg" alt="" width="80px" height="80px" style="object-fit: cover;border: 2px solid black;
-          border-radius: 100%;">
+          <img src="../assets/imgs/profileimg.jpg" alt="" width="80px" height="80px" style="object-fit: cover;box-shadow: 2px 2px 10px 0px black;border-radius: 100%;">
           <p style="font-size: 20px;padding-top: 10px;">USERNAME</p>
-          <button style="background: #f7b800 !important;color: white ;background: #f7b800 !important;object-fit: cover;color: white;margin: auto;width: 150px;" ion-button block>Edit Profile</button>
+          <button (click)="editprofilepage()" style="background: #f7b800 !important;color: white ;background: #f7b800 !important;object-fit: cover;color: white;margin: auto;width: 150px;" ion-button block>Edit Profile</button>
       </div>
     
   </ion-header>

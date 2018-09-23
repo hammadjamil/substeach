@@ -7,7 +7,7 @@ page-home {
     }
     .home_teachers_slide .slide-zoom{
         text-align: left;
-        margin-top: -15px;
+        margin-top: 0;
     }
     .home_teachers_slide_name {
         color: $themecolor;
@@ -69,9 +69,13 @@ page-home {
     }
     ion-slide.home_teachers_slide {
         background: white;
-        // padding: 20px;
         border-radius: 10px;
         overflow: hidden;
+        margin-top: 25px;
+        margin-left: 5px;
+        height: 80vh;
+        box-shadow: 0px 3px 10px 0px grey;
+    
     }
     .swiper-pagination.hide{
         display: block !important;
@@ -91,6 +95,13 @@ page-home {
     }
     .menubtn {
         box-shadow: none !important;
+    }
+    .toolbar-background {
+        background: #38d345;
+        border: none !important;
+    }
+    .scroll-content {
+        padding: 10px !important;
     }
     
 }

@@ -31,7 +31,18 @@ import { Services } from '../assets/providers/services';
 import { HttpModule } from '@angular/http';
 import { Facebook } from '@ionic-native/facebook';
 import { GooglePlus } from '@ionic-native/google-plus';
+
 import { VerifyteacherphonePage } from '../pages/verifyteacherphone/verifyteacherphone';
+import { ChangeemailPage } from '../pages/changeemail/changeemail';
+import { ChangepasswordPage } from '../pages/changepassword/changepassword';
+import { ChangedobPage } from '../pages/changedob/changedob';
+import { ChangefnamePage } from '../pages/changefname/changefname';
+import { ChangelnamePage } from '../pages/changelname/changelname';
+import { ChangetimezonePage } from '../pages/changetimezone/changetimezone';
+import { ChangebillinginfoPage } from '../pages/changebillinginfo/changebillinginfo';
+import { SubscriptionPage } from '../pages/subscription/subscription';
+import { EditprofilePage } from '../pages/editprofile/editprofile';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -54,7 +65,16 @@ import { VerifyteacherphonePage } from '../pages/verifyteacherphone/verifyteache
     SettingsPage,
     VerifyphonePage,
     VerifyteacherphonePage,
-    Teacherregister4Page
+    Teacherregister4Page,
+    ChangeemailPage,
+    ChangepasswordPage,
+    ChangedobPage,
+    ChangefnamePage,
+    ChangelnamePage,
+    ChangetimezonePage,
+    ChangebillinginfoPage,
+    SubscriptionPage,
+    EditprofilePage
   ],
   imports: [
     BrowserModule,
@@ -84,7 +104,16 @@ import { VerifyteacherphonePage } from '../pages/verifyteacherphone/verifyteache
     SettingsPage,
     VerifyphonePage,
     VerifyteacherphonePage,
-    Teacherregister4Page
+    Teacherregister4Page,
+    ChangeemailPage,
+    ChangepasswordPage,
+    ChangedobPage,
+    ChangefnamePage,
+    ChangelnamePage,
+    ChangetimezonePage,
+    ChangebillinginfoPage,
+    SubscriptionPage,
+    EditprofilePage
   ],
   providers: [
     StatusBar,

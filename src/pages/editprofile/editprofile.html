@@ -1,4 +1,4 @@
-<ion-header style="background-color: #38d345;height: 265px;">
+<ion-header style="    background: #f7b800;">
   <ion-navbar>
     <button ion-button menuToggle class="menubtn">
       <ion-icon name="menu"></ion-icon>
@@ -7,9 +7,7 @@
   </ion-navbar>
   <div style="width:100%;">
     <div class="profileimg p-0" style="position: relative;">
-        <img src={{imageURI}} alt="" *ngIf="imageURI!=''">
-        <img src="https://staging.pixxpros.com/web/resources/profile-pic.png" alt="" *ngIf="profileimgurl=='' || profileimgurl==null && imageURI==''">
-        <img src="https://staging.pixxpros.com/web/resources/users/{{uid}}/122{{profileimgurl}}?dummy={{timestamp}}" alt="" *ngIf="uid!='' && profileimgurl!='' && profileimgurl!=null && imageURI==''">
+        <img src="../../assets/imgs/profileimg.jpg" alt="">
         <ion-spinner *ngIf="spin==1" icon="spiral" style="position: absolute;top: 33%;left: 33%;color: white;"></ion-spinner>
     </div>
   </div>
@@ -17,10 +15,7 @@
   <!-- <p class="m-0" style="width: 100%;font-size: 20px;color: rgb(255, 255, 255);text-align:center;padding: 9px;"><button ion-button class="editprofilebtn" (click)="cancelupload()" style="width: 60px;color:#ef4e34;background-color: #fff;">Cancel</button><button ion-button class="editprofilebtn" (click)="uploadimg()" style="width: 60px;" [disabled]="disableButton">OK</button></p> -->
 </ion-header>
 
-<ion-content padding view-cache=“false”>
-  <div>
-    <p style="color: #184fa1;background: #f3f2f2;padding: 5px;" [innerHTML]="editprofilelist.pageNotice"></p>
-  </div>
+<ion-content padding>
   <p style="font-size: 17px;color: #ef4e34;" >Personal Information</p>
   <ion-card class="homecard" style="margin-top:0;" >
       <ion-card-content class="cardmain" (click)="changeemail()">
