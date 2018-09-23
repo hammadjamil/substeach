@@ -17,14 +17,14 @@
 <ion-content padding>
   <p text-center class="favv">Favourites</p>
     <ion-slides class="home_teachers" slidesPerView="2.2" spaceBetween="10">
-        <ion-slide class="home_teachers_slide">
-          <img src="../../assets/imgs/teachers1.jpg" alt="" class="home_teachers_slide_img">
-          <p class="home_teachers_slide_name">Ankita Roy</p>
+        <ion-slide class="home_teachers_slide"  *ngFor="let fav of favList">
+          <img src="{{LogoUrl+fav.ImagePath}}" alt="" class="home_teachers_slide_img">
+          <p class="home_teachers_slide_name">{{fav.FirstName+' '+fav.LastName}}</p>
           <p class="home_teachers_slide_cost">$24/hr</p>
           
           
         </ion-slide>
-        <ion-slide class="home_teachers_slide">
+        <!-- <ion-slide class="home_teachers_slide">
           <img src="../../assets/imgs/teachers2.jpg" alt="" class="home_teachers_slide_img">
           <p class="home_teachers_slide_name">Ankita Roy</p>
           <p class="home_teachers_slide_cost">$24/hr</p>
@@ -71,7 +71,7 @@
           <p class="home_teachers_slide_name">Ankita Roy</p>
           <p class="home_teachers_slide_cost">$24/hr</p>
           
-        </ion-slide>
+        </ion-slide> -->
       </ion-slides>
       <!-- nearby -->
       <!-- nearby -->

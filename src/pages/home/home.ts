@@ -86,12 +86,13 @@ addToFav(dID){
         success => {
           console.log('success bhai', success);
             this.loader.dismiss();
+            this.presentAlert('Alert!', 'Teacher added to your favourite list');
 
         },
         error => {
           this.loader.dismiss();
           console.log('error bhai', error);
-          this.presentAlert('Alert!', error.data);
+          this.presentAlert('Alert!', error.message);
         }
       )
 }

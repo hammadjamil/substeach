@@ -6,20 +6,21 @@ import { Storage } from '@ionic/storage';
 import { Services } from '../../assets/providers/services';
 import { LoginPage } from '../login/login';
 import { Schoolregister1Page } from '../schoolregister1/schoolregister1';
-import { VerifyphonePage } from '../verifyphone/verifyphone';
+import { VerifyteacherphonePage } from '../verifyteacherphone/verifyteacherphone';
+
+/**
+ * Generated class for the Teacherregister4Page page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
 
 @IonicPage()
 @Component({
-  selector: 'page-schoolregister',
-  templateUrl: 'schoolregister.html',
+  selector: 'page-teacherregister4',
+  templateUrl: 'teacherregister4.html',
 })
-export class SchoolregisterPage {
-  emailcheck:boolean;
-  spin: any = 0;
-  minDate:any;
-  ageconfirm:any;
-  termcondition:any;
-  disableButton;
+export class Teacherregister4Page {
   user: any = 
   { 
     username: '', 
@@ -31,34 +32,29 @@ export class SchoolregisterPage {
     confphonenumber:'' ,
     socialID:'' 
   };
-
   constructor(public navCtrl: NavController,
-              public loadingCtrl: LoadingController,
-              private storage: Storage,
-              public services: Services,
-              private alertCtrl: AlertController,
-              private menu: MenuController,
-              public navParams: NavParams) {
-                this.storage.get('SocialRegisteration').then((val) => {
-                  
-                  if(val!='' && val!=null){
-                    this.user.username= val.first_name+val.last_name; 
-                    this.user.email= val.email;
-                    this.user.confemail= val.email;
-                    this.user.socialID= val.userID;
-                    this.storage.set('SocialRegisteration','');
-                  }
-                });
+    public loadingCtrl: LoadingController,
+    private storage: Storage,
+    public services: Services,
+    private alertCtrl: AlertController,
+    private menu: MenuController,
+    public navParams: NavParams) {
+      this.storage.get('SocialRegisteration').then((val) => {
+        
+        if(val!='' && val!=null){
+          this.user.username= val.first_name+val.last_name; 
+          this.user.email= val.email;
+          this.user.confemail= val.email;
+          this.user.socialID= val.userID;
+          this.storage.set('SocialRegisteration','');
+        }
+      });
   }
-  ionViewDidEnter() {
-    this.menu.swipeEnable(false);
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad Teacherregister4Page');
   }
-  ionViewWillLeave() {
-    this.menu.swipeEnable(true);
-  }
-  ageconsole(){
-    
-  }
+
   presentAlert(title, msgs) {
     let alert = this.alertCtrl.create({
       title: title,
@@ -87,8 +83,8 @@ export class SchoolregisterPage {
     this.loader.present();
   }
   // loader
-  //Login
-  
+
+
   RegisterUserStep(){
     this.showLoader();
     //Applying Validations
@@ -130,29 +126,24 @@ export class SchoolregisterPage {
     
     
     console.log('setting this user data ',this.user);
-    this.storage.set('RegisterSchoolUserStep', this.user);
+    this.storage.set('RegisterTeacherUserStep', this.user);
     this.loader.dismiss();
     this.verifyPhone();
   }
   //Validate Email using regex
   validateEmail(email) {
+    console.log(email);
     var regex = /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i
     if (!regex.test(email)) {
       return false;
     } else {
+      console.log('Valid Email');
       return true;
     }
   }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RegisterPage');
-  }
-  loginpage(){
-    this.navCtrl.push(LoginPage);
-  }
-  schoolregister2(){
-    this.navCtrl.push(Schoolregister1Page);
-  }
+
   verifyPhone(){
-    this.navCtrl.push(VerifyphonePage);
+    this.navCtrl.push(VerifyteacherphonePage);
   }
+
 }

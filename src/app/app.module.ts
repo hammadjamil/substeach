@@ -20,6 +20,7 @@ import { TeacherregisterPage } from '../pages/teacherregister/teacherregister';
 import { Teacherregister1Page } from '../pages/teacherregister1/teacherregister1';
 import { Teacherregister2Page } from '../pages/teacherregister2/teacherregister2';
 import { Teacherregister3Page } from '../pages/teacherregister3/teacherregister3';
+import { Teacherregister4Page } from '../pages/teacherregister4/teacherregister4';
 import { FavouritesPage } from '../pages/favourites/favourites';
 import { SettingsPage } from '../pages/settings/settings';
 import { VerifyphonePage } from '../pages/verifyphone/verifyphone';
@@ -30,6 +31,7 @@ import { Services } from '../assets/providers/services';
 import { HttpModule } from '@angular/http';
 import { Facebook } from '@ionic-native/facebook';
 import { GooglePlus } from '@ionic-native/google-plus';
+import { VerifyteacherphonePage } from '../pages/verifyteacherphone/verifyteacherphone';
 @NgModule({
   declarations: [
     MyApp,
@@ -50,7 +52,9 @@ import { GooglePlus } from '@ionic-native/google-plus';
     Teacherregister3Page,
     FavouritesPage,
     SettingsPage,
-    VerifyphonePage
+    VerifyphonePage,
+    VerifyteacherphonePage,
+    Teacherregister4Page
   ],
   imports: [
     BrowserModule,
@@ -78,7 +82,9 @@ import { GooglePlus } from '@ionic-native/google-plus';
     Teacherregister3Page,
     FavouritesPage,
     SettingsPage,
-    VerifyphonePage
+    VerifyphonePage,
+    VerifyteacherphonePage,
+    Teacherregister4Page
   ],
   providers: [
     StatusBar,

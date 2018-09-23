@@ -101,7 +101,7 @@ loginService() {
         error => {
           this.loader.dismiss();
           console.log('error bhai', error);
-          this.presentAlert('Alert!', error.data);
+          this.presentAlert('Alert!', error.message);
         }
       )
       

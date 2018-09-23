@@ -1,15 +1,23 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Schoolregister1Page } from '../schoolregister1/schoolregister1';
+import { Teacherregister3Page } from '../teacherregister3/teacherregister3';
 import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 
+/**
+ * Generated class for the VerifyteacherphonePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
 @IonicPage()
 @Component({
-  selector: 'page-verify-phone',
-  templateUrl: 'verify-phone.html',
+  selector: 'page-verifyteacherphone',
+  templateUrl: 'verifyteacherphone.html',
 })
-export class VerifyPhonePage {
+export class VerifyteacherphonePage {
+
   loader: any;
   user: any = 
   { 
@@ -60,15 +68,15 @@ export class VerifyPhonePage {
     this.showLoader();
     if(this.user.code == '12345'){
       this.loader.dismiss();
-      this.schoolregister2();
+      this.teacherregister3();
     }else{
       this.presentAlert('Alert!', 'Code does not match');
       this.loader.dismiss();
     }
   }
 
-  schoolregister2(){
-    this.navCtrl.push(Schoolregister1Page);
+  teacherregister3(){
+    this.navCtrl.push(Teacherregister3Page);
   }
 
 }
