@@ -25,8 +25,8 @@ export class Teacherregister1Page {
   teacherregister2(){
     this.navCtrl.push(Teacherregister2Page);
   }
-  backtologin(){
-    this.navCtrl.push(LoginPage);
+  back(){
+    this.navCtrl.pop();
   }
   skip(){
     this.navCtrl.push(Teacherregister2Page);

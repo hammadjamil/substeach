@@ -57,8 +57,8 @@ export class Schoolregister2Page {
   schoolregister3(){
     this.navCtrl.push(Schoolregister3Page);
   }
-  backtologin(){
-    this.navCtrl.push(LoginPage);
+  back(){
+    this.navCtrl.pop();
   }
   skip(){
     this.navCtrl.push(Schoolregister3Page);

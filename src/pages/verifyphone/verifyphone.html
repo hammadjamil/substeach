@@ -1,5 +1,7 @@
+<ion-header>
+  <p  text-left><span (click)="back()">Back</span></p>
+</ion-header>
 <ion-content padding id="loginpage" no-bounce>
-
   <ion-list style="margin-bottom: 25px;">
     <div class="text-center pt-5 pb-5">
       <img src="./assets/imgs/loginlogo.png" alt=""  class="w-60" style="    width: 75%;">
@@ -9,11 +11,6 @@
       <ion-label style="margin-bottom: 0;margin-right: 10px;width: 45px;"><ion-icon name="md-person" style="font-size: 25px;"></ion-icon></ion-label>
       <ion-input type="text" placeholder="Enter Code" [(ngModel)]="user.code" class="marginset" style="font-size: 16px;    padding-left: 10px;"></ion-input>
     </ion-item>
-  
-    
-  
   </ion-list>
-  <!-- [disabled]="disabled" -->
   <button ion-button block class="colfaded" (click)="verify()">Verify</button>
-
-  </ion-content>
+</ion-content>

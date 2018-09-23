@@ -42,6 +42,9 @@ import { ChangetimezonePage } from '../pages/changetimezone/changetimezone';
 import { ChangebillinginfoPage } from '../pages/changebillinginfo/changebillinginfo';
 import { SubscriptionPage } from '../pages/subscription/subscription';
 import { EditprofilePage } from '../pages/editprofile/editprofile';
+import { PhonenumberschoolPage } from '../pages/phonenumberschool/phonenumberschool';
+import { PhonenumberteacherPage } from '../pages/phonenumberteacher/phonenumberteacher';
+
 
 @NgModule({
   declarations: [
@@ -74,7 +77,9 @@ import { EditprofilePage } from '../pages/editprofile/editprofile';
     ChangetimezonePage,
     ChangebillinginfoPage,
     SubscriptionPage,
-    EditprofilePage
+    EditprofilePage,
+    PhonenumberschoolPage,
+    PhonenumberteacherPage
   ],
   imports: [
     BrowserModule,
@@ -113,7 +118,9 @@ import { EditprofilePage } from '../pages/editprofile/editprofile';
     ChangetimezonePage,
     ChangebillinginfoPage,
     SubscriptionPage,
-    EditprofilePage
+    EditprofilePage,
+    PhonenumberschoolPage,
+    PhonenumberteacherPage
   ],
   providers: [
     StatusBar,

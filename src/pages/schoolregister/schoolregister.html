@@ -3,7 +3,8 @@
     <!-- <div class="text-center pt-5 pb-3">
       <img src="./assets/imgs/loginlogo.png" alt="" class="w-60">
     </div> -->
-    <ion-title class="text-center pb-3">REGISTRATION</ion-title>
+    <ion-title class="text-center pb-3">SCHOOL REGISTRATION</ion-title>
+    <ion-title class="text-center pb-3">STEP 1</ion-title>
     <p class="text-center">
       Already have an account? 
       <span class="h4" (click)="loginpage()">Login</span>
@@ -30,15 +31,15 @@
       <ion-label style="margin-bottom: 0;margin-right: 10px;">
         <ion-icon name="md-lock"></ion-icon>
       </ion-label >
-      <ion-input type="text" placeholder="Password"  [(ngModel)]="user.pswd" class="marginset" style="font-size: 16px;"></ion-input>
+      <ion-input type="password" placeholder="Password"  [(ngModel)]="user.pswd" class="marginset" style="font-size: 16px;"></ion-input>
     </ion-item>
     <ion-item class="p-0">
       <ion-label style="margin-bottom: 0;margin-right: 10px;">
         <ion-icon name="md-lock"></ion-icon>
       </ion-label>
-      <ion-input type="text" placeholder="Confirm Password"  [(ngModel)]="user.rpswd" class="marginset" style="font-size: 16px;"></ion-input>
+      <ion-input type="password" placeholder="Confirm Password"  [(ngModel)]="user.rpswd" class="marginset" style="font-size: 16px;"></ion-input>
     </ion-item>
-    <ion-item class="p-0">
+    <!-- <ion-item class="p-0">
       <ion-label style="margin-bottom: 0;margin-right: 10px;">
         <ion-icon name="md-call"></ion-icon>
       </ion-label>
@@ -49,7 +50,7 @@
         <ion-icon name="md-call"></ion-icon>
       </ion-label>
       <ion-input type="text" placeholder="Confirm Phone Number"  [(ngModel)]="user.confphonenumber" class="marginset" style="font-size: 16px;"></ion-input>
-    </ion-item>
+    </ion-item> -->
   </ion-list>
   <button ion-button block class="registerbtn colfaded" (click)="RegisterUserStep()">NEXT</button>
 </ion-content>

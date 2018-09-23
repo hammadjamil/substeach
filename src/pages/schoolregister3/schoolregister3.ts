@@ -8,13 +8,6 @@ import { Services } from '../../providers/services';
 import { LoginPage } from '../login/login';
 import { RegistrationchoicePage } from '../registrationchoice/registrationchoice';
 
-/**
- * Generated class for the Schoolregister3Page page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-schoolregister3',
@@ -160,10 +153,6 @@ export class Schoolregister3Page {
         this.userDetail = val;
         this.storage.get('RegisterSchoolStepOne').then((val) => {
           this.schoolDetail = val;
-          
-
-
-          
           let body = new FormData();
           body.append('UserName', this.userDetail.username);
           body.append('Email', this.userDetail.email);
@@ -219,24 +208,10 @@ export class Schoolregister3Page {
                   }, 500);
                 }
               )
-
-
-
-
-
-
         });
       });
-     
-      
-
-
-
-
     }
   }
-
-
   //Validate Email using regex
   validateEmail(email) {
     console.log(email);
@@ -257,20 +232,10 @@ export class Schoolregister3Page {
   registerchoice(){
     this.navCtrl.push(RegistrationchoicePage);
   }
-  backtologin(){
-    this.navCtrl.push(LoginPage);
+  back(){
+    this.navCtrl.pop();
   }
   skip(){
     this.navCtrl.push(Schoolregister3Page);
   }
-
-
-
-  
-
-
-
-
-
-
 }

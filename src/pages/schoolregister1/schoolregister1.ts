@@ -180,10 +180,7 @@ export class Schoolregister1Page {
   schoolregister2(){
     this.navCtrl.push(Schoolregister2Page);
   }
-  backtologin(){
-    this.navCtrl.push(LoginPage);
-  }
-  skip(){
-    this.navCtrl.push(Schoolregister2Page);
+  back(){
+    this.navCtrl.pop();
   }
 }

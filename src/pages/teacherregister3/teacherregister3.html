@@ -1,11 +1,11 @@
 <ion-header>
-  <p  text-left><span (click)="backtologin()">Back to Login</span><span (click)="skip()" float-right >Skip</span></p>
+  <p  text-left><span (click)="back()">Back</span></p>
 </ion-header>
 <ion-content padding id="registerpage">
     <div class="registerchoice">
         <h3 text-center style="padding-bottom: 30px;">Specify Region</h3>
         <ion-list>
-          <ion-item class="p-0">
+          <!-- <ion-item class="p-0">
             <ion-label style="margin-bottom: 0;margin-right: 10px;">
               <ion-icon name="md-person"></ion-icon>
             </ion-label>
@@ -16,7 +16,7 @@
               <ion-icon name="md-person"></ion-icon>
             </ion-label>
             <ion-input type="text"  [(ngModel)]="user.LastName" placeholder="Enter LastName" class="marginset" style="font-size: 16px;"></ion-input>
-          </ion-item>
+          </ion-item> -->
           <ion-item class="p-0">
             <ion-label style="margin-bottom: 0;margin-right: 10px;">
               <ion-icon name="md-navigate"></ion-icon>
@@ -30,12 +30,6 @@
             </ion-label>
             <ion-datetime  [(ngModel)]="user.DOB" displayFormat="MM/DD/YYYY" placeholder="From Available Date" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>
           </ion-item>
-          <!-- <ion-item  class="p-0">
-            <ion-label style="margin-bottom: 0;margin-right: 10px;">
-              <ion-icon name="md-calendar"></ion-icon>
-            </ion-label>
-            <ion-datetime [(ngModel)]="user.DOB" displayFormat="MM/DD/YYYY" placeholder="To Available Date" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>            
-          </ion-item> -->
           <ion-item  class="p-0">
             <ion-label style="margin-bottom: 0;margin-right: 10px;">
               <ion-icon name="md-clock"></ion-icon>

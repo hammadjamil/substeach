@@ -95,8 +95,8 @@ export class Teacherregister3Page {
   registerchoice(){
     this.navCtrl.push(RegistrationchoicePage);
   }
-  backtologin(){
-    this.navCtrl.push(LoginPage);
+  back(){
+    this.navCtrl.pop();
   }
   skip(){
     this.navCtrl.push(RegistrationchoicePage);

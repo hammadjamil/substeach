@@ -5,7 +5,7 @@ import { LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { Services } from '../../assets/providers/services';
 import { LoginPage } from '../login/login';
-import { Schoolregister1Page } from '../schoolregister1/schoolregister1';
+import { Teacherregister1Page } from '../teacherregister1/teacherregister1';
 import { VerifyteacherphonePage } from '../verifyteacherphone/verifyteacherphone';
 
 /**
@@ -30,7 +30,9 @@ export class Teacherregister4Page {
     rpswd: '',  
     phonenumber: '', 
     confphonenumber:'' ,
-    socialID:'' 
+    socialID:'' ,
+    FirstName:'',
+    LastName:''
   };
   constructor(public navCtrl: NavController,
     public loadingCtrl: LoadingController,
@@ -113,16 +115,16 @@ export class Teacherregister4Page {
       this.loader.dismiss();
       return;
     }
-    else if (this.user.phonenumber == '') {
-      this.presentAlert('Alert!', 'Please enter your phone number');
-      this.loader.dismiss();
-      return;
-    }
-    else if (this.user.confphonenumber != this.user.phonenumber) {
-      this.presentAlert('Alert!', 'Please confirm your phonenumber');
-      this.loader.dismiss();
-      return;
-    }
+    // else if (this.user.phonenumber == '') {
+    //   this.presentAlert('Alert!', 'Please enter your phone number');
+    //   this.loader.dismiss();
+    //   return;
+    // }
+    // else if (this.user.confphonenumber != this.user.phonenumber) {
+    //   this.presentAlert('Alert!', 'Please confirm your phonenumber');
+    //   this.loader.dismiss();
+    //   return;
+    // }
     
     
     console.log('setting this user data ',this.user);
@@ -141,9 +143,8 @@ export class Teacherregister4Page {
       return true;
     }
   }
-
   verifyPhone(){
-    this.navCtrl.push(VerifyteacherphonePage);
+    this.navCtrl.push(Teacherregister1Page);
   }
 
 }

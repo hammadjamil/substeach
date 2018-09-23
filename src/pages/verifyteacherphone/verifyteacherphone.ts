@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Teacherregister3Page } from '../teacherregister3/teacherregister3';
+import { Teacherregister4Page } from '../teacherregister4/teacherregister4';
 import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 
@@ -76,7 +76,7 @@ export class VerifyteacherphonePage {
   }
 
   teacherregister3(){
-    this.navCtrl.push(Teacherregister3Page);
+    this.navCtrl.push(Teacherregister4Page);
   }
 
 }

@@ -117,22 +117,22 @@ export class SchoolregisterPage {
       this.loader.dismiss();
       return;
     }
-    else if (this.user.phonenumber == '') {
-      this.presentAlert('Alert!', 'Please enter your phone number');
-      this.loader.dismiss();
-      return;
-    }
-    else if (this.user.confphonenumber != this.user.phonenumber) {
-      this.presentAlert('Alert!', 'Please confirm your phonenumber');
-      this.loader.dismiss();
-      return;
-    }
+    // else if (this.user.phonenumber == '') {
+    //   this.presentAlert('Alert!', 'Please enter your phone number');
+    //   this.loader.dismiss();
+    //   return;
+    // }
+    // else if (this.user.confphonenumber != this.user.phonenumber) {
+    //   this.presentAlert('Alert!', 'Please confirm your phonenumber');
+    //   this.loader.dismiss();
+    //   return;
+    // }
     
     
     console.log('setting this user data ',this.user);
     this.storage.set('RegisterSchoolUserStep', this.user);
     this.loader.dismiss();
-    this.verifyPhone();
+    this.schoolregister2();
   }
   //Validate Email using regex
   validateEmail(email) {

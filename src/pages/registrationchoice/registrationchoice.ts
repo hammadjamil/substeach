@@ -1,15 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { SchoolregisterPage } from '../schoolregister/schoolregister';
-import { Teacherregister1Page } from '../teacherregister1/teacherregister1';
+// import { SchoolregisterPage } from '../schoolregister/schoolregister';
+// import { Teacherregister1Page } from '../teacherregister1/teacherregister1';
 import { LoginPage } from '../login/login';
-
-/**
- * Generated class for the RegistrationchoicePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { PhonenumberschoolPage } from '../phonenumberschool/phonenumberschool';
+import { PhonenumberteacherPage } from '../phonenumberteacher/phonenumberteacher';
 
 @IonicPage()
 @Component({
@@ -25,10 +20,10 @@ export class RegistrationchoicePage {
     console.log('ionViewDidLoad RegistrationchoicePage');
   }
   teacherregister1(){
-    this.navCtrl.push(Teacherregister1Page);
+    this.navCtrl.push(PhonenumberteacherPage);
   }
   schoolregister1(){
-    this.navCtrl.push(SchoolregisterPage);
+    this.navCtrl.push(PhonenumberschoolPage);
   }
   backtologin(){
     this.navCtrl.push(LoginPage);    
