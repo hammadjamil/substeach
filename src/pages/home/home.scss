@@ -75,7 +75,7 @@ page-home {
     }
     .swiper-pagination.hide{
         display: block !important;
-        bottom: 10px !important;
+        bottom: 3px !important;
     }
     .swiper-pagination-bullet-active {
         background: $themecolor;
@@ -84,6 +84,11 @@ page-home {
     // .scroll-content {
     //     background: #e8e8e8;
     // }
+    .swiper-slide img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+    }
     .menubtn {
         box-shadow: none !important;
     }

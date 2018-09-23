@@ -11,7 +11,7 @@
   <ion-slides class="home_teachers">
     <ion-slide class="home_teachers_slide" *ngFor="let teacher of teacherList">
       <img src="{{LogoUrl+teacher.ImagePath}}" alt="" class="home_teachers_slide_img">
-      <h1 class="home_teachers_slide_name">{{teacher.FirstName+' '+teacher.LastName}}</h1>
+      <h1 class="home_teachers_slide_name">{{teacher.FirstName+' '+teacher.LastName}} <span><ion-icon float-right (click)="addToFav(teacher.DeputyPersonId)" name="ios-heart-outline"></ion-icon></span></h1>
       <p class="home_teachers_slide_reviews">Top Review</p>
       <p class="home_teachers_slide_desc">
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
@@ -22,116 +22,10 @@
       <p class="home_teachers_slide_view">
         Click to see Profile
       </p>
-      <p class="home_teachers_slide_view" (click)="addToFav(teacher.DeputyPersonId)">
+      <!-- <p class="home_teachers_slide_view" >
         Click to add to fav
-      </p>
+      </p> -->
       <button ion-button block class="home_teachers_slide_btn">Book Now</button>
     </ion-slide>
-    <!-- <ion-slide class="home_teachers_slide">
-      <img src="../../assets/imgs/teachers2.jpg" alt="" class="home_teachers_slide_img">
-      <h1 class="home_teachers_slide_name">Ankita Roy</h1>
-      <p class="home_teachers_slide_reviews">Top Review</p>
-      <p class="home_teachers_slide_desc">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-      </p>
-      <p class="home_teachers_slide_cost">
-        $24/hr
-      </p>
-      <p class="home_teachers_slide_view">
-        Click to see Profile
-      </p>
-      <button ion-button block class="home_teachers_slide_btn">Book Now</button>
-    </ion-slide>
-    <ion-slide class="home_teachers_slide">
-      <img src="../../assets/imgs/teachers3.jpg" alt="" class="home_teachers_slide_img">
-      <h1 class="home_teachers_slide_name">Ankita Roy</h1>
-      <p class="home_teachers_slide_reviews">Top Review</p>
-      <p class="home_teachers_slide_desc">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-      </p>
-      <p class="home_teachers_slide_cost">
-        $24/hr
-      </p>
-      <p class="home_teachers_slide_view">
-        Click to see Profile
-      </p>
-      <button ion-button block class="home_teachers_slide_btn">Book Now</button>
-    </ion-slide>
-    <ion-slide class="home_teachers_slide">
-      <img src="../../assets/imgs/teachers4.jpg" alt="" class="home_teachers_slide_img">
-      <h1 class="home_teachers_slide_name">Ankita Roy</h1>
-      <p class="home_teachers_slide_reviews">Top Review</p>
-      <p class="home_teachers_slide_desc">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-      </p>
-      <p class="home_teachers_slide_cost">
-        $24/hr
-      </p>
-      <p class="home_teachers_slide_view">
-        Click to see Profile
-      </p>
-      <button ion-button block class="home_teachers_slide_btn">Book Now</button>
-    </ion-slide>
-    <ion-slide class="home_teachers_slide">
-      <img src="../../assets/imgs/teachers5.jpg" alt="" class="home_teachers_slide_img">
-      <h1 class="home_teachers_slide_name">Ankita Roy</h1>
-      <p class="home_teachers_slide_reviews">Top Review</p>
-      <p class="home_teachers_slide_desc">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-      </p>
-      <p class="home_teachers_slide_cost">
-        $24/hr
-      </p>
-      <p class="home_teachers_slide_view">
-        Click to see Profile
-      </p>
-      <button ion-button block class="home_teachers_slide_btn">Book Now</button>
-    </ion-slide>
-    <ion-slide class="home_teachers_slide">
-      <img src="../../assets/imgs/teachers6.jpg" alt="" class="home_teachers_slide_img">
-      <h1 class="home_teachers_slide_name">Ankita Roy</h1>
-      <p class="home_teachers_slide_reviews">Top Review</p>
-      <p class="home_teachers_slide_desc">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-      </p>
-      <p class="home_teachers_slide_cost">
-        $24/hr
-      </p>
-      <p class="home_teachers_slide_view">
-        Click to see Profile
-      </p>
-      <button ion-button block class="home_teachers_slide_btn">Book Now</button>
-    </ion-slide>
-    <ion-slide class="home_teachers_slide">
-      <img src="../../assets/imgs/teachers7.jpg" alt="" class="home_teachers_slide_img">
-      <h1 class="home_teachers_slide_name">Ankita Roy</h1>
-      <p class="home_teachers_slide_reviews">Top Review</p>
-      <p class="home_teachers_slide_desc">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-      </p>
-      <p class="home_teachers_slide_cost">
-        $24/hr
-      </p>
-      <p class="home_teachers_slide_view">
-        Click to see Profile
-      </p>
-      <button ion-button block class="home_teachers_slide_btn">Book Now</button>
-    </ion-slide>
-    <ion-slide class="home_teachers_slide">
-      <img src="../../assets/imgs/teachers8.jpg" alt="" class="home_teachers_slide_img">
-      <h1 class="home_teachers_slide_name">Ankita Roy</h1>
-      <p class="home_teachers_slide_reviews">Top Review</p>
-      <p class="home_teachers_slide_desc">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-      </p>
-      <p class="home_teachers_slide_cost">
-        $24/hr
-      </p>
-      <p class="home_teachers_slide_view">
-        Click to see Profile
-      </p>
-      <button ion-button block class="home_teachers_slide_btn">Book Now</button>
-    </ion-slide> -->
-
   </ion-slides>
 </ion-content>

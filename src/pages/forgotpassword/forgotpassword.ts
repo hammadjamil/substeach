@@ -54,7 +54,7 @@ export class ForgotpasswordPage {
       showBackdrop: false,
       content: `
       <div class="custom-spinner-container" style="width:30px">
-      <img src = "./assets/imgs/loader.gif">
+      <img src = "./assets/imgs/loader2.gif">
       </div>`
     });
     return loader;
