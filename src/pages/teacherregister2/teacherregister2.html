@@ -5,12 +5,13 @@
   <div class="registerchoice">
     <h3 text-center>Please Upload Other Documents</h3>
     <img src="../../assets/imgs/documents.png" alt="" class="schoollogo">
-    <ion-col col-6 float-left>
-      <button ion-button block>Camera</button>
+    <!-- <img *ngIf="basefile!=''" src="../../assets/imgs/doc.png" alt="" class="schoollogo"> -->
+    <ion-col col-12 float-left>
+      <button ion-button block (click)="loadDoc()">Select File</button>
     </ion-col>
-    <ion-col col-6 float-left>
+    <!-- <ion-col col-6 float-left>
       <button ion-button block>Gallery</button>
-    </ion-col>
+    </ion-col> -->
     <p style="color: rgb(189, 41, 41);text-align: center;">* More documents increase the chance of substitution</p>
   </div>
   <button ion-button block class="registerbtn colfaded" (click)="teacherregister3()">NEXT</button>

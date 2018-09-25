@@ -100,6 +100,16 @@ export class Teacherregister4Page {
       this.loader.dismiss();
       return;
     }
+    else if (this.user.FirstName == '') {
+      this.presentAlert('Alert!', 'Please enter your First Name');
+      this.loader.dismiss();
+      return;
+    }
+    else if (this.user.LastName == '') {
+      this.presentAlert('Alert!', 'Please enter your Last Name');
+      this.loader.dismiss();
+      return;
+    }
     else if (this.user.confemail != this.user.email) {
       this.presentAlert('Alert!', 'Please match your email');
       this.loader.dismiss();

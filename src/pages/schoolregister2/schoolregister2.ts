@@ -14,6 +14,9 @@ import { AppSettings } from '../../app/appSettings';
 import { Storage } from '@ionic/storage';
 import { AlertController } from 'ionic-angular';
 import { Services } from '../../providers/services';
+import { Base64 } from '@ionic-native/base64';
+import { Chooser } from '@ionic-native/chooser';
+import { DomSanitizer } from '@angular/platform-browser';
 declare let cordova: any;
 /**
  * Generated class for the Schoolregister2Page page.
@@ -36,8 +39,9 @@ declare let cordova: any;
 export class Schoolregister2Page {
   fileSelected = false;
   lastImage: any;
-  logo: any;
+  logo: any ='';
   baseUrl = AppSettings.API;
+  baseLogo ; any = '';
   constructor(public navCtrl: NavController, public navParams: NavParams,private fileChooser: FileChooser,
     private camera: Camera,
     public actionSheetCtrl: ActionSheetController,
@@ -48,7 +52,17 @@ export class Schoolregister2Page {
     public loadingCtrl: LoadingController,
     private storage: Storage,
     public services: Services,
-    private alertCtrl: AlertController) {
+    private alertCtrl: AlertController,private base64: Base64,
+    public chooser: Chooser,private sanitizer: DomSanitizer) {
+    //   this.chooser.getFile('application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf, application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation, text/plain')
+    //   .then(file => {
+    //     console.log('fileeeeeeeeeeee',file );
+    //   console.log(file ? file.name : 'canceled')})
+    // .catch((error: any) => console.error('upload :',error));
+  }
+
+  getImgContent() {
+    return this.sanitizer.bypassSecurityTrustUrl(this.baseLogo);
   }
 
   ionViewDidLoad() {
@@ -61,6 +75,7 @@ export class Schoolregister2Page {
     this.navCtrl.pop();
   }
   skip(){
+    
     this.navCtrl.push(Schoolregister3Page);
   }
 
@@ -101,9 +116,12 @@ export class Schoolregister2Page {
       quality: 100,
       sourceType: sourceType,
       saveToPhotoAlbum: false,
-      correctOrientation: true
+      correctOrientation: true,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
     };
 
+    
     // Get the data of an image
     this.camera.getPicture(options).then((imagePath) => {
       // Special handling for Android library
@@ -142,6 +160,19 @@ export class Schoolregister2Page {
       this.fileSelected = true;
 
       this.logo = this.pathForImage(newFileName);
+      this.base64.encodeFile(this.logo).then((base64File: string) => {
+        this.baseLogo = base64File;
+        
+        console.log('tetttttttttt : :',this.baseLogo.replace('data:image/*;charset=utf-8;base64,',''));
+        this.storage.set('TeacherLogo',this.baseLogo.replace('data:image/*;charset=utf-8;base64,','')
+        );
+        this.presentAlert('Success!', 'You File successfully uploaded');
+        this.getImgContent();
+        //console.log('base64File : :',this.baseLogo);
+      }, (err) => {
+        console.log(err);
+      });
+      
     }, error => {
       console.log(error);
     });
@@ -186,48 +217,48 @@ export class Schoolregister2Page {
     actionSheet.present();
   }
 
-  uploadPhotoService() {
-    this.showLoader();
+  // uploadPhotoService() {
+  //   this.showLoader();
 
-    var url = this.baseUrl + "updateProfilePic";
+  //   var url = this.baseUrl + "updateProfilePic";
 
-    // File for Upload
-    var targetPath = this.pathForImage(this.lastImage);
+  //   // File for Upload
+  //   var targetPath = this.pathForImage(this.lastImage);
 
     
 
-    // File name only
-    var filename = this.lastImage;
+  //   // File name only
+  //   var filename = this.lastImage;
 
-    var options = {
-      fileKey: "profilePic",
-      fileName: filename,
-      chunkedMode: false,
-      mimeType: "multipart/form-data",
-      params: {
-        'fileName': filename,
-      }
-    };
+  //   var options = {
+  //     fileKey: "profilePic",
+  //     fileName: filename,
+  //     chunkedMode: false,
+  //     mimeType: "multipart/form-data",
+  //     params: {
+  //       'fileName': filename,
+  //     }
+  //   };
 
-    const fileTransfer: TransferObject = this.transfer.create();
-    fileTransfer.upload(targetPath, url, options).then(data => {
-      console.log('updateProfilePic data : ',data);
+  //   const fileTransfer: TransferObject = this.transfer.create();
+  //   fileTransfer.upload(targetPath, url, options).then(data => {
+  //     console.log('updateProfilePic data : ',data);
       
-      this.loader.dismiss();
-      let p_data = JSON.parse(data.response);
-      this.storage.set('profile_image',p_data.data.profile_image);
-      this.fileSelected = false;
-      console.log('Your profile photo is updated successfully');
+  //     this.loader.dismiss();
+  //     let p_data = JSON.parse(data.response);
+  //     this.storage.set('profile_image',p_data.data.profile_image);
+  //     this.fileSelected = false;
+  //     console.log('Your profile photo is updated successfully');
       
-      // this.presentToast('Your profile photo is updated successfully');
-    }, err => {
-      this.loader.dismiss();
-      console.log('error', err);
-      this.fileSelected = false;
-    });
+  //     // this.presentToast('Your profile photo is updated successfully');
+  //   }, err => {
+  //     this.loader.dismiss();
+  //     console.log('error', err);
+  //     this.fileSelected = false;
+  //   });
 
 
-  }
+  // }
 
   uploadPhotoCancel() {
     this.fileSelected = false;
@@ -243,6 +274,7 @@ export class Schoolregister2Page {
 
 
 
+    
 
 
 

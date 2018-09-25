@@ -11,9 +11,11 @@ import { RegisterPage } from '../pages/register/register';
 import { ForgotpasswordPage } from '../pages/forgotpassword/forgotpassword';
 import { LogoutPage } from '../pages/logout/logout';
 import { Teacherregister3Page } from '../pages/teacherregister3/teacherregister3';
+import { Teacherregister1Page } from '../pages/teacherregister1/teacherregister1';
 import { FavouritesPage } from '../pages/favourites/favourites';
 import { SettingsPage } from '../pages/settings/settings';
 import { EditprofilePage } from '../pages/editprofile/editprofile';
+import { Schoolregister2Page } from '../pages/schoolregister2/schoolregister2';
 
 import { MyStorage } from '../app/localstorage';
 import { Auth } from '../providers/auth';
@@ -32,6 +34,7 @@ export class MyApp {
   loader: any;
   pages: Array<{title: string, component: any}>;
   exitApp = 0;
+  userData : any;
   constructor(private services: Services,
               public toastCtrl: ToastController,
               public menuCtrl: MenuController,
@@ -51,6 +54,15 @@ export class MyApp {
       { title: 'Settings', component: SettingsPage },
       { title: 'Logout', component: LogoutPage }
     ];
+
+    // setInterval(() => {
+    //   this.storage.get('user').then((val) => {
+        
+    //     if(val!='' && val!=null){
+    //       this.userData = val;
+    //     }
+    //   });
+    // }, 2000);
   }
   initializeApp() {
     this.platform.ready().then(() => {
@@ -67,6 +79,8 @@ export class MyApp {
           this.rootPage = HomePage;
         }else{
           this.rootPage = LoginPage;
+          //this.rootPage = Schoolregister2Page;
+          //this.rootPage = Teacherregister1Page;
         }
       });
     });

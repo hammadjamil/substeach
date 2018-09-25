@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
-
+import { Base64 } from '@ionic-native/base64';
 import { MyStorage } from '../app/localstorage';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -31,7 +31,7 @@ import { Services } from '../assets/providers/services';
 import { HttpModule } from '@angular/http';
 import { Facebook } from '@ionic-native/facebook';
 import { GooglePlus } from '@ionic-native/google-plus';
-
+import { Chooser } from '@ionic-native/chooser';
 import { VerifyteacherphonePage } from '../pages/verifyteacherphone/verifyteacherphone';
 import { ChangeemailPage } from '../pages/changeemail/changeemail';
 import { ChangepasswordPage } from '../pages/changepassword/changepassword';
@@ -130,6 +130,8 @@ import { PhonenumberteacherPage } from '../pages/phonenumberteacher/phonenumbert
     Facebook,
     GooglePlus,
     MyTools,
+    Base64,
+    Chooser,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

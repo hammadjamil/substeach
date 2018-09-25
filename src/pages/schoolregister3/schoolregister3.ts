@@ -20,7 +20,8 @@ export class Schoolregister3Page {
   ageconfirm:any;
   termcondition:any;
   disableButton;
-  
+  userPhoneNumber : any;
+  logo = '';
   user: any = 
   { 
       
@@ -43,6 +44,13 @@ export class Schoolregister3Page {
               private menu: MenuController,
               public navParams: NavParams,
               ) {
+                this.storage.get('RegisterSchoolPhoneNumber').then((val) => {
+                  this.userPhoneNumber = val;
+                });
+                this.storage.get('TeacherLogo').then((val) => {
+                  if(val)
+                    this.logo = val;
+                });
   }
   ionViewDidEnter() {
     this.menu.swipeEnable(false);
@@ -159,8 +167,8 @@ export class Schoolregister3Page {
           body.append('EmailConfirmed', this.userDetail.confemail);
           body.append('PasswordHash', this.userDetail.pswd);
           // body.append('Rpswd', this.userDetail.rpswd);
-          body.append('PhoneNumber', this.userDetail.phonenumber);
-          body.append('PhoneNumberConfirmed', this.userDetail.confphonenumber);
+          body.append('PhoneNumber', this.userPhoneNumber);
+          body.append('PhoneNumberConfirmed', this.userPhoneNumber);
           body.append('SocialID', this.userDetail.socialID);
 
 
@@ -173,7 +181,7 @@ export class Schoolregister3Page {
           body.append('VisitingCity', this.schoolDetail.VisitingCity);
           body.append('VisitingCountry', this.schoolDetail.VisitingCountry);
           body.append('VisitingPostalCode', this.schoolDetail.VisitingPostalCode);
-          body.append('LogoPath', '');
+          
 
 
           body.append('BillingAddress1', this.user.BillingAddress1);
@@ -183,6 +191,7 @@ export class Schoolregister3Page {
           body.append('BillingPostalCode', this.user.BillingPostalCode);
           body.append('isAdult', this.user.isAdult);
           body.append('AgreeOnTermsAndConditions', this.user.AgreeOnTermsAndConditions);
+          body.append('LogoPath', JSON.stringify({ "logo": this.logo }));
           
               this.services.register(body).subscribe(
                 //Successfully Logged in
@@ -201,7 +210,7 @@ export class Schoolregister3Page {
                   console.log('error bhai', error);
                   setTimeout(() => {
                     // if (error.message.length==1){
-                      this.presentAlert('Alert!', error.message[0]);
+                      this.presentAlert('Alert!', error.message);
                       this.loader.dismiss();
                     // }
                     

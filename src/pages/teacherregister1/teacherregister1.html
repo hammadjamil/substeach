@@ -4,12 +4,15 @@
 <ion-content padding id="registerpage" text-center>
   <div class="registerchoice">
     <h3 text-center>Please Upload ID Card</h3>
-    <img src="../../assets/imgs/idcard.png" alt="" class="schoollogo">
+    <img *ngIf="baseImgFront==''" src="../../assets/imgs/idcard.png" alt="" class="schoollogo">
+    <img *ngIf="baseImgBack==''" src="../../assets/imgs/idcard.png" alt="" class="schoollogo">
+    <img *ngIf="baseImgFront!=''" [src]="getFrontImgContent()" alt="" class="schoollogo">
+    <img *ngIf="baseImgBack!=''" [src]="getBackImgContent()" alt="" class="schoollogo">
     <ion-col col-6 float-left>
-      <button ion-button block>Camera</button>
+      <button ion-button block (click)="uploadPhoto('front')">Front ID Card</button>
     </ion-col>
     <ion-col col-6 float-left>
-      <button ion-button block>Gallery</button>
+      <button ion-button block (click)="uploadPhoto('back')">Back ID Card</button>
     </ion-col>
   </div>
   <button ion-button block class="registerbtn colfaded" (click)="teacherregister2()">NEXT</button>

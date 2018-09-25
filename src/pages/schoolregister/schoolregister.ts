@@ -27,8 +27,6 @@ export class SchoolregisterPage {
     confemail:'', 
     pswd: '', 
     rpswd: '',  
-    phonenumber: '', 
-    confphonenumber:'' ,
     socialID:'' 
   };
 

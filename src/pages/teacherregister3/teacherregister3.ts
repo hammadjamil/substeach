@@ -21,8 +21,8 @@ import { Services } from '../../providers/services';
 export class Teacherregister3Page {
   user: any = 
   { 
-    FirstName: '', 
-    LastName: '',
+    // FirstName: '', 
+    // LastName: '',
     region:'', 
     DOB: '', 
     TimeOfAvaliabilityFrom: '',  
@@ -32,10 +32,22 @@ export class Teacherregister3Page {
   };
   disableButton;
   userDetail : any;
+  userPhoneNumber : any;
+  frontimg : any;
+  backimg : any;
   constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage,
     public loadingCtrl: LoadingController,
     public services: Services,
     private alertCtrl: AlertController) {
+      this.storage.get('RegisterTeacherPhoneNumber').then((val) => {
+        this.userPhoneNumber = val;
+      });
+      this.storage.get('Front').then((val) => {
+        this.frontimg = val;
+      });
+      this.storage.get('Back').then((val) => {
+        this.backimg = val;
+      });
   }
   ageconsole(){
     console.log('this.user.isAdult',this.user.age);
@@ -105,22 +117,22 @@ export class Teacherregister3Page {
 
  
   RegisterStepThree() {
-    if (this.user.FirstName == '') {
-      // this.loader.dismiss();
-      setTimeout(() => {
-        this.presentAlert('Alert!', 'Please enter your First Name');
-        this.disableButton = false;
-      }, 1000);
-      return;
-    }
-    else if (this.user.LastName == '') {
-      setTimeout(() => {
-        this.presentAlert('Alert!', 'Please enter your Last Name');
-        this.disableButton = false;
-      }, 1000);
-      return;
-    }
-    else if (this.user.region == '') {
+    // if (this.user.FirstName == '') {
+    //   // this.loader.dismiss();
+    //   setTimeout(() => {
+    //     this.presentAlert('Alert!', 'Please enter your First Name');
+    //     this.disableButton = false;
+    //   }, 1000);
+    //   return;
+    // }
+    // else if (this.user.LastName == '') {
+    //   setTimeout(() => {
+    //     this.presentAlert('Alert!', 'Please enter your Last Name');
+    //     this.disableButton = false;
+    //   }, 1000);
+    //   return;
+    // }
+     if (this.user.region == '') {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please enter your region');
         this.disableButton = false;
@@ -168,26 +180,21 @@ export class Teacherregister3Page {
       this.storage.get('RegisterTeacherUserStep').then((val) => {
         this.userDetail = val;
         
-          
-
-
-          
           let body = new FormData();
           body.append('UserName', this.userDetail.username);
           body.append('Email', this.userDetail.email);
           body.append('EmailConfirmed', this.userDetail.confemail);
           body.append('PasswordHash', this.userDetail.pswd);
           // body.append('Rpswd', this.userDetail.rpswd);
-          body.append('PhoneNumber', this.userDetail.phonenumber);
-          body.append('PhoneNumberConfirmed', this.userDetail.confphonenumber);
+          body.append('PhoneNumber', this.userPhoneNumber);
+          body.append('PhoneNumberConfirmed',this.userPhoneNumber);
           body.append('SocialID', this.userDetail.socialID);
-
+          // body.append('frontImg', this.frontimg);
+          // body.append('BackImg', this.backimg);
 
           body.append('LogoPath', '');
-         
-
-          body.append('FirstName', this.user.FirstName);
-          body.append('LastName', this.user.LastName);
+          body.append('FirstName', this.userDetail.FirstName);
+          body.append('LastName', this.userDetail.LastName);
           body.append('DOB', this.user.DOB);
           body.append('TimeOfAvaliabilityFrom', this.user.TimeOfAvaliabilityFrom);
           body.append('TimeOfAvaliabilityTo', this.user.TimeOfAvaliabilityTo);
@@ -215,27 +222,10 @@ export class Teacherregister3Page {
                   }, 500);
                 }
               )
-
-
-
-
-
-
         });
       
     }
   }
 
-
-  //Validate Email using regex
-  validateEmail(email) {
-    console.log(email);
-    var regex = /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i
-    if (!regex.test(email)) {
-      return false;
-    } else {
-      console.log('Valid Email');
-      return true;
-    }
-  }
+  
 }

@@ -4,7 +4,9 @@
 <ion-content padding id="registerpage">
     <div class="registerchoice">
       <h3 text-center>Please Upload School Logo</h3>
-      <img src="../../assets/imgs/defaultschool.png" alt="" class="schoollogo">
+      <img *ngIf="logo==''" src="../../assets/imgs/defaultschool.png" alt="" class="schoollogo">
+      <img *ngIf="baseLogo!=''" [src]="getImgContent()" alt="" class="schoollogo">
+      
       <button ion-button block (click)="uploadPhoto()">UPLOAD LOGO</button>
     </div>
     <button ion-button block class="registerbtn colfaded" (click)="schoolregister3()">NEXT</button>
