@@ -44,7 +44,7 @@ import { SubscriptionPage } from '../pages/subscription/subscription';
 import { EditprofilePage } from '../pages/editprofile/editprofile';
 import { PhonenumberschoolPage } from '../pages/phonenumberschool/phonenumberschool';
 import { PhonenumberteacherPage } from '../pages/phonenumberteacher/phonenumberteacher';
-
+import { SMS } from '@ionic-native/sms';
 
 @NgModule({
   declarations: [

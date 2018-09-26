@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { VerifyteacherphonePage } from '../verifyteacherphone/verifyteacherphone';
-
+import { SMS } from '@ionic-native/sms';
 import { Services } from '../../providers/services';
 import { Storage } from '@ionic/storage';
 import { AlertController } from 'ionic-angular';
@@ -11,6 +11,7 @@ import { LoadingController } from 'ionic-angular';
 @Component({
   selector: 'page-phonenumberteacher',
   templateUrl: 'phonenumberteacher.html',
+  providers :[SMS] 
 })
 export class PhonenumberteacherPage {
   user: any = 
@@ -20,7 +21,8 @@ export class PhonenumberteacherPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,  public loadingCtrl: LoadingController,
     private storage: Storage,
     public services: Services,
-    private alertCtrl: AlertController) {
+    private alertCtrl: AlertController,
+    private sms: SMS) {
   }
 
   ionViewDidLoad() {
@@ -69,8 +71,8 @@ export class PhonenumberteacherPage {
       this.loader.dismiss();
       return;
     }
-    
-    
+    var x = Math.floor((Math.random() * 10000) + 1);
+    this.sms.send(this.user.phonenumber, 'Your verification code for substeach is :'+x);
     console.log('setting this user data ',this.user);
     this.storage.set('RegisterTeacherPhoneNumber', this.user);
     this.loader.dismiss();
