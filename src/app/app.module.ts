@@ -44,6 +44,8 @@ import { SubscriptionPage } from '../pages/subscription/subscription';
 import { EditprofilePage } from '../pages/editprofile/editprofile';
 import { PhonenumberschoolPage } from '../pages/phonenumberschool/phonenumberschool';
 import { PhonenumberteacherPage } from '../pages/phonenumberteacher/phonenumberteacher';
+import { SchoolprofilePage } from '../pages/schoolprofile/schoolprofile';
+import { TeacherprofilePage } from '../pages/teacherprofile/teacherprofile';
 import { SMS } from '@ionic-native/sms';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
 @NgModule({
@@ -79,7 +81,9 @@ import { Push, PushObject, PushOptions } from '@ionic-native/push';
     SubscriptionPage,
     EditprofilePage,
     PhonenumberschoolPage,
-    PhonenumberteacherPage
+    PhonenumberteacherPage,
+    SchoolprofilePage,
+    TeacherprofilePage
   ],
   imports: [
     BrowserModule,
@@ -120,7 +124,9 @@ import { Push, PushObject, PushOptions } from '@ionic-native/push';
     SubscriptionPage,
     EditprofilePage,
     PhonenumberschoolPage,
-    PhonenumberteacherPage
+    PhonenumberteacherPage,
+    SchoolprofilePage,
+    TeacherprofilePage
   ],
   providers: [
     StatusBar,
@@ -133,6 +139,7 @@ import { Push, PushObject, PushOptions } from '@ionic-native/push';
     Base64,
     Chooser,
     Push,
+    SMS,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
