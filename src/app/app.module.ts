@@ -44,6 +44,9 @@ import { SubscriptionPage } from '../pages/subscription/subscription';
 import { EditprofilePage } from '../pages/editprofile/editprofile';
 import { PhonenumberschoolPage } from '../pages/phonenumberschool/phonenumberschool';
 import { PhonenumberteacherPage } from '../pages/phonenumberteacher/phonenumberteacher';
+import { SchoolprofilePage } from '../pages/schoolprofile/schoolprofile';
+import { TeacherprofilePage } from '../pages/teacherprofile/teacherprofile';
+
 
 
 @NgModule({
@@ -79,7 +82,9 @@ import { PhonenumberteacherPage } from '../pages/phonenumberteacher/phonenumbert
     SubscriptionPage,
     EditprofilePage,
     PhonenumberschoolPage,
-    PhonenumberteacherPage
+    PhonenumberteacherPage,
+    SchoolprofilePage,
+    TeacherprofilePage
   ],
   imports: [
     BrowserModule,
@@ -120,7 +125,9 @@ import { PhonenumberteacherPage } from '../pages/phonenumberteacher/phonenumbert
     SubscriptionPage,
     EditprofilePage,
     PhonenumberschoolPage,
-    PhonenumberteacherPage
+    PhonenumberteacherPage,
+    SchoolprofilePage,
+    TeacherprofilePage
   ],
   providers: [
     StatusBar,
