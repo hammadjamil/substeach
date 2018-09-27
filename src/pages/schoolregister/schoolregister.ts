@@ -37,16 +37,16 @@ export class SchoolregisterPage {
               private alertCtrl: AlertController,
               private menu: MenuController,
               public navParams: NavParams) {
-                this.storage.get('SocialRegisteration').then((val) => {
-                  
-                  if(val!='' && val!=null){
-                    this.user.username= val.first_name+val.last_name; 
-                    this.user.email= val.email;
-                    this.user.confemail= val.email;
-                    this.user.socialID= val.userID;
-                    this.storage.set('SocialRegisteration','');
-                  }
-                });
+      this.storage.get('SocialRegisteration').then((val) => {
+        
+        if(val!='' && val!=null){
+          this.user.username= val.first_name+val.last_name; 
+          this.user.email= val.email;
+          this.user.confemail= val.email;
+          this.user.socialID= val.userID;
+          this.storage.set('SocialRegisteration','');
+        }
+      });
   }
   ionViewDidEnter() {
     this.menu.swipeEnable(false);

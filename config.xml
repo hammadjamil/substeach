@@ -101,4 +101,7 @@
     <plugin name="cordova-plugin-chooser" spec="^1.2.3" />
     <plugin name="cordova-sms-plugin" spec="^0.1.13" />
     <engine name="android" spec="^7.0.0" />
+    <plugin name="phonegap-plugin-push" spec="^2.1.3">
+        <variable name="FCM_VERSION" value="11.6.2" />
+    </plugin>
 </widget>
