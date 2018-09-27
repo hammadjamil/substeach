@@ -44,10 +44,14 @@ import { SubscriptionPage } from '../pages/subscription/subscription';
 import { EditprofilePage } from '../pages/editprofile/editprofile';
 import { PhonenumberschoolPage } from '../pages/phonenumberschool/phonenumberschool';
 import { PhonenumberteacherPage } from '../pages/phonenumberteacher/phonenumberteacher';
+<<<<<<< HEAD
 import { SchoolprofilePage } from '../pages/schoolprofile/schoolprofile';
 import { TeacherprofilePage } from '../pages/teacherprofile/teacherprofile';
 
 
+=======
+import { SMS } from '@ionic-native/sms';
+>>>>>>> e30a3e652994746555df8546b99a170751498caf
 
 @NgModule({
   declarations: [
