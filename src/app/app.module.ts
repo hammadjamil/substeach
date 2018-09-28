@@ -46,6 +46,8 @@ import { PhonenumberschoolPage } from '../pages/phonenumberschool/phonenumbersch
 import { PhonenumberteacherPage } from '../pages/phonenumberteacher/phonenumberteacher';
 import { SchoolprofilePage } from '../pages/schoolprofile/schoolprofile';
 import { TeacherprofilePage } from '../pages/teacherprofile/teacherprofile';
+import { PublicprofilePage } from '../pages/publicprofile/publicprofile';
+
 import { SMS } from '@ionic-native/sms';
 
 @NgModule({
@@ -83,7 +85,8 @@ import { SMS } from '@ionic-native/sms';
     PhonenumberschoolPage,
     PhonenumberteacherPage,
     SchoolprofilePage,
-    TeacherprofilePage
+    TeacherprofilePage,
+    PublicprofilePage
   ],
   imports: [
     BrowserModule,
@@ -126,7 +129,8 @@ import { SMS } from '@ionic-native/sms';
     PhonenumberschoolPage,
     PhonenumberteacherPage,
     SchoolprofilePage,
-    TeacherprofilePage
+    TeacherprofilePage,
+    PublicprofilePage
   ],
   providers: [
     StatusBar,

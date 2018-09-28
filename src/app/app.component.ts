@@ -12,6 +12,8 @@ import { SettingsPage } from '../pages/settings/settings';
 import { EditprofilePage } from '../pages/editprofile/editprofile';
 import { SchoolprofilePage } from '../pages/schoolprofile/schoolprofile';
 import { TeacherprofilePage } from '../pages/teacherprofile/teacherprofile';
+import { PublicprofilePage } from '../pages/publicprofile/publicprofile';
+
 
 import { MyStorage } from '../app/localstorage';
 import { Auth } from '../providers/auth';
@@ -62,10 +64,10 @@ export class MyApp {
       this.storage.get('user').then((val) => {
         if(val!='' && val!=null){
           // this.rootPage = HomePage;
-          this.rootPage = SchoolprofilePage;
+          this.rootPage = PublicprofilePage;
         }else{
           // this.rootPage = LoginPage;
-          this.rootPage = SchoolprofilePage;
+          this.rootPage = PublicprofilePage;
         }
       });
     });
