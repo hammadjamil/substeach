@@ -5,7 +5,7 @@ import { AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 import { LoginPage } from '../login/login';
-import { Services } from '../../assets/providers/services';
+import { Services } from '../../providers/services';
 
 @IonicPage()
 @Component({
@@ -14,9 +14,7 @@ import { Services } from '../../assets/providers/services';
 })
 export class ForgotpasswordPage {
   user: any = {email:''};
-  spin: any = 0;
   disableButton;
-  url: any ='https://staging.pixxpros.com/service/forgot-password-service';
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public loadingCtrl: LoadingController,
@@ -70,13 +68,11 @@ export class ForgotpasswordPage {
     this.navCtrl.push(LoginPage);
   }
   forgotpswd(){
-    this.spin = 1;
     this.disableButton = true;
     // this.showLoader();
     //Applying Validations
     if (this.user.email == '') {
       // this.loader.dismiss();
-      this.spin = 0;
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please enter your email.');
         this.disableButton = false;
@@ -88,26 +84,20 @@ export class ForgotpasswordPage {
       let body = new FormData();
       body.append('Email', this.user.email);
       console.log(body);
-      console.log(this.user.email);
-      this.storage.get('deviceID').then((val) => {
-        this.user.udid = val;
-        this.storage.get('devicePlatform').then((val) => {
-          this.user.platform = val;
-          this.services.forgotpswd(this.url, body).subscribe(
+      
+          this.services.forgotpassword(body).subscribe(
             //Successfully Logged in
             success => {
-              console.log('hamzaaaaaaa login success');
+              console.log(' login success',success);
               setTimeout(() => {
               }, 500);
               setTimeout(() => {
-                this.spin = 0;
                 this.presentAlert('Success!', success.message);
                 this.disableButton = false;
                 this.navCtrl.push(LoginPage);
               }, 2000);
             },
             error => {
-              this.spin = 0;
               console.log('error bhai', error);
               setTimeout(() => {
                 this.presentAlert('Alert!', error.message);
@@ -115,8 +105,6 @@ export class ForgotpasswordPage {
               }, 500);
             }
           )
-        });
-      });
     }
   }
 }

@@ -49,7 +49,7 @@ import { TeacherprofilePage } from '../pages/teacherprofile/teacherprofile';
 import { PublicprofilePage } from '../pages/publicprofile/publicprofile';
 
 import { SMS } from '@ionic-native/sms';
-
+import { Push, PushObject, PushOptions } from '@ionic-native/push';
 @NgModule({
   declarations: [
     MyApp,
@@ -142,6 +142,7 @@ import { SMS } from '@ionic-native/sms';
     MyTools,
     Base64,
     Chooser,
+    Push,
     SMS,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

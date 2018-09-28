@@ -63,6 +63,42 @@ export class Services {
       })
     }
   }
+  /**
+   * Forgot Service
+   */
+  forgotpassword(credentials) {
+
+    if (!credentials.email ) {
+      Observable.throw('Please provide credentials');
+    }
+    else {
+      let params: URLSearchParams = new URLSearchParams();
+      params.set('email', credentials.email);
+      return Observable.create(observer => {
+        const url = this.baseUrl + 'forgotPassword';
+        this.http.get(url, {
+          search: params
+        })
+          .map(res => res.json())
+          .subscribe(
+          (response) => {
+            if (response.code != '200') {
+              observer.error(response);
+            }
+            else {
+              observer.next(response);
+
+            }
+            observer.complete();
+
+          },
+          (error) => {
+            observer.error(error);
+          }
+          )
+      })
+    }
+  }
 
   /**
    * logout
