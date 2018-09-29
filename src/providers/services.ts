@@ -1147,6 +1147,30 @@ getDashboardInfo(params) {
     })
   }
 
+  getprofile(id){
+    return Observable.create(observer => {
+      const url = this.baseUrl + 'getUserDetail?ID='+id;
+      this.http.get(url, {
+        search: ''
+      })
+        .map(res => res.json())
+        .subscribe(
+        (response) => {
+          if (response.code != '200') {
+            observer.error(response);
+          }
+          else {
+            observer.next(response);
 
+          }
+          observer.complete();
+
+        },
+        (error) => {
+          observer.error(error);
+        }
+        )
+    })
+  }
 
 }
