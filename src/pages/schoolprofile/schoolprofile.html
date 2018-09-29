@@ -59,11 +59,27 @@
       </ion-label>
       <ion-datetime [(ngModel)]="schoolPeriod.ToDate" displayFormat="MM/DD/YYYY" placeholder="To Available Date" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>
     </ion-item>
-    <ion-item  class="p-0">
+    <!-- <ion-item  class="p-0">
       <ion-label style="margin-bottom: 0;margin-right: 10px;text-align: center;">
         <ion-icon name="md-clock"></ion-icon>
       </ion-label>
-      <ion-datetime [(ngModel)]="schoolPeriod.TimeSlote" displayFormat="HH:mm" placeholder="Time Slotes" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>            
+      <ion-datetime [(ngModel)]="schoolPeriod.TimeSlote" minuteValues="00" displayFormat="HH:mm" placeholder="Time Slotes" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>            
+    </ion-item> -->
+    <ion-item >
+      <ion-label>Time Slots</ion-label>
+      <ion-select [(ngModel)]="schoolPeriod.TimeSlote" multiple="true">
+        <ion-option value="9:00 -10:00">9:00 -10:00</ion-option>
+        <ion-option value="10:00 -11:00">10:00 -11:00</ion-option>
+        <ion-option value="11:00 -12:00">11:00 -12:00</ion-option>
+        <ion-option value="12:00 -13:00">12:00 -13:00</ion-option>
+        <ion-option value="13:00 -14:00">13:00 -14:00</ion-option>
+        <ion-option value="14:00 -15:00">14:00 -15:00</ion-option>
+        <ion-option value="15:00 -16:00">15:00 -16:00</ion-option>
+        <ion-option value="16:00 -17:00">16:00 -17:00</ion-option>
+        <ion-option value="17:00 -18:00">17:00 -18:00</ion-option>
+        <ion-option value="18:00 -19:00">18:00 -19:00</ion-option>
+        <ion-option value="19:00 -20:00">19:00 -20:00</ion-option>
+      </ion-select>
     </ion-item>
     <ion-item>
         <ion-label>Standrads</ion-label>
