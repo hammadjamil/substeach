@@ -12,7 +12,7 @@ import { SettingsPage } from '../pages/settings/settings';
 import { EditprofilePage } from '../pages/editprofile/editprofile';
 import { SchoolprofilePage } from '../pages/schoolprofile/schoolprofile';
 import { TeacherprofilePage } from '../pages/teacherprofile/teacherprofile';
-
+import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { MyStorage } from '../app/localstorage';
 import { Auth } from '../providers/auth';
 import { LoadingController } from 'ionic-angular/index';
@@ -40,6 +40,7 @@ export class MyApp {
               private storage: MyStorage,
               public platform: Platform,
               public statusBar: StatusBar,
+              public push: Push,
               public splashScreen: SplashScreen) 
     {
     this.initializeApp();
@@ -47,7 +48,7 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Favourites', component: FavouritesPage },
-      { title: 'Settings', component: SettingsPage },
+      { title: 'Settings', component: SchoolprofilePage },
       { title: 'Logout', component: LogoutPage }
     ];
   }
@@ -106,4 +107,53 @@ export class MyApp {
     this.nav.setRoot(EditprofilePage);
     this.menuCtrl.close();
   }
+
+
+
+
+
+
+
+
+  
+// to check if we have permission
+// this.push.hasPermission()
+// .then((res: any) => {
+
+//   if (res.isEnabled) {
+//     console.log('We have permission to send push notifications');
+//   } else {
+//     console.log('We do not have permission to send push notifications');
+//   }
+
+// });
+
+// to initialize push notifications
+
+// const options: PushOptions = {
+// android: {},
+// ios: {
+//     alert: 'true',
+//     badge: true,
+//     sound: 'false'
+// },
+// windows: {},
+// browser: {
+//     pushServiceURL: 'http://push.api.phonegap.com/v1/push'
+// }
+// };
+
+// const pushObject: PushObject = this.push.init(options);
+
+
+// pushObject.on('notification').subscribe((notification: any) => console.log('Received a notification', notification));
+
+// pushObject.on('registration').subscribe((registration: any) => console.log('Device registered', registration));
+
+// pushObject.on('error').subscribe(error => console.error('Error with Push plugin', error));
+
+
+
+
+
 }
