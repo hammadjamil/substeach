@@ -14,6 +14,7 @@ import { SchoolprofilePage } from '../pages/schoolprofile/schoolprofile';
 import { TeacherprofilePage } from '../pages/teacherprofile/teacherprofile';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { PublicprofilePage } from '../pages/publicprofile/publicprofile';
+import { NotificationPage } from '../pages/notification/notification';
 
 import { MyStorage } from '../app/localstorage';
 import { Auth } from '../providers/auth';
@@ -51,6 +52,7 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'Public Profile', component: PublicprofilePage },      
       { title: 'Favourites', component: FavouritesPage },
+      { title: 'Notifications', component: NotificationPage },
       { title: 'Settings', component: SchoolprofilePage },
       { title: 'Logout', component: LogoutPage }
     ];

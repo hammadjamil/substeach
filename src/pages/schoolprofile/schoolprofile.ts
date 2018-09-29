@@ -20,6 +20,7 @@ import { Services } from '../../providers/services';
   templateUrl: 'schoolprofile.html',
 })
 export class SchoolprofilePage {
+  schooltabs: string = "days";
   schoolDay : any ={
     Day :'',
     TimeSlote :'',

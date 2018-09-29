@@ -1,3 +1,82 @@
+$themecolor: #38d345;
+$themecolorw: #38d345;
 page-teacherprofile {
-
+    .toolbar-background{
+        background: $themecolor;
+    }
+    .toolbar-title {
+        color: white;
+    }
+    .bar-button-default {
+        color: #d4dcdf !important;
+        background-color: transparent;
+    }
+    .toolbar-background {
+        background: $themecolor;
+        border: none !important;
+    }
+    .scroll-content {
+        padding: 10px !important;
+    }
+    ion-label {
+        color: black !important;
+        background: transparent !important;
+        padding: 13px 0;
+        margin: 0 !important;
+        text-align: center;
+        width: 50px;
+        text-align: left;
+    }
+    
+    ion-select button {
+        border-radius: 45px !important;
+        background: transparent !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+    }
+    ion-datetime button {
+        border-radius: 45px !important;
+        background: transparent !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+    }
+    #myInput {
+        width: calc(100% - 10px);
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+    }
+    ion-textarea {
+        border: 2px solid #38d345;
+        border-radius: 10px;
+        min-height: 100px;
+        padding: 0 10px;
+    }
+    .segment_tab{
+        padding: 0;
+        width: 100%;
+        height: 50px;
+    }
+    .segment_tab ion-segment {
+        height: 50px;
+        background: grey;
+        color: black;
+    }
+    .segment_tab ion-segment .segment-button {
+        height: 50px !important;
+        color: black !important;
+        font-size: 13px !important;
+        font-weight: bold;
+        padding: 12px;
+        border: 0 !important;
+        line-height: 27px;
+    }
+    .segment_tab ion-segment .segment-button.segment-activated {
+        background: $themecolor !important;
+        color: white !important;
+    }
+    .checkbox-icon.checkbox-checked{
+        border-color: $themecolor !important;
+        background-color: $themecolor !important;
+    }
 }
