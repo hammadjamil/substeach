@@ -11,86 +11,65 @@
   <p style="font-size: 20px;text-align: center;font-weight: 600;">Select Days</p>
   <ion-item>
     <ion-label>Days</ion-label>
-    <ion-select [(ngModel)]="toppings" multiple="true">
-      <ion-option>Monday</ion-option>
-      <ion-option>Tuesday</ion-option>
-      <ion-option>Wednessday</ion-option>
-      <ion-option>Thursday</ion-option>
-      <ion-option>Friday</ion-option>
-      <ion-option>Saturday</ion-option>
-      <ion-option>Sunday</ion-option>
+    <ion-select [(ngModel)]="schoolDay.Day" multiple="true">
+      <ion-option value="Monday">Monday</ion-option>
+      <ion-option value="Tuesday" >Tuesday</ion-option>
+      <ion-option value="Wednesday">Wednesday</ion-option>
+      <ion-option value="Thursday">Thursday</ion-option>
+      <ion-option value="Friday">Friday</ion-option>
+      <ion-option value="Saturday">Saturday</ion-option>
+      <ion-option value="Sunday">Sunday</ion-option>
     </ion-select>
   </ion-item>
   <ion-item>
     <ion-label>Time Slots</ion-label>
-    <ion-select [(ngModel)]="toppings" multiple="true">
-      <ion-option>9:00 -10:00</ion-option>
-      <ion-option>10:00 -11:00</ion-option>
-      <ion-option>11:00 -12:00</ion-option>
-      <ion-option>12:00 -13:00</ion-option>
-      <ion-option>13:00 -14:00</ion-option>
-      <ion-option>14:00 -15:00</ion-option>
-      <ion-option>15:00 -16:00</ion-option>
-      <ion-option>16:00 -17:00</ion-option>
-      <ion-option>17:00 -18:00</ion-option>
-      <ion-option>18:00 -19:00</ion-option>
-      <ion-option>19:00 -20:00</ion-option>
+    <ion-select [(ngModel)]="schoolDay.TimeSlote" multiple="true">
+      <ion-option value="9:00 -10:00">9:00 -10:00</ion-option>
+      <ion-option value="10:00 -11:00">10:00 -11:00</ion-option>
+      <ion-option value="11:00 -12:00">11:00 -12:00</ion-option>
+      <ion-option value="12:00 -13:00">12:00 -13:00</ion-option>
+      <ion-option value="13:00 -14:00">13:00 -14:00</ion-option>
+      <ion-option value="14:00 -15:00">14:00 -15:00</ion-option>
+      <ion-option value="15:00 -16:00">15:00 -16:00</ion-option>
+      <ion-option value="16:00 -17:00">16:00 -17:00</ion-option>
+      <ion-option value="17:00 -18:00">17:00 -18:00</ion-option>
+      <ion-option value="18:00 -19:00">18:00 -19:00</ion-option>
+      <ion-option value="19:00 -20:00">19:00 -20:00</ion-option>
     </ion-select>
   </ion-item>
   <ion-item>
     <ion-label>Standrads</ion-label>
-    <ion-select [(ngModel)]="toppings" multiple="true">
-      <ion-option>Class 1</ion-option>
-      <ion-option>Class 2</ion-option>
-      <ion-option>Class 3</ion-option>
-      <ion-option>Class 4</ion-option>
-      <ion-option>Class 5</ion-option>
-      <ion-option>Class 6</ion-option>
-      <ion-option>Class 7</ion-option>
-      <ion-option>Class 8</ion-option>
-      <ion-option>Class 9</ion-option>
-      <ion-option>Class 10</ion-option>
-      <ion-option>Class 11</ion-option>
-      <ion-option>Class 12 </ion-option>
+    <ion-select [(ngModel)]="schoolDay.Standard" multiple="true">
+      <ion-option *ngFor="let row of Standard" value="{{row.Id}}">{{row.StandardName}}</ion-option>
+      
     </ion-select>
   </ion-item>
-  <ion-textarea #msgInput rows="1" maxLength="1000" placeholder="Enter Info"></ion-textarea>
+  <ion-textarea [(ngModel)]="schoolDay.Description" #msgInput rows="1" maxLength="1000" placeholder="Enter Info"></ion-textarea>
   <p style="font-size: 20px;text-align: center;font-weight: 600;margin-top: 10px;">Select Period</p>
   <ion-item  class="p-0">
       <ion-label style="margin-bottom: 0;margin-right: 10px;text-align: center;">
         <ion-icon name="md-calendar"></ion-icon>
       </ion-label>
-      <ion-datetime displayFormat="MM/DD/YYYY" placeholder="From Available Date" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>
+      <ion-datetime [(ngModel)]="schoolPeriod.FromDate" displayFormat="MM/DD/YYYY" placeholder="From Available Date" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>
     </ion-item>
   <ion-item  class="p-0">
       <ion-label style="margin-bottom: 0;margin-right: 10px;text-align: center;">
         <ion-icon name="md-calendar"></ion-icon>
       </ion-label>
-      <ion-datetime displayFormat="MM/DD/YYYY" placeholder="To Available Date" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>
+      <ion-datetime [(ngModel)]="schoolPeriod.ToDate" displayFormat="MM/DD/YYYY" placeholder="To Available Date" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>
     </ion-item>
     <ion-item  class="p-0">
       <ion-label style="margin-bottom: 0;margin-right: 10px;text-align: center;">
         <ion-icon name="md-clock"></ion-icon>
       </ion-label>
-      <ion-datetime displayFormat="HH:mm" placeholder="Available Time" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>            
+      <ion-datetime [(ngModel)]="schoolPeriod.TimeSlote" displayFormat="HH:mm" placeholder="Time Slotes" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>            
     </ion-item>
     <ion-item>
         <ion-label>Standrads</ion-label>
-        <ion-select [(ngModel)]="toppings" multiple="true">
-          <ion-option>Class 1</ion-option>
-          <ion-option>Class 2</ion-option>
-          <ion-option>Class 3</ion-option>
-          <ion-option>Class 4</ion-option>
-          <ion-option>Class 5</ion-option>
-          <ion-option>Class 6</ion-option>
-          <ion-option>Class 7</ion-option>
-          <ion-option>Class 8</ion-option>
-          <ion-option>Class 9</ion-option>
-          <ion-option>Class 10</ion-option>
-          <ion-option>Class 11</ion-option>
-          <ion-option>Class 12 </ion-option>
+        <ion-select [(ngModel)]="schoolPeriod.Standard" multiple="true">
+          <ion-option *ngFor="let row of Standard" value="{{row.Id}}">{{row.StandardName}}</ion-option>
         </ion-select>
       </ion-item>
-      <ion-textarea #msgInput rows="1" maxLength="1000" placeholder="Enter Info"></ion-textarea>
-      <button ion-button block style="margin-top: 10px;">Matching</button>
+      <ion-textarea [(ngModel)]="schoolPeriod.Description" #msgInput rows="1" maxLength="1000" placeholder="Enter Info"></ion-textarea>
+      <button ion-button block style="margin-top: 10px;" (click)="save()">Matching</button>
 </ion-content>
