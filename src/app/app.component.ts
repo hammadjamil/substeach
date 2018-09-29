@@ -64,8 +64,17 @@ export class MyApp {
     else
       this.storage.set('devicePlatform', 'android');
       this.storage.get('user').then((val) => {
+       
+        
         if(val!='' && val!=null){
-          this.rootPage = HomePage;
+          console.log("val : ",val);
+          
+          if(val.Usertype=='School'){
+            this.rootPage = SchoolprofilePage;
+          }else{
+            this.rootPage = TeacherprofilePage;
+          }
+          
           // this.rootPage = PublicprofilePage;
         }else{
           this.rootPage = LoginPage;
