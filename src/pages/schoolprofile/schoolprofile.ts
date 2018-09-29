@@ -21,7 +21,7 @@ import { Services } from '../../providers/services';
 })
 export class SchoolprofilePage {
   schoolDay : any ={
-    'Day' :'',
+    Day :'',
     TimeSlote :'',
     Standard :'',
     Type : 'Days',
@@ -91,10 +91,99 @@ export class SchoolprofilePage {
     console.log('ionViewDidLoad SchoolprofilePage');
   }
 
-  save(){
+  matchByDay(){
+    if (this.schoolDay.Day == '') {
+      // this.loader.dismiss();
+      setTimeout(() => {
+        this.presentAlert('Alert!', 'Please enter Day');
+      }, 1000);
+      return;
+    }
+    else if (this.schoolDay.TimeSlote == '') {
+      setTimeout(() => {
+        this.presentAlert('Alert!', 'Please enter your Time Slote');
+      }, 1000);
+      return;
+    }
+    else if (this.schoolDay.Standard == '') {
+      setTimeout(() => {
+        this.presentAlert('Alert!', 'Please enter your Standard');
+      }, 1000);
+      return;
+    }
     console.log('schoolDay : ',this.schoolDay);
     console.log('schoolPeriod : ',this.schoolPeriod);
+    let body = new FormData();
+    body.append('Day', this.schoolDay.Day);
+    body.append('TimeSlote', this.schoolDay.TimeSlote);
+    body.append('Standard', this.schoolDay.Standard);
+    this.services.getMatchesByDay(body).subscribe(
+      //Successfully Logged in
+      success => {
+        console.log('Success : ',success);
+        this.Standard = success.userData;
+      },
+      error => {
+        console.log('error bhai', error);
+        setTimeout(() => {
+          // if (error.message.length==1){
+            this.presentAlert('Alert!', error.message);
+            this.loader.dismiss();
+          // }
+          
+        }, 500);
+      }
+    )
     
   }
+
+
+  matchByPeriod(){
+    if (this.schoolPeriod.ToDate == '') {
+      // this.loader.dismiss();
+      setTimeout(() => {
+        this.presentAlert('Alert!', 'Please enter To Date');
+      }, 1000);
+      return;
+    }
+    else if (this.schoolPeriod.FromDate == '') {
+      setTimeout(() => {
+        this.presentAlert('Alert!', 'Please enter your From Date');
+      }, 1000);
+      return;
+    }
+    else if (this.schoolPeriod.Standard == '') {
+      setTimeout(() => {
+        this.presentAlert('Alert!', 'Please enter your Standard');
+      }, 1000);
+      return;
+    }
+    console.log('schoolDay : ',this.schoolDay);
+    console.log('schoolPeriod : ',this.schoolPeriod);
+    let body = new FormData();
+    body.append('ToDate', this.schoolPeriod.ToDate);
+    body.append('FromDate', this.schoolPeriod.FromDate);
+    body.append('TimeSlote', this.schoolPeriod.TimeSlote);
+    body.append('Standard', this.schoolPeriod.Standard);
+    this.services.getMatchesByPeriod(body).subscribe(
+      //Successfully Logged in
+      success => {
+        console.log('Success : ',success);
+        this.Standard = success.userData;
+      },
+      error => {
+        console.log('error bhai', error);
+        setTimeout(() => {
+          // if (error.message.length==1){
+            this.presentAlert('Alert!', error.message);
+            this.loader.dismiss();
+          // }
+          
+        }, 500);
+      }
+    )
+    
+  }
+
 
 }

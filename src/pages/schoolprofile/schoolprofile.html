@@ -45,6 +45,7 @@
     </ion-select>
   </ion-item>
   <ion-textarea [(ngModel)]="schoolDay.Description" #msgInput rows="1" maxLength="1000" placeholder="Enter Info"></ion-textarea>
+  <button ion-button block style="margin-top: 10px;" (click)="matchByDay()">Matching</button>
   <p style="font-size: 20px;text-align: center;font-weight: 600;margin-top: 10px;">Select Period</p>
   <ion-item  class="p-0">
       <ion-label style="margin-bottom: 0;margin-right: 10px;text-align: center;">
@@ -71,5 +72,5 @@
         </ion-select>
       </ion-item>
       <ion-textarea [(ngModel)]="schoolPeriod.Description" #msgInput rows="1" maxLength="1000" placeholder="Enter Info"></ion-textarea>
-      <button ion-button block style="margin-top: 10px;" (click)="save()">Matching</button>
+      <button ion-button block style="margin-top: 10px;" (click)="matchByPeriod()">Matching</button>
 </ion-content>

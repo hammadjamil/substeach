@@ -288,6 +288,75 @@ export class Services {
     }
   }
 
+     /**
+   * Registration
+   */
+  getMatchesByDay(user) { 
+
+    console.log('user is ', user);
+    if (user) {
+      return Observable.create(observer => {
+        const url = this.baseUrl + 'getMatchesByDay';
+        this.http.post(url, user)
+          .map(res => res.json())
+          .subscribe(
+          (response) => {
+            console.log('responaw L: ',response);
+            
+            if (response.code != '200') {
+              observer.error(response);
+            }
+            else {
+              observer.next(response);
+
+            }
+            observer.complete();
+
+          },
+          (error) => {
+            console.log('errrrror',error);
+            
+            observer.error(error);
+          }
+          )
+      })
+    }
+  }
+     /**
+   * Registration
+   */
+  getMatchesByPeriod(user) { 
+
+    console.log('user is ', user);
+    if (user) {
+      return Observable.create(observer => {
+        const url = this.baseUrl + 'getMatchesByPeriod';
+        this.http.post(url, user)
+          .map(res => res.json())
+          .subscribe(
+          (response) => {
+            console.log('responaw L: ',response);
+            
+            if (response.code != '200') {
+              observer.error(response);
+            }
+            else {
+              observer.next(response);
+
+            }
+            observer.complete();
+
+          },
+          (error) => {
+            console.log('errrrror',error);
+            
+            observer.error(error);
+          }
+          )
+      })
+    }
+  }
+
 /**
    * Registration
    */
