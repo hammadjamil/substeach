@@ -40,7 +40,7 @@ import { SchoolprofilePage } from '../pages/schoolprofile/schoolprofile';
 import { TeacherprofilePage } from '../pages/teacherprofile/teacherprofile';
 import { PublicprofilePage } from '../pages/publicprofile/publicprofile';
 import { NotificationPage } from '../pages/notification/notification';
-
+import { ChatPage } from '../pages/chat/chat';
 
 import { SMS } from '@ionic-native/sms';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
@@ -73,7 +73,8 @@ import { Push, PushObject, PushOptions } from '@ionic-native/push';
     SchoolprofilePage,
     TeacherprofilePage,
     PublicprofilePage,
-    NotificationPage
+    NotificationPage,
+    ChatPage
   ],
   imports: [
     BrowserModule,
@@ -110,7 +111,8 @@ import { Push, PushObject, PushOptions } from '@ionic-native/push';
     SchoolprofilePage,
     TeacherprofilePage,
     PublicprofilePage,
-    NotificationPage
+    NotificationPage,
+    ChatPage
   ],
   providers: [
     StatusBar,

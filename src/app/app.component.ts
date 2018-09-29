@@ -15,6 +15,7 @@ import { TeacherprofilePage } from '../pages/teacherprofile/teacherprofile';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { PublicprofilePage } from '../pages/publicprofile/publicprofile';
 import { NotificationPage } from '../pages/notification/notification';
+import { ChatPage } from '../pages/chat/chat';
 
 import { MyStorage } from '../app/localstorage';
 import { Auth } from '../providers/auth';
@@ -54,6 +55,7 @@ export class MyApp {
       { title: 'Favourites', component: FavouritesPage },
       { title: 'Notifications', component: NotificationPage },
       { title: 'Settings', component: SchoolprofilePage },
+      { title: 'Chat', component: ChatPage },
       { title: 'Logout', component: LogoutPage }
     ];
   }
