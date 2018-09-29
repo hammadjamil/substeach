@@ -1,119 +1,118 @@
-<ion-header style="    background: #f7b800;">
+<ion-header>
   <ion-navbar>
     <button ion-button menuToggle class="menubtn">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+      <ion-title>EDIT PROFILE</ion-title>
   </ion-navbar>
-  <div style="width:100%;">
-    <div class="profileimg p-0" style="position: relative;">
-        <img src="../../assets/imgs/profileimg.jpg" alt="">
-        <ion-spinner *ngIf="spin==1" icon="spiral" style="position: absolute;top: 33%;left: 33%;color: white;"></ion-spinner>
-    </div>
-  </div>
-  <p class="m-0" style="width: 100%;font-size: 20px;color: rgb(255, 255, 255);text-align:center;padding: 9px;"><button ion-button class="editprofilebtn" (click)="presentActionSheet()">Change Profile picture</button></p>       
-  <!-- <p class="m-0" style="width: 100%;font-size: 20px;color: rgb(255, 255, 255);text-align:center;padding: 9px;"><button ion-button class="editprofilebtn" (click)="cancelupload()" style="width: 60px;color:#ef4e34;background-color: #fff;">Cancel</button><button ion-button class="editprofilebtn" (click)="uploadimg()" style="width: 60px;" [disabled]="disableButton">OK</button></p> -->
 </ion-header>
+<ion-content padding >
+    <div class="imgprofile" text-center padding>
+      <img src="../../assets/imgs/myprofileimg.png" alt="">
+      <div class="penabs" style="transition-delay: 0s; transition-property: none;">
+          <img src="../../assets/imgs/penimg.png">    
+      </div>
+    </div>
+  <div class="changepswddiv" *ngIf="profileList!=''&& profileList.Usertype=='School'">
+      <ion-item >
+          <ion-label stacked>User Name</ion-label>
+          <ion-input type="text" value="{{profileList.UserName}}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label  stacked>Phone</ion-label>
+          <ion-input  type="text" value="{{profileList.PhoneNumber}}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label  stacked>Email</ion-label>
+          <ion-input  type="text" value="{{profileList.Email}}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label  stacked>School Name</ion-label>
+          <ion-input  type="text" value="{{profileList.SchoolName}}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label  stacked>Details</ion-label>
+          <ion-input  type="text" value="{{profileList.Details}}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label  stacked>Email</ion-label>
+          <ion-input  type="text" value="{{profileList.Email}}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label  stacked>Visiting Address 1</ion-label>
+          <ion-input  type="text" value="{{profileList.VisitingAddress1}}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label  stacked>Visiting Address 2</ion-label>
+          <ion-input  type="text" value="{{profileList.VisitingAddress2}}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label  stacked>Visiting City</ion-label>
+          <ion-input  type="text" value="{{profileList.VisitingCity}}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label  stacked>Visiting PostalCode</ion-label>
+          <ion-input  type="text" value="{{profileList.VisitingPostalCode}}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label  stacked>Govt Issued ID</ion-label>
+          <ion-input  type="text" value="{{profileList.GovtIssuedID}}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label  stacked>Billing Address 1</ion-label>
+          <ion-input  type="text" value="{{profileList.BillingAddress1}}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label  stacked>BillingAddress2</ion-label>
+          <ion-input  type="text" value="{{profileList.BillingAddress2}}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label  stacked>Billing City</ion-label>
+          <ion-input  type="text" value="{{profileList.BillingCity}}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label  stacked>Billing PostalCode</ion-label>
+          <ion-input  type="text" value="{{profileList.BillingPostalCode}}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label  stacked>Billing Country</ion-label>
+          <ion-input  type="text" value="{{profileList.BillingCountry}}"></ion-input>
+        </ion-item>
+        <ion-col col-6 float-left>
+          <button ion-button full class="btnstyling" style="background:#a19f9f !important;">CANCEL</button>
+      </ion-col>
+      <ion-col col-6 float-left>
+          <button ion-button full class="btnstyling">UPDATE</button>
+      </ion-col>
+  </div>
 
-<ion-content padding>
-  <p style="font-size: 17px;color: #ef4e34;" >Personal Information</p>
-  <ion-card class="homecard" style="margin-top:0;" >
-      <ion-card-content class="cardmain" (click)="changeemail()">
-        <div>
-          <p class="cardtxt" style="width: 90%;float: left;">Email</p>
-          <div >
-            <ion-icon name="ios-arrow-forward" float-right class="cardicons cardiconsarrow" ></ion-icon>
-          </div>
-        </div>
-        <div class="carddescription" float-left>
-            <p style="padding-top: 0;">hamza@gmail.com</p>
-        </div>
-      </ion-card-content>
-  </ion-card>
-  <ion-card class="homecard" style="margin-top:0;"   >
-      <ion-card-content class="cardmain" (click)="changepswd()">
-        <div>
-          <p class="cardtxt" style="width: 90%;float: left;">Password</p>
-          <div >
-            <ion-icon name="ios-arrow-forward" float-right class="cardicons cardiconsarrow" ></ion-icon>
-          </div>
-        </div>
-      </ion-card-content>
-  </ion-card>
-  <ion-card class="homecard" style="margin-top:0;"   >
-      <ion-card-content class="cardmain" (click)="changedob()">
-        <div>
-          <p class="cardtxt" style="width: 90%;float: left;">DOB</p>
-          <div >
-            <ion-icon name="ios-arrow-forward" float-right class="cardicons cardiconsarrow" ></ion-icon>
-          </div>
-        </div>
-        <div class="carddescription" float-left>
-            <p style="padding-top: 0;">10/7/18</p>
-        </div>
-      </ion-card-content>
-  </ion-card>
-  <ion-card class="homecard" style="margin-top:0;"   >
-      <ion-card-content class="cardmain" (click)="changefname()">
-        <div>
-          <p class="cardtxt" style="width: 90%;float: left;">First Name</p>
-          <div >
-            <ion-icon name="ios-arrow-forward" float-right class="cardicons cardiconsarrow" ></ion-icon>
-          </div>
-        </div>
-        <div class="carddescription" float-left>
-            <p style="padding-top: 0;">Hamza</p>
-        </div>
-      </ion-card-content>
-  </ion-card>
-  <ion-card class="homecard" style="margin-top:0;"   >
-      <ion-card-content class="cardmain" (click)="changelname()">
-        <div>
-          <p class="cardtxt" style="width: 90%;float: left;">Last Name</p>
-          <div >
-            <ion-icon name="ios-arrow-forward" float-right class="cardicons cardiconsarrow" ></ion-icon>
-          </div>
-        </div>
-        <div class="carddescription" float-left>
-            <p style="padding-top: 0;">Mehmood</p>
-        </div>
-      </ion-card-content>
-  </ion-card>
-  <ion-card class="homecard" style="margin-top:0;"  >
-      <ion-card-content class="cardmain"  (click)="changetimezone()">
-        <div>
-          <p class="cardtxt" style="width: 90%;float: left;">Region</p>
-          <div >
-            <ion-icon name="ios-arrow-forward" float-right class="cardicons cardiconsarrow" ></ion-icon>
-          </div>
-        </div>
-        <div class="carddescription" float-left>
-            <p style="padding-top: 0;">Islamabad</p>
-        </div>
-      </ion-card-content>
-  </ion-card>
 
-  <p style="font-size: 17px;color: #ef4e34;" >Documents and billing information</p>
-
-  <ion-card class="homecard" style="margin-top:0;"  >
-      <ion-card-content class="cardmain"  (click)="changetimezone()">
-        <div>
-          <p class="cardtxt" style="width: 90%;float: left;">Documents</p>
-          <div >
-            <ion-icon name="ios-arrow-forward" float-right class="cardicons cardiconsarrow" ></ion-icon>
-          </div>
-        </div>
-      </ion-card-content>
-  </ion-card>
-  <ion-card class="homecard" style="margin-top:0;"  >
-      <ion-card-content class="cardmain"  (click)="changetimezone()">
-        <div>
-          <p class="cardtxt" style="width: 90%;float: left;">ID Card</p>
-          <div >
-            <ion-icon name="ios-arrow-forward" float-right class="cardicons cardiconsarrow" ></ion-icon>
-          </div>
-        </div>
-      </ion-card-content>
-  </ion-card>
+  <div class="changepswddiv" *ngIf="profileList!=''&& profileList.Usertype=='Teacher'">
+    <ion-item >
+      <ion-label stacked>User Name</ion-label>
+      <ion-input type="text" value="{{profileList.UserName}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label  stacked>First Name</ion-label>
+      <ion-input  type="text" value="{{profileList.FirstName}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label  stacked>Last Name</ion-label>
+      <ion-input  type="text" value="{{profileList.LastName}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label  stacked>Phone</ion-label>
+      <ion-input  type="text" value="{{profileList.PhoneNumber}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label  stacked>Email</ion-label>
+      <ion-input  type="text" value="{{profileList.Email}}"></ion-input>
+    </ion-item>
+    <ion-col col-6 float-left>
+      <button ion-button full class="btnstyling" style="background:#a19f9f !important;">CANCEL</button>
+  </ion-col>
+  <ion-col col-6 float-left>
+      <button ion-button full class="btnstyling">UPDATE</button>
+  </ion-col>
+  </div>
 </ion-content>
-

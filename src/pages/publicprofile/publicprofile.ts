@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
+import { NavParams } from 'ionic-angular';
 import { AlertController ,Events} from 'ionic-angular';
 import { Services } from '../../providers/services';
 import { MyStorage } from '../../app/localstorage';
@@ -17,22 +18,31 @@ export class PublicprofilePage {
   loader: any;
   profileList: any='';
   userDetail: any;
+  seeprofileid:any=0;
   LogoUrl = AppSettings.LogoUrl;
   constructor(public navCtrl: NavController,
     public loadingCtrl: LoadingController,
     public services: Services,
     private storage: MyStorage,
     public tools: MyTools,
+    private navParams: NavParams,
     private alertCtrl: AlertController) {
-      this.storage.get('user').then(
-        (val) => {
-          if (val != null) {
-            console.log('val',val);
-            this.userDetail = val;
-            this.profileService(this.userDetail.Id);
+      this.seeprofileid = navParams.get('id');
+      if(this.seeprofileid!=0 && this.seeprofileid!='' && this.seeprofileid!=null){
+        this.profileService(this.seeprofileid);        
+      }
+      else{
+        this.storage.get('user').then(
+          (val) => {
+            if (val != null) {
+              console.log('val',val);
+              this.userDetail = val;
+              this.profileService(this.userDetail.Id);
+            }
           }
-        }
-      )
+        )
+      }
+      
       // this.profileService();
   }
 
@@ -75,25 +85,4 @@ profileService(id) {
   
 }
 
-addToFav(dID){
-  this.showLoader();
-  //Applying Validations
-  let body = new FormData();
-  body.append('userId', this.userDetail.Id);
-  body.append('DeputyPersonId', dID);
-      this.services.addToFav(body).subscribe(
-        //Successfully Logged in
-        success => {
-          console.log('success bhai', success);
-            this.loader.dismiss();
-            this.presentAlert('Alert!', 'Teacher added to your favourite list');
-
-        },
-        error => {
-          this.loader.dismiss();
-          console.log('error bhai', error);
-          this.presentAlert('Alert!', error.message);
-        }
-      )
-}
 }

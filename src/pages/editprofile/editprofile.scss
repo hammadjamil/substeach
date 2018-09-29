@@ -1,6 +1,56 @@
 $themecolor: #38d345;
 $themecolorw: #38d345;
 page-editprofile {
+    .btnstyling{
+        text-transform: none;
+        font-weight: 600;
+        border-radius: 0px;
+        margin-top: 30px;
+        background-color: #09a546 !important;
+    }
+    ion-item {
+        padding-left: 0 !important;
+    }
+    ion-label {
+        font-size: 14px !important;
+        color: #b8b7b7 !important;
+    }
+    ::placeholder{
+        color:black !important;
+        font-weight: 600;
+    }
+    .scroll-content {
+        background: #eaeaea;
+    }
+    .changepswddiv{
+        padding: 15px;
+        background: white;
+        border-radius: 5px;
+        float: left;
+        width: 100%;
+    }
+    .checkbox .checkbox-checked {
+        border-color: #09a546;
+        background-color: #09a546;
+    }
+    .item .checkbox {
+        padding: 14px 16px 8px 2px !important;
+        margin: 0 !important;
+        border-bottom: 0.55px solid #c8c7cc;
+    }
+    .penabs{
+        position: absolute;
+        right: 20%;
+        background: #09a546;
+        padding: 14px;
+        border-radius: 65px;
+        bottom: 20%;
+        width: 55px;
+        height: 55px;
+    }
+    .imgprofile{
+        position: relative;
+    }
     .toolbar-background{
         background: $themecolor;
     }
@@ -11,87 +61,39 @@ page-editprofile {
         color: #d4dcdf !important;
         background-color: transparent;
     }
-    .profileimg {
-        width: 120px;
-        height: 120px;
-        border: 3px solid white;
-        border-radius: 80px;
-        margin: auto;
-        float: unset;
-        margin-top: 15px;
-        overflow: hidden;
+    ion-item {
+        border: none !important;
+        border-radius: 0 !important;
+        margin-bottom: 10px !important;
+        height: 45px;
     }
-    .editprofilebtn{
-        background-color: #ef4e34;
-        color: #fff;
-        border-radius: 0px;
-        -webkit-box-shadow: unset;
-        box-shadow: unset;
-        height: 30px;
-        text-transform: capitalize;
+    ion-label {
+        color: black !important;
+        background: #fff !important;
+        padding: 0;
+        margin: 0 !important;
+        text-align: left;
+        width: auto;
     }
-    .viewsubsc{
-        background-color: #1b4da7;
-        color: #fff;
-        border-radius: 0px;
-        -webkit-box-shadow: unset;
-        box-shadow: unset;
-        height: 30px;
-        text-transform: capitalize;
-    
+    .txtbig{
+        font-size: 16px !important;
+        font-weight: 600;
     }
-    .homelobbytxt .item-inner {
-        border-bottom: none !important;
+    .scroll-content {
+        padding: 0px !important; 
     }
-    
-    
-    .action-sheet-title {
-        color: white !important;
-        text-transform: uppercase;
-        background-color: #ab3d21;
-        text-align: center !important;
-        justify-content: center !important;
+    .imgprofile {
+        position: relative;
+        background: #f7b800;
     }
-    .action-sheet-md .action-sheet-group {
-        background: #143a7b;
-        padding-top: 0 !important;
-    
+    ion-item.item {
+        border-bottom: 2px solid #38d345 !important;
+        padding-bottom: 0px !important;
+        float: left;
+        width: 100%;
+        height: 70px;
     }
-    .action-sheet-button {
-        color: white !important;
-        border-bottom: 1px solid slategray;
-        background-color: #0f2f64 !important;
-    }
-    button.action-sheet-cancel {
-        border-bottom: none;
-        color: #a53f18 !important;
-        font-size: 20px !important;
-        font-weight: bold;
-        text-align: center !important;
-        justify-content: center;
-    }
-    button.action-sheet-cancel .button-inner{
-        justify-content: center !important;
-    }
-    .action-sheet-ios .action-sheet-title {
-        padding: 1.5rem;
-        text-align: center;
-        border-radius: 0;
-        border-bottom: 0.55px solid #d6d6da;
-        font-size: 16px;
-        font-weight: 400;
-        color: #8f8f8f;
-    }
-    .action-sheet-ios .action-sheet-button {
-        margin: 0;
-        padding: 18px;
-        min-height: 5.6rem;
-        border-bottom: 0.55px solid #d6d6da;
-        font-size: 16px;
-        color: #007aff;
-        background: transparent;
-    }
-    .action-sheet-button span.button-inner {
-        justify-content: center !important;
+    ion-input{
+        font-weight: 500;
     }
 }

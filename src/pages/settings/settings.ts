@@ -10,14 +10,6 @@ import { AlertController ,Events} from 'ionic-angular';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 import { Services } from '../../assets/providers/services';
-import { ChangeemailPage } from '../changeemail/changeemail';
-import { ChangepasswordPage } from '../changepassword/changepassword';
-import { ChangedobPage } from '../changedob/changedob';
-import { ChangefnamePage } from '../changefname/changefname';
-import { ChangelnamePage } from '../changelname/changelname';
-import { ChangetimezonePage } from '../changetimezone/changetimezone';
-import { ChangebillinginfoPage } from '../changebillinginfo/changebillinginfo';
-import { SubscriptionPage } from '../subscription/subscription';
 
 @IonicPage()
 @Component({
@@ -214,29 +206,5 @@ export class SettingsPage {
       console.log('time:::::',this.timestamp);
   }
 
-  changeemail(){
-    this.navCtrl.push(ChangeemailPage, {email:  this.editprofilelist.email});
-  }
-  changepswd(){
-    this.navCtrl.push(ChangepasswordPage, {pswd: ''});
-  }
-  changedob(){
-    this.navCtrl.push(ChangedobPage, {dob: this.editprofilelist.dob});
-  }
-  changefname(){
-    this.navCtrl.push(ChangefnamePage, {fname: this.editprofilelist.fname});
-  }
-  changelname(){
-    this.navCtrl.push(ChangelnamePage, {lname: this.editprofilelist.lname});
-  }
-  changetimezone(){
-    this.navCtrl.push(ChangetimezonePage, {timezone: this.editprofilelist.timeZone});
-  }
-  changebillinginfo(){
-    this.navCtrl.push(ChangebillinginfoPage, {billing: '' });
-  }
-  viewsubscription(){
-    this.navCtrl.push(SubscriptionPage, {subscription: ''});
-  }
 
 }
