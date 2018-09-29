@@ -12,11 +12,7 @@ import { SettingsPage } from '../pages/settings/settings';
 import { EditprofilePage } from '../pages/editprofile/editprofile';
 import { SchoolprofilePage } from '../pages/schoolprofile/schoolprofile';
 import { TeacherprofilePage } from '../pages/teacherprofile/teacherprofile';
-<<<<<<< HEAD
-=======
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
-import { PublicprofilePage } from '../pages/publicprofile/publicprofile';
->>>>>>> 2498eac7fad9b36baa236dab4bdc860826b7f38e
 
 
 import { MyStorage } from '../app/localstorage';
