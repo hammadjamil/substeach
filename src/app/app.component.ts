@@ -13,7 +13,6 @@ import { EditprofilePage } from '../pages/editprofile/editprofile';
 import { SchoolprofilePage } from '../pages/schoolprofile/schoolprofile';
 import { TeacherprofilePage } from '../pages/teacherprofile/teacherprofile';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
-import { PublicprofilePage } from '../pages/publicprofile/publicprofile';
 
 
 import { MyStorage } from '../app/localstorage';
@@ -65,11 +64,11 @@ export class MyApp {
       this.storage.set('devicePlatform', 'android');
       this.storage.get('user').then((val) => {
         if(val!='' && val!=null){
-          // this.rootPage = HomePage;
-          this.rootPage = PublicprofilePage;
+          this.rootPage = HomePage;
+          // this.rootPage = PublicprofilePage;
         }else{
-          // this.rootPage = LoginPage;
-          this.rootPage = PublicprofilePage;
+          this.rootPage = LoginPage;
+          // this.rootPage = PublicprofilePage;
         }
       });
     });

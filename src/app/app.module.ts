@@ -46,7 +46,6 @@ import { PhonenumberschoolPage } from '../pages/phonenumberschool/phonenumbersch
 import { PhonenumberteacherPage } from '../pages/phonenumberteacher/phonenumberteacher';
 import { SchoolprofilePage } from '../pages/schoolprofile/schoolprofile';
 import { TeacherprofilePage } from '../pages/teacherprofile/teacherprofile';
-import { PublicprofilePage } from '../pages/publicprofile/publicprofile';
 
 import { SMS } from '@ionic-native/sms';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
@@ -85,8 +84,7 @@ import { Push, PushObject, PushOptions } from '@ionic-native/push';
     PhonenumberschoolPage,
     PhonenumberteacherPage,
     SchoolprofilePage,
-    TeacherprofilePage,
-    PublicprofilePage
+    TeacherprofilePage
   ],
   imports: [
     BrowserModule,
@@ -129,8 +127,7 @@ import { Push, PushObject, PushOptions } from '@ionic-native/push';
     PhonenumberschoolPage,
     PhonenumberteacherPage,
     SchoolprofilePage,
-    TeacherprofilePage,
-    PublicprofilePage
+    TeacherprofilePage
   ],
   providers: [
     StatusBar,
