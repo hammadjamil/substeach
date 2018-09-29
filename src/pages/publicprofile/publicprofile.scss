@@ -1,0 +1,97 @@
+$themecolor: #38d345;
+$themecolorw: #38d345;
+page-publicprofile {
+    // font-family: 'Montserrat', sans-serif;
+    .btnstyling{
+        text-transform: none;
+        font-weight: 600;
+        border-radius: 0px;
+        margin-top: 30px;
+        background-color: #09a546 !important;
+    }
+    ion-item {
+        padding-left: 0 !important;
+    }
+    ion-label {
+        font-size: 14px !important;
+        color: #b8b7b7 !important;
+    }
+    ::placeholder{
+        color:black !important;
+        font-weight: 600;
+    }
+    .scroll-content {
+        background: #eaeaea;
+    }
+    .changepswddiv{
+        padding: 15px;
+        background: white;
+        border-radius: 5px;
+        float: left;
+        width: 100%;
+    }
+    .checkbox .checkbox-checked {
+        border-color: #09a546;
+        background-color: #09a546;
+    }
+    .item .checkbox {
+        padding: 14px 16px 8px 2px !important;
+        margin: 0 !important;
+        border-bottom: 0.55px solid #c8c7cc;
+    }
+    .penabs{
+        position: absolute;
+        right: 20%;
+        background: #09a546;
+        padding: 14px;
+        border-radius: 65px;
+        bottom: 20%;
+        width: 55px;
+        height: 55px;
+    }
+    .imgprofile{
+        position: relative;
+    }
+    .toolbar-background{
+        background: $themecolor;
+    }
+    .toolbar-title {
+        color: white;
+    }
+    .bar-button-default {
+        color: #d4dcdf !important;
+        background-color: transparent;
+    }
+    ion-item {
+        border: none !important;
+        border-radius: 0 !important;
+        margin-bottom: 10px !important;
+        height: 45px;
+    }
+    ion-label {
+        color: black !important;
+        background: #fff !important;
+        padding: 0;
+        margin: 0 !important;
+        text-align: left;
+        width: auto;
+    }
+    .txtbig{
+        font-size: 16px !important;
+        font-weight: 600;
+    }
+    .scroll-content {
+        padding: 0px !important; 
+    }
+    .imgprofile {
+        position: relative;
+        background: #f7b800;
+    }
+    ion-item.item {
+        border-bottom: 2px solid #38d345 !important;
+        padding-bottom: 10px !important;
+        float: left;
+        width: 100%;
+        height: 55px;
+    }
+}

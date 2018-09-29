@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle class="menubtn">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <div *ngIf="profileList!=''">
+      <ion-title *ngIf="profileList.Usertype=='School'">SCHOOL PROFILE</ion-title>
+      <ion-title *ngIf="profileList.Usertype=='Teacher'">TEACHER PROFILE</ion-title>
+    </div>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding >
+    <div class="imgprofile" text-center padding>
+      <img src="../../assets/imgs/myprofileimg.png" alt="">
+    </div>
+  <div class="changepswddiv" *ngIf="profileList!=''&& profileList.Usertype=='School'">
+      <ion-item >
+          <ion-label stacked>User Name</ion-label>
+          <ion-label class="txtbig" stacked>{{profileList.UserName}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label  stacked>Phone</ion-label>
+          <ion-label  class="txtbig" stacked>{{profileList.PhoneNumber}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label  stacked>Email</ion-label>
+          <ion-label  class="txtbig" stacked>{{profileList.Email}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label  stacked>School Name</ion-label>
+          <ion-label  class="txtbig" stacked>{{profileList.SchoolName}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label  stacked>Details</ion-label>
+          <ion-label  class="txtbig" stacked>{{profileList.Details}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label  stacked>Email</ion-label>
+          <ion-label  class="txtbig" stacked>{{profileList.Email}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label  stacked>Visiting Address 1</ion-label>
+          <ion-label  class="txtbig" stacked>{{profileList.VisitingAddress1}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label  stacked>Visiting Address 2</ion-label>
+          <ion-label  class="txtbig" stacked>{{profileList.VisitingAddress2}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label  stacked>Visiting City</ion-label>
+          <ion-label  class="txtbig" stacked>{{profileList.VisitingCity}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label  stacked>Visiting PostalCode</ion-label>
+          <ion-label  class="txtbig" stacked>{{profileList.VisitingPostalCode}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label  stacked>Govt Issued ID</ion-label>
+          <ion-label  class="txtbig" stacked>{{profileList.GovtIssuedID}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label  stacked>Billing Address 1</ion-label>
+          <ion-label  class="txtbig" stacked>{{profileList.BillingAddress1}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label  stacked>BillingAddress2</ion-label>
+          <ion-label  class="txtbig" stacked>{{profileList.BillingAddress2}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label  stacked>Billing City</ion-label>
+          <ion-label  class="txtbig" stacked>{{profileList.BillingCity}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label  stacked>Billing PostalCode</ion-label>
+          <ion-label  class="txtbig" stacked>{{profileList.BillingPostalCode}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label  stacked>Billing Country</ion-label>
+          <ion-label  class="txtbig" stacked>{{profileList.BillingCountry}}</ion-label>
+        </ion-item>
+  </div>
+
+
+  <div class="changepswddiv" *ngIf="profileList!=''&& profileList.Usertype=='Teacher'">
+    <ion-item >
+      <ion-label stacked>User Name</ion-label>
+      <ion-label class="txtbig" stacked>{{profileList.UserName}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label  stacked>First Name</ion-label>
+      <ion-label  class="txtbig" stacked>{{profileList.FirstName}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label  stacked>Last Name</ion-label>
+      <ion-label  class="txtbig" stacked>{{profileList.LastName}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label  stacked>Phone</ion-label>
+      <ion-label  class="txtbig" stacked>{{profileList.PhoneNumber}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label  stacked>Email</ion-label>
+      <ion-label  class="txtbig" stacked>{{profileList.Email}}</ion-label>
+    </ion-item>
+  </div>
+</ion-content>

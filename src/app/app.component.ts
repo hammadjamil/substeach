@@ -13,7 +13,7 @@ import { EditprofilePage } from '../pages/editprofile/editprofile';
 import { SchoolprofilePage } from '../pages/schoolprofile/schoolprofile';
 import { TeacherprofilePage } from '../pages/teacherprofile/teacherprofile';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
-
+import { PublicprofilePage } from '../pages/publicprofile/publicprofile';
 
 import { MyStorage } from '../app/localstorage';
 import { Auth } from '../providers/auth';
@@ -49,6 +49,7 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
+      { title: 'Public Profile', component: PublicprofilePage },      
       { title: 'Favourites', component: FavouritesPage },
       { title: 'Settings', component: SchoolprofilePage },
       { title: 'Logout', component: LogoutPage }
