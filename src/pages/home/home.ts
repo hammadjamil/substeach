@@ -7,6 +7,8 @@ import { Auth } from '../../providers/auth';
 import { MyTools } from '../../providers/tools';
 import { LoadingController, Platform } from 'ionic-angular';
 import { AppSettings } from '../../app/appSettings';
+import { PublicprofilePage } from '../publicprofile/publicprofile';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
@@ -96,6 +98,11 @@ addToFav(dID){
         }
       )
 }
-
+profilepage(idd){
+  console.log('idd',idd);
+  this.navCtrl.push(PublicprofilePage,{
+    id: idd
+  })
+}
 
 }

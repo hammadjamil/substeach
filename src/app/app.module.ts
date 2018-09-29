@@ -33,14 +33,6 @@ import { Facebook } from '@ionic-native/facebook';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { Chooser } from '@ionic-native/chooser';
 import { VerifyteacherphonePage } from '../pages/verifyteacherphone/verifyteacherphone';
-import { ChangeemailPage } from '../pages/changeemail/changeemail';
-import { ChangepasswordPage } from '../pages/changepassword/changepassword';
-import { ChangedobPage } from '../pages/changedob/changedob';
-import { ChangefnamePage } from '../pages/changefname/changefname';
-import { ChangelnamePage } from '../pages/changelname/changelname';
-import { ChangetimezonePage } from '../pages/changetimezone/changetimezone';
-import { ChangebillinginfoPage } from '../pages/changebillinginfo/changebillinginfo';
-import { SubscriptionPage } from '../pages/subscription/subscription';
 import { EditprofilePage } from '../pages/editprofile/editprofile';
 import { PhonenumberschoolPage } from '../pages/phonenumberschool/phonenumberschool';
 import { PhonenumberteacherPage } from '../pages/phonenumberteacher/phonenumberteacher';
@@ -74,14 +66,6 @@ import { Push, PushObject, PushOptions } from '@ionic-native/push';
     VerifyphonePage,
     VerifyteacherphonePage,
     Teacherregister4Page,
-    ChangeemailPage,
-    ChangepasswordPage,
-    ChangedobPage,
-    ChangefnamePage,
-    ChangelnamePage,
-    ChangetimezonePage,
-    ChangebillinginfoPage,
-    SubscriptionPage,
     EditprofilePage,
     PhonenumberschoolPage,
     PhonenumberteacherPage,
@@ -118,14 +102,6 @@ import { Push, PushObject, PushOptions } from '@ionic-native/push';
     VerifyphonePage,
     VerifyteacherphonePage,
     Teacherregister4Page,
-    ChangeemailPage,
-    ChangepasswordPage,
-    ChangedobPage,
-    ChangefnamePage,
-    ChangelnamePage,
-    ChangetimezonePage,
-    ChangebillinginfoPage,
-    SubscriptionPage,
     EditprofilePage,
     PhonenumberschoolPage,
     PhonenumberteacherPage,
