@@ -15,7 +15,8 @@ import { RegistrationchoicePage } from '../registrationchoice/registrationchoice
 import { AppSettings } from '../../app/appSettings';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { GooglePlus } from '@ionic-native/google-plus';
-
+import { SchoolprofilePage } from '../schoolprofile/schoolprofile';
+import { TeacherprofilePage } from '../teacherprofile/teacherprofile';
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -94,7 +95,10 @@ loginService() {
           this.auth.loginUser(success);
           setTimeout(() => {
             this.loader.dismiss();
-            this.navCtrl.setRoot(HomePage);
+            if(success.userData.Usertype=='School')
+              this.navCtrl.setRoot(SchoolprofilePage);
+            else
+              this.navCtrl.setRoot(TeacherprofilePage);
           }, 2000);
 
         },
