@@ -1,0 +1,29 @@
+page-notification {
+    .toolbar-background{
+        background: $themecolor;
+    }
+    .toolbar-title {
+        color: white;
+    }
+    .bar-button-default {
+        color: #d4dcdf !important;
+        background-color: transparent;
+    }
+    ion-card img {
+        width: 100px;
+        height: 100px;
+        margin: auto;
+    }
+    ion-card {
+        padding: 10px 0;
+        text-align: center;
+    }
+    ion-card-content {
+        padding: 0 5px !important;
+    }
+    .cancelbtn{
+        background: #fff !important;
+        color: $themecolor !important;
+        border: 2px solid $themecolor !important;
+    }
+}

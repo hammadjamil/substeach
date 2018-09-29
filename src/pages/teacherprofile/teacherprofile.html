@@ -3,11 +3,12 @@
     <button ion-button menuToggle class="menubtn">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>School Profile</ion-title>
+    <ion-title>TEACHER PROFILE</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+    <p style="font-size: 20px;text-align: center;font-weight: 600;">Add Availability</p>
   <ion-item>
     <ion-label>Days</ion-label>
     <ion-select [(ngModel)]="schoolDay.Day" multiple="true">
@@ -42,6 +43,10 @@
       <ion-select [(ngModel)]="schoolDay.Standard" multiple="true">
         <ion-option *ngFor="let row of Standard" value="{{row.Id}}">{{row.StandardName}}</ion-option>
       </ion-select>
+  </ion-item>
+  <ion-item style="border:none !important;">
+    <ion-label style="color:black;">Want to book directly</ion-label>
+    <ion-checkbox [(ngModel)]="sausage"></ion-checkbox>
   </ion-item>
   <button ion-button block style="margin-top: 10px;" (click)="save()">Save</button>
 </ion-content>

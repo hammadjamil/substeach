@@ -52,6 +52,29 @@ page-schoolprofile {
         min-height: 100px;
         padding: 0 10px;
     }
+    .segment_tab{
+        padding: 0;
+        width: 100%;
+        height: 50px;
+    }
+    .segment_tab ion-segment {
+        height: 50px;
+        background: grey;
+        color: black;
+    }
+    .segment_tab ion-segment .segment-button {
+        height: 50px !important;
+        color: black !important;
+        font-size: 13px !important;
+        font-weight: bold;
+        padding: 12px;
+        border: 0 !important;
+        line-height: 27px;
+    }
+    .segment_tab ion-segment .segment-button.segment-activated {
+        background: $themecolor !important;
+        color: white !important;
+    }
 }
 .alert-checkbox-group button{
     background: #fff !important;
