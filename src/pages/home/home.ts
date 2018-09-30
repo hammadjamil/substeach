@@ -62,12 +62,9 @@ export class HomePage {
         this.teacherList = success.data;
       },
       error => {
-        console.log('error bhai', error);
         setTimeout(() => {
-          // if (error.message.length==1){
             this.presentAlert('Alert!', error.message);
             this.loader.dismiss();
-          // }
           
         }, 500);
       }
@@ -90,13 +87,9 @@ export class HomePage {
         this.teacherList = success.data;
       },
       error => {
-        console.log('error bhai', error);
         setTimeout(() => {
-          // if (error.message.length==1){
             this.presentAlert('Alert!', error.message);
-            this.loader.dismiss();
-          // }
-          
+            this.loader.dismiss();          
         }, 500);
       }
     )
@@ -172,8 +165,30 @@ profilepage(idd){
   })
 }
 
-inviteTeacher(){
+
+inviteTeacher(id){
+  let body = new FormData();
+  body.append('userId', this.userDetail.Id);
+  body.append('toUserId',id );console.log(id);
   
+  this.services.SendNotification(body).subscribe(
+    //Successfully Logged in
+    success => {
+     
+      setTimeout(() => {
+        this.presentAlert('Success!', 'Notification send to teacher.');
+      })
+        
+    },
+    error => {
+      setTimeout(() => {
+          this.presentAlert('Alert!', error.message);
+          this.loader.dismiss();        
+      }, 500);
+    }
+  )
 }
+
+
 
 }

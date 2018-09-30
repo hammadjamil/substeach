@@ -37,7 +37,8 @@ export class SchoolprofilePage {
     Type : 'Period',
     Description :'',
   };
-  constructor(public navCtrl: NavController, public navParams: NavParams,public loadingCtrl: LoadingController,
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public loadingCtrl: LoadingController,
     private storage: Storage,
     public services: Services,
     private alertCtrl: AlertController) {
