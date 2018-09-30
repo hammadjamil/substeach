@@ -1,0 +1,63 @@
+$themecolor: #38d345;
+$themecolorw: #38d345;
+page-chat {
+
+    .toolbar-background{
+        background: $themecolor;
+    }
+    .toolbar-title {
+        color: white;
+    }
+    .bar-button-default {
+        color: #d4dcdf !important;
+        background-color: transparent;
+    }
+    .chatcolleft{
+        background: #eaeaea;
+        border-radius: 20px;
+        border-bottom-left-radius:25px;
+        border-top-left-radius:25px;
+        padding: 0;
+        box-shadow: 0px 0px 4px 0px grey;
+        margin-bottom: 10px;
+        float: left;
+        padding: 0 10px 0 0;   
+        max-width: 80%;     
+        img{
+            width: 50px;
+            height: 50px;
+            float: left;
+    
+        }
+        p{
+            float: left;
+            padding-top: 10px;
+            padding-left: 10px;
+            max-width: 77%;
+        }
+    } 
+    .chatcolright {
+        background: $themecolor;
+        border-radius: 20px;
+        padding: 0;
+        box-shadow: 0px 0px 4px 0px grey;
+        margin-bottom: 10px;
+        border-bottom-right-radius:25px;
+        border-top-right-radius:25px; 
+        float: right;
+        padding: 0 0 0 10px;
+        max-width: 80%;
+        img{
+        width: 50px;
+        height: 50px;
+        float: right;
+        
+        }
+        p{
+                float: right;
+                padding-top: 10px;
+                padding-right: 10px;
+                max-width: 77%;
+        }
+    }
+}
