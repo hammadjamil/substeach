@@ -55,6 +55,7 @@ export class HomePage {
     body.append('Day', this.searchCriteria.Day);
     body.append('TimeSlote', this.searchCriteria.TimeSlote);
     body.append('Standard', this.searchCriteria.Standard);
+    body.append('SchoolId', this.userDetail.Id);
     this.services.getMatchesByDay(body).subscribe(
       //Successfully Logged in
       success => {
@@ -80,6 +81,7 @@ export class HomePage {
     body.append('FromDate', this.searchCriteria.FromDate);
     body.append('TimeSlote', this.searchCriteria.TimeSlote);
     body.append('Standard', this.searchCriteria.Standard);
+    body.append('SchoolId', this.userDetail.Id);
     this.services.getMatchesByPeriod(body).subscribe(
       //Successfully Logged in
       success => {

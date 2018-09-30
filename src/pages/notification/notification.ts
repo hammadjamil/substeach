@@ -20,6 +20,7 @@ import { Services } from '../../providers/services';
 })
 export class NotificationPage {
   userID : any;
+  Usertype : any;
   teacherList : any;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public loadingCtrl: LoadingController,
@@ -29,6 +30,7 @@ export class NotificationPage {
     this.storage.get('user').then((val) => {
       console.log('val :', val );
       this.userID = val.Id;
+      this.Usertype = val.Usertype;
       this.getData();
     });
   }
@@ -44,7 +46,8 @@ export class NotificationPage {
           //Successfully Logged in
           success => {
             console.log('Success : ',success);
-            this.teacherList = success.userData;
+            this.teacherList = success.data;
+            console.log('this.teacherList : ',this.teacherList);
           },
           error => {
             console.log('error bhai', error);
@@ -58,6 +61,31 @@ export class NotificationPage {
           }
         )
     
+  }
+  updateStatus(id , status, senderid){
+    let body = new FormData();
+    body.append('userId',  id);
+    body.append('status',  status);
+    body.append('senderid',  senderid);
+    body.append('Usertype',  this.Usertype);
+    this.services.updateNotification(body).subscribe(
+      //Successfully Logged in
+      success => {
+        console.log('Success : ',success);
+        this.getData();
+      },
+      error => {
+        console.log('error bhai', error);
+        setTimeout(() => {
+          // if (error.message.length==1){
+            this.presentAlert('Alert!', error.message);
+            this.loader.dismiss();
+          // }
+          
+        }, 500);
+      }
+    )
+
   }
 
   presentAlert(title, msgs) {

@@ -3,26 +3,25 @@
     <button ion-button menuToggle class="menubtn">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>Notifications</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-card>
+  <ion-card  *ngFor="let row of teacherList">
     <img src="../../assets/imgs/myprofileimg.png"/>
     <ion-card-content>
       <ion-card-title>
-        Hamza Mehmood
+        {{row.UserName}} 
         </ion-card-title>
         <p>
-            The most popular industrial group ever, and largely
-            responsible for bringing the music to a mass audience.
+           {{row.Description}}
           </p>
-      <ion-col col-6 float-left>
-        <button ion-button full class="cancelbtn">Cancel</button>
+      <ion-col col-6 float-left *ngIf="row.Status=='Pending'">
+        <button ion-button full class="cancelbtn" (click)="updateStatus(row.toUserId, 'reject',row.UserId)">Cancel</button>
       </ion-col>
       <ion-col col-6 float-left>
-        <button ion-button full>Accept</button>
+        <button ion-button full *ngIf="row.Status=='Pending'" (click)="updateStatus(row.toUserId, 'accept',row.UserId)">Accept</button>
       </ion-col>
     </ion-card-content>
   </ion-card>

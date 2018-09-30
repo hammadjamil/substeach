@@ -35,9 +35,13 @@ export class Services {
       Observable.throw('Please provide credentials');
     }
     else {
+      console.log(credentials);
+      
       let params: URLSearchParams = new URLSearchParams();
       params.set('username', credentials.username);
       params.set('password', credentials.password);
+      params.set('uuid', credentials.udid==null?'':credentials.udid);
+      params.set('platform', credentials.platform);
       return Observable.create(observer => {
         const url = this.baseUrl + 'login';
         this.http.get(url, {
@@ -336,6 +340,42 @@ export class Services {
    if (user) {
      return Observable.create(observer => {
        const url = this.baseUrl + 'ShowNotification';
+       this.http.post(url, user)
+         .map(res => res.json())
+         .subscribe(
+         (response) => {
+           console.log('responaw L: ',response);
+           
+           if (response.code != '200') {
+             observer.error(response);
+           }
+           else {
+             observer.next(response);
+
+           }
+           observer.complete();
+
+         },
+         (error) => {
+           console.log('errrrror',error);
+           
+           observer.error(error);
+         }
+         )
+     })
+   }
+ }
+  
+  
+  /**
+  * Registration
+  */
+ updateNotification(user) { 
+
+   console.log('user is ', user);
+   if (user) {
+     return Observable.create(observer => {
+       const url = this.baseUrl + 'updateNotification';
        this.http.post(url, user)
          .map(res => res.json())
          .subscribe(

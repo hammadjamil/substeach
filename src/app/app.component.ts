@@ -54,7 +54,7 @@ export class MyApp {
       { title: 'Public Profile', component: PublicprofilePage },      
       { title: 'Favourites', component: FavouritesPage },
       { title: 'Notifications', component: NotificationPage },
-      { title: 'Settings', component: SchoolprofilePage },
+      // { title: 'Settings', component: SchoolprofilePage },
       { title: 'Chat', component: ChatPage },
       { title: 'Logout', component: LogoutPage }
     ];
@@ -85,6 +85,10 @@ export class MyApp {
           // this.rootPage = PublicprofilePage;
         }
       });
+      if(this.platform.is('android')){
+                
+        this.PushSetUp();
+      }
     });
   }
   logout() {
@@ -125,6 +129,56 @@ export class MyApp {
   }
 
 
+
+  PushSetUp(){
+    // to check if we have permission
+    this.push.hasPermission()
+    .then((res: any) => {
+
+      if (res.isEnabled) {
+        console.log('We have permission to send push notifications');
+      } else {
+        console.log('We do not have permission to send push notifications');
+      }
+
+    });
+
+    // to initialize push notifications
+
+    const options: PushOptions = {
+    android: {
+      icon : 'drawable-ldpi-icon',
+      sound : true,
+      vibrate : true,
+      forceShow  :true,
+      titleKey : 'Academist'
+    },
+    ios: {
+        alert: 'true',
+        badge: true,
+        sound: 'false'
+    },
+    windows: {},
+    browser: {
+        pushServiceURL: 'http://push.api.phonegap.com/v1/push'
+    }
+    };
+
+    const pushObject: PushObject = this.push.init(options);
+    
+    pushObject.on('notification').subscribe((notification: any) => {
+      console.log('Received a notification', notification)
+    });
+    
+    pushObject.on('registration').subscribe((registration: any) => 
+    {
+      console.log('vregistration : ',registration)
+      this.storage.set('deviceID', registration.registrationId);
+    });
+    
+    pushObject.on('error').subscribe(error => console.error('Error with Push pluginmm', error));
+
+  }
 
 
 
