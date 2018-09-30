@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams , MenuController} from 'ionic-angular';
 import { VerifyphonePage } from '../verifyphone/verifyphone';
 import { Services } from '../../providers/services';
 import { Storage } from '@ionic/storage';
@@ -18,13 +18,21 @@ export class PhonenumberschoolPage {
     phonenumber: '', 
   };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,  public loadingCtrl: LoadingController,
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,  
+    public loadingCtrl: LoadingController,
     private storage: Storage,
     public services: Services,
     private alertCtrl: AlertController,
+    private menu: MenuController,
     private sms: SMS) {
   }
-
+  ionViewDidEnter() {
+    this.menu.swipeEnable(false);
+  }
+  ionViewWillLeave() {
+    this.menu.swipeEnable(true);
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad PhonenumberschoolPage');
   }

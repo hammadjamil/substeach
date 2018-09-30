@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,Platform} from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,Platform, MenuController} from 'ionic-angular';
 import { Schoolregister3Page } from '../schoolregister3/schoolregister3';
 import { LoginPage } from '../login/login';
 import { LoadingController } from 'ionic-angular';
@@ -7,7 +7,6 @@ import { ActionSheetController } from 'ionic-angular'
 import { FileChooser } from '@ionic-native/file-chooser';
 import { File } from '@ionic-native/file';
 import { Transfer, TransferObject } from '@ionic-native/transfer' ;
-
 import { FilePath } from '@ionic-native/file-path'; 
 import { Camera } from '@ionic-native/camera';
 import { AppSettings } from '../../app/appSettings';
@@ -18,12 +17,6 @@ import { Base64 } from '@ionic-native/base64';
 import { Chooser } from '@ionic-native/chooser';
 import { DomSanitizer } from '@angular/platform-browser';
 declare let cordova: any;
-/**
- * Generated class for the Schoolregister2Page page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -42,7 +35,9 @@ export class Schoolregister2Page {
   logo: any ='';
   baseUrl = AppSettings.API;
   baseLogo ; any = '';
-  constructor(public navCtrl: NavController, public navParams: NavParams,private fileChooser: FileChooser,
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    private fileChooser: FileChooser,
     private camera: Camera,
     public actionSheetCtrl: ActionSheetController,
     private transfer: Transfer,
@@ -52,8 +47,11 @@ export class Schoolregister2Page {
     public loadingCtrl: LoadingController,
     private storage: Storage,
     public services: Services,
-    private alertCtrl: AlertController,private base64: Base64,
-    public chooser: Chooser,private sanitizer: DomSanitizer) {
+    private alertCtrl: AlertController,
+    private base64: Base64,
+    public chooser: Chooser,
+    private menu: MenuController,
+    private sanitizer: DomSanitizer) {
     //   this.chooser.getFile('application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf, application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation, text/plain')
     //   .then(file => {
     //     console.log('fileeeeeeeeeeee',file );
@@ -64,7 +62,12 @@ export class Schoolregister2Page {
   getImgContent() {
     return this.sanitizer.bypassSecurityTrustUrl(this.baseLogo);
   }
-
+  ionViewDidEnter() {
+    this.menu.swipeEnable(false);
+  }
+  ionViewWillLeave() {
+    this.menu.swipeEnable(true);
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad Schoolregister2Page');
   }

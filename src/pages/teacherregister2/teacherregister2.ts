@@ -1,7 +1,7 @@
 
 import { Teacherregister3Page } from '../teacherregister3/teacherregister3';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,Platform} from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,Platform, MenuController} from 'ionic-angular';
 import { Schoolregister3Page } from '../schoolregister3/schoolregister3';
 import { LoginPage } from '../login/login';
 import { LoadingController } from 'ionic-angular';
@@ -9,7 +9,6 @@ import { ActionSheetController } from 'ionic-angular'
 import { FileChooser } from '@ionic-native/file-chooser';
 import { File } from '@ionic-native/file';
 import { Transfer, TransferObject } from '@ionic-native/transfer' ;
-
 import { FilePath } from '@ionic-native/file-path'; 
 import { Camera } from '@ionic-native/camera';
 import { AppSettings } from '../../app/appSettings';
@@ -32,7 +31,8 @@ declare let cordova: any;
 })
 export class Teacherregister2Page {
   basefile : any = '';
-  constructor(public navCtrl: NavController, public navParams: NavParams,
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
     private fileChooser: FileChooser,
     private camera: Camera,
     public actionSheetCtrl: ActionSheetController,
@@ -43,10 +43,16 @@ export class Teacherregister2Page {
     public loadingCtrl: LoadingController,
     private storage: Storage,
     public services: Services,
+    private menu: MenuController,
     private alertCtrl: AlertController,private base64: Base64,
     public chooser: Chooser) {
   }
-
+  ionViewDidEnter() {
+    this.menu.swipeEnable(false);
+  }
+  ionViewWillLeave() {
+    this.menu.swipeEnable(true);
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad Schoolregister2Page');
   }
@@ -59,18 +65,14 @@ export class Teacherregister2Page {
   skip(){
     this.navCtrl.push(Teacherregister3Page);
   }
-
-  
   presentAlert(title, msgs) {
     let alert = this.alertCtrl.create({
       title: title,
-      // subTitle: msg,
       message: msgs,
       buttons: ['Dismiss']
     });
     alert.present();
   }
-
    // loader
    getLoader() {
     console.log('showing loader now');
@@ -90,8 +92,6 @@ export class Teacherregister2Page {
     this.loader.present();
   }
   // loader
-
-
    loadDoc(){
     this.fileChooser.open()
     .then(uri =>{

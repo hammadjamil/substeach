@@ -4,16 +4,7 @@ import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { Services } from '../../assets/providers/services';
-import { LoginPage } from '../login/login';
 import { Teacherregister1Page } from '../teacherregister1/teacherregister1';
-import { VerifyteacherphonePage } from '../verifyteacherphone/verifyteacherphone';
-
-/**
- * Generated class for the Teacherregister4Page page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -42,7 +33,6 @@ export class Teacherregister4Page {
     private menu: MenuController,
     public navParams: NavParams) {
       this.storage.get('SocialRegisteration').then((val) => {
-        
         if(val!='' && val!=null){
           this.user.username= val.first_name+val.last_name; 
           this.user.email= val.email;
@@ -52,11 +42,15 @@ export class Teacherregister4Page {
         }
       });
   }
-
+  ionViewDidEnter() {
+    this.menu.swipeEnable(false);
+  }
+  ionViewWillLeave() {
+    this.menu.swipeEnable(true);
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad Teacherregister4Page');
   }
-
   presentAlert(title, msgs) {
     let alert = this.alertCtrl.create({
       title: title,
@@ -66,7 +60,6 @@ export class Teacherregister4Page {
     });
     alert.present();
   }
-
   // loader
   getLoader() {
     let loader = this.loadingCtrl.create({
@@ -85,8 +78,6 @@ export class Teacherregister4Page {
     this.loader.present();
   }
   // loader
-
-
   RegisterUserStep(){
     this.showLoader();
     //Applying Validations
@@ -125,18 +116,6 @@ export class Teacherregister4Page {
       this.loader.dismiss();
       return;
     }
-    // else if (this.user.phonenumber == '') {
-    //   this.presentAlert('Alert!', 'Please enter your phone number');
-    //   this.loader.dismiss();
-    //   return;
-    // }
-    // else if (this.user.confphonenumber != this.user.phonenumber) {
-    //   this.presentAlert('Alert!', 'Please confirm your phonenumber');
-    //   this.loader.dismiss();
-    //   return;
-    // }
-    
-    
     console.log('setting this user data ',this.user);
     this.storage.set('RegisterTeacherUserStep', this.user);
     this.loader.dismiss();
@@ -156,5 +135,4 @@ export class Teacherregister4Page {
   verifyPhone(){
     this.navCtrl.push(Teacherregister1Page);
   }
-
 }

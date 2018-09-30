@@ -34,7 +34,7 @@ export class MyApp {
   loader: any;
   pages: Array<{title: string, component: any}>;
   exitApp = 0;
-  userData : any;
+  userData : any='';
   homepage:any;
   constructor(private services: Services,
               public toastCtrl: ToastController,
@@ -61,6 +61,7 @@ export class MyApp {
       this.storage.set('devicePlatform', 'android');
       this.storage.get('user').then((val) => {
         if(val!='' && val!=null){
+          this.userData=val;
           console.log("val : ",val);
           if(val.Usertype=='School'){
             this.homepage=1;

@@ -3,14 +3,7 @@ import { IonicPage, NavController, NavParams, MenuController, Platform } from 'i
 import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-
 import { Services } from '../../providers/services';
-/**
- * Generated class for the TeacherprofilePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -34,7 +27,6 @@ export class TeacherprofilePage {
         console.log('val :', val );
         this.userID = val.Id;
       });
-
     this.services.getStandards().subscribe(
       //Successfully Logged in
       success => {
@@ -53,10 +45,7 @@ export class TeacherprofilePage {
         }, 500);
       }
     )
-
   }
-
-
   presentAlert(title, msgs) {
     let alert = this.alertCtrl.create({
       title: title,
@@ -66,7 +55,6 @@ export class TeacherprofilePage {
     });
     alert.present();
   }
-
   // loader
   getLoader() {
     console.log('showing loader now');
@@ -89,7 +77,6 @@ export class TeacherprofilePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad TeacherprofilePage');
   }
-
   save(){
     console.log('schoolDay : ',this.schoolDay);
     let body = new FormData();
@@ -115,7 +102,5 @@ export class TeacherprofilePage {
         }, 500);
       }
     )
-    
   }
-
 }

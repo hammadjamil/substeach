@@ -1,14 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { SchoolregisterPage } from '../schoolregister/schoolregister';
 import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
-/**
- * Generated class for the VerifyphonePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -16,7 +10,6 @@ import { LoadingController } from 'ionic-angular';
   templateUrl: 'verifyphone.html',
 })
 export class VerifyphonePage {
-
   loader: any;
   user: any = 
   { 
@@ -26,13 +19,18 @@ export class VerifyphonePage {
     public navCtrl: NavController, 
     public navParams: NavParams,
      public loadingCtrl: LoadingController,
+     private menu: MenuController,
      private alertCtrl: AlertController) {
   }
-
+  ionViewDidEnter() {
+    this.menu.swipeEnable(false);
+  }
+  ionViewWillLeave() {
+    this.menu.swipeEnable(true);
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad VerifyPhonePage');
   }
-
   presentAlert(title, msgs) {
     let alert = this.alertCtrl.create({
       title: title,
@@ -42,7 +40,6 @@ export class VerifyphonePage {
     });
     alert.present();
   }
-
   // loader
   getLoader() {
     console.log('showing loader now');
@@ -56,13 +53,11 @@ export class VerifyphonePage {
     });
     return loader;
   }
-  
   showLoader() {
     this.loader = this.getLoader();
     this.loader.present();
   }
   // loader
-
   verify(){
     this.showLoader();
     if(this.user.code == '12345'){
@@ -73,14 +68,12 @@ export class VerifyphonePage {
       this.loader.dismiss();
     }
   }
-
   schoolregister3(){
     this.navCtrl.push(SchoolregisterPage);
   }
   back(){
     this.navCtrl.pop();
   }
-
 }
 
 

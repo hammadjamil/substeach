@@ -32,6 +32,9 @@ $fontfamily:'Noto Sans KR', sans-serif;
 .picker-opts button {
     background: white !important;
 }
+span.back-button-text {
+    display: none;
+}
 ion-app {
     font-family: $fontfamily !important;
 }
