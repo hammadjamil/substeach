@@ -110,9 +110,9 @@ ion-menu {
     ion-header {
         overflow: hidden !important;
     }
-    scroll-content {
-        overflow-y: auto !important;
-    }
+    // scroll-content {
+    //     overflow-y: auto !important;
+    // }
     .toolbar-background{
         background-color: $themecolor !important;
     }

@@ -35,6 +35,7 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
   exitApp = 0;
   userData : any;
+  homepage:any;
   constructor(private services: Services,
               public toastCtrl: ToastController,
               public menuCtrl: MenuController,
@@ -48,16 +49,7 @@ export class MyApp {
               public splashScreen: SplashScreen) 
     {
     this.initializeApp();
-    // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'Public Profile', component: PublicprofilePage },      
-      { title: 'Favourites', component: FavouritesPage },
-      { title: 'Notifications', component: NotificationPage },
-      { title: 'Settings', component: SchoolprofilePage },
-      { title: 'Chat', component: ChatPage },
-      { title: 'Logout', component: LogoutPage }
-    ];
+    
   }
   initializeApp() {
     this.platform.ready().then(() => {
@@ -68,21 +60,35 @@ export class MyApp {
     else
       this.storage.set('devicePlatform', 'android');
       this.storage.get('user').then((val) => {
-       
-        
         if(val!='' && val!=null){
           console.log("val : ",val);
-          
           if(val.Usertype=='School'){
+            this.homepage=1;
+            console.log('this.homepage',this.homepage);
             this.rootPage = SchoolprofilePage;
-          }else{
-            this.rootPage = TeacherprofilePage;
+            console.log('this.homepage',this.homepage);
+            this.pages = [
+              { title: 'Home', component: SchoolprofilePage },   
+              { title: 'Profile', component: PublicprofilePage },      
+              { title: 'Favourites', component: FavouritesPage },
+              { title: 'Notifications', component: NotificationPage },
+              { title: 'Logout', component: LogoutPage }
+            ];
           }
-          
-          // this.rootPage = PublicprofilePage;
+          else{
+            this.homepage=2;
+            console.log('this.homepage',this.homepage);
+            this.rootPage = TeacherprofilePage;
+            this.pages = [
+              { title: 'Home', component: PublicprofilePage },         
+              { title: 'Favourites', component: FavouritesPage },
+              { title: 'Notifications', component: NotificationPage },
+              { title: 'Settings', component: TeacherprofilePage },
+              { title: 'Logout', component: LogoutPage }
+            ];
+          }
         }else{
           this.rootPage = LoginPage;
-          // this.rootPage = PublicprofilePage;
         }
       });
     });
@@ -123,15 +129,6 @@ export class MyApp {
     this.nav.setRoot(EditprofilePage);
     this.menuCtrl.close();
   }
-
-
-
-
-
-
-
-
-  
 // to check if we have permission
 // this.push.hasPermission()
 // .then((res: any) => {
