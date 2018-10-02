@@ -104,6 +104,7 @@
     <plugin name="cordova-sms-plugin" spec="^0.1.13" />
     <plugin name="phonegap-plugin-push" spec="^2.2.3">
         <variable name="FCM_VERSION" value="11.6.2" />
+        <variable name="SENDER_ID" value="511898450722" />
     </plugin>
     <engine name="android" spec="^7.0.0" />
 </widget>

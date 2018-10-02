@@ -58,6 +58,7 @@
     "cordova-sms-plugin": "^0.1.13",
     "cordova-sqlite-storage": "^2.4.0",
     "cors": "^2.8.4",
+    "firebase": "^4.8.0",
     "ionic-angular": "3.9.2",
     "ionicons": "3.0.0",
     "phonegap-plugin-push": "^2.2.3",
@@ -97,7 +98,8 @@
       "cordova-plugin-chooser": {},
       "cordova-sms-plugin": {},
       "phonegap-plugin-push": {
-        "FCM_VERSION": "11.6.2"
+        "FCM_VERSION": "11.6.2",
+        "SENDER_ID": "511898450722"
       }
     },
     "platforms": [

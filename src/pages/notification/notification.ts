@@ -14,6 +14,8 @@ import { ChatPage } from '../chat/chat';
 })
 export class NotificationPage {
   userID : any;
+  Usertype : any;
+  teacherList : any;
   userdata:any='';
   notificationList : any='';
   constructor(public navCtrl: NavController, public navParams: NavParams,
@@ -25,6 +27,7 @@ export class NotificationPage {
       console.log('val :', val );
       this.userdata=val;
       this.userID = val.Id;
+      this.Usertype = val.Usertype;
       this.getData();
     });
   }
@@ -54,6 +57,31 @@ export class NotificationPage {
           }
         )
     
+  }
+  updateStatus(id , status, senderid){
+    let body = new FormData();
+    body.append('userId',  id);
+    body.append('status',  status);
+    body.append('senderid',  senderid);
+    body.append('Usertype',  this.Usertype);
+    this.services.updateNotification(body).subscribe(
+      //Successfully Logged in
+      success => {
+        console.log('Success : ',success);
+        this.getData();
+      },
+      error => {
+        console.log('error bhai', error);
+        setTimeout(() => {
+          // if (error.message.length==1){
+            this.presentAlert('Alert!', error.message);
+            this.loader.dismiss();
+          // }
+          
+        }, 500);
+      }
+    )
+
   }
 
   presentAlert(title, msgs) {
