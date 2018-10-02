@@ -8,7 +8,6 @@ import { MyStorage } from '../../app/localstorage';
 import { Auth } from '../../providers/auth';
 import { MyTools } from '../../providers/tools';
 import { Services } from '../../providers/services';
-import { RegisterPage } from '../register/register';
 import { ForgotpasswordPage } from '../forgotpassword/forgotpassword';
 import { HomePage } from '../home/home';
 import { RegistrationchoicePage } from '../registrationchoice/registrationchoice';
@@ -43,29 +42,25 @@ export class LoginPage {
               public tools: MyTools,
               private alertCtrl: AlertController) {
                 //initializing facebook
-    // this.fb.browserInit(476300759536162, "v2.10");
-    
-                
+    // this.fb.browserInit(476300759536162, "v2.10");        
   }
-  ionViewDidEnter() {
-    this.menu.swipeEnable(false);
-  }
-  ionViewWillLeave() {
-    this.menu.swipeEnable(true);
-  }
+  // ionViewDidEnter() {
+  //   this.menu.swipeEnable(false);
+  // }
+  // ionViewWillLeave() {
+  //   this.menu.swipeEnable(true);
+  // }
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
   Forgotpswdpage(){
     this.navCtrl.push(ForgotpasswordPage);    
   }
-
     //Show Loader
     showLoader() {
       this.loader = this.tools.getLoader();
       this.loader.present();
     }
-
 //Login
 loginService() {
   this.showLoader();
@@ -83,7 +78,6 @@ loginService() {
    
   //Requesting API 
   else {
-        
       this.services.login(this.user).subscribe(
         //Successfully Logged in
         success => {
@@ -96,7 +90,6 @@ loginService() {
             else
               this.navCtrl.setRoot(TeacherprofilePage);
           }, 2000);
-
         },
         error => {
           this.loader.dismiss();
@@ -104,10 +97,8 @@ loginService() {
           this.presentAlert('Alert!', error.message);
         }
       )
-      
   }
 }
-
   registerpage(){
     // this.navCtrl.push(RegisterPage);
     this.navCtrl.push(RegistrationchoicePage);
@@ -115,7 +106,6 @@ loginService() {
   logintest(){
     this.navCtrl.setRoot(HomePage);
   }
-
   presentAlert(title1,msgs) {
     let alert = this.alertCtrl.create({
       title: title1,
@@ -138,9 +128,7 @@ loginService() {
     let str = {
         asdfasdf: 'asdfasdfasdf'
     };
-
   }
-
   //Google Login
   googlePlusLogin() {
     this.google.logout().then(
@@ -148,13 +136,11 @@ loginService() {
             this.googleLogin();
         },
         (err) => {
-          
             console.log(err);
             this.googleLogin();
         }
     )
   }
-
   facebookLogin() {
     this.fb.login(['public_profile', 'email'])
         .then(
@@ -181,7 +167,6 @@ loginService() {
             console.log('Alert! logging into Facebook %O', e);
         });
     }
-
     googleLogin() {
         this.google.login({
             // 'scopes': '', // optional, space-separated list of scopes, If not included or empty, defaults to `profile` and `email`.
@@ -190,7 +175,6 @@ loginService() {
         }).then(
             (success) => {
               console.log('googleplus success : ',success);
-              
                 let user = {
                     //success.displayName.split(' ');
                     first_name: success.displayName.split(' ')[0],
@@ -210,22 +194,16 @@ loginService() {
             }
             )
     }
-
-
-
     //Register step for social login 
     registerViaSocial(user) {
       this.showLoader();
       console.log('registerViaSocial recieved the data', user);
-      
       user.imageUrl = user.imageUrl || '';
       user.socialLogin = 1;
-
       let body = new FormData();
       body.append('social_type', user.social_type);
       body.append('social_id', user.userID);
       body.append('email', user.email);
-
       this.services.socialUserExist(body).subscribe(
           success => {
               console.log('fb success ++++',success);
@@ -240,8 +218,7 @@ loginService() {
                 this.storage.set('SocialRegisteration', user);
                this.registerpage();
                this.loader.dismiss();
-              }
-              
+              } 
           },
           err => {
               console.log('error ++++');
@@ -250,8 +227,4 @@ loginService() {
           }
       )
   }
-
-  
-
-
 }

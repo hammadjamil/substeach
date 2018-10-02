@@ -5,36 +5,28 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import { AppSettings } from '../app/appSettings';
 
-
-
-
 @Injectable()
 export class Services {
   baseUrl = AppSettings.API;
   constructor(private http: Http) {
   }
-
-
   private pageName : any;
-
     setOption(value) {
         this.pageName = value;
         console.log('this.pageName : ',this.pageName);
     }
-
     getConfig() {
         return this.pageName;
     }
-
   /**
    * Login Service
    */
   login(credentials) {
-
     if (!credentials.username || !credentials.password) {
       Observable.throw('Please provide credentials');
     }
     else {
+      console.log('credentials',credentials);
       let params: URLSearchParams = new URLSearchParams();
       params.set('username', credentials.username);
       params.set('password', credentials.password);

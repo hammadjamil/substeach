@@ -4,24 +4,22 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MenuController } from 'ionic-angular';
 
-import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { LogoutPage } from '../pages/logout/logout';
 import { FavouritesPage } from '../pages/favourites/favourites';
-import { SettingsPage } from '../pages/settings/settings';
 import { EditprofilePage } from '../pages/editprofile/editprofile';
 import { SchoolprofilePage } from '../pages/schoolprofile/schoolprofile';
 import { TeacherprofilePage } from '../pages/teacherprofile/teacherprofile';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { PublicprofilePage } from '../pages/publicprofile/publicprofile';
 import { NotificationPage } from '../pages/notification/notification';
-import { ChatPage } from '../pages/chat/chat';
 
 import { MyStorage } from '../app/localstorage';
 import { Auth } from '../providers/auth';
 import { LoadingController } from 'ionic-angular/index';
 import { MyTools } from '../providers/tools';
 import { Services } from '../providers/services';
+
 @Component({
   templateUrl: 'app.html',
   providers: [Auth, Services]
