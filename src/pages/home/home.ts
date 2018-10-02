@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { AlertController ,Events} from 'ionic-angular';
 import { Services } from '../../providers/services';
 import { MyStorage } from '../../app/localstorage';
@@ -8,14 +8,17 @@ import { MyTools } from '../../providers/tools';
 import { LoadingController, Platform } from 'ionic-angular';
 import { AppSettings } from '../../app/appSettings';
 import { PublicprofilePage } from '../publicprofile/publicprofile';
-
+import { ChatPage } from  '../chat/chat';
+import * as firebase from 'Firebase';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
   providers: [Services, Auth, MyTools],
 })
 export class HomePage {
-  
+  data = { nickname:"" };
+  rooms = [];
+  ref = firebase.database().ref('chatrooms/');
   loader: any;
   teacherList: any;
   userDetail: any;
@@ -24,11 +27,20 @@ export class HomePage {
   constructor(public navCtrl: NavController,public loadingCtrl: LoadingController,
     public services: Services, private storage: MyStorage,
     public tools: MyTools,
-    private alertCtrl: AlertController) {
+    private alertCtrl: AlertController, public navParams: NavParams) {
+
+      this.ref.on('value', resp => {
+        this.rooms = [];
+        this.rooms = snapshotToArray(resp);
+      });
+
+
       //this.teacherService();
       this.storage.get('user').then(
         (val) => {
           if (val != null) {
+            console.log(val);
+            this.data.nickname = val.UserName;
             this.userDetail = val;
             
           }
@@ -191,6 +203,46 @@ inviteTeacher(id){
   )
 }
 
+  
+startChat() {
+  this.addRoom();
+
+}
 
 
+
+joinRoom(key) {
+  this.navCtrl.setRoot(ChatPage, {
+    key:key,
+    nickname:this.data.nickname
+  });
+}
+
+addRoom() {
+  var num =Math.floor((Math.random() * 100) + 1);
+  console.log('num : ',num);
+  
+  
+  let newData = this.ref.push();
+  newData.set({
+    roomname: "Room-"+num
+  });
+  console.log('this.rooms : ',this.rooms);
+  console.log('this.roomslength : ',this.rooms.length);
+  this.joinRoom(this.rooms[this.rooms.length-1]['key']);
+}
+
+
+
+}
+export const snapshotToArray = snapshot => {
+  let returnArr = [];
+
+  snapshot.forEach(childSnapshot => {
+      let item = childSnapshot.val();
+      item.key = childSnapshot.key;
+      returnArr.push(item);
+  });
+
+  return returnArr;
 }

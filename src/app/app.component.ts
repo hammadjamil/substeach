@@ -16,7 +16,7 @@ import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { PublicprofilePage } from '../pages/publicprofile/publicprofile';
 import { NotificationPage } from '../pages/notification/notification';
 import { ChatPage } from '../pages/chat/chat';
-
+import * as firebase from 'firebase';
 import { MyStorage } from '../app/localstorage';
 import { Auth } from '../providers/auth';
 import { LoadingController } from 'ionic-angular/index';
@@ -48,6 +48,15 @@ export class MyApp {
               public push: Push,
               public splashScreen: SplashScreen) 
     {
+
+      const config = {
+        apiKey: 'AIzaSyDae-aT3njQhAL3vgRlBrBA0bNsLleEovM',
+        authDomain: 'YOUR_AUTH_DOMAIN',
+        databaseURL: 'https://substeach-216719.firebaseio.com',
+        projectId: 'substeach-216719',
+        storageBucket: 'YOUR_STORAGE_BUCKET',
+      };
+      firebase.initializeApp(config);
       // setInterval(function () {
       //   this.storage.get('user').then((val) => {
       //     console.log('valss :', val );

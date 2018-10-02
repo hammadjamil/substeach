@@ -40,7 +40,6 @@ import { TeacherprofilePage } from '../pages/teacherprofile/teacherprofile';
 import { PublicprofilePage } from '../pages/publicprofile/publicprofile';
 import { NotificationPage } from '../pages/notification/notification';
 import { ChatPage } from '../pages/chat/chat';
-
 import { SMS } from '@ionic-native/sms';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
 @NgModule({
