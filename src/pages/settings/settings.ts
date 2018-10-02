@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams , ToastController} from 'ionic-angular';
-
 import { LoadingController, Platform } from 'ionic-angular';
 import 'rxjs/add/operator/takeUntil';
 import { Storage } from '@ionic/storage';

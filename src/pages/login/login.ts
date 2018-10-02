@@ -56,10 +56,6 @@ export class LoginPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
-
-  
-
-
   Forgotpswdpage(){
     this.navCtrl.push(ForgotpasswordPage);    
   }

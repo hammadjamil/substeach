@@ -5,13 +5,7 @@ import { LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { HomePage } from '../home/home';
 import { Services } from '../../providers/services';
-
-/**
- * Generated class for the NotificationPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { ChatPage } from '../chat/chat';
 
 @IonicPage()
 @Component({
@@ -22,6 +16,8 @@ export class NotificationPage {
   userID : any;
   Usertype : any;
   teacherList : any;
+  userdata:any='';
+  notificationList : any='';
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public loadingCtrl: LoadingController,
     private storage: Storage,
@@ -29,6 +25,7 @@ export class NotificationPage {
     private alertCtrl: AlertController) {
     this.storage.get('user').then((val) => {
       console.log('val :', val );
+      this.userdata=val;
       this.userID = val.Id;
       this.Usertype = val.Usertype;
       this.getData();
@@ -46,8 +43,7 @@ export class NotificationPage {
           //Successfully Logged in
           success => {
             console.log('Success : ',success);
-            this.teacherList = success.data;
-            console.log('this.teacherList : ',this.teacherList);
+            this.notificationList = success.data;
           },
           error => {
             console.log('error bhai', error);
@@ -117,5 +113,7 @@ export class NotificationPage {
     this.loader.present();
   }
   // loader
-
+  chatpg(){
+    this.navCtrl.push(ChatPage);
+  }
 }

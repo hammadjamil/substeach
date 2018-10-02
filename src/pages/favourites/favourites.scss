@@ -4,6 +4,7 @@ page-favourites {
     
     .home_teachers{
         text-align: left;
+        padding: 10px;
     }
     .home_teachers_slide .slide-zoom{
         text-align: left;
@@ -56,13 +57,11 @@ page-favourites {
         color: white;
     }
     .bar-button-default {
-        color: #d4dcdf !important;
+        color: #fff !important;
         background-color: transparent;
     }
-    ion-slide.home_teachers_slide {
+    .home_teachers_slide {
         background: white;
-        // padding: 20px;
-        // border-radius: 10px;
         overflow: hidden;
     }
     .swiper-pagination.hide{
@@ -85,19 +84,17 @@ page-favourites {
         object-fit: cover;
         text-align: center;
     }
-    ion-slides{
-        height: auto;
-    }
+    
     .scroll-content {
-        padding: 25px 0px 25px 15px!important;
+        padding: 10px !important;
     }
     .swiper-wrapper {
         padding-bottom: 40px;
     }
-    ion-slide.home_teachers_slide {
-        /* border: 1px solid grey; */
+    .home_teachers_slide {
+        box-shadow: 2px 0px 25px -4px;
+        padding: 0;
         border-radius: 10px;
-        box-shadow: 8px 2px 20px -6px;
     }
     .favv{
         text-transform: capitalize;

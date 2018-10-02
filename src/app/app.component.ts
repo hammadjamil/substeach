@@ -34,7 +34,8 @@ export class MyApp {
   loader: any;
   pages: Array<{title: string, component: any}>;
   exitApp = 0;
-  userData : any;
+  userData : any='';
+  homepage:any;
   constructor(private services: Services,
               public toastCtrl: ToastController,
               public menuCtrl: MenuController,
@@ -47,6 +48,12 @@ export class MyApp {
               public push: Push,
               public splashScreen: SplashScreen) 
     {
+      // setInterval(function () {
+      //   this.storage.get('user').then((val) => {
+      //     console.log('valss :', val );
+      //     this.userData = val;
+      //   });
+      // }, 3000);
     this.initializeApp();
     // used for an example of ngFor and navigation
     this.pages = [
@@ -68,21 +75,33 @@ export class MyApp {
     else
       this.storage.set('devicePlatform', 'android');
       this.storage.get('user').then((val) => {
-       
-        
         if(val!='' && val!=null){
-          console.log("val : ",val);
-          
+          this.userData=val;
           if(val.Usertype=='School'){
+            this.homepage=1;
             this.rootPage = SchoolprofilePage;
-          }else{
-            this.rootPage = TeacherprofilePage;
+            this.pages = [
+              { title: 'Home', component: SchoolprofilePage },   
+              { title: 'Profile', component: PublicprofilePage },      
+              { title: 'Favourites', component: FavouritesPage },
+              { title: 'Notifications', component: NotificationPage },
+              { title: 'Logout', component: LogoutPage }
+            ];
           }
-          
-          // this.rootPage = PublicprofilePage;
+          else{
+            this.homepage=2;
+            console.log('this.homepage',this.homepage);
+            this.rootPage = TeacherprofilePage;
+            this.pages = [
+              { title: 'Home', component: PublicprofilePage },         
+              { title: 'Favourites', component: FavouritesPage },
+              { title: 'Notifications', component: NotificationPage },
+              { title: 'Settings', component: TeacherprofilePage },
+              { title: 'Logout', component: LogoutPage }
+            ];
+          }
         }else{
           this.rootPage = LoginPage;
-          // this.rootPage = PublicprofilePage;
         }
       });
       if(this.platform.is('android')){

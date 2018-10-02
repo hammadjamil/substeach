@@ -32,6 +32,9 @@ $fontfamily:'Noto Sans KR', sans-serif;
 .picker-opts button {
     background: white !important;
 }
+span.back-button-text {
+    display: none;
+}
 ion-app {
     font-family: $fontfamily !important;
 }
@@ -110,9 +113,9 @@ ion-menu {
     ion-header {
         overflow: hidden !important;
     }
-    scroll-content {
-        overflow-y: auto !important;
-    }
+    // scroll-content {
+    //     overflow-y: auto !important;
+    // }
     .toolbar-background{
         background-color: $themecolor !important;
     }

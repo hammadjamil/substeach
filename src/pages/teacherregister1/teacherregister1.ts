@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, MenuController } from 'ionic-angular';
 import { Teacherregister2Page } from '../teacherregister2/teacherregister2';
-import { LoginPage } from '../login/login';
 import { LoadingController } from 'ionic-angular';
-
 import { ActionSheetController } from 'ionic-angular'
 import { FileChooser } from '@ionic-native/file-chooser';
 import { File } from '@ionic-native/file';
@@ -15,16 +13,8 @@ import { Storage } from '@ionic/storage';
 import { AlertController } from 'ionic-angular';
 import { Services } from '../../providers/services';
 import { Base64 } from '@ionic-native/base64';
-
 import { DomSanitizer } from '@angular/platform-browser';
 declare let cordova: any;
-// import { Chooser } from '@ionic-native/chooser';
-/**
- * Generated class for the Teacherregister1Page page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -45,7 +35,8 @@ export class Teacherregister1Page {
   baseImgFront : any = '';
   baseImgBack : any = '';
   selectedImgType = '';
-  constructor(public navCtrl: NavController, public navParams: NavParams,
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
     private fileChooser: FileChooser,
     private camera: Camera,
     public actionSheetCtrl: ActionSheetController,
@@ -58,14 +49,20 @@ export class Teacherregister1Page {
     public services: Services,
     private alertCtrl: AlertController,
     private base64: Base64,
+    private menu: MenuController,
     private sanitizer: DomSanitizer) {
   }
   getFrontImgContent() {
     return this.sanitizer.bypassSecurityTrustUrl(this.baseImgFront);
   }
-
   getBackImgContent() {
     return this.sanitizer.bypassSecurityTrustUrl(this.baseImgBack);
+  }
+  ionViewDidEnter() {
+    this.menu.swipeEnable(false);
+  }
+  ionViewWillLeave() {
+    this.menu.swipeEnable(true);
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad Schoolregister2Page');
@@ -79,8 +76,6 @@ export class Teacherregister1Page {
   skip(){
     this.navCtrl.push(Teacherregister2Page);
   }
-
-  
   presentAlert(title, msgs) {
     let alert = this.alertCtrl.create({
       title: title,
@@ -90,7 +85,6 @@ export class Teacherregister1Page {
     });
     alert.present();
   }
-
    // loader
    getLoader() {
     console.log('showing loader now');
@@ -110,9 +104,7 @@ export class Teacherregister1Page {
     this.loader.present();
   }
   // loader
-    
   public takePicture(sourceType) {
-
     // Create options for the Camera Dialog
     var options = {
       quality: 100,
@@ -122,8 +114,6 @@ export class Teacherregister1Page {
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
     };
-
-    
     // Get the data of an image
     this.camera.getPicture(options).then((imagePath) => {
       // Special handling for Android library
@@ -145,8 +135,6 @@ export class Teacherregister1Page {
     });
 
   }
-
-
   // Create a new name for the image
   private createFileName() {
     var d = new Date(),
@@ -154,13 +142,11 @@ export class Teacherregister1Page {
       newFileName = n + ".jpg";
     return newFileName;
   }
-
   // Copy the image to a local folder
   private copyFileToLocalDir(namePath, currentName, newFileName) {
     this.file.copyFile(namePath, currentName, cordova.file.dataDirectory, newFileName).then(success => {
       this.lastImage = newFileName;
       this.fileSelected = true;
-
       this.logo = this.pathForImage(newFileName);
       this.base64.encodeFile(this.logo).then((base64File: string) => {
         if(this.selectedImgType=='front'){
@@ -182,7 +168,6 @@ export class Teacherregister1Page {
       console.log(error);
     });
   }
-
   // Always get the accurate path to your apps folder
   public pathForImage(img) {
     if (img === null) {
@@ -191,12 +176,9 @@ export class Teacherregister1Page {
       return cordova.file.dataDirectory + img;
     }
   }
-
-
   /**
    * Profile Photo update
    */
-
   uploadPhoto(type) {
     this.selectedImgType = type;
     let actionSheet = this.actionSheetCtrl.create({

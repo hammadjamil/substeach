@@ -6,7 +6,6 @@
     <ion-title>TEACHER PROFILE</ion-title>
   </ion-navbar>
 </ion-header>
-
 <ion-content padding>
     <p style="font-size: 20px;text-align: center;font-weight: 600;">Add Availability</p>
   <ion-item>
@@ -39,7 +38,6 @@
   </ion-item>
   <ion-item>
     <ion-label>Standrads</ion-label>
-    
       <ion-select [(ngModel)]="schoolDay.Standard" multiple="true">
         <ion-option *ngFor="let row of Standard" value="{{row.Id}}">{{row.StandardName}}</ion-option>
       </ion-select>

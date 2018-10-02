@@ -2,11 +2,7 @@ $themecolor: #38d345;
 $themecolorw: #38d345;
 page-editprofile {
     .btnstyling{
-        text-transform: none;
-        font-weight: 600;
-        border-radius: 0px;
         margin-top: 30px;
-        background-color: #09a546 !important;
     }
     ion-item {
         padding-left: 0 !important;
@@ -40,13 +36,13 @@ page-editprofile {
     }
     .penabs{
         position: absolute;
-        right: 20%;
-        background: #09a546;
-        padding: 14px;
+        right: 25%;
+        background: #38d345;
+        padding: 8px;
         border-radius: 65px;
-        bottom: 20%;
-        width: 55px;
-        height: 55px;
+        bottom: 25%;
+        width: 40px;
+        height: 40px;
     }
     .imgprofile{
         position: relative;
@@ -58,7 +54,7 @@ page-editprofile {
         color: white;
     }
     .bar-button-default {
-        color: #d4dcdf !important;
+        color: #fff !important;
         background-color: transparent;
     }
     ion-item {

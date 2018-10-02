@@ -1,17 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { RegistrationchoicePage } from '../registrationchoice/registrationchoice';
 import { LoginPage } from '../login/login';
 import { LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { AlertController } from 'ionic-angular';
 import { Services } from '../../providers/services';
-/**
- * Generated class for the Teacherregister3Page page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -35,9 +29,12 @@ export class Teacherregister3Page {
   userPhoneNumber : any;
   frontimg : any;
   backimg : any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage,
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+     private storage: Storage,
     public loadingCtrl: LoadingController,
     public services: Services,
+    private menu: MenuController,
     private alertCtrl: AlertController) {
       this.storage.get('RegisterTeacherPhoneNumber').then((val) => {
         this.userPhoneNumber = val;
@@ -49,38 +46,36 @@ export class Teacherregister3Page {
         this.backimg = val;
       });
   }
+  ionViewDidEnter() {
+    this.menu.swipeEnable(false);
+  }
+  ionViewWillLeave() {
+    this.menu.swipeEnable(true);
+  }
   ageconsole(){
     console.log('this.user.isAdult',this.user.age);
-    
     if(this.user.age){
       this.user.age = false;
-
     }else{
       this.user.age = true;
     }
-    
   }
   AgreeOnTermsAndConditions(){
     console.log('this.user.AgreeOnTermsAndConditions',this.user.terms);
-    
     if(this.user.terms){
       this.user.terms = false;
-
     }else{
       this.user.terms = true;
     }
-    
   }
   presentAlert(title, msgs) {
     let alert = this.alertCtrl.create({
       title: title,
-      // subTitle: msg,
       message: msgs,
       buttons: ['Dismiss']
     });
     alert.present();
   }
-
   // loader
   getLoader() {
     console.log('showing loader now');
@@ -100,7 +95,6 @@ export class Teacherregister3Page {
     this.loader.present();
   }
   // loader
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad Teacherregister3Page');
   }
@@ -113,25 +107,7 @@ export class Teacherregister3Page {
   skip(){
     this.navCtrl.push(RegistrationchoicePage);
   }
-
-
- 
   RegisterStepThree() {
-    // if (this.user.FirstName == '') {
-    //   // this.loader.dismiss();
-    //   setTimeout(() => {
-    //     this.presentAlert('Alert!', 'Please enter your First Name');
-    //     this.disableButton = false;
-    //   }, 1000);
-    //   return;
-    // }
-    // else if (this.user.LastName == '') {
-    //   setTimeout(() => {
-    //     this.presentAlert('Alert!', 'Please enter your Last Name');
-    //     this.disableButton = false;
-    //   }, 1000);
-    //   return;
-    // }
      if (this.user.region == '') {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please enter your region');
@@ -179,26 +155,20 @@ export class Teacherregister3Page {
       this.showLoader();
       this.storage.get('RegisterTeacherUserStep').then((val) => {
         this.userDetail = val;
-        
           let body = new FormData();
           body.append('UserName', this.userDetail.username);
           body.append('Email', this.userDetail.email);
           body.append('EmailConfirmed', this.userDetail.confemail);
           body.append('PasswordHash', this.userDetail.pswd);
-          // body.append('Rpswd', this.userDetail.rpswd);
           body.append('PhoneNumber', this.userPhoneNumber);
           body.append('PhoneNumberConfirmed',this.userPhoneNumber);
           body.append('SocialID', this.userDetail.socialID);
-          // body.append('frontImg', this.frontimg);
-          // body.append('BackImg', this.backimg);
-
           body.append('LogoPath', '');
           body.append('FirstName', this.userDetail.FirstName);
           body.append('LastName', this.userDetail.LastName);
           body.append('DOB', this.user.DOB);
           body.append('TimeOfAvaliabilityFrom', this.user.TimeOfAvaliabilityFrom);
           body.append('TimeOfAvaliabilityTo', this.user.TimeOfAvaliabilityTo);
-          
               this.services.registerTeacher(body).subscribe(
                 //Successfully Logged in
                 success => {
@@ -218,14 +188,10 @@ export class Teacherregister3Page {
                       this.presentAlert('Alert!', error.message[0]);
                       this.loader.dismiss();
                     // }
-                    
                   }, 500);
                 }
               )
         });
-      
     }
   }
-
-  
 }
