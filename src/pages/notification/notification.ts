@@ -6,13 +6,16 @@ import { Storage } from '@ionic/storage';
 import { HomePage } from '../home/home';
 import { Services } from '../../providers/services';
 import { ChatPage } from '../chat/chat';
-
+import * as firebase from 'Firebase';
 @IonicPage()
 @Component({
   selector: 'page-notification',
   templateUrl: 'notification.html',
 })
 export class NotificationPage {
+  data = { nickname:"" };
+  rooms = [];
+  ref = firebase.database().ref('chatrooms/');
   userID : any;
   Usertype : any;
   teacherList : any;
@@ -23,11 +26,16 @@ export class NotificationPage {
     private storage: Storage,
     public services: Services,
     private alertCtrl: AlertController) {
+      this.ref.on('value', resp => {
+        this.rooms = [];
+        this.rooms = snapshotToArray(resp);
+      });
+
     this.storage.get('user').then((val) => {
-      console.log('val :', val );
       this.userdata=val;
       this.userID = val.Id;
       this.Usertype = val.Usertype;
+      this.data.nickname = val.UserName;
       this.getData();
     });
   }
@@ -58,12 +66,13 @@ export class NotificationPage {
         )
     
   }
-  updateStatus(id , status, senderid){
+  updateStatus(id , status, senderid, room){
     let body = new FormData();
     body.append('userId',  id);
     body.append('status',  status);
     body.append('senderid',  senderid);
     body.append('Usertype',  this.Usertype);
+    body.append('room',  room);
     this.services.updateNotification(body).subscribe(
       //Successfully Logged in
       success => {
@@ -116,4 +125,65 @@ export class NotificationPage {
   chatpg(){
     this.navCtrl.push(ChatPage);
   }
+
+  
+startChat(no) {
+  this.addRoom(no);
+
+}
+
+
+
+joinRoom(key) {
+  this.navCtrl.setRoot(ChatPage, {
+    key:key,
+    nickname:this.data.nickname
+  });
+}
+
+addRoom(number) {
+  console.log(' this.rooms', this.rooms);
+  
+  var temp = false;
+  this.rooms.forEach(obj => {
+    if(obj.roomname == number){
+      this.joinRoom(obj.key);
+      temp = true;
+    }
+  });
+  if(temp == false){
+    let newData = this.ref.push();
+    newData.set({
+      roomname: number
+    });
+
+    setTimeout( () => {
+      this.rooms.forEach(obj => {
+        if(obj.roomname == number){
+          this.joinRoom(obj.key);
+        }
+      });
+      console.log(' this.rooms if', this.rooms);
+    }, 1000)
+
+    
+  }else{
+    console.log(' this.rooms else', this.rooms);
+  }
+
+}
+
+
+}
+
+export const snapshotToArray = snapshot => {
+  let returnArr = [];
+
+  snapshot.forEach(childSnapshot => {
+      let item = childSnapshot.val();
+      item.key = childSnapshot.key;
+      returnArr.push(item);
+  });
+
+  return returnArr;
 }

@@ -26,12 +26,7 @@ export class Services {
       Observable.throw('Please provide credentials');
     }
     else {
-<<<<<<< HEAD
       console.log('credentials',credentials);
-=======
-      console.log(credentials);
-      
->>>>>>> b1eb440ef03f58c3a86f977df0cd944b5482255d
       let params: URLSearchParams = new URLSearchParams();
       params.set('username', credentials.username);
       params.set('password', credentials.password);

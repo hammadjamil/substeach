@@ -78,27 +78,6 @@ loginService() {
    
   //Requesting API 
   else {
-<<<<<<< HEAD
-      this.services.login(this.user).subscribe(
-        //Successfully Logged in
-        success => {
-          console.log('success bhai', success);
-          this.auth.loginUser(success);
-          setTimeout(() => {
-            this.loader.dismiss();
-            if(success.userData.Usertype=='School')
-              this.navCtrl.setRoot(SchoolprofilePage);
-            else
-              this.navCtrl.setRoot(TeacherprofilePage);
-          }, 2000);
-        },
-        error => {
-          this.loader.dismiss();
-          console.log('error bhai', error);
-          this.presentAlert('Alert!', error.message);
-        }
-      )
-=======
     this.storage.get('deviceID').then((val) => {
        
       this.user.udid = val;
@@ -128,7 +107,6 @@ loginService() {
     });
       
       
->>>>>>> b1eb440ef03f58c3a86f977df0cd944b5482255d
   }
 }
   registerpage(){
