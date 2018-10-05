@@ -42,6 +42,9 @@
         <splash density="port-xxhdpi" src="resources/android/splash/drawable-port-xxhdpi-screen.png" />
         <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
     </platform>
+    <platform name="android">
+        <resource-file src="google-services.json" target="app/google-services.json" />
+    </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
@@ -103,8 +106,7 @@
     <plugin name="com-badrit-base64" spec="^0.2.0" />
     <plugin name="cordova-sms-plugin" spec="^0.1.13" />
     <plugin name="phonegap-plugin-push" spec="^2.2.3">
-        <variable name="FCM_VERSION" value="11.6.2" />
         <variable name="SENDER_ID" value="511898450722" />
     </plugin>
-    <engine name="android" spec="^7.0.0" />
+    <engine name="android" spec="7.1.0" />
 </widget>

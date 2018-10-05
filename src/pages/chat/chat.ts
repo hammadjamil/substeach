@@ -34,7 +34,7 @@ export class ChatPage {
 
 
     
-    this.roomkey = this.navParams.get("key") as string;
+      this.roomkey = this.navParams.get("key") as string;
       this.nickname = this.navParams.get("nickname") as string;
       this.data.type = 'message';
       this.data.nickname = this.nickname;
@@ -53,7 +53,7 @@ export class ChatPage {
         this.chats = snapshotToArray(resp);
         setTimeout(() => {
           if(this.offStatus === false) {
-            this.content.scrollToBottom(300);
+            // this.content.scrollToBottom(300);
           }
         }, 1000);
       });

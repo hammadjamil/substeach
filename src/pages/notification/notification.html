@@ -18,13 +18,13 @@
            {{row.Description}}
           </p>
       <ion-col col-6 float-left *ngIf="row.Status=='Pending'">
-        <button ion-button full class="cancelbtn" (click)="updateStatus(row.toUserId, 'reject',row.UserId)">Cancel</button>
+        <button ion-button full class="cancelbtn" (click)="updateStatus(row.toUserId, 'reject',row.UserId, row.roomNo)">Cancel</button>
       </ion-col>
       <ion-col col-6 float-left>
-        <button ion-button full *ngIf="row.Status=='Pending'" (click)="updateStatus(row.toUserId, 'accept',row.UserId)">Accept</button>
+        <button ion-button full *ngIf="row.Status=='Pending'" (click)="updateStatus(row.toUserId, 'accept',row.UserId, row.roomNo)">Accept</button>
       </ion-col>
       <ion-col col-12 float-left *ngIf="row.Status=='accept'">
-        <button ion-button full (click)="chatpg()">Chat</button>
+        <button ion-button full (click)="startChat(row.roomNo)">Chat</button>
       </ion-col>
     </ion-card-content>
   </ion-card>

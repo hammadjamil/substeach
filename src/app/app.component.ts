@@ -13,12 +13,9 @@ import { TeacherprofilePage } from '../pages/teacherprofile/teacherprofile';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { PublicprofilePage } from '../pages/publicprofile/publicprofile';
 import { NotificationPage } from '../pages/notification/notification';
-<<<<<<< HEAD
-
-=======
 import { ChatPage } from '../pages/chat/chat';
+import { HomePage } from '../pages/home/home';
 import * as firebase from 'firebase';
->>>>>>> b1eb440ef03f58c3a86f977df0cd944b5482255d
 import { MyStorage } from '../app/localstorage';
 import { Auth } from '../providers/auth';
 import { LoadingController } from 'ionic-angular/index';
@@ -117,6 +114,7 @@ export class MyApp {
         }
       });
       if(this.platform.is('android')){
+                console.log('mww tesatde');
                 
         this.PushSetUp();
       }

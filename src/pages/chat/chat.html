@@ -32,16 +32,17 @@
   <ion-col col-12 *ngFor="let chat of chats">
     <div class="chatcolleft" *ngIf="chat.user !== nickname">
       <img src="../../assets/imgs/myprofileimg.png" alt=""> 
-      
+      <p>{{chat.user}}</p>
       <p>{{chat.message}}</p>
-      <span class="msg-date">{{chat.sendDate | date:'short'}}</span>
+      <p class="msg-date">{{chat.sendDate | date:'short'}}</p>
     </div>
 
     <div class="chatcolright" *ngIf="chat.user === nickname">
       <img src="../../assets/imgs/myprofileimg.png" alt="">
       
+      <p>{{chat.user}}</p>
       <p>{{chat.message}}</p>
-      <span class="msg-date">{{chat.sendDate | date:'short'}}</span>
+      <p class="msg-date">{{chat.sendDate | date:'short'}}</p>
   </div>
   </ion-col>
   
