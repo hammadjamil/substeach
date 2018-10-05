@@ -25,6 +25,7 @@ export class ChatPage {
     roomkey:string;
     nickname:string;
     offStatus:boolean = false;
+    chatusername:string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.ref.on('value', resp => {
@@ -36,6 +37,7 @@ export class ChatPage {
     
       this.roomkey = this.navParams.get("key") as string;
       this.nickname = this.navParams.get("nickname") as string;
+      this.chatusername = this.navParams.get("chatusername") as string;
       this.data.type = 'message';
       this.data.nickname = this.nickname;
 

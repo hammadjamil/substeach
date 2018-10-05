@@ -24,7 +24,7 @@
         <button ion-button full *ngIf="row.Status=='Pending'" (click)="updateStatus(row.toUserId, 'accept',row.UserId, row.roomNo)">Accept</button>
       </ion-col>
       <ion-col col-12 float-left *ngIf="row.Status=='accept'">
-        <button ion-button full (click)="startChat(row.roomNo)">Chat</button>
+        <button ion-button full (click)="startChat(row.roomNo ,row.UserName)">Chat</button>
       </ion-col>
     </ion-card-content>
   </ion-card>

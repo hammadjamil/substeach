@@ -5,8 +5,18 @@ page-chat {
     .toolbar-background{
         background: $themecolor;
     }
+    .toolbar {
+        min-height: 65px !important;
+    }
+    .toolbar-ios ion-title {
+        padding: 0 60px 0px !important;
+    }
     .toolbar-title {
         color: white;
+        text-align: left;
+    }
+    .toolbar-title img{
+        margin-right: 15px;
     }
     .bar-button-default {
         color: #fff !important;
@@ -14,50 +24,64 @@ page-chat {
     }
     .chatcolleft{
         background: #eaeaea;
-        border-radius: 20px;
-        border-bottom-left-radius:25px;
-        border-top-left-radius:25px;
+        border-radius: 10px;
         padding: 0;
         box-shadow: 0px 0px 4px 0px grey;
         margin-bottom: 10px;
         float: left;
-        padding: 0 10px 0 0;   
-        max-width: 80%;     
-        img{
-            width: 50px;
-            height: 50px;
-            float: left;
-    
-        }
-        p{
-            float: left;
-            padding-top: 10px;
+        padding: 0 10px 0 0;
+        p.chatmsg_left {
+            width: 100%;
             padding-left: 10px;
-            max-width: 77%;
+            padding-top: 10px;
+            margin-bottom: 0px;
+        }
+        p.msg-date.msg-date_left {
+            width: 100%;
+            text-align: right;
+            margin-bottom: 0;
+            padding-bottom: 5px;
+            font-size: 10px;
         }
     } 
     .chatcolright {
         background: $themecolor;
-        border-radius: 20px;
+        border-radius: 10px;
         padding: 0;
         box-shadow: 0px 0px 4px 0px grey;
         margin-bottom: 10px;
-        border-bottom-right-radius:25px;
-        border-top-right-radius:25px; 
         float: right;
         padding: 0 0 0 10px;
         max-width: 80%;
-        img{
-        width: 50px;
-        height: 50px;
-        float: right;
-        
+        p.chatmsg_right {
+            width: 100%;
+            padding-left: 0;
+            padding-top: 10px;
+            padding-right: 10px;
+            color: white;
+            margin-bottom: 0px;
         }
-        p{
-                float: right;
-                padding-top: 10px;
-                padding-right: 10px;
-                max-width: 77%;
+        p.msg-date.msg-date_right {
+            width: 100%;
+            text-align: right;
+            margin-bottom: 0;
+            padding-bottom: 5px;
+            font-size: 10px;
+            padding-right: 14px;
+            color: white;
         }
     }
+    .sendbtn{
+        padding: 10px;
+        height: 50px;
+        background: $themecolor;
+    }
+    .input_div{
+        height: 50px;
+    }
+    .send_icon{
+        font-size: 30px;
+        color: white;
+    }
+    
 }

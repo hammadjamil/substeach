@@ -15,6 +15,7 @@ import * as firebase from 'Firebase';
 export class NotificationPage {
   data = { nickname:"" };
   rooms = [];
+  chatuser:any;
   ref = firebase.database().ref('chatrooms/');
   userID : any;
   Usertype : any;
@@ -127,7 +128,8 @@ export class NotificationPage {
   }
 
   
-startChat(no) {
+startChat(no ,chatusername) {
+  this.chatuser=chatusername;
   this.addRoom(no);
 
 }
@@ -135,9 +137,11 @@ startChat(no) {
 
 
 joinRoom(key) {
+  console.log('this.data.nickname',this.data.nickname);
   this.navCtrl.setRoot(ChatPage, {
     key:key,
-    nickname:this.data.nickname
+    nickname:this.data.nickname,
+    chatusername: this.chatuser
   });
 }
 

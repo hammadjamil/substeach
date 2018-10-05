@@ -109,4 +109,5 @@
         <variable name="SENDER_ID" value="511898450722" />
     </plugin>
     <engine name="android" spec="7.1.0" />
+    <plugin name="cordova-plugin-firebase" spec="^2.0.4" />
 </widget>
