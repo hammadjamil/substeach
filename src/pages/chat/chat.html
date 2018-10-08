@@ -1,56 +1,30 @@
-<!-- <ion-header>
+<ion-header>
   <ion-navbar>
-    <ion-title>Room</ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="addRoom()">
-        <ion-icon name="add-circle"></ion-icon>
-      </button>
-    </ion-buttons>
+    <button ion-button menuToggle class="menubtn">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title> <img src="../../assets/imgs/myprofileimg.png" alt="" width="50px" height="50px"> {{chatusername}}</ion-title>
   </ion-navbar>
 </ion-header>
-
 <ion-content padding>
-  <ion-list>
-    <ion-item *ngFor="let room of rooms">
-      {{room.roomname}}
-      <ion-icon name="chatboxes" item-end (click)="joinRoom(room.key)"></ion-icon>
-    </ion-item>
-  </ion-list>
-</ion-content> -->
-<ion-header>
-    <ion-navbar>
-      <button ion-button menuToggle class="menubtn">
-        <ion-icon name="menu"></ion-icon>
-      </button>
-      <ion-title> <img src="../../assets/imgs/myprofileimg.png" alt="" width="50px" height="50px"> {{chatusername}}</ion-title>
-    </ion-navbar>
-  </ion-header>
-
-
-<ion-content padding>
-<ion-row class="chat">
-  <ion-col col-12 *ngFor="let chat of chats">
-    <div class="chatcolleft" *ngIf="chat.user !== nickname">
-      <!-- <img src="../../assets/imgs/myprofileimg.png" alt=""> 
-      <p class="username_chat_left">{{chat.user}}</p> -->
-      <p class="chatmsg_left">{{chat.message}}</p>
-      <p class="msg-date msg-date_left">{{chat.sendDate | date:'short'}}</p>
-    </div>
-
-    <div class="chatcolright" *ngIf="chat.user === nickname">
-      <!-- <img src="../../assets/imgs/myprofileimg.png" alt="">
-      <p class="username_chat_right">{{chat.user}}</p> -->
-      <p class="chatmsg_right">{{chat.message}}</p>
-      <p class="msg-date msg-date_right">{{chat.sendDate | date:'short'}}</p>
-  </div>
-  </ion-col>
-</ion-row>
+  <ion-row class="chat">
+    <ion-col col-12 *ngFor="let chat of chats">
+      <div class="chatcolleft" *ngIf="chat.user !== nickname">
+        <p class="chatmsg_left">{{chat.message}}</p>
+        <p class="msg-date msg-date_left">{{chat.sendDate | date:'short'}}</p>
+      </div>
+      <div class="chatcolright" *ngIf="chat.user === nickname">
+        <p class="chatmsg_right">{{chat.message}}</p>
+        <p class="msg-date msg-date_right">{{chat.sendDate | date:'short'}}</p>
+      </div>
+    </ion-col>
+  </ion-row>
 </ion-content>
 <ion-footer>
-      <ion-col col-10 float-left class="input_div">
-        <ion-input type="text" placeholder="Type a message" [(ngModel)]="data.message" name="message"></ion-input>
-      </ion-col>
-      <ion-col col-2 class="sendbtn" (click)="sendMessage()" float-left text-center>
-        <ion-icon name="paper-plane" class="send_icon"></ion-icon>
-      </ion-col>
+  <ion-col col-10 float-left class="input_div">
+    <ion-input type="text" placeholder="Type a message" [(ngModel)]="data.message" name="message"></ion-input>
+  </ion-col>
+  <ion-col col-2 class="sendbtn" (click)="sendMessage()" float-left text-center>
+    <ion-icon name="paper-plane" class="send_icon"></ion-icon>
+  </ion-col>
 </ion-footer>

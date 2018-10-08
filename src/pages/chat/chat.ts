@@ -32,15 +32,11 @@ export class ChatPage {
       this.rooms = [];
       this.rooms = snapshotToArray(resp);
     });
-
-
-    
       this.roomkey = this.navParams.get("key") as string;
       this.nickname = this.navParams.get("nickname") as string;
       this.chatusername = this.navParams.get("chatusername") as string;
       this.data.type = 'message';
       this.data.nickname = this.nickname;
-
       let joinData = firebase.database().ref('chatrooms/'+this.roomkey+'/chats').push();
       joinData.set({
         type:'join',
@@ -49,25 +45,18 @@ export class ChatPage {
         sendDate:Date()
       });
       this.data.message = '';
-
       firebase.database().ref('chatrooms/'+this.roomkey+'/chats').on('value', resp => {
         this.chats = [];
         this.chats = snapshotToArray(resp);
         setTimeout(() => {
           if(this.offStatus === false) {
-            // this.content.scrollToBottom(300);
           }
         }, 1000);
       });
-
   }
-
-
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChatPage');
   }
-
   sendMessage() {
     let newData = firebase.database().ref('chatrooms/'+this.roomkey+'/chats').push();
     newData.set({
@@ -78,8 +67,6 @@ export class ChatPage {
     });
     this.data.message = '';
   }
-
-
   exitChat() {
     let exitData = firebase.database().ref('chatrooms/'+this.roomkey+'/chats').push();
     exitData.set({
@@ -88,23 +75,18 @@ export class ChatPage {
       message:this.nickname+' has exited this room.',
       sendDate:Date()
     });
-  
     this.offStatus = true;
-  
     this.navCtrl.setRoot(ChatPage, {
       nickname:this.nickname
     });
   }
-
 }
 export const snapshotToArray = snapshot => {
   let returnArr = [];
-
   snapshot.forEach(childSnapshot => {
       let item = childSnapshot.val();
       item.key = childSnapshot.key;
       returnArr.push(item);
   });
-
   return returnArr;
 };
