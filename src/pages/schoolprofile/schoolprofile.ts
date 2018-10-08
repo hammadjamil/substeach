@@ -6,13 +6,7 @@ import { LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { HomePage } from '../home/home';
 import { Services } from '../../providers/services';
-
-/**
- * Generated class for the SchoolprofilePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Events } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -40,8 +34,10 @@ export class SchoolprofilePage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public loadingCtrl: LoadingController,
     private storage: Storage,
+    public events: Events,
     public services: Services,
     private alertCtrl: AlertController) {
+      this.events.publish('user:login');
     this.services.getStandards().subscribe(
       //Successfully Logged in
       success => {

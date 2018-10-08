@@ -1,55 +1,29 @@
-$themecolor: #38d345;
-$themecolorw: #38d345;
+$themecolor: #a51463;
+$themecolorw: #a51463;
 $fontfamily:'Montserrat', sans-serif;
-$gradiantcolor:linear-gradient(45deg, #39a02b 0%,#31b247 41%,#3ad83a 70%,#42f44e 100%);
 button{
   border-radius:45px !important; 
   background: $themecolor !important;
   box-shadow: none !important;
-  // background: $gradiantcolor !important;
-  // font-weight: 700 !important;
-  // box-shadow: 1px 1px 2px #444 !important;
-}
-button span{
-    // background: -webkit-linear-gradient(#8a8787, #131212);
-    // -webkit-background-clip: text;
-    // -webkit-text-fill-color: transparent;
-    // font-weight: 700 !important;
-    // font-size: 18px !important;
 }
 ion-item{
     border: 2px solid $themecolor !important;
     border-radius: 45px !important;
     margin-bottom: 10px !important;
     height: 45px;
-    // box-shadow: 1px 1px 2px #444 !important;
 }
 .item-inner{
-  // padding-left: 10px;
   border-bottom: 0 !important;
 }
 ion-label {
   color: white !important;
-  background: #38d345 !important;
+  background: #a51463 !important;
   padding: 13px 0;
   margin: 0 !important;
   text-align: center;
   width: 50px;
 }
-// ion-title .toolbar-title{
-//   background: -webkit-linear-gradient(#38d345, #048820);
-//     -webkit-background-clip: text;
-//     -webkit-text-fill-color: transparent;
-// }
-// h3{
-//   background: -webkit-linear-gradient(#8a8787, #000000);
-//   -webkit-background-clip: text;
-//   -webkit-text-fill-color: transparent;
-//   font-weight: 700;
-// }
 .scroll-content{
-//  background: url('../../assets/imgs/bgimg.png');
-//   background-size: 100% 100%;
 padding: 25px !important;
 }
 .input-wrapper ion-label ion-icon {
@@ -101,35 +75,24 @@ page-login {
   font-weight: 300;
   margin-bottom: 0;
 }
-
  #loginpage ion-item .item-inner {
-
    border-bottom: 2px solid $themecolor;
  }
 .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner,
 .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
   border-bottom-color: $themecolor;
-
   -webkit-box-shadow: inset 0 -1px 0 0 $themecolor;
-
   box-shadow: inset 0 -1px 0 0 $themecolor;
-
 }
 .list-md .item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child,
 .list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child {
   border-bottom-color: $themecolor;
-
   -webkit-box-shadow: inset 0 -1px 0 0 $themecolor;
-
   box-shadow: inset 0 -1px 0 0 $themecolor;
-
 }
 .marginset .text-input {
   margin: 0;
-  // margin-bottom: 0;
-  // margin-left: 0;
 }
-
  #loginpage ion-spinner {
   position: absolute;
   display: inline-block;
@@ -138,13 +101,9 @@ page-login {
   right: 10px;
   top:10px;
 }
-// .scroll-content {
-//       overflow-y: hidden !important;
-// }
 .sociallogin{
   text-align: center;
   padding-top: 50px;
-  // font-size: 30px;
   font-size: 30px !important;
   color: $themecolorw;
 }

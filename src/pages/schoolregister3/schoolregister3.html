@@ -32,13 +32,24 @@
         <ion-label style="margin-bottom: 0;margin-right: 10px;">
           <ion-icon name="md-mail-open"></ion-icon>
         </ion-label>
-        <ion-input type="text" placeholder="Billing Postal Code"  [(ngModel)]="user.BillingPostalCode" class="marginset" style="font-size: 16px;"></ion-input>
+        <ion-input type="number" placeholder="Billing Postal Code"  [(ngModel)]="user.BillingPostalCode" class="marginset" style="font-size: 16px;"></ion-input>
       </ion-item>
-      <ion-item class="p-0">
+      <!-- <ion-item class="p-0">
         <ion-label style="margin-bottom: 0;margin-right: 10px;">
           <ion-icon name="ios-flag"></ion-icon>
         </ion-label>
         <ion-input type="text" placeholder="Billing Country"  [(ngModel)]="user.BillingCountry" class="marginset" style="font-size: 16px;"></ion-input>
+      </ion-item> -->
+      <ion-item  class="p-0">
+        <ion-label style="color: #9c9c9c !important;background: transparent !important;padding: 0;margin: 0 !important;text-align: center;width: 50px;text-align: left;">
+          <ion-icon name="ios-flag" style="width: 50px;padding: 13px;background: #a51463;color: white;margin-right: 13px;"></ion-icon> Billing Country
+        </ion-label>
+        <ion-select [(ngModel)]="user.BillingCountry">
+          <ion-option value="Pakistan">Pakistan</ion-option>
+          <ion-option value="England">England</ion-option>
+          <ion-option value="Sweden">Sweden</ion-option>
+          <ion-option value="Germany">Germany</ion-option>
+        </ion-select>
       </ion-item>
       <ion-item class="p-0 itmm"  style="height:60px;">
         <ion-label style="color: black;white-space: unset;font-weight: 300;font-size: 16px;padding: 0px 0 0 10px !important;text-align: left;">I confirm that I am over 18 years of age</ion-label>

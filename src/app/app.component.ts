@@ -3,6 +3,7 @@ import { Nav, Platform, ToastController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MenuController } from 'ionic-angular';
+import { Events } from 'ionic-angular';
 
 import { LoginPage } from '../pages/login/login';
 import { LogoutPage } from '../pages/logout/logout';
@@ -42,13 +43,16 @@ export class MyApp {
               private lodingctrl: LoadingController,
               private auth: Auth,
               public tools: MyTools,
+              public events: Events,
               private storage: MyStorage,
               public platform: Platform,
               public statusBar: StatusBar,
               public push: Push,
               public splashScreen: SplashScreen) 
     {
-
+      events.subscribe('user:login', () => {
+        this.initializeApp();
+      });
       const config = {
         apiKey: 'AIzaSyDae-aT3njQhAL3vgRlBrBA0bNsLleEovM',
         authDomain: 'YOUR_AUTH_DOMAIN',
@@ -95,7 +99,7 @@ export class MyApp {
           else{
             this.homepage=2;
             console.log('this.homepage',this.homepage);
-            this.rootPage = TeacherprofilePage;
+            this.rootPage = PublicprofilePage;
             this.pages = [
               { title: 'Home', component: PublicprofilePage },         
               { title: 'Favourites', component: FavouritesPage },
@@ -117,12 +121,12 @@ export class MyApp {
       setInterval(() => { 
         this.storage.get('user').then((val) => {
           if(val!='' && val!=null){
-            console.log('valss :', val );
+            // console.log('valss :', val );
             this.userData = val;
           }
         });
         // this.storage.get('user').then((val) => {
-          console.log('valss :' );
+          // console.log('valss :' );
           // this.userData = val;
         // });
       }, 3000);

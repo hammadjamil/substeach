@@ -90,6 +90,7 @@ loginService() {
             this.auth.loginUser(success);
             setTimeout(() => {
               this.loader.dismiss();
+              console.log('login success',success);
               if(success.userData.Usertype=='School')
                 this.navCtrl.setRoot(SchoolprofilePage);
               else

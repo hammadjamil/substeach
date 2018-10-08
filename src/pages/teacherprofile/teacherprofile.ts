@@ -4,6 +4,7 @@ import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { Services } from '../../providers/services';
+import { Events } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -22,7 +23,9 @@ export class TeacherprofilePage {
     private storage: Storage,
     public services: Services,
     private alertCtrl: AlertController,
+    public events: Events,
     public loadingCtrl: LoadingController) {
+      this.events.publish('user:login');
       this.storage.get('user').then((val) => {
         console.log('val :', val );
         this.userID = val.Id;

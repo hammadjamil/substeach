@@ -3,12 +3,12 @@
     <button ion-button menuToggle class="menubtn">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title >Home</ion-title>
+    <ion-title >Matching</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-slides class="home_teachers"  slidesPerView="1.1" spaceBetween="10">
+  <ion-slides class="home_teachers">
     <ion-slide class="home_teachers_slide" *ngFor="let teacher of teacherList">
       <div class="sliderimgg">
         <img src="{{LogoUrl+teacher.ImagePath}}" alt="" class="home_teachers_slide_img">
@@ -19,10 +19,10 @@
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
       </p>
       <p class="home_teachers_slide_cost">
-        $24/hr
+        Rate: $24/hr
       </p>
       <p class="home_teachers_slide_view" (click)="profilepage(teacher.DeputyPersonId)">
-        Click to see Profile
+        Teacher Profile Detail
       </p>
       <!-- <p class="home_teachers_slide_view" >
         Click to add to fav

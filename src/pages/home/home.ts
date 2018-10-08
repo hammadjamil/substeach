@@ -28,13 +28,10 @@ export class HomePage {
     public services: Services, private storage: MyStorage,
     public tools: MyTools,
     private alertCtrl: AlertController, public navParams: NavParams) {
-
       this.ref.on('value', resp => {
         this.rooms = [];
         this.rooms = snapshotToArray(resp);
       });
-
-
       //this.teacherService();
       this.storage.get('user').then(
         (val) => {
@@ -42,7 +39,6 @@ export class HomePage {
             console.log(val);
             this.data.nickname = val.UserName;
             this.userDetail = val;
-            
           }
         }
       )

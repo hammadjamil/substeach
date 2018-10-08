@@ -1,5 +1,5 @@
-$themecolor: #38d345;
-$themecolorw: #38d345;
+$themecolor: #a51463;
+$themecolorw: #a51463;
 page-chat {
 
     .toolbar-background{
@@ -27,7 +27,7 @@ page-chat {
         border-radius: 10px;
         padding: 0;
         box-shadow: 0px 0px 4px 0px grey;
-        margin-bottom: 10px;
+        // margin-bottom: 10px;
         float: left;
         padding: 0 10px 0 0;
         p.chatmsg_left {
@@ -42,6 +42,7 @@ page-chat {
             margin-bottom: 0;
             padding-bottom: 5px;
             font-size: 10px;
+            padding-left: 5px;
         }
     } 
     .chatcolright {
@@ -49,7 +50,7 @@ page-chat {
         border-radius: 10px;
         padding: 0;
         box-shadow: 0px 0px 4px 0px grey;
-        margin-bottom: 10px;
+        // margin-bottom: 10px;
         float: right;
         padding: 0 0 0 10px;
         max-width: 80%;

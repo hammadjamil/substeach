@@ -1,5 +1,5 @@
-$themecolor: #38d345;
-$themecolorw: #38d345;
+$themecolor: #a51463;
+$themecolorw: #a51463;
 page-home {
     
     .home_teachers{
@@ -14,6 +14,8 @@ page-home {
         color: $themecolor;
         padding-left: 15px;
     padding-right: 15px;
+    font-size: 20px !important;
+    font-weight: 600;
     }
     
     button.sidemenubutton {
@@ -39,24 +41,21 @@ page-home {
     padding-right: 15px;
     }
     .home_teachers_slide_view {
-        font-size: 14px;
-        text-decoration: underline;
-        color: $themecolor;
+        font-size: 18px;
+        /* text-decoration: underline; */
+        color: #a51463;
         padding-left: 15px;
-    padding-right: 15px;
+        padding-right: 15px;
+        font-weight: 600;
     }
     button.home_teachers_slide_btn {
-        background-color: $themecolor;
-    font-size: 18px;
-    font-weight: 700;
-    margin-left: 15px;
-    margin-right: 15px;
-    padding: 0;
-    width: 80%;
-    text-align: center;
-    margin: auto;
-    // margin-bottom: 15px;
-    margin-bottom: 65px;
+        font-size: 18px;
+        font-weight: 700;
+        margin: auto;
+        position: absolute;
+        width: 80%;
+        margin-left: 10%;
+        bottom: 15px;
     }
     .toolbar-background{
         background: $themecolor;
@@ -67,16 +66,6 @@ page-home {
     .bar-button-default {
         color: #fff !important;
         background-color: transparent;
-    }
-    ion-slide.home_teachers_slide {
-        background: white;
-        border-radius: 10px;
-        overflow: hidden;
-        // margin-top: 25px;
-        margin-left: 5px;
-        height: 80vh;
-        box-shadow: 0px 3px 10px 0px grey;
-    
     }
     .swiper-pagination.hide{
         display: block !important;
@@ -98,7 +87,7 @@ page-home {
         box-shadow: none !important;
     }
     .toolbar-background {
-        background: #38d345;
+        background: #a51463;
         border: none !important;
     }
     .scroll-content {
@@ -110,7 +99,7 @@ page-home {
         padding: 10px;
         float: left;
         position: absolute;
-        border: 3px solid #38d345;
+        border: 3px solid #a51463;
         padding: 0;
         border-radius: 50%;
         top: -65px;
@@ -122,13 +111,12 @@ page-home {
         height: 130px !important;
         border-radius: 50%;
         object-fit: cover !important;
-        /* border: 0px solid #38d345; */
+        /* border: 0px solid #a51463; */
     }
     ion-slide.home_teachers_slide {
         background: white;
         border-radius: 10px;
         overflow: hidden;
-        margin-left: 5px;
         margin-top: 80px;
         padding-top: 60px;
         overflow: visible;

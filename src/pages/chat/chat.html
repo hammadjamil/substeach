@@ -8,7 +8,7 @@
 </ion-header>
 <ion-content padding>
   <ion-row class="chat">
-    <ion-col col-12 *ngFor="let chat of chats">
+    <ion-col col-12 *ngFor="let chat of chats" style="padding-bottom: 0;">
       <div class="chatcolleft" *ngIf="chat.user !== nickname">
         <p class="chatmsg_left">{{chat.message}}</p>
         <p class="msg-date msg-date_left">{{chat.sendDate | date:'short'}}</p>

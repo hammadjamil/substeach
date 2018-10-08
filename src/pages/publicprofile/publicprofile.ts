@@ -73,12 +73,11 @@ profileService(id) {
           this.profileList = success.userData;
           console.log('profile data',  this.profileList);
             this.loader.dismiss();
-
         },
         error => {
           this.loader.dismiss();
           console.log('error bhai', error);
-          this.presentAlert('Alert!', error.data);
+          this.presentAlert('Alert!', error.message);
         }
       )
       
