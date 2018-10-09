@@ -16,74 +16,77 @@
     </div>
   <div class="changepswddiv" *ngIf="profileList!=''&& profileList.Usertype=='School'">
       <ion-item >
-          <ion-label stacked>User Name</ion-label>
-          <ion-input type="text" value="{{profileList.UserName}}"></ion-input>
+          <ion-label stacked>User Names</ion-label>
+          <ion-input type="text" value="{{profileList.UserName}}" [disabled]="true"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label  stacked>Phone</ion-label>
-          <ion-input  type="text" value="{{profileList.PhoneNumber}}"></ion-input>
+          <ion-input  type="text" value="{{profileList.PhoneNumber}}" [disabled]="true"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label  stacked>Email</ion-label>
-          <ion-input  type="text" value="{{profileList.Email}}"></ion-input>
+          <ion-input  type="text" value="{{profileList.Email}}" [disabled]="true"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label  stacked>School Name</ion-label>
-          <ion-input  type="text" value="{{profileList.SchoolName}}"></ion-input>
+          <ion-input  type="text" [(ngModel)]="profileList.SchoolName"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label  stacked>Details</ion-label>
-          <ion-input  type="text" value="{{profileList.Details}}"></ion-input>
+          <ion-input  type="text" [(ngModel)]="profileList.Details"></ion-input>
         </ion-item>
-        <ion-item>
-          <ion-label  stacked>Email</ion-label>
-          <ion-input  type="text" value="{{profileList.Email}}"></ion-input>
-        </ion-item>
+        
         <ion-item>
           <ion-label  stacked>Visiting Address 1</ion-label>
-          <ion-input  type="text" value="{{profileList.VisitingAddress1}}"></ion-input>
+          <ion-input  type="text" [(ngModel)]="profileList.VisitingAddress1"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label  stacked>Visiting Address 2</ion-label>
-          <ion-input  type="text" value="{{profileList.VisitingAddress2}}"></ion-input>
+          <ion-input  type="text" [(ngModel)]="profileList.VisitingAddress2"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label  stacked>Visiting City</ion-label>
-          <ion-input  type="text" value="{{profileList.VisitingCity}}"></ion-input>
+          <ion-input  type="text" [(ngModel)]="profileList.VisitingCity"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label  stacked>Visiting PostalCode</ion-label>
-          <ion-input  type="text" value="{{profileList.VisitingPostalCode}}"></ion-input>
+          <ion-input  type="text" [(ngModel)]="profileList.VisitingPostalCode"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label  stacked>Govt Issued ID</ion-label>
-          <ion-input  type="text" value="{{profileList.GovtIssuedID}}"></ion-input>
+          <ion-input  type="text" [(ngModel)]="profileList.GovtIssuedID"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label  stacked>Billing Address 1</ion-label>
-          <ion-input  type="text" value="{{profileList.BillingAddress1}}"></ion-input>
+          <ion-input  type="text" [(ngModel)]="profileList.BillingAddress1"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label  stacked>BillingAddress2</ion-label>
-          <ion-input  type="text" value="{{profileList.BillingAddress2}}"></ion-input>
+          <ion-input  type="text" [(ngModel)]="profileList.BillingAddress2"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label  stacked>Billing City</ion-label>
-          <ion-input  type="text" value="{{profileList.BillingCity}}"></ion-input>
+          <ion-input  type="text" [(ngModel)]="profileList.BillingCity"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label  stacked>Billing PostalCode</ion-label>
-          <ion-input  type="text" value="{{profileList.BillingPostalCode}}"></ion-input>
+          <ion-input  type="text" [(ngModel)]="profileList.BillingPostalCode"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label  stacked>Billing Country</ion-label>
-          <ion-input  type="text" value="{{profileList.BillingCountry}}"></ion-input>
+           <!-- <ion-select [(ngModel)]="user.VisitingCountry">
+        <ion-option value="Pakistan">Pakistan</ion-option>
+        <ion-option value="England">England</ion-option>
+        <ion-option value="Sweden">Sweden</ion-option>
+        <ion-option value="Germany">Germany</ion-option> 
+      </ion-select> -->
+          <ion-input  type="text" [(ngModel)]="profileList.BillingCountry"></ion-input>
         </ion-item>
         <ion-col col-6 float-left>
           <button ion-button full class="btnstyling" style="background:#a19f9f !important;">CANCEL</button>
       </ion-col>
       <ion-col col-6 float-left>
-          <button ion-button full class="btnstyling">UPDATE</button>
+          <button ion-button full class="btnstyling"  (click)="updateSchool()">UPDATE</button>
       </ion-col>
   </div>
 
@@ -91,29 +94,29 @@
   <div class="changepswddiv" *ngIf="profileList!=''&& profileList.Usertype=='Teacher'">
     <ion-item >
       <ion-label stacked>User Name</ion-label>
-      <ion-input type="text" value="{{profileList.UserName}}"></ion-input>
+      <ion-input type="text" value="{{profileList.UserName}}" [disabled]="true"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label  stacked>First Name</ion-label>
-      <ion-input  type="text" value="{{profileList.FirstName}}"></ion-input>
+      <ion-input  type="text" [(ngModel)]="profileList.FirstName"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label  stacked>Last Name</ion-label>
-      <ion-input  type="text" value="{{profileList.LastName}}"></ion-input>
+      <ion-input  type="text" [(ngModel)]="profileList.LastName"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label  stacked>Phone</ion-label>
-      <ion-input  type="text" value="{{profileList.PhoneNumber}}"></ion-input>
+      <ion-input  type="text" value="{{profileList.PhoneNumber}}" [disabled]="true"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label  stacked>Email</ion-label>
-      <ion-input  type="text" value="{{profileList.Email}}"></ion-input>
+      <ion-input  type="text" value="{{profileList.Email}}" [disabled]="true"></ion-input>
     </ion-item>
     <ion-col col-6 float-left>
       <button ion-button full class="btnstyling" style="background:#a19f9f !important;">CANCEL</button>
   </ion-col>
   <ion-col col-6 float-left>
-      <button ion-button full class="btnstyling">UPDATE</button>
+      <button ion-button full class="btnstyling" (click)="updateTeacher()">UPDATE</button>
   </ion-col>
   </div>
 </ion-content>

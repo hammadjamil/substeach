@@ -196,8 +196,7 @@ export class Schoolregister3Page {
               this.services.register(body).subscribe(
                 //Successfully Logged in
                 success => {
-                  setTimeout(() => {
-                  }, 500);
+                  
                   setTimeout(() => {
                     this.presentAlert('Success!', 'You are successfully registered. Please login now');
                     this.loader.dismiss();

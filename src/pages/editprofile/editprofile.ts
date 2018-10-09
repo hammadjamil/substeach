@@ -49,7 +49,7 @@ export class EditprofilePage {
   }
 //Login
 profileService(id) {
-  this.showLoader();
+      this.showLoader();
       this.services.getprofile(id).subscribe(
         //Successfully Logged in
         success => {
@@ -66,6 +66,70 @@ profileService(id) {
       )
       
   
+}
+
+updateSchool(){ 
+  
+  this.showLoader();
+  let body = new FormData();
+      body.append('SchoolName', this.profileList.SchoolName);
+      body.append('Details', this.profileList.Details);
+      body.append('VisitingAddress1', this.profileList.VisitingAddress1);
+      body.append('VisitingAddress2', this.profileList.VisitingAddress2);
+      body.append('VisitingCity', this.profileList.VisitingCity);
+      body.append('VisitingPostalCode', this.profileList.VisitingPostalCode);
+      body.append('GovtIssuedID', this.profileList.GovtIssuedID);
+      body.append('BillingAddress1', this.profileList.BillingAddress1);
+      body.append('BillingAddress2', this.profileList.BillingAddress2);
+      body.append('BillingCity', this.profileList.BillingCity);
+      body.append('BillingPostalCode', this.profileList.BillingPostalCode);
+      body.append('BillingCountry', this.profileList.BillingCountry);
+      body.append('userId', this.profileList.userId);
+      body.append('ClientID', this.profileList.ClientID);
+      
+      this.services.updateSchool(body).subscribe(
+        //Successfully Logged in
+        success => {
+          setTimeout(() => {
+            this.presentAlert('Success!', 'You are successfully updated.');
+            this.loader.dismiss();
+          }, 2000);
+        },
+        error => {
+          console.log('error bhai', error);
+                  setTimeout(() => {
+                      this.presentAlert('Alert!', error.message);
+                      this.loader.dismiss();
+                    
+                  }, 500);
+        }
+      )
+}
+
+updateTeacher(){
+  this.showLoader();
+  let body = new FormData();
+  body.append('FirstName', this.profileList.FirstName);
+  body.append('LastName', this.profileList.LastName);
+  body.append('userId', this.profileList.userId);
+      body.append('ClientID', this.profileList.ClientID);
+      this.services.updateTeacher(body).subscribe(
+        //Successfully Logged in
+        success => {
+          setTimeout(() => {
+            this.presentAlert('Success!', 'You are successfully updated.');
+            this.loader.dismiss();
+          }, 2000);
+        },
+        error => {
+          console.log('error bhai', error);
+                  setTimeout(() => {
+                      this.presentAlert('Alert!', error.message);
+                      this.loader.dismiss();
+                    
+                  }, 500);
+        }
+      )
 }
 
 }

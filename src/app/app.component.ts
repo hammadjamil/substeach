@@ -14,6 +14,7 @@ import { TeacherprofilePage } from '../pages/teacherprofile/teacherprofile';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { PublicprofilePage } from '../pages/publicprofile/publicprofile';
 import { NotificationPage } from '../pages/notification/notification';
+import { PaymentPage } from '../pages/payment/payment';
 import { ChatPage } from '../pages/chat/chat';
 import { HomePage } from '../pages/home/home';
 import * as firebase from 'firebase';
@@ -71,6 +72,7 @@ export class MyApp {
       { title: 'Notifications', component: NotificationPage },
       // { title: 'Settings', component: SchoolprofilePage },
       { title: 'Chat', component: ChatPage },
+      { title: 'pay', component: PaymentPage },
       { title: 'Logout', component: LogoutPage }
     ];
   }
@@ -93,6 +95,7 @@ export class MyApp {
               { title: 'Profile', component: PublicprofilePage },      
               { title: 'Favourites', component: FavouritesPage },
               { title: 'Notifications', component: NotificationPage },
+              { title: 'pay', component: PaymentPage },
               { title: 'Logout', component: LogoutPage }
             ];
           }
