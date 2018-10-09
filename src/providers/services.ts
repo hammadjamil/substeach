@@ -1412,4 +1412,71 @@ getDashboardInfo(params) {
     })
   }
 
+    /**
+ * RemoveCoins
+ */
+updateSchool(params) {
+  
+  var headers = new Headers();
+  headers.append('Content-Type', 'application/x-www-form-urlencoded');
+
+  let options = new RequestOptions({ headers: headers });
+  
+  return Observable.create(observer => {
+    const url = this.baseUrl + 'updateSchool';
+    this.http.post(url,params)
+        .map(res => res.json())
+        .subscribe(
+          (response) => {
+            if (response.code != '200') {
+              observer.error(response);
+            }
+            else {
+              observer.next(response);
+
+            }
+            observer.complete();
+
+          },
+          (error) => {
+            observer.error(error);
+          }
+        )
+    })
+  }
+
+
+    /**
+ * RemoveCoins
+ */
+updateTeacher(params) {
+  
+  var headers = new Headers();
+  headers.append('Content-Type', 'application/x-www-form-urlencoded');
+
+  let options = new RequestOptions({ headers: headers });
+  
+  return Observable.create(observer => {
+    const url = this.baseUrl + 'updateTeacher';
+    this.http.post(url,params)
+        .map(res => res.json())
+        .subscribe(
+          (response) => {
+            if (response.code != '200') {
+              observer.error(response);
+            }
+            else {
+              observer.next(response);
+
+            }
+            observer.complete();
+
+          },
+          (error) => {
+            observer.error(error);
+          }
+        )
+    })
+  }
+
 }

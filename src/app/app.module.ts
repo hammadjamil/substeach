@@ -39,9 +39,11 @@ import { SchoolprofilePage } from '../pages/schoolprofile/schoolprofile';
 import { TeacherprofilePage } from '../pages/teacherprofile/teacherprofile';
 import { PublicprofilePage } from '../pages/publicprofile/publicprofile';
 import { NotificationPage } from '../pages/notification/notification';
+import { PaymentPage } from '../pages/payment/payment';
 import { ChatPage } from '../pages/chat/chat';
 import { SMS } from '@ionic-native/sms';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
+import { PayPal, PayPalPayment, PayPalConfiguration }  from '@ionic-native/paypal';
 @NgModule({
   declarations: [
     MyApp,
@@ -71,6 +73,7 @@ import { Push, PushObject, PushOptions } from '@ionic-native/push';
     TeacherprofilePage,
     PublicprofilePage,
     NotificationPage,
+    PaymentPage,
     ChatPage
   ],
   imports: [
@@ -108,6 +111,7 @@ import { Push, PushObject, PushOptions } from '@ionic-native/push';
     TeacherprofilePage,
     PublicprofilePage,
     NotificationPage,
+    PaymentPage,
     ChatPage
   ],
   providers: [
@@ -121,6 +125,7 @@ import { Push, PushObject, PushOptions } from '@ionic-native/push';
     Base64,
     Chooser,
     Push,
+    PayPal,
     SMS,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
