@@ -22,7 +22,7 @@ import { AppSettings } from '../../app/appSettings';
 })
 export class FavouritesPage {
   loader: any;
-  favList: any;
+  favList: any='';
   userDetail: any;
   LogoUrl = AppSettings.LogoUrl;
   constructor(public navCtrl: NavController, public navParams: NavParams,public loadingCtrl: LoadingController,
@@ -58,7 +58,7 @@ getFav() {
         error => {
           this.loader.dismiss();
           console.log('error bhai', error);
-          this.presentAlert('Alert!', error.data);
+          // this.presentAlert('Alert!', error.message);
         }
       )
       

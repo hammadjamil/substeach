@@ -28,25 +28,25 @@
       <ion-label style="margin-bottom: 0;margin-right: 10px;">
         <ion-icon name="md-mail"></ion-icon>
       </ion-label>
-      <ion-input type="text" placeholder="Email"  [(ngModel)]="user.email" class="marginset" style="font-size: 16px;"></ion-input>
+      <ion-input type="email" placeholder="Email"  [(ngModel)]="user.email" class="marginset" style="font-size: 16px;"></ion-input>
     </ion-item>
     <ion-item class="p-0">
       <ion-label style="margin-bottom: 0;margin-right: 10px;">
         <ion-icon name="md-mail"></ion-icon>
       </ion-label>
-      <ion-input type="text" placeholder="Confirm Email"  [(ngModel)]="user.confemail" class="marginset" style="font-size: 16px;"></ion-input>
+      <ion-input type="email" placeholder="Confirm Email"  [(ngModel)]="user.confemail" class="marginset" style="font-size: 16px;"></ion-input>
     </ion-item>
     <ion-item class="p-0">
       <ion-label style="margin-bottom: 0;margin-right: 10px;">
         <ion-icon name="md-lock"></ion-icon>
       </ion-label >
-      <ion-input type="text" placeholder="Password"  [(ngModel)]="user.pswd" class="marginset" style="font-size: 16px;"></ion-input>
+      <ion-input type="password" placeholder="Password"  [(ngModel)]="user.pswd" class="marginset" style="font-size: 16px;"></ion-input>
     </ion-item>
     <ion-item class="p-0">
       <ion-label style="margin-bottom: 0;margin-right: 10px;">
         <ion-icon name="md-lock"></ion-icon>
       </ion-label>
-      <ion-input type="text" placeholder="Confirm Password"  [(ngModel)]="user.rpswd" class="marginset" style="font-size: 16px;"></ion-input>
+      <ion-input type="password" placeholder="Confirm Password"  [(ngModel)]="user.rpswd" class="marginset" style="font-size: 16px;"></ion-input>
     </ion-item>
   </ion-list>
   <button ion-button block class="registerbtn colfaded" (click)="RegisterUserStep()">NEXT</button>

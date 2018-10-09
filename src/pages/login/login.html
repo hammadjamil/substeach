@@ -3,7 +3,7 @@
   <div class="text-center pt-5 pb-5">
     <img src="./assets/imgs/loginlogo.png" alt=""  class="w-60" style="    width: 75%;">
   </div>
-  <ion-title class="text-center" style="padding-bottom: 40px !important;">LOGIN</ion-title>
+  <ion-title class="text-center" style="padding-bottom: 20px !important;">LOGIN</ion-title>
   <ion-item class="p-0">
     <ion-label style="margin-bottom: 0;margin-right: 10px;width: 45px;"><ion-icon name="md-person" style="font-size: 25px;"></ion-icon></ion-label>
     <ion-input type="text" placeholder="Username or Email Address" [(ngModel)]="user.username" class="marginset" style="font-size: 16px;    padding-left: 10px;"></ion-input>
@@ -19,8 +19,13 @@
 <p class="text-center">
   Not a member yet? <span class="h4" (click)="registerpage()">Register</span> 
 </p>
-<p class="sociallogin">
-    <ion-icon name="logo-facebook" style="color: #3b5999;padding-right: 15px;font-size: 50px;" (click)="fbSignIn()"></ion-icon>
-    <ion-icon name="logo-googleplus"  style="color: #dd4b39;font-size: 50px;" (click) ="googlePlusLogin()"></ion-icon>
-</p>
+<p text-center padding>OR</p>
+<div class="sociallogin">
+  <button ion-button style="background: #3b5999 !important;width: 100%;">
+      <ion-icon name="logo-facebook" style="color: #fff;padding-right: 15px;font-size: 40px;font-weight: 500 !important;" (click)="fbSignIn()"></ion-icon> Continue with Facebook
+  </button>
+  <button ion-button style="background: #dd4b39 !important;width: 100%;">
+      <ion-icon name="logo-googleplus"  style="color: #fff;font-size: 40px;margin-right: 15px;" (click) ="googlePlusLogin()"></ion-icon> Continue with Google
+  </button>
+</div>
 </ion-content>

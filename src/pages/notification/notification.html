@@ -28,4 +28,10 @@
       </ion-col>
     </ion-card-content>
   </ion-card>
+  <ion-row *ngIf="notificationList==''">
+      <ion-col col-12 text-center >
+          <img src="../../assets/imgs/hold.png" alt="" padding>
+          <p padding>No Notifications Found</p>
+      </ion-col>
+  </ion-row>
 </ion-content>

@@ -10,10 +10,18 @@ page-registrationchoice {
         display: table-cell;
         vertical-align: middle;
     }
+    .registerchoice h3{
+        font-weight: 700;
+    }
     .registerchoice button{
         background: #ffffff !important;
-        color: $themecolor !important;
-        border: 2px solid $themecolor !important;
-        font-size: 18px !important;
+        color: #a51463 !important;
+        border: none !important;
+        font-size: 20px !important;
+        font-weight: 700;
+      }
+      .registerchoice img{
+        margin-bottom: 20px;
+        margin-top: 40px;
       }
 }

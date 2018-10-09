@@ -15,7 +15,6 @@
 
 
 <ion-content padding>
-  <!-- <p text-center class="favv">Favourites</p> -->
     <ion-row class="home_teachers">
         <ion-col col-6 *ngFor="let fav of favList">
           <div class="home_teachers_slide">
@@ -25,55 +24,10 @@
           </div>
         </ion-col>
     </ion-row>
-        <!-- nearby -->
-        <!-- nearby -->
-        <!-- <div class="nearby">
-            <p text-center class="favv">Near by</p>
-          <ion-col col-4 float-left>
-            <img src="../../assets/imgs/teachers4.jpg" alt="" class="home_teachers_slide_img1">
-            <p class="home_teachers_slide_name">Ankita Roy</p>
-            <p class="home_teachers_slide_cost">$24/hr</p>
-          </ion-col>
-          <ion-col col-4 float-left>
-            <img src="../../assets/imgs/teachers3.jpg" alt="" class="home_teachers_slide_img1">
-            <p class="home_teachers_slide_name">Ankita Roy</p>
-            <p class="home_teachers_slide_cost">$24/hr</p>
-          </ion-col>
-          <ion-col col-4 float-left>
-            <img src="../../assets/imgs/teachers2.jpg" alt="" class="home_teachers_slide_img1">
-            <p class="home_teachers_slide_name">Ankita Roy</p>
-            <p class="home_teachers_slide_cost">$24/hr</p>
-          </ion-col>
-          <ion-col col-4 float-left>
-            <img src="../../assets/imgs/teachers1.jpg" alt="" class="home_teachers_slide_img1">
-            <p class="home_teachers_slide_name">Ankita Roy</p>
-            <p class="home_teachers_slide_cost">$24/hr</p>
-          </ion-col>
-          <ion-col col-4 float-left>
-            <img src="../../assets/imgs/teachers8.jpg" alt="" class="home_teachers_slide_img1">
-            <p class="home_teachers_slide_name">Ankita Roy</p>
-            <p class="home_teachers_slide_cost">$24/hr</p>
-          </ion-col>
-          <ion-col col-4 float-left>
-            <img src="../../assets/imgs/teachers7.jpg" alt="" class="home_teachers_slide_img1">
-            <p class="home_teachers_slide_name">Ankita Roy</p>
-            <p class="home_teachers_slide_cost">$24/hr</p>
-          </ion-col>
-          <ion-col col-4 float-left>
-            <img src="../../assets/imgs/teachers6.jpg" alt="" class="home_teachers_slide_img1">
-            <p class="home_teachers_slide_name">Ankita Roy</p>
-            <p class="home_teachers_slide_cost">$24/hr</p>
-          </ion-col>
-          <ion-col col-4 float-left>
-            <img src="../../assets/imgs/teachers5.jpg" alt="" class="home_teachers_slide_img1">
-            <p class="home_teachers_slide_name">Ankita Roy</p>
-            <p class="home_teachers_slide_cost">$24/hr</p>
-          </ion-col>
-          <ion-col col-4 float-left>
-            <img src="../../assets/imgs/teachers4.jpg" alt="" class="home_teachers_slide_img1">
-            <p class="home_teachers_slide_name">Ankita Roy</p>
-            <p class="home_teachers_slide_cost">$24/hr</p>
-          </ion-col>
-
-        </div> -->
+    <ion-row *ngIf="favList==''">
+        <ion-col col-12 text-center >
+            <img src="../../assets/imgs/hold.png" alt="" padding>
+            <p padding>No Favourites Found</p>
+        </ion-col>
+    </ion-row>
 </ion-content>

@@ -21,7 +21,7 @@ export class NotificationPage {
   Usertype : any;
   teacherList : any;
   userdata:any='';
-  notificationList : any='';
+  notificationList : any = '';
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public loadingCtrl: LoadingController,
     private storage: Storage,
@@ -84,7 +84,7 @@ export class NotificationPage {
         console.log('error bhai', error);
         setTimeout(() => {
           // if (error.message.length==1){
-            this.presentAlert('Alert!', error.message);
+            // this.presentAlert('Alert!', error.message);
             this.loader.dismiss();
           // }
           
@@ -138,7 +138,7 @@ startChat(no ,chatusername) {
 
 joinRoom(key) {
   console.log('this.data.nickname',this.data.nickname);
-  this.navCtrl.setRoot(ChatPage, {
+  this.navCtrl.push(ChatPage, {
     key:key,
     nickname:this.data.nickname,
     chatusername: this.chatuser
