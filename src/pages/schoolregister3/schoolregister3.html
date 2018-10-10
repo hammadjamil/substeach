@@ -2,12 +2,8 @@
 <ion-header>
   <p  text-left><span (click)="back()">Back</span></p>
 </ion-header>
-<ion-content padding id="registerpage">
-    <ion-title class="text-center pb-3">STEP 3</ion-title>
-    <!-- <p class="text-center">
-      Already have an account? 
-      <span class="h4" (click)="loginpage()">Login</span>
-    </p> -->
+<ion-content padding id="registerpage" text-center>
+    <img src="../../assets/imgs/step4.png" alt="" width="60%" padding>
     <ion-list>
       <ion-item class="p-0">
         <ion-label style="margin-bottom: 0;margin-right: 10px;">
@@ -34,12 +30,6 @@
         </ion-label>
         <ion-input type="number" placeholder="Billing Postal Code"  [(ngModel)]="user.BillingPostalCode" class="marginset" style="font-size: 16px;"></ion-input>
       </ion-item>
-      <!-- <ion-item class="p-0">
-        <ion-label style="margin-bottom: 0;margin-right: 10px;">
-          <ion-icon name="ios-flag"></ion-icon>
-        </ion-label>
-        <ion-input type="text" placeholder="Billing Country"  [(ngModel)]="user.BillingCountry" class="marginset" style="font-size: 16px;"></ion-input>
-      </ion-item> -->
       <ion-item  class="p-0">
         <ion-label style="color: #9c9c9c !important;background: transparent !important;padding: 0;margin: 0 !important;text-align: center;width: 50px;text-align: left;">
           <ion-icon name="ios-flag" style="width: 50px;padding: 13px;background: #a51463;color: white;margin-right: 13px;"></ion-icon> Billing Country

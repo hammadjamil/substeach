@@ -39,6 +39,11 @@ span.back-button-text {
 ion-app {
     font-family: $fontfamily !important;
 }
+.menubtn ,button.back-button{
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
 ion-menu {
     $themecolor: #a51463;
     $themecolorw: #a51463;

@@ -5,6 +5,8 @@ import { LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { Services } from '../../assets/providers/services';
 import { Teacherregister1Page } from '../teacherregister1/teacherregister1';
+import { LoginPage } from '../login/login';
+
 
 @IonicPage()
 @Component({
@@ -134,5 +136,8 @@ export class Teacherregister4Page {
   }
   verifyPhone(){
     this.navCtrl.push(Teacherregister1Page);
+  }
+  loginpage(){
+    this.navCtrl.push(LoginPage);
   }
 }

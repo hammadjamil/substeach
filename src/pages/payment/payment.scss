@@ -1,3 +1,12 @@
 page-payment {
-
+    .toolbar-background{
+        background: $themecolor;
+    }
+    .toolbar-title {
+        color: white;
+    }
+    .bar-button-default {
+        color: #fff !important;
+        background-color: transparent;
+    }
 }

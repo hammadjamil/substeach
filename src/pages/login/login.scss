@@ -4,7 +4,8 @@ $fontfamily:'Montserrat', sans-serif;
 button{
   border-radius:45px !important; 
   background: $themecolor !important;
-  box-shadow: none !important;
+  // box-shadow: none !important;
+  box-shadow: 2px 2px 6px 2px #444 !important;
 }
 ion-item{
     border: 2px solid $themecolor !important;
@@ -32,7 +33,7 @@ padding: 25px !important;
 .registerchoice button{
   background: #ffffff !important;
   color: #909695 !important;
-  border: 2px solid #909695 !important;
+  // border: 2px solid #909695 !important;
   font-size: 18px !important;
 }
 ion-checkbox button{
