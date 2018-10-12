@@ -16,6 +16,7 @@ import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { SchoolprofilePage } from '../schoolprofile/schoolprofile';
 import { TeacherprofilePage } from '../teacherprofile/teacherprofile';
+import { Schoolregister2Page } from '../schoolregister2/schoolregister2';
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -111,7 +112,7 @@ loginService() {
   }
 }
   registerpage(){
-    // this.navCtrl.push(RegisterPage);
+    // this.navCtrl.push(Schoolregister2Page);
     this.navCtrl.push(RegistrationchoicePage);
   }
   logintest(){

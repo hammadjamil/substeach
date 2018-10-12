@@ -24,6 +24,7 @@ import { LoadingController } from 'ionic-angular/index';
 import { MyTools } from '../providers/tools';
 import { Services } from '../providers/services';
 
+import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   templateUrl: 'app.html',
   providers: [Auth, Services]
@@ -38,6 +39,7 @@ export class MyApp {
   exitApp = 0;
   userData : any='';
   homepage:any;
+  Logo:any = '';
   constructor(private services: Services,
               public toastCtrl: ToastController,
               public menuCtrl: MenuController,
@@ -49,7 +51,8 @@ export class MyApp {
               public platform: Platform,
               public statusBar: StatusBar,
               public push: Push,
-              public splashScreen: SplashScreen) 
+              public splashScreen: SplashScreen,
+              private sanitizer: DomSanitizer) 
     {
       events.subscribe('user:login', () => {
         this.initializeApp();
@@ -124,8 +127,13 @@ export class MyApp {
       setInterval(() => { 
         this.storage.get('user').then((val) => {
           if(val!='' && val!=null){
-            // console.log('valss :', val );
+            console.log('valss :', val );
             this.userData = val;
+            if(this.userData.Usertype == "School"){
+              this.Logo = this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+this.userData.LogoPath);
+            }else{
+              this.Logo = this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+this.userData.ImagePath);
+            }
           }
         });
         // this.storage.get('user').then((val) => {

@@ -34,7 +34,7 @@ export class Schoolregister2Page {
   lastImage: any;
   logo: any ='';
   baseUrl = AppSettings.API;
-  public baseLogo ; any = '../../assets/imgs/defaultschool.png';
+  public baseLogo ='';
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     private fileChooser: FileChooser,

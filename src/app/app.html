@@ -1,8 +1,8 @@
 <ion-menu [content]="content">
   <ion-header id="sidemenu">
       <div class="" text-center padding-top padding-bottom>
-          <img  src="../assets/imgs/profileimg.jpg" alt="" width="80px" height="80px" *ngIf="userData.LogoPath=='' || userData.LogoPath==null" style="object-fit: cover;box-shadow: 0px 0px 20px 0px grey;border-radius: 100%;">
-          <img src="userData.LogoPath" alt="" width="80px" height="80px" *ngIf="userData.LogoPath!='' || userData.LogoPath!=null" style="object-fit: cover;box-shadow: 0px 0px 20px 0px grey;border-radius: 100%;">
+          <img  src="../assets/imgs/profileimg.jpg" alt="" width="80px" height="80px" *ngIf="Logo==''" style="object-fit: cover;box-shadow: 0px 0px 20px 0px grey;border-radius: 100%;">
+          <img [src]="Logo" alt="" width="80px" height="80px" *ngIf="Logo!='' || Logo!=null" style="object-fit: cover;box-shadow: 0px 0px 20px 0px grey;border-radius: 100%;">
           <p style="font-size: 14px;padding-top: 10px;margin-bottom: 0;color: white;font-weight: 500;letter-spacing: 0.5px;font-size: 16px;" *ngIf="userData!=''">{{userData.UserName}}</p>
           <!-- <p style="font-size: 12px;padding-top: 10px;margin: -8px 0 5px 0;" *ngIf="userData!=''">{{userData.Email}}</p> -->
           <button (click)="editprofilepage()" style="background: #f7b800 !important;color: white ;background: #f7b800 !important;object-fit: cover;color: white;margin: auto;width: 150px;margin-top:10px;" ion-button block>Edit Profile</button>

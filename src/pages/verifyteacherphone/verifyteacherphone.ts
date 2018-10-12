@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { Teacherregister4Page } from '../teacherregister4/teacherregister4';
 import { AlertController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 import { LoadingController } from 'ionic-angular';
 
 @IonicPage()
@@ -18,6 +19,7 @@ export class VerifyteacherphonePage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
+    private storage: Storage,
      public loadingCtrl: LoadingController,
      private menu: MenuController,
      private alertCtrl: AlertController) {
@@ -61,6 +63,7 @@ export class VerifyteacherphonePage {
     this.showLoader();
     if(this.user.code == '12345'){
       this.loader.dismiss();
+      this.storage.set('RegisterTeacherPhone', this.user);
       this.teacherregister3();
     }else{
       this.presentAlert('Alert!', 'Code does not match');

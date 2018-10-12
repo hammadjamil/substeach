@@ -38,6 +38,8 @@ export class Teacherregister3Page {
     private alertCtrl: AlertController) {
       this.storage.get('RegisterTeacherPhoneNumber').then((val) => {
         this.userPhoneNumber = val;
+        console.log('dddd',val);
+        
       });
       this.storage.get('Front').then((val) => {
         this.frontimg = val;

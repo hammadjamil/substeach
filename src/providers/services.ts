@@ -1478,5 +1478,37 @@ updateTeacher(params) {
         )
     })
   }
+    /**
+ * RemoveCoins
+ */
+updateUserImage(params) {
+  
+  var headers = new Headers();
+  headers.append('Content-Type', 'application/x-www-form-urlencoded');
+
+  let options = new RequestOptions({ headers: headers });
+  
+  return Observable.create(observer => {
+    const url = this.baseUrl + 'updateUserImage';
+    this.http.post(url,params)
+        .map(res => res.json())
+        .subscribe(
+          (response) => {
+            if (response.code != '200') {
+              observer.error(response);
+            }
+            else {
+              observer.next(response);
+
+            }
+            observer.complete();
+
+          },
+          (error) => {
+            observer.error(error);
+          }
+        )
+    })
+  }
 
 }
