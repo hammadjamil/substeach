@@ -79,10 +79,11 @@ export class PhonenumberteacherPage {
       this.loader.dismiss();
       return;
     }
-    var x = Math.floor((Math.random() * 10000) + 1);
-    this.sms.send(this.user.phonenumber, 'Your verification code for substeach is :'+x);
+    // var x = Math.floor((Math.random() * 10000) + 1);
+    // this.sms.send(this.user.phonenumber, 'Your verification code for substeach is :'+x);
+    
     console.log('setting this user data ',this.user);
-    this.storage.set('RegisterTeacherPhoneNumber', this.user);
+    this.storage.set('RegisterTeacherPhoneNumber', this.user.phonenumber);
     this.loader.dismiss();
     this.next();
   }

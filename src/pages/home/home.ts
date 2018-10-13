@@ -64,6 +64,7 @@ export class HomePage {
     body.append('TimeSlote', this.searchCriteria.TimeSlote);
     body.append('Standard', this.searchCriteria.Standard);
     body.append('SchoolId', this.userDetail.Id);
+    body.append('userId', this.userDetail.userId);
     this.services.getMatchesByDay(body).subscribe(
       //Successfully Logged in
       success => {
@@ -177,6 +178,7 @@ profilepage(idd){
 
 
 inviteTeacher(id){
+  this.showLoader();
   let body = new FormData();
   body.append('userId', this.userDetail.Id);
   body.append('toUserId',id );console.log(id);
