@@ -58,7 +58,7 @@ export class HomePage {
 
   
   matchByDay(){
-    
+    this.showLoader();
     let body = new FormData();
     body.append('Day', this.searchCriteria.Day);
     body.append('TimeSlote', this.searchCriteria.TimeSlote);
@@ -70,6 +70,7 @@ export class HomePage {
       success => {
         console.log('Success : ',success);
         this.teacherList = success.data;
+        this.loader.dismiss();
       },
       error => {
         setTimeout(() => {
@@ -84,7 +85,7 @@ export class HomePage {
 
 
   matchByPeriod(){
-    
+    this.showLoader();
     let body = new FormData();
     body.append('ToDate', this.searchCriteria.ToDate);
     body.append('FromDate', this.searchCriteria.FromDate);
@@ -96,6 +97,7 @@ export class HomePage {
       success => {
         console.log('Success : ',success);
         this.teacherList = success.data;
+        this.loader.dismiss();
       },
       error => {
         setTimeout(() => {
