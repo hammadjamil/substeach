@@ -6,7 +6,7 @@
       <ion-title>EDIT PROFILE</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding >
+<ion-content>
     <div *ngIf="profileList.Usertype=='School'" class="imgprofile" text-center padding>
       <img *ngIf="(profileList.LogoPath=='' || profileList.LogoPath==null ) && baseLogo==''" src="../../assets/imgs/profileimg.jpg" alt="" style="border-radius: 50%;width: 150px;height: 150px;">
       <img *ngIf="(profileList.LogoPath!='' && profileList.LogoPath!=null) && profileList.Usertype=='School' && baseLogo==''" [src]="profileList.LogoPath" alt="" style="border-radius: 50%;width: 150px;height: 150px;">

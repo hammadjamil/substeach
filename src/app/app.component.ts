@@ -73,7 +73,6 @@ export class MyApp {
       { title: 'Public Profile', component: PublicprofilePage },      
       { title: 'Favourites', component: FavouritesPage },
       { title: 'Notifications', component: NotificationPage },
-      // { title: 'Settings', component: SchoolprofilePage },
       { title: 'Chat', component: ChatPage },
       { title: 'pay', component: PaymentPage },
       { title: 'Logout', component: LogoutPage }
@@ -108,7 +107,7 @@ export class MyApp {
             this.rootPage = PublicprofilePage;
             this.pages = [
               { title: 'Home', component: PublicprofilePage },         
-              { title: 'Favourites', component: FavouritesPage },
+              // { title: 'Favourites', component: FavouritesPage },
               { title: 'Notifications', component: NotificationPage },
               { title: 'Settings', component: TeacherprofilePage },
               { title: 'Logout', component: LogoutPage }

@@ -17,7 +17,7 @@
     </div>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
     <div [ngSwitch]="schooltabs">
         <ion-list *ngSwitchCase="'days'">
                 <p style="font-size: 20px;text-align: center;font-weight: 600;">Select Days</p>
@@ -53,7 +53,6 @@
                   <ion-label>Standrads</ion-label>
                   <ion-select [(ngModel)]="schoolDay.Standard" multiple="true">
                     <ion-option *ngFor="let row of Standard" value="{{row.Id}}">{{row.StandardName}}</ion-option>
-                    
                   </ion-select>
                 </ion-item>
                 <ion-textarea [(ngModel)]="schoolDay.Description" #msgInput rows="1" maxLength="1000" placeholder="Enter Info"></ion-textarea>

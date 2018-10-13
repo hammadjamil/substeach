@@ -33,6 +33,8 @@ page-home {
         padding-left: 15px;
     padding-right: 15px;
     font-size: 14px;
+    height: 18vh;
+    overflow: scroll;
     }
     .home_teachers_slide_cost {
         font-size: 22px;
@@ -76,9 +78,6 @@ page-home {
         background: $themecolor;
         opacity: 1;
     }
-    // .scroll-content {
-    //     background: #e8e8e8;
-    // }
     .swiper-slide img {
         width: 100%;
         height: 180px;
@@ -92,7 +91,7 @@ page-home {
         border: none !important;
     }
     .scroll-content {
-        padding: 10px !important;
+        padding: 10px;
     }
     .sliderimgg {
         width: auto;
