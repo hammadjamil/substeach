@@ -33,6 +33,7 @@ export class Schoolregister2Page {
   fileSelected = false;
   lastImage: any;
   logo: any ='';
+  uploadedimg:any='';
   baseUrl = AppSettings.API;
   public baseLogo ; any = '../../assets/imgs/defaultschool.png';
   constructor(public navCtrl: NavController, 
@@ -60,7 +61,6 @@ export class Schoolregister2Page {
   }
 
   getImgContent() {
-
     return this.sanitizer.bypassSecurityTrustUrl(this.baseLogo);
   }
   ionViewDidEnter() {

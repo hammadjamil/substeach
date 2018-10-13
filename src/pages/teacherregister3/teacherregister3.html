@@ -6,12 +6,23 @@
     <div class="registerchoice">
         <h3 text-center style="padding-bottom: 30px;">Specify Region</h3>
         <ion-list>
-          <ion-item class="p-0">
+          <ion-item  class="p-0">
+            <ion-label style="color: #9c9c9c !important;background: transparent !important;padding: 0;margin: 0 !important;text-align: center;width: 50px;text-align: left;">
+              <ion-icon name="md-navigate" style="width: 50px;padding: 13px;background: #a51463;color: white;margin-right: 13px;"></ion-icon> Select Region
+            </ion-label>
+            <ion-select [(ngModel)]="user.region">
+              <ion-option value="Pakistan">Pakistan</ion-option>
+              <ion-option value="England">England</ion-option>
+              <ion-option value="Sweden">Sweden</ion-option>
+              <ion-option value="Germany">Germany</ion-option> 
+            </ion-select>
+          </ion-item>
+          <!-- <ion-item class="p-0">
             <ion-label style="margin-bottom: 0;margin-right: 10px;">
               <ion-icon name="md-navigate"></ion-icon>
             </ion-label>
             <ion-input type="text"  [(ngModel)]="user.region" placeholder="Select Region" class="marginset" style="font-size: 16px;"></ion-input>
-          </ion-item>
+          </ion-item> -->
           <p style="color:rgb(182, 24, 24);font-size: 10px;">*You can update your available date and time from home page anytime after registration</p>
           <ion-item  class="p-0">
             <ion-label style="margin-bottom: 0;margin-right: 10px;">

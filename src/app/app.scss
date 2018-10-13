@@ -151,6 +151,6 @@ ion-menu {
         width: 50px;
     }
 }
-// .scroll-content {
-//     background: beige;
-// }
+.scroll-content {
+    overflow: scroll !important;
+}
