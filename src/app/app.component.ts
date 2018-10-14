@@ -54,9 +54,9 @@ export class MyApp {
               public splashScreen: SplashScreen,
               private sanitizer: DomSanitizer) 
     {
-      events.subscribe('user:login', () => {
-        this.initializeApp();
-      });
+      // events.subscribe('user:login', () => {
+      //   this.initializeApp();
+      // });
       const config = {
         apiKey: 'AIzaSyDae-aT3njQhAL3vgRlBrBA0bNsLleEovM',
         authDomain: 'YOUR_AUTH_DOMAIN',
@@ -123,23 +123,23 @@ export class MyApp {
         this.PushSetUp();
       }
 
-      setInterval(() => { 
-        this.storage.get('user').then((val) => {
-          if(val!='' && val!=null){
-            console.log('valss :', val );
-            this.userData = val;
-            if(this.userData.Usertype == "School"){
-              this.Logo = this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+this.userData.LogoPath);
-            }else{
-              this.Logo = this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+this.userData.ImagePath);
-            }
-          }
-        });
-        // this.storage.get('user').then((val) => {
-          // console.log('valss :' );
-          // this.userData = val;
-        // });
-      }, 3000);
+      // setInterval(() => { 
+      //   this.storage.get('user').then((val) => {
+      //     if(val!='' && val!=null){
+      //       console.log('valss :', val );
+      //       this.userData = val;
+      //       if(this.userData.Usertype == "School"){
+      //         this.Logo = this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+this.userData.LogoPath);
+      //       }else{
+      //         this.Logo = this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+this.userData.ImagePath);
+      //       }
+      //     }
+      //   });
+      //   // this.storage.get('user').then((val) => {
+      //     // console.log('valss :' );
+      //     // this.userData = val;
+      //   // });
+      // }, 3000);
 
     });
   }

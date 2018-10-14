@@ -19,7 +19,7 @@ page-teacherprofile {
         padding: 10px ;
     }
     ion-label {
-        color: black !important;
+        color: unset !important;
         background: transparent !important;
         padding: 13px 0;
         margin: 0 !important;
@@ -78,5 +78,210 @@ page-teacherprofile {
     .checkbox-icon.checkbox-checked{
         border-color: $themecolor !important;
         background-color: $themecolor !important;
+    }
+
+
+
+
+
+
+
+    .filtermodal{
+        background-color: #13519c;
+        height: 80px;
+        padding: 18px;
+        color: white;
+    }
+    .filtermodal .row div p{
+        font-size: 16px;
+        color: white;
+    }
+    .filtercontent p{
+        font-size: 16px;
+        color: #1558a5;
+        padding-top: 15px;
+        margin-bottom: 0px;
+    }
+    .filtercontent ion-input {
+        padding: 5px;
+        color: black !important;
+        border-bottom: 2px solid #1558a5;
+        padding-left: 10px !important;
+    }
+    .filtermodal .row div div{
+            background-color: #ff4222;
+            padding: 5px;
+            border-radius: 4px;
+            text-align: center;
+    
+    }
+    .filtercontent ion-select{
+        width: 100%;
+        max-width: 100%;
+        border-bottom: 2px solid #1558a5;
+        padding: 7px;
+        padding-left: 0px;
+        padding-right: 10px;
+    }
+    ::placeholder {
+      color: black;
+    }
+    .selectfilters .item-inner {
+      padding: 0 !important;
+      border: 0 !important;
+    }
+    ion-input.searchinput.filterinput input::placeholder {
+      color: #999999 !important;
+    }
+    .filtercontent ion-input.searchinput {
+      padding-left: 0 !important;
+    }
+    .datetime-text.datetime-placeholder {
+      font-size: 14px;
+    }
+    .filtermodal {
+      background-color: #13519c;
+      height: 60px;
+      padding: 20px;
+      color: white;
+    }
+    #triangle-left {
+      width: 0;
+      height: 0;
+      border-top: 50px solid transparent;
+      border-right: 100px solid red;
+      border-bottom: 50px solid transparent;
+    }
+    .filtermodal {
+      background-color: #13519c;
+      height: 60px;
+      /* padding: 20px; */
+      color: white;
+      padding-top: 17px;
+      padding-bottom: 16px;
+    }
+    .filtermodal .row div div {
+      background-color: #ff4222;
+      border-radius: 4px;
+      text-align: center;
+      vertical-align: middle;
+      padding-top: 6px;
+      width: 50px;
+      padding-bottom: 3px;
+    }
+    
+    .trianglespan p{
+            vertical-align: middle;
+            display: table-cell;
+            text-align: center;
+            margin: 0 auto;
+            padding-left: 6px;
+     }
+     input.text-input.text-input-ios {
+       margin: 0;
+     }
+     .contesttypefilter  ion-label{
+         text-align: center !important;
+     }
+    .contesttypefilter{
+        width: 31%;
+        float: left;
+        border: 2px solid $themecolor !important;
+    
+        // border-radius: 15px;
+        height: 30px;
+        min-height: 33px;
+        margin-right: 5px;
+        color:  black;
+        padding-left: 0;
+        text-align: center;
+        font-size: 16px;
+    
+    
+    }
+    .radio-ios .radio-checked .radio-inner {
+      border-color: $themecolor;
+    
+    }
+    
+    .contesttypefilter .item-inner{
+        min-height: 20px;
+        height: 30px;
+        padding: 0 !important;
+    }
+    .contesttypefilter ion-label {
+    
+      margin: 0;
+          margin-bottom: 1px;
+    
+    }
+    
+    .coloractive
+    {
+        background-color: $themecolor;
+        color: white !important;
+    }
+    .contestdurationfilter{
+        width: 24%;
+        float: left;
+        border: 2px solid $themecolor !important;
+    
+        // border-radius: 15px;
+        height: 30px;
+        min-height: 33px;
+        margin-right: 3px;
+        color: $themecolor;
+        padding-left: 0;
+        text-align: center;
+        font-size: 16px;
+    }
+    .contestdurationfilter .item-inner {
+      min-height: 20px;
+      height: 30px;
+      padding: 0 !important;
+    
+    }
+    .contestdurationfilter ion-label{
+        margin:0;
+            margin-bottom: 1px;
+    
+    }
+    .sportlistfilter{
+        border: 2px solid $themecolor;
+        margin-bottom: 0;
+        margin-top: 15px;
+        color:#1558a5;
+    }
+    .sportlistfilter .item{
+        padding-left: 0;
+        color:$themecolor;
+    }
+    .sportlistfilter .item .item-inner {
+      padding-left: 10px;
+    }
+    .radio-checked {
+      border-color: $themecolor;
+    }
+    // .radio-inner {
+    // //   background-color: #13519c !important;
+    
+    // }
+    .radio-icon {
+      border-color: $themecolor !important;
+    }
+    .radio-icon.radio-checked {
+      border-color: $themecolor;
+    }
+    .inputfieldfilter{
+        position: relative;
+    }
+    .crossiconfilter{
+        position: absolute;
+        top: 0px;
+        right: 5px;
+        padding: 5px;
+    }
+    .booking button{
+        box-shadow: none !important;
     }
 }

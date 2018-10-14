@@ -41,6 +41,7 @@ import { PublicprofilePage } from '../pages/publicprofile/publicprofile';
 import { NotificationPage } from '../pages/notification/notification';
 import { PaymentPage } from '../pages/payment/payment';
 import { ChatPage } from '../pages/chat/chat';
+import { FiltersPage } from '../pages/filters/filters';
 import { SMS } from '@ionic-native/sms';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { PayPal, PayPalPayment, PayPalConfiguration }  from '@ionic-native/paypal';
@@ -74,7 +75,8 @@ import { PayPal, PayPalPayment, PayPalConfiguration }  from '@ionic-native/paypa
     PublicprofilePage,
     NotificationPage,
     PaymentPage,
-    ChatPage
+    ChatPage,
+    FiltersPage
   ],
   imports: [
     BrowserModule,
@@ -112,7 +114,8 @@ import { PayPal, PayPalPayment, PayPalConfiguration }  from '@ionic-native/paypa
     PublicprofilePage,
     NotificationPage,
     PaymentPage,
-    ChatPage
+    ChatPage,
+    FiltersPage
   ],
   providers: [
     StatusBar,

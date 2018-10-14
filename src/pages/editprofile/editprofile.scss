@@ -8,8 +8,9 @@ page-editprofile {
         padding-left: 0 !important;
     }
     ion-label {
-        font-size: 14px !important;
-        color: #b8b7b7 !important;
+        font-size: 20px !important;
+        font-weight: 700;
+        color: $themecolor !important;
     }
     ::placeholder{
         color:black !important;
@@ -19,11 +20,19 @@ page-editprofile {
         background: #eaeaea;
     }
     .changepswddiv{
-        padding: 15px;
+        padding: 0;
         background: white;
         border-radius: 5px;
         float: left;
         width: 100%;
+    }
+    .changepswddiv ion-item ion-input{
+        height:30px;
+        font-size: 17px !important;
+        font-weight: 700 !important;
+    }
+    .changepswddiv ion-item .item-inner{
+        padding-left: 15px;
     }
     .checkbox .checkbox-checked {
         border-color: #09a546;
@@ -40,7 +49,7 @@ page-editprofile {
         background: #a51463;
         padding: 8px;
         border-radius: 65px;
-        bottom: 25%;
+        bottom: 50%;
         width: 40px;
         height: 40px;
     }
@@ -64,12 +73,17 @@ page-editprofile {
         height: 45px;
     }
     ion-label {
-        color: black !important;
+        color: $themecolor !important;
         background: #fff !important;
         padding: 0;
         margin: 0 !important;
         text-align: left;
         width: auto;
+        padding-bottom: 10px;
+    }
+    ion-label ion-icon{
+        font-size: 30px !important;
+        margin-right: 5px;
     }
     .txtbig{
         font-size: 16px !important;
@@ -83,13 +97,25 @@ page-editprofile {
         background: #fff;
     }
     ion-item.item {
-        border-bottom: 2px solid #a51463 !important;
+        border-bottom: 2px solid #c3b8be !important;
+        margin-bottom: 0 !important;
         padding-bottom: 0px !important;
         float: left;
         width: 100%;
-        height: 70px;
+        height: 90px;
+        padding-top: 10px;
+        padding-bottom: 10px !important;
+    
     }
     ion-input{
-        font-weight: 500;
+        font-weight: 700;
+    }
+    .imgprofile {
+        border-bottom: 2px solid #c3b8be;
+    }
+    .userdata p:nth-child(1){
+        font-size: 20px;
+        font-weight: 700;
+        color: #a51463;
     }
 }

@@ -14,6 +14,12 @@
       <div class="penabs" style="transition-delay: 0s; transition-property: none;">
           <img (click)="uploadPhoto()" src="../../assets/imgs/penimg.png">    
       </div>
+      <div padding class="userdata">
+          <p no-margin>{{profileList.UserName}}</p>
+          <p no-margin>{{profileList.PhoneNumber}}</p>
+          <p no-margin>{{profileList.Email}}</p>
+      </div>
+      
       <!-- <p text-right>Change Password</p> -->
     </div>
   <div *ngIf="profileList.Usertype!='School'" class="imgprofile" text-center padding>
@@ -23,68 +29,70 @@
       <div class="penabs" style="transition-delay: 0s; transition-property: none;">
           <img (click)="uploadPhoto()" src="../../assets/imgs/penimg.png">    
       </div>
-      <!-- <p text-right>Change Password</p> -->
+      <p>{{profileList.UserName}}</p>
+      <p>{{profileList.PhoneNumber}}</p>
+      <p>{{profileList.Email}}</p>
     </div>
   <div class="changepswddiv" *ngIf="profileList!=''&& profileList.Usertype=='School'">
-      <ion-item >
-          <ion-label stacked>User Names</ion-label>
+      <!-- <ion-item >
+          <ion-label stacked><ion-icon name="md-person"></ion-icon> Username</ion-label>
           <ion-input type="text" value="{{profileList.UserName}}" [disabled]="true"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label  stacked>Phone</ion-label>
+          <ion-label  stacked><ion-icon name="ios-call"></ion-icon> Phone</ion-label>
           <ion-input  type="text" value="{{profileList.PhoneNumber}}" [disabled]="true"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label  stacked>Email</ion-label>
+          <ion-label  stacked><ion-icon name="md-mail"></ion-icon> Email</ion-label>
           <ion-input  type="text" value="{{profileList.Email}}" [disabled]="true"></ion-input>
-        </ion-item>
+        </ion-item> -->
         <ion-item>
-          <ion-label  stacked>School Name</ion-label>
+          <ion-label  stacked><ion-icon name="ios-school"></ion-icon> School Name</ion-label>
           <ion-input  type="text" [(ngModel)]="profileList.SchoolName"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label  stacked>Details</ion-label>
+          <ion-label  stacked><ion-icon name="md-add"></ion-icon> Details</ion-label>
           <ion-input  type="text" [(ngModel)]="profileList.Details"></ion-input>
         </ion-item>
         
         <ion-item>
-          <ion-label  stacked>Visiting Address 1</ion-label>
+          <ion-label  stacked><ion-icon name="ios-home"></ion-icon> Visiting Address 1</ion-label>
           <ion-input  type="text" [(ngModel)]="profileList.VisitingAddress1"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label  stacked>Visiting Address 2</ion-label>
+          <ion-label  stacked><ion-icon name="ios-home"></ion-icon> Visiting Address 2</ion-label>
           <ion-input  type="text" [(ngModel)]="profileList.VisitingAddress2"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label  stacked>Visiting City</ion-label>
+          <ion-label  stacked><ion-icon name="md-bus"></ion-icon> Visiting City</ion-label>
           <ion-input  type="text" [(ngModel)]="profileList.VisitingCity"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label  stacked>Visiting PostalCode</ion-label>
+          <ion-label  stacked><ion-icon name="md-mail-open"></ion-icon> Visiting PostalCode</ion-label>
           <ion-input  type="text" [(ngModel)]="profileList.VisitingPostalCode"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label  stacked>Govt Issued ID</ion-label>
+          <ion-label  stacked><ion-icon name="ios-card"></ion-icon> Govt Issued ID</ion-label>
           <ion-input  type="text" [(ngModel)]="profileList.GovtIssuedID"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label  stacked>Billing Address 1</ion-label>
+          <ion-label  stacked><ion-icon name="ios-home"></ion-icon> Billing Address 1</ion-label>
           <ion-input  type="text" [(ngModel)]="profileList.BillingAddress1"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label  stacked>BillingAddress2</ion-label>
+          <ion-label  stacked><ion-icon name="ios-home"></ion-icon>BillingAddress2</ion-label>
           <ion-input  type="text" [(ngModel)]="profileList.BillingAddress2"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label  stacked>Billing City</ion-label>
+          <ion-label  stacked><ion-icon name="md-bus"></ion-icon> Billing City</ion-label>
           <ion-input  type="text" [(ngModel)]="profileList.BillingCity"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label  stacked>Billing PostalCode</ion-label>
+          <ion-label  stacked><ion-icon name="md-mail-open"></ion-icon>Billing PostalCode</ion-label>
           <ion-input  type="text" [(ngModel)]="profileList.BillingPostalCode"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label  stacked>Billing Country</ion-label>
+          <ion-label  stacked><ion-icon name="md-mail-open"></ion-icon> Billing Country</ion-label>
            <!-- <ion-select [(ngModel)]="user.VisitingCountry">
         <ion-option value="Pakistan">Pakistan</ion-option>
         <ion-option value="England">England</ion-option>
