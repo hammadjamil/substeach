@@ -72,9 +72,6 @@ page-favourites {
         background: $themecolor;
         opacity: 1;
     }
-    // .scroll-content {
-    //     background: #e8e8e8;
-    // }
     .menubtn {
         box-shadow: none !important;
     }
@@ -86,7 +83,7 @@ page-favourites {
     }
     
     .scroll-content {
-        padding: 10px !important;
+        padding: 10px;
     }
     .swiper-wrapper {
         padding-bottom: 40px;

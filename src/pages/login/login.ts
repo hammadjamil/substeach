@@ -221,10 +221,19 @@ loginService() {
               console.log('fb success ++++',success);
               if(success.userData!=''){
                 this.auth.loginUser(success);
+                
                 setTimeout(() => {
-                  this.loader.dismiss();
-                  this.navCtrl.setRoot(HomePage);
-                  this.loader.dismiss();
+                  if (success.userData.Usertype=='School'){
+                    this.loader.dismiss();
+                    this.navCtrl.setRoot(SchoolprofilePage);
+                    this.loader.dismiss();
+                  }
+                  else{
+                    this.loader.dismiss();
+                    this.navCtrl.setRoot(TeacherprofilePage);
+                    this.loader.dismiss();
+                  }
+                  
                 }, 2000);
               }else{
                 this.storage.set('SocialRegisteration', user);

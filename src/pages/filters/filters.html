@@ -1,0 +1,89 @@
+<ion-header class="filtermodal container">
+  <div class="row">
+    <div (click)="closeModal()" class="col-3 text-left"><div class="trianglespan" >Done</div></div>
+    <div class="col-6  text-center p-0"><p style="margin: 0;padding-top: 5px;">SEARCH CONTESTS</p></div>
+    <div class="col-3  text-right"><div (click)="resetall()" class="trianglespan" style="float: right;">Reset</div></div>
+  </div> 
+</ion-header>
+
+<ion-content padding class="filtercontent">
+<p *ngIf="contestremove!=1">Search Contests</p>
+<div class="inputfieldfilter" *ngIf="contestremove!=1">
+  <ion-input type="text" [(ngModel)]="icontestname" placeholder="Search Contests..." class="searchinput filterinput" onfocus="this.placeholder = ''"
+    onblur="this.placeholder = 'Search Contests...'" style="font-size: 14px;"></ion-input>
+<ion-icon name="md-close" class="crossiconfilter" *ngIf="icontestname!=''" (click)="clearcontestname()"></ion-icon>
+</div>
+<p>Contest Type</p>
+<ion-list style="padding-top: 15px;padding-bottom: 15px;">
+  <ion-item class="contesttypefilter" [ngClass]="{'coloractive': bcontesttype == 'pix$'}" (click)="togglecontest('pix$')">
+    Free Play
+  </ion-item>
+  <ion-item class="contesttypefilter" style="margin-right: 0;" [ngClass]="{'coloractive': bcontesttype == 'paid'}" (click)="togglecontest('paid')">
+    Cash Prizes
+  </ion-item>
+</ion-list>
+
+
+<p>Contest Duration</p>
+<ion-list style="padding-top: 15px;padding-bottom: 15px;">
+  <ion-item class="contestdurationfilter" [ngClass]="{'coloractive': bcontestdur == 1}" (click)="toggledur(1)">
+    One Day
+  </ion-item>
+  <ion-item class="contestdurationfilter" [ngClass]="{'coloractive': bcontestdur == 2}" (click)="toggledur(2)">
+    Weekly
+  </ion-item>
+  <ion-item class="contestdurationfilter" [ngClass]="{'coloractive': bcontestdur == 3}" (click)="toggledur(3)">
+    Monthly
+  </ion-item>
+  <ion-item class="contestdurationfilter" style="margin-right: 0;" [ngClass]="{'coloractive': bcontestdur == 4}" (click)="toggledur(4)">
+    Season
+  </ion-item>
+</ion-list>
+
+
+<p>Sports</p>
+
+<ion-list radio-group [(ngModel)]="sports" class="sportlistfilter">
+  <ion-item>
+    <ion-label>None</ion-label>
+    <ion-radio value="" checked></ion-radio>
+  </ion-item>
+  <ion-item>
+    <i class="fas fa-football-ball cardicons"></i>
+    <ion-label><i class="fas fa-football-ball cardicons" style="padding: 3px 5px 0 0;"></i>NFL</ion-label>
+    <ion-radio value="1" checked></ion-radio>
+  </ion-item>
+  <ion-item>
+    <i class="fas fa-football-ball cardicons"></i>
+    <ion-label><i class="fas fa-basketball-ball cardicons" style="padding: 3px 5px 0 0;"></i>NBA</ion-label>
+    <ion-radio value="2"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <i class="fas fa-football-ball cardicons"></i>
+    <ion-label><i class="fas fa-baseball-ball cardicons" style="padding: 3px 5px 0 0;"></i>MLB</ion-label>
+    <ion-radio value="3"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <i class="fas fa-football-ball cardicons"></i>
+    <ion-label><i class="fas fa-football-ball cardicons" style="padding: 3px 5px 0 0;"></i>NCAAF</ion-label>
+    <ion-radio value="4" checked></ion-radio>
+  </ion-item>
+  <ion-item>
+    <i class="fas fa-football-ball cardicons"></i>
+    <ion-label><i class="fas fa-basketball-ball cardicons" style="padding: 3px 5px 0 0;"></i>NCAAB</ion-label>
+    <ion-radio value="5"></ion-radio>
+  </ion-item>
+  <ion-item>
+    
+    <ion-label><i class="fas fa-hockey-puck cardicons" style="padding: 3px 5px 0 0;"></i>NHL</ion-label>
+    <ion-radio value="6"></ion-radio>
+  </ion-item>
+</ion-list>
+
+<p>Starting Date</p>
+<div class="inputfieldfilter">
+  <ion-datetime displayFormat="MM/DD/YYYY" [min]="minDate" max="2020-10-31" [(ngModel)]="startdate" placeholder="MM/DD/YY"
+    onfocus="this.placeholder = ''" onblur="this.placeholder = 'MM/DD/YY'" style="font-size: 14px; position: relative;border-bottom: 2px solid #13519c;padding: 5px;padding-left: 0;"></ion-datetime>
+<ion-icon name="md-close" class="crossiconfilter" *ngIf="startdate!=''" (click)="cleardate()"></ion-icon>
+</div>
+</ion-content>

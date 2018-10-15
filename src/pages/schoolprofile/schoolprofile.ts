@@ -5,6 +5,9 @@ import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { HomePage } from '../home/home';
+import { NotificationPage } from '../notification/notification';
+import { EditprofilePage } from '../editprofile/editprofile';
+import { FavouritesPage } from '../favourites/favourites';
 import { Services } from '../../providers/services';
 import { Events } from 'ionic-angular';
 
@@ -15,6 +18,8 @@ import { Events } from 'ionic-angular';
 })
 export class SchoolprofilePage {
   schooltabs: string = "days";
+  noticountdata:any='';
+  userData:any='';
   schoolDay : any ={
     Day :'',
     TimeSlote :'',
@@ -31,18 +36,25 @@ export class SchoolprofilePage {
     Type : 'Period',
     Description :'',
   };
+  seldays:any={Monday:'',Tuesday:'',Wednesday:'',Thursday:'',Friday:'',Saturday:'',Sunday:''};
+  seltimeslots:any={slot1:'',slot2:'',slot3:'',slot4:'',slot5:'',slot6:'',slot7:''};
+  selstandrads:any={};
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public loadingCtrl: LoadingController,
     private storage: Storage,
     public events: Events,
     public services: Services,
     private alertCtrl: AlertController) {
-      this.events.publish('user:login');
+      this.storage.get('user').then((val) => {
+          this.userData=val;
+          console.log('userdata',this.userData);
+      });
     this.services.getStandards().subscribe(
       //Successfully Logged in
       success => {
         console.log('Success : ',success);
         this.Standard = success.userData;
+        this.getnotificationcount();
       },
       error => {
         console.log('error bhai', error);
@@ -111,29 +123,6 @@ export class SchoolprofilePage {
     }
     this.storage.set('searchCriteria',this.schoolDay);
     this.navCtrl.push(HomePage);
-    // console.log('schoolDay : ',this.schoolDay);
-    // console.log('schoolPeriod : ',this.schoolPeriod);
-    // let body = new FormData();
-    // body.append('Day', this.schoolDay.Day);
-    // body.append('TimeSlote', this.schoolDay.TimeSlote);
-    // body.append('Standard', this.schoolDay.Standard);
-    // this.services.getMatchesByDay(body).subscribe(
-    //   //Successfully Logged in
-    //   success => {
-    //     console.log('Success : ',success);
-    //     this.Standard = success.userData;
-    //   },
-    //   error => {
-    //     console.log('error bhai', error);
-    //     setTimeout(() => {
-    //       // if (error.message.length==1){
-    //         this.presentAlert('Alert!', error.message);
-    //         this.loader.dismiss();
-    //       // }
-          
-    //     }, 500);
-    //   }
-    // )
     
   }
 
@@ -162,30 +151,206 @@ export class SchoolprofilePage {
     console.log('schoolPeriod : ',this.schoolPeriod);
     this.storage.set('searchCriteria',this.schoolPeriod);
     this.navCtrl.push(HomePage);
-  //   let body = new FormData();
-  //   body.append('ToDate', this.schoolPeriod.ToDate);
-  //   body.append('FromDate', this.schoolPeriod.FromDate);
-  //   body.append('TimeSlote', this.schoolPeriod.TimeSlote);
-  //   body.append('Standard', this.schoolPeriod.Standard);
-  //   this.services.getMatchesByPeriod(body).subscribe(
-  //     //Successfully Logged in
-  //     success => {
-  //       console.log('Success : ',success);
-  //       this.Standard = success.userData;
-  //     },
-  //     error => {
-  //       console.log('error bhai', error);
-  //       setTimeout(() => {
-  //         // if (error.message.length==1){
-  //           this.presentAlert('Alert!', error.message);
-  //           this.loader.dismiss();
-  //         // }
-          
-  //       }, 500);
-  //     }
-  //   )
     
    }
-
-
+   getnotificationcount(){
+     console.log(this.userData.Id);
+    let body = new FormData();
+    body.append('userId', this.userData.Id);
+    this.services.notificationcount(body).subscribe(
+      //Successfully Logged in
+      success => {
+        setTimeout(() => {
+          console.log(success);
+          this.noticountdata=success;
+        }, 2000);
+      },
+      error => {
+        console.log('error bhai', error);
+      }
+    )
+   }
+shownoti(){
+  this.navCtrl.push(NotificationPage);
+}
+editprofilepage(){
+  this.navCtrl.push(EditprofilePage);
+}
+showfav(){
+  this.navCtrl.push(FavouritesPage);
+}
+toggledays(value){
+  if (value == 'Monday'){
+    if(this.seldays.Monday==1){
+      this.seldays.Monday='';
+    }
+    else{
+      this.seldays.Monday=1;
+    }
+  }
+  if (value == 'Tuesday'){
+    if(this.seldays.Tuesday==1){
+      this.seldays.Tuesday='';
+    }
+    else{
+      this.seldays.Tuesday=1;
+    }
+  }
+  if (value == 'Wednesday'){
+    if(this.seldays.Wednesday==1){
+      this.seldays.Wednesday='';
+    }
+    else{
+      this.seldays.Wednesday=1;
+    }
+  }
+  if (value == 'Thursday'){
+    if(this.seldays.Thursday==1){
+      this.seldays.Thursday='';
+    }
+    else{
+      this.seldays.Thursday=1;
+    }
+  }
+  if (value == 'Friday'){
+    if(this.seldays.Friday==1){
+      this.seldays.Friday='';
+    }
+    else{
+      this.seldays.Friday=1;
+    }
+  }
+  if (value == 'Saturday'){
+    if(this.seldays.Saturday==1){
+      this.seldays.Saturday='';
+    }
+    else{
+      this.seldays.Saturday=1;
+    }
+  }
+  if (value == 'Sunday'){
+    if(this.seldays.Sunday==1){
+      this.seldays.Sunday='';
+    }
+    else{
+      this.seldays.Sunday=1;
+    }
+  }
+}
+toggletimeslot(value){
+  if (value == '9:00 -10:00'){
+    if(this.seltimeslots.slot1==1){
+      this.seltimeslots.slot1='';
+    }
+    else{
+      this.seltimeslots.slot1=1;
+    }
+  }
+  if (value == '10:00 -11:00'){
+    if(this.seltimeslots.slot2==1){
+      this.seltimeslots.slot2='';
+    }
+    else{
+      this.seltimeslots.slot2=1;
+    }
+  }
+  if (value == '11:00 -12:00'){
+    if(this.seltimeslots.slot3==1){
+      this.seltimeslots.slot3='';
+    }
+    else{
+      this.seltimeslots.slot3=1;
+    }
+  }
+  if (value == '12:00 -01:00'){
+    if(this.seltimeslots.slot4==1){
+      this.seltimeslots.slot4='';
+    }
+    else{
+      this.seltimeslots.slot4=1;
+    }
+  }
+  if (value == '01:00 -02:00'){
+    if(this.seltimeslots.slot5==1){
+      this.seltimeslots.slot5='';
+    }
+    else{
+      this.seltimeslots.slot5=1;
+    }
+  }
+  if (value == '02:00 -03:00'){
+    if(this.seltimeslots.slot6==1){
+      this.seltimeslots.slot6='';
+    }
+    else{
+      this.seltimeslots.slot6=1;
+    }
+  }
+  if (value == '03:00 -04:00'){
+    if(this.seltimeslots.slot7==1){
+      this.seltimeslots.slot7='';
+    }
+    else{
+      this.seltimeslots.slot7=1;
+    }
+  }
+}
+togglestandrads(value){
+  if (value == 'Monday'){
+    if(this.seldays.Monday==1){
+      this.seldays.Monday='';
+    }
+    else{
+      this.seldays.Monday=1;
+    }
+  }
+  if (value == 'Tuesday'){
+    if(this.seldays.Tuesday==1){
+      this.seldays.Tuesday='';
+    }
+    else{
+      this.seldays.Tuesday=1;
+    }
+  }
+  if (value == 'Wednesday'){
+    if(this.seldays.Wednesday==1){
+      this.seldays.Wednesday='';
+    }
+    else{
+      this.seldays.Wednesday=1;
+    }
+  }
+  if (value == 'Thursday'){
+    if(this.seldays.Thursday==1){
+      this.seldays.Thursday='';
+    }
+    else{
+      this.seldays.Thursday=1;
+    }
+  }
+  if (value == 'Friday'){
+    if(this.seldays.Friday==1){
+      this.seldays.Friday='';
+    }
+    else{
+      this.seldays.Friday=1;
+    }
+  }
+  if (value == 'Saturday'){
+    if(this.seldays.Saturday==1){
+      this.seldays.Saturday='';
+    }
+    else{
+      this.seldays.Saturday=1;
+    }
+  }
+  if (value == 'Sunday'){
+    if(this.seldays.Sunday==1){
+      this.seldays.Sunday='';
+    }
+    else{
+      this.seldays.Sunday=1;
+    }
+  }
+}
 }

@@ -41,6 +41,7 @@ import { PublicprofilePage } from '../pages/publicprofile/publicprofile';
 import { NotificationPage } from '../pages/notification/notification';
 import { PaymentPage } from '../pages/payment/payment';
 import { ChatPage } from '../pages/chat/chat';
+import { FiltersPage } from '../pages/filters/filters';
 import { SMS } from '@ionic-native/sms';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { Stripe } from '@ionic-native/stripe';
@@ -75,7 +76,8 @@ import { Stripe } from '@ionic-native/stripe';
     PublicprofilePage,
     NotificationPage,
     PaymentPage,
-    ChatPage
+    ChatPage,
+    FiltersPage
   ],
   imports: [
     BrowserModule,
@@ -113,7 +115,8 @@ import { Stripe } from '@ionic-native/stripe';
     PublicprofilePage,
     NotificationPage,
     PaymentPage,
-    ChatPage
+    ChatPage,
+    FiltersPage
   ],
   providers: [
     StatusBar,

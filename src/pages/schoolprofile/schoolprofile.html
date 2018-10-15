@@ -1,9 +1,15 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle class="menubtn">
+    <!-- <button ion-button menuToggle class="menubtn">
       <ion-icon name="menu"></ion-icon>
+    </button> -->
+    <button ion-button  class="menubtn" float-left (click)="editprofilepage()">
+        <img *ngIf="userData!=''" src="../assets/imgs/profileimg.jpg" alt="" width="30px" height="30px" style="border-radius:50%">
     </button>
-    <ion-title>School Profile</ion-title>
+    <ion-title float-left>School Profile</ion-title>
+    <button ion-button  class="menubtn" text-right float-right (click)="shownoti()">
+        <ion-icon name="notifications" style="font-size:30px;"></ion-icon><ion-badge *ngIf="noticountdata!='' && noticountdata.code=='200'">{{noticountdata.count}}</ion-badge>
+    </button>
   </ion-navbar>
   <div class="segment_tab">
     <ion-segment [(ngModel)]="schooltabs">
@@ -17,10 +23,69 @@
     </div>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
     <div [ngSwitch]="schooltabs">
         <ion-list *ngSwitchCase="'days'">
                 <p style="font-size: 20px;text-align: center;font-weight: 600;">Select Days</p>
+
+ <!-- <p style="font-size: 22px;font-weight: 700;padding-bottom: 0;margin-bottom: 0;text-align: center;">Select Days</p>
+    <ion-list style="padding-top: 15px;padding-bottom: 15px;float: left;margin-bottom: 0;">
+      <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seldays.Monday == '1'}" (click)="toggledays('Monday')">
+          Monday
+      </ion-item>
+      <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seldays.Tuesday == '1'}" (click)="toggledays('Tuesday')">
+          Tuesday
+      </ion-item>
+      <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seldays.Wednesday == '1'}" (click)="toggledays('Wednesday')">
+          Wednesday
+      </ion-item>
+      <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seldays.Thursday == '1'}" (click)="toggledays('Thursday')">
+          Thursday
+      </ion-item>
+      <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seldays.Friday == '1'}" (click)="toggledays('Friday')">
+          Friday
+      </ion-item>
+      <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seldays.Saturday == '1'}" (click)="toggledays('Saturday')">
+          Saturday
+      </ion-item>
+      <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seldays.Sunday == '1'}" (click)="toggledays('Sunday')">
+          Sunday
+      </ion-item>
+    </ion-list>
+
+
+    <p style="font-size: 22px;font-weight: 700;padding-bottom: 0;margin-bottom: 0;text-align: center;">Select Time Slots</p>
+    <ion-list style="padding-top: 15px;padding-bottom: 15px;float: left;margin-bottom: 0;">
+      <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslots.slot1 == '1'}" (click)="toggletimeslot('9:00 -10:00')">
+          9:00 -10:00
+      </ion-item>
+      <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslots.slot2 == '1'}" (click)="toggletimeslot('10:00 -11:00')">
+          10:00 -11:00
+      </ion-item>
+      <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslots.slot3 == '1'}" (click)="toggletimeslot('11:00 -12:00')">
+          11:00 -12:00
+      </ion-item>
+      <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslots.slot4 == '1'}" (click)="toggletimeslot('12:00 -01:00')">
+          12:00 -01:00
+      </ion-item>
+      <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslots.slot5 == '1'}" (click)="toggletimeslot('01:00 -02:00')">
+          01:00 -02:00
+      </ion-item>
+      <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslots.slot6 == '1'}" (click)="toggletimeslot('02:00 -03:00')">
+          02:00 -03:00
+      </ion-item>
+      <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslots.slot7 == '1'}" (click)="toggletimeslot('03:00 -04:00')">
+          03:00 -04:00
+      </ion-item>
+    </ion-list>
+
+
+    <p style="font-size: 22px;font-weight: 700;padding-bottom: 0;margin-bottom: 0;text-align: center;">Select Standrads</p>
+    <ion-list style="padding-top: 15px;padding-bottom: 15px;float: left;margin-bottom: 0;">
+      <ion-item *ngFor="let row of Standard" class="contesttypefilter" [ngClass]="{'coloractive': bcontesttype == 'pix$'}" (click)="togglestandrads('row.StandardName')">
+          {{row.StandardName}}
+      </ion-item>
+    </ion-list>  -->
                 <ion-item>
                   <ion-label>Days</ion-label>
                   <ion-select [(ngModel)]="schoolDay.Day" multiple="true">
@@ -53,7 +118,6 @@
                   <ion-label>Standrads</ion-label>
                   <ion-select [(ngModel)]="schoolDay.Standard" multiple="true">
                     <ion-option *ngFor="let row of Standard" value="{{row.Id}}">{{row.StandardName}}</ion-option>
-                    
                   </ion-select>
                 </ion-item>
                 <ion-textarea [(ngModel)]="schoolDay.Description" #msgInput rows="1" maxLength="1000" placeholder="Enter Info"></ion-textarea>
@@ -73,12 +137,6 @@
       </ion-label>
       <ion-datetime [(ngModel)]="schoolPeriod.ToDate" displayFormat="MM/DD/YYYY" placeholder="To Available Date" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>
     </ion-item>
-    <!-- <ion-item  class="p-0">
-      <ion-label style="margin-bottom: 0;margin-right: 10px;text-align: center;">
-        <ion-icon name="md-clock"></ion-icon>
-      </ion-label>
-      <ion-datetime [(ngModel)]="schoolPeriod.TimeSlote" minuteValues="00" displayFormat="HH:mm" placeholder="Time Slotes" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>            
-    </ion-item> -->
     <ion-item >
       <ion-label>Time Slots</ion-label>
       <ion-select [(ngModel)]="schoolPeriod.TimeSlote" multiple="true">
@@ -104,5 +162,8 @@
       <ion-textarea [(ngModel)]="schoolPeriod.Description" #msgInput rows="1" maxLength="1000" placeholder="Enter Info"></ion-textarea>
       <button ion-button block style="margin-top: 10px;" (click)="matchByPeriod()">Matching</button>
         </ion-list>
+    </div>
+    <div (click)="showfav()" style="float: right;background: #ef5368;border-radius: 50px;color: white;position: fixed;bottom: 5px;right: 5px;height: 50px !important;box-shadow: 0px 0px 5px 0px grey;">
+        <img src="../../assets/imgs/love.gif" style="width:50px;height:50px;margin-right: 0;" float-left/><p float-left style="margin:0;font-size: 18px;    padding-top: 10px;padding-right: 10px;">Favourites</p>
     </div>
 </ion-content>

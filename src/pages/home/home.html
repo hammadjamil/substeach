@@ -7,13 +7,13 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <ion-slides class="home_teachers">
     <ion-slide class="home_teachers_slide" *ngFor="let teacher of teacherList">
       <div class="sliderimgg">
         <img src="{{LogoUrl+teacher.ImagePath}}" alt="" class="home_teachers_slide_img">
       </div>
-      <h1 class="home_teachers_slide_name">{{teacher.FirstName+' '+teacher.LastName}} <span><ion-icon float-right (click)="addToFav(teacher.DeputyPersonId)" name="ios-heart-outline"></ion-icon></span></h1>
+      <h1 class="home_teachers_slide_name">{{teacher.FirstName+' '+teacher.LastName}} <span><ion-icon *ngIf="teacher.favId=='' || teacher.favId==null" float-right (click)="addToFav(teacher.DeputyPersonId)" name="ios-heart-outline"></ion-icon><ion-icon *ngIf="teacher.favId!='' && teacher.favId!=null" float-right (click)="addToFav(teacher.DeputyPersonId)" name="ios-heart"></ion-icon></span></h1>
       <p class="home_teachers_slide_reviews">Top Review</p>
       <p class="home_teachers_slide_desc">
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
