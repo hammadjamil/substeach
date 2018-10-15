@@ -3,6 +3,9 @@ import { IonicPage, NavController, NavParams, MenuController, Platform } from 'i
 import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { NotificationPage } from '../notification/notification';
+import { EditprofilePage } from '../editprofile/editprofile';
+import { FavouritesPage } from '../favourites/favourites';
 import { Services } from '../../providers/services';
 import { Events } from 'ionic-angular';
 
@@ -12,6 +15,7 @@ import { Events } from 'ionic-angular';
   templateUrl: 'teacherprofile.html',
 })
 export class TeacherprofilePage {
+  schooltabs: string = "days";
   schoolDay : any ={
     Day :'',
     TimeSlote :'',
@@ -19,6 +23,7 @@ export class TeacherprofilePage {
   };
   Standard:any;
   userID:any;
+  noticountdata:any='';
   seldays:any={Monday:'',Tuesday:'',Wednesday:'',Thursday:'',Friday:'',Saturday:'',Sunday:''};
   seltimeslots:any={slot1:'',slot2:'',slot3:'',slot4:'',slot5:'',slot6:'',slot7:''};
   selstandrads:any={};
@@ -108,6 +113,32 @@ export class TeacherprofilePage {
         }, 500);
       }
     )
+  }
+  getnotificationcount(){
+    console.log(this.userID.Id);
+   let body = new FormData();
+   body.append('userId', this.userID.Id);
+   this.services.notificationcount(body).subscribe(
+     //Successfully Logged in
+     success => {
+       setTimeout(() => {
+         console.log(success);
+         this.noticountdata=success;
+       }, 2000);
+     },
+     error => {
+       console.log('error bhai', error);
+     }
+   )
+  }
+  shownoti(){
+    this.navCtrl.push(NotificationPage);
+  }
+  editprofilepage(){
+    this.navCtrl.push(EditprofilePage);
+  }
+  showfav(){
+    this.navCtrl.push(FavouritesPage);
   }
   toggledays(value){
     if (value == 'Monday'){
