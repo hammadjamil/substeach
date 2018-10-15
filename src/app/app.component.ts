@@ -8,7 +8,7 @@ import { LoginPage } from '../pages/login/login';
 import { LogoutPage } from '../pages/logout/logout';
 import { SchoolprofilePage } from '../pages/schoolprofile/schoolprofile';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
-import { PublicprofilePage } from '../pages/publicprofile/publicprofile';
+import { TeacherprofilePage } from '../pages/teacherprofile/teacherprofile';
 import { PaymentPage } from '../pages/payment/payment';
 import * as firebase from 'firebase';
 import { MyStorage } from './localstorage';
@@ -24,8 +24,6 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-
-  // rootPage: any = HomePage;
   rootPage: any = LoginPage;  
   loader: any;
   pages: Array<{title: string, component: any}>;
@@ -55,13 +53,7 @@ export class MyApp {
         storageBucket: 'YOUR_STORAGE_BUCKET',
       };
       firebase.initializeApp(config);
-      
     this.initializeApp();
-    // used for an example of ngFor and navigation
-    this.pages = [     
-      { title: 'pay', component: PaymentPage },
-      { title: 'Logout', component: LogoutPage }
-    ];
   }
   initializeApp() {
     this.platform.ready().then(() => {
@@ -77,18 +69,10 @@ export class MyApp {
           if(val.Usertype=='School'){
             this.homepage=1;
             this.rootPage = SchoolprofilePage;
-            this.pages = [
-              { title: 'pay', component: PaymentPage },
-              { title: 'Logout', component: LogoutPage }
-            ];
           }
           else{
             this.homepage=2;
-            console.log('this.homepage',this.homepage);
-            this.rootPage = PublicprofilePage;
-            this.pages = [
-              { title: 'Logout', component: LogoutPage }
-            ];
+            this.rootPage = TeacherprofilePage;
           }
         }else{
           this.rootPage = LoginPage;
