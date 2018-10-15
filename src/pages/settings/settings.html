@@ -1,116 +1,14 @@
-<ion-header style="background-color: #a51463;height: 265px;">
+<ion-header>
   <ion-navbar>
-    <button ion-button menuToggle class="menubtn">
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Home</ion-title>
+    <ion-title>SETTINGS</ion-title>
   </ion-navbar>
-  <div style="width:100%;">
-    <div class="profileimg p-0" style="position: relative;">
-        <img src={{imageURI}} alt="" *ngIf="imageURI!=''">
-        <img src="https://staging.pixxpros.com/web/resources/profile-pic.png" alt="" *ngIf="profileimgurl=='' || profileimgurl==null && imageURI==''">
-        <img src="https://staging.pixxpros.com/web/resources/users/{{uid}}/122{{profileimgurl}}?dummy={{timestamp}}" alt="" *ngIf="uid!='' && profileimgurl!='' && profileimgurl!=null && imageURI==''">
-        <ion-spinner *ngIf="spin==1" icon="spiral" style="position: absolute;top: 33%;left: 33%;color: white;"></ion-spinner>
-    </div>
-  </div>
-  <p class="m-0" style="width: 100%;font-size: 20px;color: rgb(255, 255, 255);text-align:center;padding: 9px;"><button ion-button class="editprofilebtn" (click)="presentActionSheet()">Change Profile picture</button></p>       
-  <!-- <p class="m-0" style="width: 100%;font-size: 20px;color: rgb(255, 255, 255);text-align:center;padding: 9px;"><button ion-button class="editprofilebtn" (click)="cancelupload()" style="width: 60px;color:#ef4e34;background-color: #fff;">Cancel</button><button ion-button class="editprofilebtn" (click)="uploadimg()" style="width: 60px;" [disabled]="disableButton">OK</button></p> -->
 </ion-header>
-
-<ion-content padding view-cache=“false”>
-  <div>
-    <p style="color: #184fa1;background: #f3f2f2;padding: 5px;" [innerHTML]="editprofilelist.pageNotice"></p>
-  </div>
-  <p style="font-size: 17px;color: #ef4e34;" >Personal Information</p>
-  <ion-card class="homecard" style="margin-top:0;" >
-      <ion-card-content class="cardmain" (click)="changeemail()">
-        <div>
-          <p class="cardtxt" style="width: 90%;float: left;">Email</p>
-          <div >
-            <ion-icon name="ios-arrow-forward" float-right class="cardicons cardiconsarrow" ></ion-icon>
-          </div>
-        </div>
-        <div class="carddescription" float-left>
-            <p style="padding-top: 0;">hamza@gmail.com</p>
-        </div>
-      </ion-card-content>
-  </ion-card>
-  <ion-card class="homecard" style="margin-top:0;"   >
-      <ion-card-content class="cardmain" (click)="changepswd()">
-        <div>
-          <p class="cardtxt" style="width: 90%;float: left;">Password</p>
-          <div >
-            <ion-icon name="ios-arrow-forward" float-right class="cardicons cardiconsarrow" ></ion-icon>
-          </div>
-        </div>
-      </ion-card-content>
-  </ion-card>
-  <ion-card class="homecard" style="margin-top:0;"   >
-      <ion-card-content class="cardmain" (click)="changedob()">
-        <div>
-          <p class="cardtxt" style="width: 90%;float: left;">DOB</p>
-          <div >
-            <ion-icon name="ios-arrow-forward" float-right class="cardicons cardiconsarrow" ></ion-icon>
-          </div>
-        </div>
-        <div class="carddescription" float-left>
-            <p style="padding-top: 0;">10/7/18</p>
-        </div>
-      </ion-card-content>
-  </ion-card>
-  <ion-card class="homecard" style="margin-top:0;"   >
-      <ion-card-content class="cardmain" (click)="changefname()">
-        <div>
-          <p class="cardtxt" style="width: 90%;float: left;">First Name</p>
-          <div >
-            <ion-icon name="ios-arrow-forward" float-right class="cardicons cardiconsarrow" ></ion-icon>
-          </div>
-        </div>
-        <div class="carddescription" float-left>
-            <p style="padding-top: 0;">Hamza</p>
-        </div>
-      </ion-card-content>
-  </ion-card>
-  <ion-card class="homecard" style="margin-top:0;"   >
-      <ion-card-content class="cardmain" (click)="changelname()">
-        <div>
-          <p class="cardtxt" style="width: 90%;float: left;">Last Name</p>
-          <div >
-            <ion-icon name="ios-arrow-forward" float-right class="cardicons cardiconsarrow" ></ion-icon>
-          </div>
-        </div>
-        <div class="carddescription" float-left>
-            <p style="padding-top: 0;">Mehmood</p>
-        </div>
-      </ion-card-content>
-  </ion-card>
-  <ion-card class="homecard" style="margin-top:0;"  >
-      <ion-card-content class="cardmain"  (click)="changetimezone()">
-        <div>
-          <p class="cardtxt" style="width: 90%;float: left;">TimeZone</p>
-          <div >
-            <ion-icon name="ios-arrow-forward" float-right class="cardicons cardiconsarrow" ></ion-icon>
-          </div>
-        </div>
-        <div class="carddescription" float-left>
-            <p style="padding-top: 0;">Islamabad</p>
-        </div>
-      </ion-card-content>
-  </ion-card>
-  <p style="font-size: 17px;color: #ef4e34;" >Subscription and billing information</p>
-  <ion-card class="homecard" style="margin-top:0;" >
-      <ion-card-content class="cardmain"  (click)="changebillinginfo()">
-        <div>
-          <p class="cardtxt" style="width: 90%;float: left;">Your Status: lorem lipsum</p>
-          <div >
-              <ion-icon name="ios-arrow-forward" float-right class="cardicons cardiconsarrow" ></ion-icon>
-            </div>
-        </div>
-        <div class="carddescription" float-left>
-            <p style="padding-top: 0;">Billing information</p>
-        </div>
-      </ion-card-content>
-  </ion-card>
-
+<ion-content padding>
+  <button ion-button full style="margin-bottom:20px;">
+      PAY
+    </button>
+  <button ion-button icon-start full (click)="logout()">
+    <ion-icon name="md-log-out"></ion-icon>
+    LOGOUT
+  </button>
 </ion-content>
-

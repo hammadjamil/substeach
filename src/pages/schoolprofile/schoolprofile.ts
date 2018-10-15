@@ -7,6 +7,7 @@ import { Storage } from '@ionic/storage';
 import { HomePage } from '../home/home';
 import { NotificationPage } from '../notification/notification';
 import { EditprofilePage } from '../editprofile/editprofile';
+import { FavouritesPage } from '../favourites/favourites';
 import { Services } from '../../providers/services';
 import { Events } from 'ionic-angular';
 
@@ -17,6 +18,7 @@ import { Events } from 'ionic-angular';
 })
 export class SchoolprofilePage {
   schooltabs: string = "days";
+  noticountdata:any='';
   userData:any='';
   schoolDay : any ={
     Day :'',
@@ -47,12 +49,12 @@ export class SchoolprofilePage {
           this.userData=val;
           console.log('userdata',this.userData);
       });
-      //this.events.publish('user:login');
     this.services.getStandards().subscribe(
       //Successfully Logged in
       success => {
         console.log('Success : ',success);
         this.Standard = success.userData;
+        this.getnotificationcount();
       },
       error => {
         console.log('error bhai', error);
@@ -121,29 +123,6 @@ export class SchoolprofilePage {
     }
     this.storage.set('searchCriteria',this.schoolDay);
     this.navCtrl.push(HomePage);
-    // console.log('schoolDay : ',this.schoolDay);
-    // console.log('schoolPeriod : ',this.schoolPeriod);
-    // let body = new FormData();
-    // body.append('Day', this.schoolDay.Day);
-    // body.append('TimeSlote', this.schoolDay.TimeSlote);
-    // body.append('Standard', this.schoolDay.Standard);
-    // this.services.getMatchesByDay(body).subscribe(
-    //   //Successfully Logged in
-    //   success => {
-    //     console.log('Success : ',success);
-    //     this.Standard = success.userData;
-    //   },
-    //   error => {
-    //     console.log('error bhai', error);
-    //     setTimeout(() => {
-    //       // if (error.message.length==1){
-    //         this.presentAlert('Alert!', error.message);
-    //         this.loader.dismiss();
-    //       // }
-          
-    //     }, 500);
-    //   }
-    // )
     
   }
 
@@ -172,35 +151,33 @@ export class SchoolprofilePage {
     console.log('schoolPeriod : ',this.schoolPeriod);
     this.storage.set('searchCriteria',this.schoolPeriod);
     this.navCtrl.push(HomePage);
-  //   let body = new FormData();
-  //   body.append('ToDate', this.schoolPeriod.ToDate);
-  //   body.append('FromDate', this.schoolPeriod.FromDate);
-  //   body.append('TimeSlote', this.schoolPeriod.TimeSlote);
-  //   body.append('Standard', this.schoolPeriod.Standard);
-  //   this.services.getMatchesByPeriod(body).subscribe(
-  //     //Successfully Logged in
-  //     success => {
-  //       console.log('Success : ',success);
-  //       this.Standard = success.userData;
-  //     },
-  //     error => {
-  //       console.log('error bhai', error);
-  //       setTimeout(() => {
-  //         // if (error.message.length==1){
-  //           this.presentAlert('Alert!', error.message);
-  //           this.loader.dismiss();
-  //         // }
-          
-  //       }, 500);
-  //     }
-  //   )
     
+   }
+   getnotificationcount(){
+     console.log(this.userData.Id);
+    let body = new FormData();
+    body.append('userId', this.userData.Id);
+    this.services.notificationcount(body).subscribe(
+      //Successfully Logged in
+      success => {
+        setTimeout(() => {
+          console.log(success);
+          this.noticountdata=success;
+        }, 2000);
+      },
+      error => {
+        console.log('error bhai', error);
+      }
+    )
    }
 shownoti(){
   this.navCtrl.push(NotificationPage);
 }
 editprofilepage(){
   this.navCtrl.push(EditprofilePage);
+}
+showfav(){
+  this.navCtrl.push(FavouritesPage);
 }
 toggledays(value){
   if (value == 'Monday'){

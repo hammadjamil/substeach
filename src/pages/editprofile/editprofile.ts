@@ -20,6 +20,8 @@ import { Chooser } from '@ionic-native/chooser';
 import { DomSanitizer } from '@angular/platform-browser';
 import { PublicprofilePage } from '../publicprofile/publicprofile';
 import { SchoolprofilePage } from '../schoolprofile/schoolprofile';
+import { SettingsPage } from '../settings/settings';
+
 declare let cordova: any;
 @IonicPage()
 @Component({
@@ -349,7 +351,9 @@ updateTeacher(){
     actionSheet.present();
   }
 
-
+settingpage(){
+  this.navCtrl.push(SettingsPage);
+}
   uploadPhotoCancel() {
     this.fileSelected = false;
     this.logo = '';
