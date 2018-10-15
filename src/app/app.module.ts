@@ -43,7 +43,8 @@ import { PaymentPage } from '../pages/payment/payment';
 import { ChatPage } from '../pages/chat/chat';
 import { SMS } from '@ionic-native/sms';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
-import { PayPal, PayPalPayment, PayPalConfiguration }  from '@ionic-native/paypal';
+import { Stripe } from '@ionic-native/stripe';
+// import { PayPal, PayPalPayment, PayPalConfiguration }  from '@ionic-native/paypal';
 @NgModule({
   declarations: [
     MyApp,
@@ -125,8 +126,9 @@ import { PayPal, PayPalPayment, PayPalConfiguration }  from '@ionic-native/paypa
     Base64,
     Chooser,
     Push,
-    PayPal,
+    // PayPal,PayPalPayment,PayPalConfiguration,
     SMS,
+    Stripe,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

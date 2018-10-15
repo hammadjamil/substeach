@@ -127,7 +127,6 @@ export class MyApp {
       setInterval(() => { 
         this.storage.get('user').then((val) => {
           if(val!='' && val!=null){
-            console.log('valss :', val );
             this.userData = val;
             if(this.userData.Usertype == "School"){
               this.Logo = this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+this.userData.LogoPath);

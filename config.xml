@@ -108,5 +108,7 @@
     <plugin name="phonegap-plugin-push" spec="^2.2.3">
         <variable name="SENDER_ID" value="511898450722" />
     </plugin>
+    <plugin name="com.paypal.cordova.mobilesdk" spec="^3.5.0" />
+    <plugin name="cordova-plugin-stripe" spec="^1.5.3" />
     <engine name="android" spec="7.1.0" />
 </widget>
