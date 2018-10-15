@@ -10,6 +10,7 @@ import { AppSettings } from '../../app/appSettings';
 import { PublicprofilePage } from '../publicprofile/publicprofile';
 import { ChatPage } from  '../chat/chat';
 import * as firebase from 'Firebase';
+import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
@@ -24,10 +25,14 @@ export class HomePage {
   userDetail: any;
   searchCriteria: any;
   LogoUrl = AppSettings.LogoUrl;
-  constructor(public navCtrl: NavController,public loadingCtrl: LoadingController,
-    public services: Services, private storage: MyStorage,
+  constructor(public navCtrl: NavController,
+    public loadingCtrl: LoadingController,
+    public services: Services, 
+    private storage: MyStorage,
     public tools: MyTools,
-    private alertCtrl: AlertController, public navParams: NavParams) {
+    private alertCtrl: AlertController, 
+    public navParams: NavParams,
+    private sanitizer: DomSanitizer) {
       this.ref.on('value', resp => {
         this.rooms = [];
         this.rooms = snapshotToArray(resp);
@@ -54,6 +59,10 @@ export class HomePage {
           }
         }
       )
+  }
+
+  sanitizerfn(img){
+    return this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+img);
   }
 
   
@@ -124,7 +133,7 @@ export class HomePage {
     this.loader.present();
   }
   
-//Login
+  
 teacherService() {
   
   this.showLoader();

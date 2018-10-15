@@ -21,9 +21,9 @@ export class SchoolprofilePage {
   noticountdata:any='';
   userData:any='';
   schoolDay : any ={
-    Day :'',
-    TimeSlote :'',
-    Standard :'',
+    Day :[],
+    TimeSlote :[],
+    Standard :[],
     Type : 'Days',
     Description :'',
   };
@@ -31,8 +31,8 @@ export class SchoolprofilePage {
   schoolPeriod : any={
     ToDate :'',
     FromDate :'',
-    TimeSlote :'',
-    Standard :'',
+    TimeSlote :[],
+    Standard :[],
     Type : 'Period',
     Description :'',
   };
@@ -153,6 +153,7 @@ export class SchoolprofilePage {
     this.navCtrl.push(HomePage);
     
    }
+
    getnotificationcount(){
      console.log(this.userData.Id);
     let body = new FormData();
@@ -180,6 +181,13 @@ showfav(){
   this.navCtrl.push(FavouritesPage);
 }
 toggledays(value){
+  if(this.schoolDay.Day.indexOf(value)<0){
+    this.schoolDay.Day.push(value);
+  }else{
+    this.schoolDay.Day.splice(this.schoolDay.Day.indexOf(value), 1);     
+  }
+  
+  
   if (value == 'Monday'){
     if(this.seldays.Monday==1){
       this.seldays.Monday='';
@@ -236,8 +244,24 @@ toggledays(value){
       this.seldays.Sunday=1;
     }
   }
+  console.log('tet',this.seldays);
+  
 }
-toggletimeslot(value){
+toggletimeslot(value,type){
+  if(type=='day'){
+    if(this.schoolDay.TimeSlote.indexOf(value)<0){
+      this.schoolDay.TimeSlote.push(value);
+    }else{
+      this.schoolDay.TimeSlote.splice(this.schoolDay.TimeSlote.indexOf(value), 1);     
+    }
+  }else{
+    if(this.schoolPeriod.TimeSlote.indexOf(value)<0){
+      this.schoolPeriod.TimeSlote.push(value);
+    }else{
+      this.schoolPeriod.TimeSlote.splice(this.schoolPeriod.TimeSlote.indexOf(value), 1);     
+    }
+  }
+  
   if (value == '9:00 -10:00'){
     if(this.seltimeslots.slot1==1){
       this.seltimeslots.slot1='';
@@ -295,62 +319,21 @@ toggletimeslot(value){
     }
   }
 }
-togglestandrads(value){
-  if (value == 'Monday'){
-    if(this.seldays.Monday==1){
-      this.seldays.Monday='';
+  togglestandrads(value, type){
+    if(type=='day'){
+      if(this.schoolDay.Standard.indexOf(value)<0){
+        this.schoolDay.Standard.push(value);
+      }else{
+        this.schoolDay.Standard.splice(this.schoolDay.Standard.indexOf(value), 1);     
+      }
+    }else{
+      if(this.schoolPeriod.Standard.indexOf(value)<0){
+        this.schoolPeriod.Standard.push(value);
+      }else{
+        this.schoolPeriod.Standard.splice(this.schoolPeriod.Standard.indexOf(value), 1);     
+      }
     }
-    else{
-      this.seldays.Monday=1;
-    }
+    
+    
   }
-  if (value == 'Tuesday'){
-    if(this.seldays.Tuesday==1){
-      this.seldays.Tuesday='';
-    }
-    else{
-      this.seldays.Tuesday=1;
-    }
-  }
-  if (value == 'Wednesday'){
-    if(this.seldays.Wednesday==1){
-      this.seldays.Wednesday='';
-    }
-    else{
-      this.seldays.Wednesday=1;
-    }
-  }
-  if (value == 'Thursday'){
-    if(this.seldays.Thursday==1){
-      this.seldays.Thursday='';
-    }
-    else{
-      this.seldays.Thursday=1;
-    }
-  }
-  if (value == 'Friday'){
-    if(this.seldays.Friday==1){
-      this.seldays.Friday='';
-    }
-    else{
-      this.seldays.Friday=1;
-    }
-  }
-  if (value == 'Saturday'){
-    if(this.seldays.Saturday==1){
-      this.seldays.Saturday='';
-    }
-    else{
-      this.seldays.Saturday=1;
-    }
-  }
-  if (value == 'Sunday'){
-    if(this.seldays.Sunday==1){
-      this.seldays.Sunday='';
-    }
-    else{
-      this.seldays.Sunday=1;
-    }
-  }
-}
 }

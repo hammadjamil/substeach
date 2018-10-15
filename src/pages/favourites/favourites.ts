@@ -8,6 +8,7 @@ import { MyTools } from '../../providers/tools';
 import { LoadingController, Platform } from 'ionic-angular';
 import { AppSettings } from '../../app/appSettings';
 
+import { DomSanitizer } from '@angular/platform-browser';
 /**
  * Generated class for the FavouritesPage page.
  *
@@ -28,7 +29,8 @@ export class FavouritesPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,public loadingCtrl: LoadingController,
     public services: Services, private storage: MyStorage,
     public tools: MyTools,
-    private alertCtrl: AlertController) {
+    private alertCtrl: AlertController,
+    private sanitizer: DomSanitizer) {
       this.storage.get('user').then(
         (val) => {
           if (val != null) {
@@ -38,6 +40,10 @@ export class FavouritesPage {
           }
         }
       )
+  }
+
+  sanitizerfn(img){
+    return this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+img);
   }
 
   //Login
