@@ -82,6 +82,49 @@ export class MyApp {
         console.log('mww tesatde');
         this.PushSetUp();
       }
+
+      setInterval(() => { 
+        this.storage.get('user').then((val) => {
+          if(val!='' && val!=null){
+            this.userData = val;
+            if(this.userData.Usertype == "School"){
+              this.Logo = this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+this.userData.LogoPath);
+            }else{
+              this.Logo = this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+this.userData.ImagePath);
+            }
+          }
+        });
+        // this.storage.get('user').then((val) => {
+          // console.log('valss :' );
+          // this.userData = val;
+        // });
+      }, 3000);
+
+    });
+  }
+  logout() {
+    this.auth.logout();
+    console.log('showing loader now');
+    this.showLoader();
+    this.logoutNow(this.loader);      
+  }
+  logoutNow(loader) {
+    setTimeout(() => {
+      loader.dismiss();
+      this.auth.logout();
+      this.nav.push(LoginPage);
+    }, 2000);
+  }
+   //Loader 
+   showLoader() {
+    this.loader = this.tools.getLoader();
+    this.loader.present();
+  }
+  presentToast(msg) {
+    const toast = this.toastCtrl.create({
+      message: msg,
+      duration: 3000,
+      position: 'bottom'
     });
   }
   openPage(page) {

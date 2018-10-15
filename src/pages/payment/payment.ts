@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { PayPal, PayPalPayment, PayPalConfiguration }  from '@ionic-native/paypal';
+import { Stripe } from '@ionic-native/stripe';
 /**
  * Generated class for the PaymentPage page.
  *
@@ -21,7 +21,8 @@ import { PayPal, PayPalPayment, PayPalConfiguration }  from '@ionic-native/paypa
 })
 export class PaymentPage {
   
-  constructor(public navCtrl: NavController, public navParams: NavParams,private payPal: PayPal) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private stripe: Stripe) {
+    this.stripe.setPublishableKey('pk_test_anELvfZYT3CKgUubCpD5uov6');
   }
 
   ionViewDidLoad() {
@@ -29,45 +30,17 @@ export class PaymentPage {
   }
 
   pay(){
-    this.payPal.init({
-      PayPalEnvironmentProduction: 'YOUR_PRODUCTION_CLIENT_ID',
-      PayPalEnvironmentSandbox: 'Aazpu8kLkQUAapAkZzod_Fho2qoy-RZJCXDptY-rUHUvjP9wG4wNP8JmMI-eF3ZmCWMeQfaoJh6dKB4u'
-    }).then(() => {
-      // Environments: PayPalEnvironmentNoNetwork, PayPalEnvironmentSandbox, PayPalEnvironmentProduction
-      this.payPal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration({
-        // Only needed if you get an "Internal Service Error" after PayPal login!
-        //payPalShippingAddressOption: 2 // PayPalShippingAddressOptionPayPal
-      })).then(() => {
-        let payment = new PayPalPayment('3.33', 'USD', 'Description', 'sale');
-        this.payPal.renderSinglePaymentUI(payment).then(() => {
-          // Successfully paid
     
-          // Example sandbox response
-          //
-          // {
-          //   "client": {
-          //     "environment": "sandbox",
-          //     "product_name": "PayPal iOS SDK",
-          //     "paypal_sdk_version": "2.16.0",
-          //     "platform": "iOS"
-          //   },
-          //   "response_type": "payment",
-          //   "response": {
-          //     "id": "PAY-1AB23456CD789012EF34GHIJ",
-          //     "state": "approved",
-          //     "create_time": "2016-10-03T13:33:33Z",
-          //     "intent": "sale"
-          //   }
-          // }
-        }, () => {
-          // Error or render dialog closed without being successful
-        });
-      }, () => {
-        // Error in configuration
-      });
-    }, () => {
-      // Error in initialization, maybe PayPal isn't supported or something else
-    });
+    let card = {
+      number: '4242424242424242',
+      expMonth: 12,
+      expYear: 2020,
+      cvc: '220'
+     };
+     
+     this.stripe.createCardToken(card)
+        .then(token => console.log(token.id))
+        .catch(error => console.error(error));
   }
   
 
