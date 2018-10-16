@@ -80,7 +80,6 @@ loginService() {
   //Requesting API 
   else {
     this.storage.get('deviceID').then((val) => {
-       
       this.user.udid = val;
       this.storage.get('devicePlatform').then((val) => {
         this.user.platform = val;

@@ -200,6 +200,7 @@ inviteTeacher(id){
      
       setTimeout(() => {
         this.presentAlert('Success!', 'Notification send to teacher.');
+        this.loader.dismiss();  
       })
         
     },

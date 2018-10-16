@@ -3,10 +3,13 @@ import { IonicPage, NavController, NavParams, MenuController, Platform } from 'i
 import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { Auth } from '../../providers/auth';
 
 import { Services } from '../../providers/services';
 import { LoginPage } from '../login/login';
 import { RegistrationchoicePage } from '../registrationchoice/registrationchoice';
+import { SchoolprofilePage } from '../schoolprofile/schoolprofile';
+import { TeacherprofilePage } from '../teacherprofile/teacherprofile';
 
 @IonicPage()
 @Component({
@@ -22,6 +25,7 @@ export class Schoolregister3Page {
   disableButton;
   userPhoneNumber : any;
   logo = '';
+  userlogin = { username: '', password: '', udid: '',platform:'' };
   user: any = 
   { 
       
@@ -43,6 +47,7 @@ export class Schoolregister3Page {
               private alertCtrl: AlertController,
               private menu: MenuController,
               public navParams: NavParams,
+              private auth: Auth,
               ) {
                 this.storage.get('RegisterSchoolPhoneNumber').then((val) => {
                   this.userPhoneNumber = val;
@@ -198,11 +203,12 @@ export class Schoolregister3Page {
                 success => {
                   
                   setTimeout(() => {
-                    this.presentAlert('Success!', 'You are successfully registered. Please login now');
-                    this.loader.dismiss();
-                    // this.disableButton = false;
-                     this.navCtrl.push(LoginPage);
-                  }, 2000);
+                    // this.presentAlert('Success!', 'You are successfully registered.');
+                    setTimeout(() => {
+                      this.loginService();
+                      this.loader.dismiss();
+                    }, 500);
+                  }, 500);
                 },
                 error => {
                   this.spin = 0;
@@ -219,6 +225,37 @@ export class Schoolregister3Page {
         });
       });
     }
+  }
+  loginService() {
+    this.userlogin.username=this.userDetail.username;
+    this.userlogin.password=this.userDetail.pswd;
+      this.storage.get('deviceID').then((val) => {
+        this.user.udid = val;
+        this.storage.get('devicePlatform').then((val) => {
+          this.user.platform = val;
+          this.services.login(this.userlogin).subscribe(
+            //Successfully Logged in
+            success => {
+              console.log('success bhai', success);
+              this.auth.loginUser(success);
+              setTimeout(() => {
+                this.loader.dismiss();
+                console.log('login success',success);
+                if(success.userData.Usertype=='School')
+                  this.navCtrl.setRoot(SchoolprofilePage);
+                else
+                  this.navCtrl.setRoot(TeacherprofilePage);
+              }, 500);
+    
+            },
+            error => {
+              this.loader.dismiss();
+              console.log('error bhai', error);
+              this.presentAlert('Alert!', error.message);
+            }
+          )
+        });
+      });
   }
   //Validate Email using regex
   validateEmail(email) {

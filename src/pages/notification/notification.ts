@@ -58,8 +58,8 @@ export class NotificationPage {
             console.log('error bhai', error);
             setTimeout(() => {
               // if (error.message.length==1){
-                this.presentAlert('Alert!', error.message);
-                this.loader.dismiss();
+                // this.presentAlert('Alert!', error.message);
+                // this.loader.dismiss();
               // }
               
             }, 500);
@@ -85,7 +85,7 @@ export class NotificationPage {
         setTimeout(() => {
           // if (error.message.length==1){
             // this.presentAlert('Alert!', error.message);
-            this.loader.dismiss();
+            // this.loader.dismiss();
           // }
           
         }, 500);

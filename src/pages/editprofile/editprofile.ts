@@ -44,10 +44,12 @@ export class EditprofilePage {
   logo: any ='';
   baseUrl = AppSettings.API;
   public baseLogo ='';
+  user = { username: '', password: '', udid: '',platform:'' };
   constructor(public navCtrl: NavController,
     public loadingCtrl: LoadingController,
     public services: Services,
     private storage: MyStorage,
+    private auth: Auth,
     public tools: MyTools,
     private alertCtrl: AlertController,
     public navParams: NavParams,
@@ -66,7 +68,7 @@ export class EditprofilePage {
           if (val != null) {
             console.log('val',val);
             this.userDetail = val;
-            this.profileService(this.userDetail.Id);
+            this.profileService(this.userDetail);
           }
         }
       )
@@ -86,43 +88,24 @@ export class EditprofilePage {
   
   }
   goHome(){
-    if(this.profileList.Usertype=='School'){
-      this.navCtrl.setRoot(SchoolprofilePage);
+    // if(this.profileList.Usertype=='School'){
+    //   this.navCtrl.setRoot(SchoolprofilePage);
       
-    }else{
-      this.navCtrl.setRoot(PublicprofilePage);
+    // }else{
+    //   this.navCtrl.setRoot(PublicprofilePage);
       
-    }
-
+    // }
+    this.navCtrl.pop();
   }
 //Login
-profileService(id) {
-      this.showLoader();
-      this.services.getprofile(id).subscribe(
-        //Successfully Logged in
-        success => {
-          // console.log('profile data', success);
-          this.profileList = success.userData;
-          
+profileService(userdata) {
+          this.profileList = userdata;
           if(this.profileList.Usertype == "School"){
             this.profileList.LogoPath = this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+this.profileList.LogoPath);
           }else{
             this.profileList.ImagePath = this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+this.profileList.ImagePath);
           }
-          
-          console.log('profile data',  this.profileList);
-            this.loader.dismiss();
-        },
-        error => {
-          this.loader.dismiss();
-          console.log('error bhai', error);
-          this.presentAlert('Alert!', error.data);
-        }
-      )
-      
-  
 }
-
 updateSchool(){ 
   
   this.showLoader();
@@ -145,22 +128,43 @@ updateSchool(){
       this.services.updateSchool(body).subscribe(
         //Successfully Logged in
         success => {
-          setTimeout(() => {
-            this.presentAlert('Success!', 'You are successfully updated.');
-            this.loader.dismiss();
-          }, 500);
+            setTimeout(() => {
+              this.getprofilee();
+            }, 500);
         },
         error => {
           console.log('error bhai', error);
-                  setTimeout(() => {
-                      this.presentAlert('Alert!', error.message);
-                      this.loader.dismiss();
-                    
-                  }, 500);
+          this.presentAlert('Alert!', error.message);
+                  
         }
       )
 }
-
+getprofilee(){
+  this.services.getprofile(this.userDetail.Id).subscribe(
+    success =>{
+      console.log('success:::::',success.userData);
+      this.storage.set('user', success.userData);
+      this.presentAlert('Success!', 'You are successfully updated.');
+      this.loader.dismiss();
+      this.navCtrl.pop();
+    },error =>{
+      this.presentAlert('Alert!',error.data);
+      this.loader.dismiss();
+    }
+  )
+}
+getprofilee1(){
+  this.services.getprofile(this.userDetail.Id).subscribe(
+    success =>{
+      console.log('success:::::',success.userData);
+      this.storage.set('user', success.userData);
+      this.loader.dismiss();
+    },error =>{
+      this.presentAlert('Alert!',error.data);
+      this.loader.dismiss();
+    }
+  )
+}
 updateTeacher(){
   this.showLoader();
   let body = new FormData();
@@ -171,18 +175,16 @@ updateTeacher(){
       this.services.updateTeacher(body).subscribe(
         //Successfully Logged in
         success => {
-          setTimeout(() => {
-            this.presentAlert('Success!', 'You are successfully updated.');
-            this.loader.dismiss();
-          }, 500);
+            setTimeout(() => {
+              this.getprofilee();
+            }, 500);
         },
         error => {
           console.log('error bhai', error);
-                  setTimeout(() => {
-                      this.presentAlert('Alert!', error.message);
-                      this.loader.dismiss();
-                    
-                  }, 500);
+          setTimeout(() => {
+              this.presentAlert('Alert!', error.message);
+              this.loader.dismiss();
+          }, 500);
         }
       )
   }
@@ -252,8 +254,6 @@ updateTeacher(){
         console.log('tetttttttttt : :',this.baseLogo.replace('data:image/*;charset=utf-8;base64,',''));
         this.storage.set('TeacherLogo',this.baseLogo.replace('data:image/*;charset=utf-8;base64,','')
         );
-
-
         this.showLoader();
 
         let body = new FormData();
@@ -264,13 +264,10 @@ updateTeacher(){
               this.services.updateUserImage(body).subscribe(
                 //Successfully Logged in
                 success => {
-                  
-                  setTimeout(() => {
-                    this.presentAlert('Success!', 'Your image is successfully uploaded');
-                    this.loader.dismiss();
-                    // this.disableButton = false;
-                    //  this.navCtrl.push(LoginPage);
-                  }, 500);
+                    // this.presentAlert('Success!', 'Your image is successfully uploaded');
+                    setTimeout(() => {
+                      this.getprofilee1();
+                    }, 500);
                 },
                 error => {
                   // this.spin = 0;
@@ -284,22 +281,6 @@ updateTeacher(){
                   }, 500);
                 }
               )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         // this.presentAlert('Success!', 'You File successfully uploaded');
         this.getImgContent();
         //console.log('base64File : :',this.baseLogo);

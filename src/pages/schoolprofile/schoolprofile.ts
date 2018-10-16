@@ -5,6 +5,7 @@ import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { HomePage } from '../home/home';
+import { DomSanitizer } from '@angular/platform-browser';
 import { NotificationPage } from '../notification/notification';
 import { EditprofilePage } from '../editprofile/editprofile';
 import { FavouritesPage } from '../favourites/favourites';
@@ -44,10 +45,14 @@ export class SchoolprofilePage {
     private storage: Storage,
     public events: Events,
     public services: Services,
+    private sanitizer: DomSanitizer,
     private alertCtrl: AlertController) {
       this.storage.get('user').then((val) => {
           this.userData=val;
           console.log('userdata',this.userData);
+          setTimeout(() => {
+            this.getFav();
+          }, 500);
       });
     this.services.getStandards().subscribe(
       //Successfully Logged in
@@ -67,6 +72,7 @@ export class SchoolprofilePage {
         }, 500);
       }
     )
+    
   }
   presentAlert(title, msgs) {
     let alert = this.alertCtrl.create({
@@ -335,5 +341,23 @@ toggletimeslot(value,type){
     }
     
     
+  }
+  getFav() {
+    let body = new FormData();
+    body.append('UserID',this.userData.Id);
+        this.services.getFav(body).subscribe(
+          //Successfully Logged in
+          success => {
+            console.log('favlist ::::', success);
+            this.storage.set('favlist', success);
+          },
+          error => {
+            console.log('error bhai favlist', error);
+            // this.presentAlert('Alert!', error.message);
+          }
+        )
+  }
+  getImgContent() {
+    return this.sanitizer.bypassSecurityTrustUrl(this.userData.LogoPath);
   }
 }
