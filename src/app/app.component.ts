@@ -113,7 +113,7 @@ export class MyApp {
       loader.dismiss();
       this.auth.logout();
       this.nav.push(LoginPage);
-    }, 2000);
+    }, 500);
   }
    //Loader 
    showLoader() {

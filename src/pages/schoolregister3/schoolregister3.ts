@@ -116,42 +116,42 @@ export class Schoolregister3Page {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please enter your Billing Address 1');
         this.disableButton = false;
-      }, 1000);
+      }, 500);
       return;
     }
     else if (this.user.BillingCity == '') {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please enter your Billing City');
         this.disableButton = false;
-      }, 1000);
+      }, 500);
       return;
     }
     else if (this.user.BillingPostalCode == '') {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please enter your Billing Postal Code');
         this.disableButton = false;
-      }, 1000);
+      }, 500);
       return;
     }
     else if (this.user.BillingCountry == '') {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please enter your Billing Country');
         this.disableButton = false;
-      }, 1000);
+      }, 500);
       return;
     }
     else if (!this.user.isAdult) {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please confirm your age');
         this.disableButton = false;
-      }, 1000);
+      }, 500);
       return;
     }
     else if (!this.user.AgreeOnTermsAndConditions) {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please agree to our Terms and Conditions');
         this.disableButton = false;
-      }, 1000);
+      }, 500);
       return;
     }
     //Requesting API birthday

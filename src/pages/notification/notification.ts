@@ -168,7 +168,7 @@ addRoom(number) {
         }
       });
       console.log(' this.rooms if', this.rooms);
-    }, 1000)
+    }, 500)
 
     
   }else{

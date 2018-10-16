@@ -76,7 +76,7 @@ export class ForgotpasswordPage {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please enter your email.');
         this.disableButton = false;
-      }, 1000);
+      }, 500);
       return;
     }
     //Requesting API 
@@ -95,7 +95,7 @@ export class ForgotpasswordPage {
                 this.presentAlert('Success!', success.message);
                 this.disableButton = false;
                 this.navCtrl.push(LoginPage);
-              }, 2000);
+              }, 500);
             },
             error => {
               console.log('error bhai', error);

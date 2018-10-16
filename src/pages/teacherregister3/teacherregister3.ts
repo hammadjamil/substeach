@@ -114,42 +114,42 @@ export class Teacherregister3Page {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please enter your region');
         this.disableButton = false;
-      }, 1000);
+      }, 500);
       return;
     }
     else if (this.user.DOB == '') {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please enter your DOB');
         this.disableButton = false;
-      }, 1000);
+      }, 500);
       return;
     }
     else if (this.user.TimeOfAvaliabilityFrom == '') {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please enter your Time Of Avaliability From');
         this.disableButton = false;
-      }, 1000);
+      }, 500);
       return;
     }
     else if (this.user.TimeOfAvaliabilityTo == '') {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please enter your Time Of Avaliability To');
         this.disableButton = false;
-      }, 1000);
+      }, 500);
       return;
     }
     else if (!this.user.age) {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please confirm your age');
         this.disableButton = false;
-      }, 1000);
+      }, 500);
       return;
     }
     else if (!this.user.terms) {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please agree to our Terms and Conditions');
         this.disableButton = false;
-      }, 1000);
+      }, 500);
       return;
     }
     //Requesting API birthday

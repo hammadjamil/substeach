@@ -35,7 +35,7 @@ export class SettingsPage {
       loader.dismiss();
       this.auth.logout();
       this.navCtrl.setRoot(LoginPage);
-    }, 2000);
+    }, 500);
   }
    //Loader 
    showLoader() {

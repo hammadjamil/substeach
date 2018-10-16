@@ -81,7 +81,7 @@ export class RegisterPage {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please enter your username');
         this.disableButton = false;
-      }, 1000);
+      }, 500);
       return;
     }
     else if (this.user.email == '') {
@@ -90,7 +90,7 @@ export class RegisterPage {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please enter your email');
         this.disableButton = false;
-      }, 1000);
+      }, 500);
       return;
     }
     else if (this.emailcheck == false) {
@@ -98,7 +98,7 @@ export class RegisterPage {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please enter valid email address');
         this.disableButton = false;
-      }, 1000);
+      }, 500);
       return;
     }
     else if (this.user.pswd == '') {
@@ -107,7 +107,7 @@ export class RegisterPage {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please enter your Password');
         this.disableButton = false;
-      }, 1000);
+      }, 500);
       return;
     }
     else if (this.user.rpswd == '') {
@@ -115,7 +115,7 @@ export class RegisterPage {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please enter your Repassword');
         this.disableButton = false;
-      }, 1000);
+      }, 500);
       return;
     }
     else if (this.user.birthday == '') {
@@ -123,7 +123,7 @@ export class RegisterPage {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please enter your birthday');
         this.disableButton = false;
-      }, 1000);
+      }, 500);
       return;
     }
     else if (this.user.pswd != this.user.rpswd) {
@@ -131,7 +131,7 @@ export class RegisterPage {
       setTimeout(() => {
         this.presentAlert('Alert!', 'The two passwords must match');
         this.disableButton = false;
-      }, 1000);
+      }, 500);
       return;
     }
     else if (this.ageconfirm != true) {
@@ -139,7 +139,7 @@ export class RegisterPage {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please confirm that you are over 18 years');
         this.disableButton = false;
-      }, 1000);
+      }, 500);
       return;
     }
     else if (this.termcondition != true) {
@@ -147,7 +147,7 @@ export class RegisterPage {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please agree to PixxPros Terms and Conditions');
         this.disableButton = false;
-      }, 1000);
+      }, 500);
       return;
     }
     //Requesting API birthday

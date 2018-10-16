@@ -96,7 +96,7 @@ loginService() {
                 this.navCtrl.setRoot(SchoolprofilePage);
               else
                 this.navCtrl.setRoot(TeacherprofilePage);
-            }, 2000);
+            }, 500);
   
           },
           error => {
@@ -234,7 +234,7 @@ loginService() {
                     this.loader.dismiss();
                   }
                   
-                }, 2000);
+                }, 500);
               }else{
                 this.storage.set('SocialRegisteration', user);
                this.registerpage();

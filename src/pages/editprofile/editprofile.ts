@@ -148,7 +148,7 @@ updateSchool(){
           setTimeout(() => {
             this.presentAlert('Success!', 'You are successfully updated.');
             this.loader.dismiss();
-          }, 2000);
+          }, 500);
         },
         error => {
           console.log('error bhai', error);
@@ -174,7 +174,7 @@ updateTeacher(){
           setTimeout(() => {
             this.presentAlert('Success!', 'You are successfully updated.');
             this.loader.dismiss();
-          }, 2000);
+          }, 500);
         },
         error => {
           console.log('error bhai', error);
@@ -270,7 +270,7 @@ updateTeacher(){
                     this.loader.dismiss();
                     // this.disableButton = false;
                     //  this.navCtrl.push(LoginPage);
-                  }, 2000);
+                  }, 500);
                 },
                 error => {
                   // this.spin = 0;

@@ -106,19 +106,19 @@ export class SchoolprofilePage {
       // this.loader.dismiss();
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please enter Day');
-      }, 1000);
+      }, 500);
       return;
     }
     else if (this.schoolDay.TimeSlote == '') {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please enter your Time Slote');
-      }, 1000);
+      }, 500);
       return;
     }
     else if (this.schoolDay.Standard == '') {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please enter your Standard');
-      }, 1000);
+      }, 500);
       return;
     }
     this.storage.set('searchCriteria',this.schoolDay);
@@ -132,19 +132,19 @@ export class SchoolprofilePage {
       // this.loader.dismiss();
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please enter To Date');
-      }, 1000);
+      }, 500);
       return;
     }
     else if (this.schoolPeriod.FromDate == '') {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please enter your From Date');
-      }, 1000);
+      }, 500);
       return;
     }
     else if (this.schoolPeriod.Standard == '') {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please enter your Standard');
-      }, 1000);
+      }, 500);
       return;
     }
     console.log('schoolDay : ',this.schoolDay);
@@ -164,7 +164,7 @@ export class SchoolprofilePage {
         setTimeout(() => {
           console.log(success);
           this.noticountdata=success;
-        }, 2000);
+        }, 500);
       },
       error => {
         console.log('error bhai', error);
