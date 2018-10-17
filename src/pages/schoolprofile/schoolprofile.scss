@@ -27,7 +27,9 @@ page-schoolprofile {
         width: 50px;
         text-align: left;
     }
-    
+    ion-toggle button{
+        background: transparent !important;
+    }
     ion-select button {
         border-radius: 45px !important;
         background: transparent !important;
@@ -285,6 +287,177 @@ page-schoolprofile {
     .booking button{
         box-shadow: none !important;
     }
+    .toggle-icon {
+        background-color: #a51463a3;
+    }
+    .segment_tab.segmenttab1 {
+        width: 50%;
+        margin: auto;
+        position: absolute;
+        top: 3px;
+        border: 2px solid white;
+        left: 25%;
+        border-radius: 50px;
+        overflow: hidden;
+    }
+    .segment_tab.segmenttab1 ion-segment .segment-button {
+        padding: 5px;
+    }
+    ion-segment-button ion-icon{
+        font-size: 30px !important;
+    }
+    .segment_tab.segmenttab1 ion-segment {
+        height: 100% !important;
+        margin: 0 !important;
+    }
+    .segment_tab.segmenttab1 ion-segment-button {
+        border-radius: 50px;
+    }
+    .segment_tab.segmenttab1 ion-segment{
+        background: #ffffff !important;
+    }
+
+
+
+
+
+    .home_teachers{
+        text-align: left;
+    }
+    .home_teachers_slide .slide-zoom{
+        text-align: left;
+        margin-top: 0;
+        height: 100%;
+    }
+    .home_teachers_slide_name {
+        color: $themecolor;
+        padding-left: 15px;
+    padding-right: 15px;
+    font-size: 20px !important;
+    font-weight: 600;
+    }
+    
+    button.sidemenubutton {
+        background: #fb6542;
+    }    
+    .home_teachers_slide_reviews{
+        font-size: 20px;
+        color: #ce3232;
+        font-weight: 500;
+        padding-left: 15px;
+    padding-right: 15px;
+    }
+    .home_teachers_slide_desc{
+        color:#444;
+        padding-left: 15px;
+    padding-right: 15px;
+    font-size: 14px;
+    height: 18vh;
+    overflow: scroll;
+    }
+    .home_teachers_slide_cost {
+        font-size: 22px;
+        font-weight: 700;
+        color: #a5745f;
+        padding-left: 15px;
+    padding-right: 15px;
+    }
+    .home_teachers_slide_view {
+        font-size: 18px;
+        /* text-decoration: underline; */
+        color: #a51463;
+        padding-left: 15px;
+        padding-right: 15px;
+        font-weight: 600;
+    }
+    button.home_teachers_slide_btn {
+        font-size: 18px;
+        font-weight: 700;
+        margin: auto;
+        position: absolute;
+        width: 80%;
+        margin-left: 10%;
+        bottom: 15px;
+    }
+    .toolbar-background{
+        background: $themecolor;
+    }
+    .toolbar-title {
+        color: white;
+    }
+    .bar-button-default {
+        color: #fff !important;
+        background-color: transparent;
+    }
+    .swiper-pagination.hide{
+        display: block !important;
+        bottom: 3px !important;
+    }
+    .swiper-pagination-bullet-active {
+        background: $themecolor;
+        opacity: 1;
+    }
+    .swiper-slide img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+    }
+    .menubtn {
+        box-shadow: none !important;
+    }
+    .toolbar-background {
+        background: #a51463;
+        border: none !important;
+    }
+    .scroll-content {
+        padding: 10px;
+    }
+    .sliderimgg {
+        width: auto;
+        text-align: center;
+        padding: 10px;
+        float: left;
+        position: absolute;
+        border: 3px solid #a51463;
+        padding: 0;
+        border-radius: 50%;
+        top: -65px;
+        left: 28%;
+        box-shadow: 1px 0px 10px 0px dimgrey;
+    }
+    .sliderimgg img {
+        width: 130px !important;
+        height: 130px !important;
+        border-radius: 50%;
+        object-fit: cover !important;
+        /* border: 0px solid #a51463; */
+    }
+    ion-slide.home_teachers_slide {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-top: 80px;
+        padding-top: 60px;
+        overflow: visible;
+        height: 70vh;
+        -webkit-box-shadow: 0px 3px 10px 0px grey;
+        box-shadow: 0px 3px 10px 0px grey;
+    }
+}
+.alertstar{
+    button{
+        width: 32px;
+        margin: 0 !important;
+        background-image: url(../assets/icon/star.png) !important;
+        background-repeat: no-repeat !important;
+        background-position: center !important;
+        color: white !important;
+        box-shadow: none !important;
+        padding: 12px !important;
+    }
+    .alert-button-group{padding:0; margin-top: 10px; flex-direction: row; justify-content: space-around;}
+    border-radius: 12px;
+    .alert-wrapper{border-radius: 12px;}
 }
 .alert-checkbox-group button{
     background: #fff !important;

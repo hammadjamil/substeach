@@ -1,9 +1,9 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle class="menubtn">
+    <button ion-button menuToggle class="menubtn" float-left>
       <ion-icon name="menu"></ion-icon>
     </button>
-      <ion-title>EDIT PROFILE</ion-title>
+      <ion-title float-left padding>EDIT PROFILE</ion-title>
       <button ion-button (click)="settingpage()" class="menubtn" float-right style="font-size: 30px;padding: 10px;width: auto;height: 50px;">
         <ion-icon name="ios-settings"></ion-icon>
       </button>
@@ -91,10 +91,6 @@
             <ion-option value="Germany">Germany</ion-option>
           </ion-select> 
         </ion-item>
-        <!-- <ion-item>
-          <ion-label  stacked><ion-icon name="md-mail-open"></ion-icon> Billing Country</ion-label>
-          <ion-input  type="text" [(ngModel)]="profileList.BillingCountry"></ion-input>
-        </ion-item> -->
         <div class="footerabs">
           <ion-col col-6 float-left>
             <button  (click)="goHome()" ion-button full class="btnstyling" style="background:#a19f9f !important;">CANCEL</button>
