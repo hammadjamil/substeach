@@ -124,7 +124,7 @@ export class TeacherprofilePage {
        setTimeout(() => {
          console.log(success);
          this.noticountdata=success;
-       }, 2000);
+       }, 500);
      },
      error => {
        console.log('error bhai', error);

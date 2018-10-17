@@ -4,7 +4,9 @@
       <ion-icon name="menu"></ion-icon>
     </button> -->
     <button ion-button  class="menubtn" float-left (click)="editprofilepage()">
-        <img *ngIf="userData!=''" src="../assets/imgs/profileimg.jpg" alt="" width="30px" height="30px" style="border-radius:50%">
+        <!-- <img *ngIf="userData.LogoPath!=''" [src]="userData.LogoPath" alt="" width="30px" height="30px" style="border-radius:50%"> -->
+        <!-- *ngIf="userData.LogoPath=='' || userData.LogoPath == null" -->
+        <img  src="../../assets/imgs/profileimg.jpg" alt="" width="30px" height="30px" style="border-radius:50%">
     </button>
     <ion-title float-left>School Profile</ion-title>
     <button ion-button  class="menubtn" text-right float-right (click)="shownoti()">
@@ -29,7 +31,7 @@
                 <!-- <p style="font-size: 20px;text-align: center;font-weight: 600;">Select Days</p> -->
 
  <p style="font-size: 22px;font-weight: 700;padding-bottom: 0;margin-bottom: 0;text-align: center;">Select Days</p>
-    <ion-list style="padding-top: 15px;padding-bottom: 15px;float: left;margin-bottom: 0;">
+    <ion-list style="padding: 5px;width:100%;float: left;margin-bottom: 0;">
       <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seldays.Monday == '1'}" (click)="toggledays('Monday')">
           Monday
       </ion-item>
@@ -55,7 +57,7 @@
 
 
     <p style="font-size: 22px;font-weight: 700;padding-bottom: 0;margin-bottom: 0;text-align: center;">Select Time Slots</p>
-    <ion-list style="padding-top: 15px;padding-bottom: 15px;float: left;margin-bottom: 0;">
+    <ion-list style="padding: 5px;width:100%;float: left;margin-bottom: 0;">
       <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslots.slot1 == '1'}" (click)="toggletimeslot('9:00 -10:00','day')">
           9:00 -10:00
       </ion-item>
@@ -81,7 +83,7 @@
 
 
     <p style="font-size: 22px;font-weight: 700;padding-bottom: 0;margin-bottom: 0;text-align: center;">Select Standrads</p>
-    <ion-list style="padding-top: 15px;padding-bottom: 15px;float: left;margin-bottom: 0;">
+    <ion-list style="padding: 5px;width:100%;float: left;margin-bottom: 0;">
       <ion-item *ngFor="let row of Standard" class="contesttypefilter" [ngClass]="{'coloractive': schoolDay.Standard.indexOf(row.Id)>=0 }" (click)="togglestandrads(row.Id,'day')">
           {{row.StandardName}}
       </ion-item>
@@ -138,7 +140,7 @@
       <ion-datetime [(ngModel)]="schoolPeriod.ToDate" displayFormat="MM/DD/YYYY" placeholder="To Available Date" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>
     </ion-item>
     <p style="font-size: 22px;font-weight: 700;padding-bottom: 0;margin-bottom: 0;text-align: center;">Select Time Slots</p>
-    <ion-list style="padding-top: 15px;padding-bottom: 15px;float: left;margin-bottom: 0;">
+    <ion-list style="padding: 5px;width:100%;float: left;margin-bottom: 0;">
       <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslots.slot1 == '1'}" (click)="toggletimeslot('9:00 -10:00','period')">
           9:00 -10:00
       </ion-item>
@@ -184,7 +186,7 @@
         </ion-select>
       </ion-item> -->
       <p style="font-size: 22px;font-weight: 700;padding-bottom: 0;margin-bottom: 0;text-align: center;">Select Standrads</p>
-    <ion-list style="padding-top: 15px;padding-bottom: 15px;float: left;margin-bottom: 0;">
+    <ion-list style="padding: 5px;width:100%;float: left;margin-bottom: 0;">
       <ion-item *ngFor="let row of Standard" class="contesttypefilter" [ngClass]="{'coloractive': schoolPeriod.Standard.indexOf(row.Id)>=0 }" (click)="togglestandrads(row.Id,'period')">
           {{row.StandardName}}
       </ion-item>

@@ -80,7 +80,6 @@ loginService() {
   //Requesting API 
   else {
     this.storage.get('deviceID').then((val) => {
-       
       this.user.udid = val;
       this.storage.get('devicePlatform').then((val) => {
         this.user.platform = val;
@@ -96,7 +95,7 @@ loginService() {
                 this.navCtrl.setRoot(SchoolprofilePage);
               else
                 this.navCtrl.setRoot(TeacherprofilePage);
-            }, 2000);
+            }, 500);
   
           },
           error => {
@@ -234,7 +233,7 @@ loginService() {
                     this.loader.dismiss();
                   }
                   
-                }, 2000);
+                }, 500);
               }else{
                 this.storage.set('SocialRegisteration', user);
                this.registerpage();

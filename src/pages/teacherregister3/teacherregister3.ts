@@ -6,6 +6,9 @@ import { LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { AlertController } from 'ionic-angular';
 import { Services } from '../../providers/services';
+import { Auth } from '../../providers/auth';
+import { SchoolprofilePage } from '../schoolprofile/schoolprofile';
+import { TeacherprofilePage } from '../teacherprofile/teacherprofile';
 
 @IonicPage()
 @Component({
@@ -29,12 +32,15 @@ export class Teacherregister3Page {
   userPhoneNumber : any;
   frontimg : any;
   backimg : any;
+  userlogin = { username: '', password: '', udid: '',platform:'' };
+
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
      private storage: Storage,
     public loadingCtrl: LoadingController,
     public services: Services,
     private menu: MenuController,
+    private auth: Auth,
     private alertCtrl: AlertController) {
       this.storage.get('RegisterTeacherPhoneNumber').then((val) => {
         this.userPhoneNumber = val;
@@ -114,42 +120,42 @@ export class Teacherregister3Page {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please enter your region');
         this.disableButton = false;
-      }, 1000);
+      }, 500);
       return;
     }
-    else if (this.user.DOB == '') {
-      setTimeout(() => {
-        this.presentAlert('Alert!', 'Please enter your DOB');
-        this.disableButton = false;
-      }, 1000);
-      return;
-    }
-    else if (this.user.TimeOfAvaliabilityFrom == '') {
-      setTimeout(() => {
-        this.presentAlert('Alert!', 'Please enter your Time Of Avaliability From');
-        this.disableButton = false;
-      }, 1000);
-      return;
-    }
-    else if (this.user.TimeOfAvaliabilityTo == '') {
-      setTimeout(() => {
-        this.presentAlert('Alert!', 'Please enter your Time Of Avaliability To');
-        this.disableButton = false;
-      }, 1000);
-      return;
-    }
+    // else if (this.user.DOB == '') {
+    //   setTimeout(() => {
+    //     this.presentAlert('Alert!', 'Please enter your DOB');
+    //     this.disableButton = false;
+    //   }, 500);
+    //   return;
+    // }
+    // else if (this.user.TimeOfAvaliabilityFrom == '') {
+    //   setTimeout(() => {
+    //     this.presentAlert('Alert!', 'Please enter your Time Of Avaliability From');
+    //     this.disableButton = false;
+    //   }, 500);
+    //   return;
+    // }
+    // else if (this.user.TimeOfAvaliabilityTo == '') {
+    //   setTimeout(() => {
+    //     this.presentAlert('Alert!', 'Please enter your Time Of Avaliability To');
+    //     this.disableButton = false;
+    //   }, 500);
+    //   return;
+    // }
     else if (!this.user.age) {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please confirm your age');
         this.disableButton = false;
-      }, 1000);
+      }, 500);
       return;
     }
     else if (!this.user.terms) {
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please agree to our Terms and Conditions');
         this.disableButton = false;
-      }, 1000);
+      }, 500);
       return;
     }
     //Requesting API birthday
@@ -157,6 +163,7 @@ export class Teacherregister3Page {
       this.showLoader();
       this.storage.get('RegisterTeacherUserStep').then((val) => {
         this.userDetail = val;
+        console.log('ddddhamza phonecheck',this.userPhoneNumber);
           let body = new FormData();
           body.append('UserName', this.userDetail.username);
           body.append('Email', this.userDetail.email);
@@ -168,20 +175,23 @@ export class Teacherregister3Page {
           body.append('LogoPath', '');
           body.append('FirstName', this.userDetail.FirstName);
           body.append('LastName', this.userDetail.LastName);
-          body.append('DOB', this.user.DOB);
-          body.append('TimeOfAvaliabilityFrom', this.user.TimeOfAvaliabilityFrom);
-          body.append('TimeOfAvaliabilityTo', this.user.TimeOfAvaliabilityTo);
+          body.append('DOB', '1');
+          body.append('TimeOfAvaliabilityFrom', '1');
+          body.append('TimeOfAvaliabilityTo','1');
               this.services.registerTeacher(body).subscribe(
                 //Successfully Logged in
                 success => {
                   setTimeout(() => {
                   }, 500);
                   setTimeout(() => {
-                    this.presentAlert('Success!', 'You are successfully registered. Please login now');
-                    this.loader.dismiss();
+                    // this.presentAlert('Success!', 'You are successfully registered.');
+                    setTimeout(() => {
+                      this.loginService();
+                      this.loader.dismiss();
+                    }, 500);
                     // this.disableButton = false;
-                     this.navCtrl.push(LoginPage);
-                  }, 2000);
+                    //  this.navCtrl.push(LoginPage);
+                  }, 500);
                 },
                 error => {
                   console.log('error bhai', error);
@@ -195,5 +205,36 @@ export class Teacherregister3Page {
               )
         });
     }
+  }
+  loginService() {
+    this.userlogin.username=this.userDetail.username;
+    this.userlogin.password=this.userDetail.pswd;
+      this.storage.get('deviceID').then((val) => {
+        this.user.udid = val;
+        this.storage.get('devicePlatform').then((val) => {
+          this.user.platform = val;
+          this.services.login(this.userlogin).subscribe(
+            //Successfully Logged in
+            success => {
+              console.log('success bhai', success);
+              this.auth.loginUser(success);
+              setTimeout(() => {
+                this.loader.dismiss();
+                console.log('login success',success);
+                if(success.userData.Usertype=='School')
+                  this.navCtrl.setRoot(SchoolprofilePage);
+                else
+                  this.navCtrl.setRoot(TeacherprofilePage);
+              }, 500);
+    
+            },
+            error => {
+              this.loader.dismiss();
+              console.log('error bhai', error);
+              this.presentAlert('Alert!', error.message);
+            }
+          )
+        });
+      });
   }
 }

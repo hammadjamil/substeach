@@ -37,18 +37,6 @@
       <p>{{profileList.Email}}</p>
     </div>
   <div class="changepswddiv" *ngIf="profileList!=''&& profileList.Usertype=='School'">
-      <!-- <ion-item >
-          <ion-label stacked><ion-icon name="md-person"></ion-icon> Username</ion-label>
-          <ion-input type="text" value="{{profileList.UserName}}" [disabled]="true"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label  stacked><ion-icon name="ios-call"></ion-icon> Phone</ion-label>
-          <ion-input  type="text" value="{{profileList.PhoneNumber}}" [disabled]="true"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label  stacked><ion-icon name="md-mail"></ion-icon> Email</ion-label>
-          <ion-input  type="text" value="{{profileList.Email}}" [disabled]="true"></ion-input>
-        </ion-item> -->
         <ion-item>
           <ion-label  stacked><ion-icon name="ios-school"></ion-icon> School Name</ion-label>
           <ion-input  type="text" [(ngModel)]="profileList.SchoolName"></ion-input>
@@ -96,20 +84,26 @@
         </ion-item>
         <ion-item>
           <ion-label  stacked><ion-icon name="md-mail-open"></ion-icon> Billing Country</ion-label>
-           <!-- <ion-select [(ngModel)]="user.VisitingCountry">
-        <ion-option value="Pakistan">Pakistan</ion-option>
-        <ion-option value="England">England</ion-option>
-        <ion-option value="Sweden">Sweden</ion-option>
-        <ion-option value="Germany">Germany</ion-option> 
-      </ion-select> -->
-          <ion-input  type="text" [(ngModel)]="profileList.BillingCountry"></ion-input>
+          <ion-select [(ngModel)]="profileList.BillingCountry" style="margin-top:-5px;">
+            <ion-option value="Pakistan">Pakistan</ion-option>
+            <ion-option value="England">England</ion-option>
+            <ion-option value="Sweden">Sweden</ion-option>
+            <ion-option value="Germany">Germany</ion-option>
+          </ion-select> 
         </ion-item>
+        <!-- <ion-item>
+          <ion-label  stacked><ion-icon name="md-mail-open"></ion-icon> Billing Country</ion-label>
+          <ion-input  type="text" [(ngModel)]="profileList.BillingCountry"></ion-input>
+        </ion-item> -->
+        <div class="footerabs">
+          <ion-col col-6 float-left>
+            <button  (click)="goHome()" ion-button full class="btnstyling" style="background:#a19f9f !important;">CANCEL</button>
+        </ion-col>
         <ion-col col-6 float-left>
-          <button  (click)="goHome()" ion-button full class="btnstyling" style="background:#a19f9f !important;">CANCEL</button>
-      </ion-col>
-      <ion-col col-6 float-left>
-          <button ion-button full class="btnstyling"  (click)="updateSchool()">UPDATE</button>
-      </ion-col>
+            <button ion-button full class="btnstyling"  (click)="updateSchool()">UPDATE</button>
+        </ion-col>
+        </div>
+        
   </div>
 
 
@@ -134,11 +128,13 @@
       <ion-label  stacked>Email</ion-label>
       <ion-input  type="text" value="{{profileList.Email}}" [disabled]="true"></ion-input>
     </ion-item>
-    <ion-col col-6 float-left>
-      <button (click)="goHome()" ion-button full class="btnstyling" style="background:#a19f9f !important;">CANCEL</button>
-  </ion-col>
-  <ion-col col-6 float-left>
-      <button ion-button full class="btnstyling" (click)="updateTeacher()">UPDATE</button>
-  </ion-col>
+    <div class="footerabs">
+      <ion-col col-6 float-left>
+        <button (click)="goHome()" ion-button full class="btnstyling" style="background:#a19f9f !important;">CANCEL</button>
+      </ion-col>
+      <ion-col col-6 float-left>
+          <button ion-button full class="btnstyling" (click)="updateTeacher()">UPDATE</button>
+      </ion-col>
+    </div>
   </div>
 </ion-content>
