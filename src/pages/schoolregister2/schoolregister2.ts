@@ -117,7 +117,7 @@ export class Schoolregister2Page {
 
     // Create options for the Camera Dialog
     var options = {
-      quality: 100,
+      quality: 40,
       sourceType: sourceType,
       saveToPhotoAlbum: false,
       correctOrientation: true,
