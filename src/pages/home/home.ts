@@ -11,6 +11,8 @@ import { PublicprofilePage } from '../publicprofile/publicprofile';
 import { ChatPage } from  '../chat/chat';
 import * as firebase from 'Firebase';
 import { DomSanitizer } from '@angular/platform-browser';
+import { TeacherreviewsPage } from '../teacherreviews/teacherreviews';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
@@ -242,7 +244,28 @@ addRoom() {
   this.joinRoom(this.rooms[this.rooms.length-1]['key']);
 }
 
-
+rateteacher(){
+  this.navCtrl.push(TeacherreviewsPage);
+}
+rateteaher1(){
+  const alert = this.alertCtrl.create({
+    title: 'Rate Teacher:',
+    subTitle: 'test',
+    cssClass: 'alertstar',
+    enableBackdropDismiss:true,
+    buttons: [
+         { text: '1', handler: data => { this.resolveRec(1);}},
+         { text: '2', handler: data => { this.resolveRec(2);}},
+         { text: '3', handler: data => { this.resolveRec(3);}},
+         { text: '4', handler: data => { this.resolveRec(4);}},
+         { text: '5', handler: data => { this.resolveRec(5);}}
+    ]
+});
+alert.present();
+}
+resolveRec(ratestar){
+  console.log(ratestar);
+}
 
 }
 export const snapshotToArray = snapshot => {
