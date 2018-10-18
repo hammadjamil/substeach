@@ -11,6 +11,8 @@ import { PublicprofilePage } from '../publicprofile/publicprofile';
 import { ChatPage } from  '../chat/chat';
 import * as firebase from 'Firebase';
 import { DomSanitizer } from '@angular/platform-browser';
+import { TeacherreviewsPage } from '../teacherreviews/teacherreviews';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
@@ -21,7 +23,8 @@ export class HomePage {
   rooms = [];
   ref = firebase.database().ref('chatrooms/');
   loader: any;
-  teacherList: any;
+  teacherList: any = '';
+  // errormsg=0;
   userDetail: any;
   searchCriteria: any;
   LogoUrl = AppSettings.LogoUrl;
@@ -83,7 +86,7 @@ export class HomePage {
       },
       error => {
         setTimeout(() => {
-            this.presentAlert('Alert!', error.message);
+            // this.presentAlert('Alert!', error.message);
             this.loader.dismiss();
           
         }, 500);
@@ -106,12 +109,16 @@ export class HomePage {
       success => {
         console.log('Success : ',success);
         this.teacherList = success.data;
+        console.log('teacherList',this.teacherList);
         this.loader.dismiss();
       },
       error => {
         setTimeout(() => {
-            this.presentAlert('Alert!', error.message);
+          // console.log('teacherList',this.teacherList);
+            // this.presentAlert('Alert!', error.message);
+            // this.errormsg=1
             this.loader.dismiss();          
+            // console.log('teacherList',this.teacherList);
         }, 500);
       }
     )
@@ -242,7 +249,28 @@ addRoom() {
   this.joinRoom(this.rooms[this.rooms.length-1]['key']);
 }
 
-
+rateteacher(){
+  this.navCtrl.push(TeacherreviewsPage);
+}
+rateteaher1(){
+  const alert = this.alertCtrl.create({
+    title: 'Rate Teacher:',
+    subTitle: 'test',
+    cssClass: 'alertstar',
+    enableBackdropDismiss:true,
+    buttons: [
+         { text: '1', handler: data => { this.resolveRec(1);}},
+         { text: '2', handler: data => { this.resolveRec(2);}},
+         { text: '3', handler: data => { this.resolveRec(3);}},
+         { text: '4', handler: data => { this.resolveRec(4);}},
+         { text: '5', handler: data => { this.resolveRec(5);}}
+    ]
+});
+alert.present();
+}
+resolveRec(ratestar){
+  console.log(ratestar);
+}
 
 }
 export const snapshotToArray = snapshot => {

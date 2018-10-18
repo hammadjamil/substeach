@@ -1,20 +1,17 @@
 <ion-header>
   <ion-navbar>
-    <!-- <button ion-button menuToggle class="menubtn">
-      <ion-icon name="menu"></ion-icon>
-    </button> -->
     <button ion-button  class="menubtn" float-left (click)="editprofilepage()">
        
         <!-- <img *ngIf="userData.LogoPath!=''" [src]="userData.LogoPath" alt="" width="30px" height="30px" style="border-radius:50%"> -->
         <!-- *ngIf="userData.LogoPath=='' || userData.LogoPath == null" -->
         <img  [src]="Logo" alt="" width="30px" height="30px" style="border-radius:50%">
     </button>
-    <ion-title float-left style="visibility:hidden;">School Profile</ion-title>
+    <ion-title float-left >School Profile</ion-title>
     <button ion-button  class="menubtn" text-right float-right (click)="shownoti()">
         <ion-icon name="notifications" style="font-size:30px;"></ion-icon><ion-badge *ngIf="noticountdata!='' && noticountdata.code=='200'">{{noticountdata.count}}</ion-badge>
     </button>
   </ion-navbar>
-  <div class="segment_tab segmenttab1">
+  <!-- <div class="segment_tab segmenttab1">
     <ion-segment [(ngModel)]="matchingtabs">
         <ion-segment-button value="setting">
                 <ion-icon name="md-settings"></ion-icon>
@@ -23,9 +20,9 @@
                 <ion-icon name="md-search"></ion-icon>
         </ion-segment-button>
     </ion-segment>
-  </div>
-  <div [ngSwitch]="matchingtabs">
-      <div *ngSwitchCase="'setting'">
+  </div> -->
+  <!-- <div [ngSwitch]="matchingtabs"> -->
+      <!-- <div *ngSwitchCase="'setting'"> -->
         <div class="segment_tab">
             <ion-segment [(ngModel)]="schooltabs">
                 <ion-segment-button value="days">
@@ -36,8 +33,8 @@
                 </ion-segment-button>
             </ion-segment>
         </div>
-      </div>
-  </div>
+      <!-- </div> -->
+  <!-- </div> -->
     
 </ion-header>
 
@@ -47,8 +44,8 @@
     </div> -->
     <!-- settting tab -->
     <!-- settting tab -->
-    <div [ngSwitch]="matchingtabs">
-        <div *ngSwitchCase="'setting'">
+    <!-- <div [ngSwitch]="matchingtabs"> -->
+        <!-- <div *ngSwitchCase="'setting'"> -->
         <div [ngSwitch]="schooltabs">
             <ion-list *ngSwitchCase="'days'">
                 <p style="font-size: 22px;font-weight: 700;padding-bottom: 0;margin-bottom: 0;text-align: center;">Select Days</p>
@@ -105,7 +102,7 @@
                         {{row.StandardName}}
                     </ion-item>
                 </ion-list> 
-                <button ion-button block style="margin-top: 10px;" (click)="matchByPeriod1()">Save</button>
+                <button ion-button block style="margin-top: 10px;" (click)="matchByDay()">Matching</button>
             </ion-list>
             <ion-list *ngSwitchCase="'peroids'">
                 <p style="font-size: 20px;text-align: center;font-weight: 600;margin-top: 10px;">Select Period</p>
@@ -113,13 +110,13 @@
                     <ion-label style="margin-bottom: 0;margin-right: 10px;text-align: center;">
                         <ion-icon name="md-calendar"></ion-icon>
                     </ion-label>
-                    <ion-datetime [(ngModel)]="schoolPeriod.FromDate" displayFormat="MM/DD/YYYY" placeholder="From Available Date" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>
+                    <ion-datetime [(ngModel)]="schoolPeriod.FromDate" displayFormat="MM/DD/YYYY"  [min]="myDate" max="2019" placeholder="From Available Date" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>
                 </ion-item>
                 <ion-item  class="p-0">
                     <ion-label style="margin-bottom: 0;margin-right: 10px;text-align: center;">
                         <ion-icon name="md-calendar"></ion-icon>
                     </ion-label>
-                    <ion-datetime [(ngModel)]="schoolPeriod.ToDate" displayFormat="MM/DD/YYYY" placeholder="To Available Date" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>
+                    <ion-datetime [(ngModel)]="schoolPeriod.ToDate" displayFormat="MM/DD/YYYY"   [min]="myDate" max="2019" placeholder="To Available Date" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>
                 </ion-item>
                 <p style="font-size: 22px;font-weight: 700;padding-bottom: 0;margin-bottom: 0;text-align: center;">Select Time Slots</p>
                 <ion-list style="padding: 5px;width:100%;float: left;margin-bottom: 0;">
@@ -151,7 +148,7 @@
                     {{row.StandardName}}
                 </ion-item>
                 </ion-list> 
-                <button ion-button block style="margin-top: 10px;" (click)="matchByPeriod1()">Matching</button>
+                <button ion-button block style="margin-top: 10px;" (click)="matchByPeriod()">Matching</button>
             </ion-list>
         </div>
         <!-- mobi scroll -->
@@ -185,9 +182,9 @@
             <img src="../../assets/imgs/love.gif" style="width:50px;height:50px;margin-right: 0;" float-left/><p float-left style="margin:0;font-size: 18px;    padding-top: 10px;padding-right: 10px;">Favourites</p>
         </div>
 
-        </div>
-        <div *ngSwitchCase="'matching'">
-            <ion-slides class="home_teachers">
+        <!-- </div> -->
+        <!-- <div *ngSwitchCase="'matching'"> -->
+            <!-- <ion-slides class="home_teachers">
                 <ion-slide class="home_teachers_slide" *ngFor="let teacher of teacherList">
                     <div class="sliderimgg">
                     </div>
@@ -205,9 +202,9 @@
                     <button *ngIf="teacher.bookingID!='' && teacher.bookingID!=null" ion-button block class="home_teachers_slide_btn" (click)="inviteTeacher(teacher.userId)">Booking</button>
                     <button *ngIf="teacher.bookingID=='' || teacher.bookingID==null" ion-button block class="home_teachers_slide_btn" (click)="inviteTeacher(teacher.userId)">Invite</button>
                 </ion-slide>
-            </ion-slides>
-        </div>
-    </div>
+            </ion-slides> -->
+        <!-- </div> -->
+    <!-- </div> -->
     <!-- settting tab -->
     <!-- settting tab -->
     
