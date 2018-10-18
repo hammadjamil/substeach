@@ -2,17 +2,17 @@ $themecolor: #a51463;
 $themecolorw: #a51463;
 page-schoolprofile {   
     .toolbar-background{
-        background: $themecolor;
+        background: #fff;
     }
     .toolbar-title {
-        color: white;
+        color: $themecolor !important;
     }
     .bar-button-default {
         color: #fff !important;
         background-color: transparent;
     }
     .toolbar-background {
-        background: $themecolor;
+        background: #fff;
         border: none !important;
     }
     .scroll-content {
@@ -380,7 +380,7 @@ page-schoolprofile {
         bottom: 15px;
     }
     .toolbar-background{
-        background: $themecolor;
+        background: #fff;
     }
     .toolbar-title {
         color: white;
@@ -404,9 +404,14 @@ page-schoolprofile {
     }
     .menubtn {
         box-shadow: none !important;
+        background: #fff !important;
+
+    }
+    .menubtn ion-icon{
+        color: $themecolor !important;
     }
     .toolbar-background {
-        background: #a51463;
+        background: #fff;
         border: none !important;
     }
     .scroll-content {

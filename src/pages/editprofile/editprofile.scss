@@ -135,4 +135,24 @@ page-editprofile {
         -webkit-box-shadow: none !important;
         box-shadow: none !important;
     }
+    .toolbar-title {
+        color: $themecolor !important;
+    }
+    .toolbar-background{
+        background: #fff;
+    }
+    .menubtn {
+        box-shadow: none !important;
+        background: #fff !important;
+
+    }
+    .menubtn ion-icon{
+        color: $themecolor !important;
+    }
+    button.back-button {
+        background: #fff !important;
+    }
+    button.back-button ion-icon{
+        color: $themecolor !important;
+    }
 }
