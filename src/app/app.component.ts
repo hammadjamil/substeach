@@ -9,6 +9,7 @@ import { LogoutPage } from '../pages/logout/logout';
 import { SchoolprofilePage } from '../pages/schoolprofile/schoolprofile';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { TeacherprofilePage } from '../pages/teacherprofile/teacherprofile';
+import { Teacherregister2Page } from '../pages/teacherregister2/teacherregister2';
 import { PaymentPage } from '../pages/payment/payment';
 import * as firebase from 'firebase';
 import { MyStorage } from './localstorage';
@@ -73,6 +74,7 @@ export class MyApp {
           else{
             this.homepage=2;
             this.rootPage = TeacherprofilePage;
+
           }
         }else{
           this.rootPage = LoginPage;
@@ -83,22 +85,7 @@ export class MyApp {
         this.PushSetUp();
       }
 
-      // setInterval(() => { 
-      //   this.storage.get('user').then((val) => {
-      //     if(val!='' && val!=null){
-      //       this.userData = val;
-      //       if(this.userData.Usertype == "School"){
-      //         this.Logo = this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+this.userData.LogoPath);
-      //       }else{
-      //         this.Logo = this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+this.userData.ImagePath);
-      //       }
-      //     }
-      //   });
-      //   // this.storage.get('user').then((val) => {
-      //     // console.log('valss :' );
-      //     // this.userData = val;
-      //   // });
-      // }, 3000);
+      
 
     });
   }

@@ -4,7 +4,7 @@
             <ion-icon name="menu"></ion-icon>
           </button> -->
           <button ion-button  class="menubtn" float-left (click)="editprofilepage()">
-              <img *ngIf="userData!=''" src="../assets/imgs/profileimg.jpg" alt="" width="30px" height="30px" style="border-radius:50%">
+              <img *ngIf="userData!=''" [src]="Logo" alt="" width="30px" height="30px" style="border-radius:50%">
           </button>
           <ion-title float-left>Teacher Profile</ion-title>
           <button ion-button  class="menubtn" text-right float-right (click)="shownoti()">

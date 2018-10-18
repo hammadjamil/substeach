@@ -6,7 +6,7 @@
     <button ion-button  class="menubtn" float-left (click)="editprofilepage()">
         <!-- <img *ngIf="userData.LogoPath!=''" [src]="userData.LogoPath" alt="" width="30px" height="30px" style="border-radius:50%"> -->
         <!-- *ngIf="userData.LogoPath=='' || userData.LogoPath == null" -->
-        <img  src="../../assets/imgs/profileimg.jpg" alt="" width="30px" height="30px" style="border-radius:50%">
+        <img  [src]="Logo" alt="" width="30px" height="30px" style="border-radius:50%">
     </button>
     <ion-title float-left>School Profile</ion-title>
     <button ion-button  class="menubtn" text-right float-right (click)="shownoti()">

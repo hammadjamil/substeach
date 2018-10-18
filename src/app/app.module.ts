@@ -45,6 +45,8 @@ import { FiltersPage } from '../pages/filters/filters';
 import { SMS } from '@ionic-native/sms';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { Stripe } from '@ionic-native/stripe';
+// import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+// import { File } from '@ionic-native/file';
 // import { PayPal, PayPalPayment, PayPalConfiguration }  from '@ionic-native/paypal';
 @NgModule({
   declarations: [
@@ -129,8 +131,9 @@ import { Stripe } from '@ionic-native/stripe';
     Base64,
     Chooser,
     Push,
+    // FileTransfer,
     // PayPal,PayPalPayment,PayPalConfiguration,
-    SMS,
+    // File,
     Stripe,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

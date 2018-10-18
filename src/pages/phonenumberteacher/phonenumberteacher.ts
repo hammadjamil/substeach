@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { VerifyteacherphonePage } from '../verifyteacherphone/verifyteacherphone';
-import { SMS } from '@ionic-native/sms';
 import { Services } from '../../providers/services';
 import { Storage } from '@ionic/storage';
 import { AlertController } from 'ionic-angular';
@@ -11,7 +10,7 @@ import { LoadingController } from 'ionic-angular';
 @Component({
   selector: 'page-phonenumberteacher',
   templateUrl: 'phonenumberteacher.html',
-  providers :[SMS] 
+  providers :[] 
 })
 export class PhonenumberteacherPage {
   user: any = 
@@ -24,8 +23,7 @@ export class PhonenumberteacherPage {
     private storage: Storage,
     public services: Services,
     private alertCtrl: AlertController,
-    private menu: MenuController,
-    private sms: SMS) {
+    private menu: MenuController) {
   }
   ionViewDidEnter() {
     this.menu.swipeEnable(false);

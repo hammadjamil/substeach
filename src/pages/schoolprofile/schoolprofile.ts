@@ -40,6 +40,7 @@ export class SchoolprofilePage {
   seldays:any={Monday:'',Tuesday:'',Wednesday:'',Thursday:'',Friday:'',Saturday:'',Sunday:''};
   seltimeslots:any={slot1:'',slot2:'',slot3:'',slot4:'',slot5:'',slot6:'',slot7:''};
   selstandrads:any={};
+  Logo:any;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public loadingCtrl: LoadingController,
     private storage: Storage,
@@ -49,7 +50,17 @@ export class SchoolprofilePage {
     private alertCtrl: AlertController) {
       this.storage.get('user').then((val) => {
           this.userData=val;
-          console.log('userdata',this.userData);
+          // console.log('userdata',this.userData);
+
+          
+          if(this.userData.Usertype == "School"){
+            this.Logo = this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+this.userData.LogoPath);
+          }else{
+            this.Logo = this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+this.userData.ImagePath);
+          }
+              
+
+
           setTimeout(() => {
             this.getFav();
           }, 500);
