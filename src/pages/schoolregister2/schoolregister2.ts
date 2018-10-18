@@ -128,6 +128,8 @@ export class Schoolregister2Page {
     
     // Get the data of an image
     this.camera.getPicture(options).then((imagePath) => {
+      console.log('imagePath',imagePath);
+      
       // Special handling for Android library
       if (this.platform.is('android') && sourceType === this.camera.PictureSourceType.PHOTOLIBRARY) {
         this.filePath.resolveNativePath(imagePath)
@@ -221,48 +223,6 @@ export class Schoolregister2Page {
     actionSheet.present();
   }
 
-  // uploadPhotoService() {
-  //   this.showLoader();
-
-  //   var url = this.baseUrl + "updateProfilePic";
-
-  //   // File for Upload
-  //   var targetPath = this.pathForImage(this.lastImage);
-
-    
-
-  //   // File name only
-  //   var filename = this.lastImage;
-
-  //   var options = {
-  //     fileKey: "profilePic",
-  //     fileName: filename,
-  //     chunkedMode: false,
-  //     mimeType: "multipart/form-data",
-  //     params: {
-  //       'fileName': filename,
-  //     }
-  //   };
-
-  //   const fileTransfer: TransferObject = this.transfer.create();
-  //   fileTransfer.upload(targetPath, url, options).then(data => {
-  //     console.log('updateProfilePic data : ',data);
-      
-  //     this.loader.dismiss();
-  //     let p_data = JSON.parse(data.response);
-  //     this.storage.set('profile_image',p_data.data.profile_image);
-  //     this.fileSelected = false;
-  //     console.log('Your profile photo is updated successfully');
-      
-  //     // this.presentToast('Your profile photo is updated successfully');
-  //   }, err => {
-  //     this.loader.dismiss();
-  //     console.log('error', err);
-  //     this.fileSelected = false;
-  //   });
-
-
-  // }
 
   uploadPhotoCancel() {
     this.fileSelected = false;
