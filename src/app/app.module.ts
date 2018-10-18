@@ -1,3 +1,5 @@
+import { FormsModule } from '@angular/forms';
+import { MbscModule } from '@mobiscroll/angular';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -41,6 +43,7 @@ import { PublicprofilePage } from '../pages/publicprofile/publicprofile';
 import { NotificationPage } from '../pages/notification/notification';
 import { PaymentPage } from '../pages/payment/payment';
 import { ChatPage } from '../pages/chat/chat';
+import { TeacherreviewsPage } from '../pages/teacherreviews/teacherreviews';
 import { FiltersPage } from '../pages/filters/filters';
 import { SMS } from '@ionic-native/sms';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
@@ -79,9 +82,12 @@ import { Stripe } from '@ionic-native/stripe';
     NotificationPage,
     PaymentPage,
     ChatPage,
-    FiltersPage
+    FiltersPage,
+    TeacherreviewsPage
   ],
-  imports: [
+  imports: [ 
+    FormsModule, 
+    MbscModule,
     BrowserModule,
     IonicStorageModule.forRoot(),
     HttpModule,
@@ -118,7 +124,8 @@ import { Stripe } from '@ionic-native/stripe';
     NotificationPage,
     PaymentPage,
     ChatPage,
-    FiltersPage
+    FiltersPage,
+    TeacherreviewsPage
   ],
   providers: [
     StatusBar,
