@@ -23,7 +23,8 @@ export class HomePage {
   rooms = [];
   ref = firebase.database().ref('chatrooms/');
   loader: any;
-  teacherList: any;
+  teacherList: any = '';
+  // errormsg=0;
   userDetail: any;
   searchCriteria: any;
   LogoUrl = AppSettings.LogoUrl;
@@ -85,7 +86,7 @@ export class HomePage {
       },
       error => {
         setTimeout(() => {
-            this.presentAlert('Alert!', error.message);
+            // this.presentAlert('Alert!', error.message);
             this.loader.dismiss();
           
         }, 500);
@@ -108,12 +109,16 @@ export class HomePage {
       success => {
         console.log('Success : ',success);
         this.teacherList = success.data;
+        console.log('teacherList',this.teacherList);
         this.loader.dismiss();
       },
       error => {
         setTimeout(() => {
-            this.presentAlert('Alert!', error.message);
+          // console.log('teacherList',this.teacherList);
+            // this.presentAlert('Alert!', error.message);
+            // this.errormsg=1
             this.loader.dismiss();          
+            // console.log('teacherList',this.teacherList);
         }, 500);
       }
     )

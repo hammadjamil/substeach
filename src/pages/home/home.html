@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-slides class="home_teachers">
+  <ion-slides class="home_teachers" *ngIf="teacherList!=''">
     <ion-slide class="home_teachers_slide" *ngFor="let teacher of teacherList">
       <div class="sliderimgg">
       </div>
@@ -27,4 +27,10 @@
       <button *ngIf="teacher.bookingID=='' || teacher.bookingID==null" ion-button block class="home_teachers_slide_btn" (click)="inviteTeacher(teacher.userId)">Invite</button>
     </ion-slide>
   </ion-slides>
+  <ion-row *ngIf="teacherList=='' || teacherList==null">
+      <ion-col col-12 text-center >
+          <img src="../../assets/imgs/hold.png" alt="" padding>
+          <p padding>No Matching Found</p>
+      </ion-col>
+  </ion-row>
 </ion-content>

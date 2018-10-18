@@ -29,11 +29,6 @@ import * as firebase from 'Firebase';
   providers: [Services, Auth, MyTools],
 })
 export class SchoolprofilePage {
-<<<<<<< HEAD
-=======
-  
-  // mobiscroll
->>>>>>> 22cbc9dc7dc5181d5e1c0033b863fc987b8db731
   schooltabs: string = "days";
   noticountdata:any='';
   userData:any='';
@@ -61,6 +56,7 @@ export class SchoolprofilePage {
   datasavedays:any='';
   datasaveperiods:any='';
   matchingtabs:any='setting';
+  myDate: String = new Date().toISOString();
   // home page data
   // data = { nickname:"" };
   // rooms = [];
@@ -86,7 +82,6 @@ export class SchoolprofilePage {
        
       this.storage.get('user').then((val) => {
           this.userData=val;
-<<<<<<< HEAD
           // this.storage.get('searchCriteriadays').then((daysdata) => {
             // this.datasavedays=daysdata;
             // this.storage.get('searchCriteriaperiods').then((periodsdata) => {
@@ -96,7 +91,6 @@ export class SchoolprofilePage {
                 // this.storage.get('selectperiods').then((selectperiods) => {
                   // this.seltimeslots=selectperiods;
                   // this.storage.get('selectstandrads').then((selectstandrads) => {
-=======
           // console.log('userdata',this.userData);
 
           
@@ -105,22 +99,6 @@ export class SchoolprofilePage {
           }else{
             this.Logo = this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+this.userData.ImagePath);
           }
-              
-
-
-          this.storage.get('searchCriteriadays').then((daysdata) => {
-            this.datasavedays=daysdata;
-            this.storage.get('searchCriteriaperiods').then((periodsdata) => {
-              this.datasaveperiods=periodsdata;
-              this.storage.get('selectdays').then((selectdays) => {
-                console.log('test : ',selectdays);
-                if(selectdays!='' && selectdays!=null)
-                  // this.seldays=selectdays;
-                this.storage.get('selectperiods').then((selectperiods) => {
-                  if(selectperiods!='' && selectperiods!=null)
-                  this.seltimeslots=selectperiods;
-                  this.storage.get('selectstandrads').then((selectstandrads) => {
->>>>>>> 22cbc9dc7dc5181d5e1c0033b863fc987b8db731
                     // this.schoolDay.Standard=periodsdata;
                     // console.log('this.datasaveperiods',this.datasaveperiods);
                     // console.log('this.datasavedays',this.datasavedays);
@@ -135,6 +113,7 @@ export class SchoolprofilePage {
           setTimeout(() => {
             this.getFav();
             this.getstandrads();
+            this.getnotificationcount();
           }, 500);
       });
     
@@ -260,7 +239,7 @@ export class SchoolprofilePage {
 
   matchByDay(){
     if (this.schoolDay.Day == '') {
-      this.loader.dismiss();
+      // this.loader.dismiss();
       setTimeout(() => {
         this.presentAlert('Alert!', 'Please enter Day');
       }, 500);
