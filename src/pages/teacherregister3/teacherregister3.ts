@@ -185,10 +185,8 @@ export class Teacherregister3Page {
                   }, 500);
                   setTimeout(() => {
                     // this.presentAlert('Success!', 'You are successfully registered.');
-                    setTimeout(() => {
                       this.loginService();
                       this.loader.dismiss();
-                    }, 500);
                     // this.disableButton = false;
                     //  this.navCtrl.push(LoginPage);
                   }, 500);
@@ -210,9 +208,9 @@ export class Teacherregister3Page {
     this.userlogin.username=this.userDetail.username;
     this.userlogin.password=this.userDetail.pswd;
       this.storage.get('deviceID').then((val) => {
-        this.user.udid = val;
+        this.userlogin.udid = val;
         this.storage.get('devicePlatform').then((val) => {
-          this.user.platform = val;
+          this.userlogin.platform = val;
           this.services.login(this.userlogin).subscribe(
             //Successfully Logged in
             success => {

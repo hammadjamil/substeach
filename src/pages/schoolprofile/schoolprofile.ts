@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { mobiscroll, MbscSelectOptions } from '@mobiscroll/angular';
 import { IonicPage, NavController, NavParams, MenuController, Platform } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
@@ -22,9 +21,7 @@ import { PublicprofilePage } from '../publicprofile/publicprofile';
 import { ChatPage } from  '../chat/chat';
 import * as firebase from 'Firebase';
 // home page data
-mobiscroll.settings = {
-  theme: 'ios'
-};
+
 @IonicPage()
 @Component({
   selector: 'page-schoolprofile',
@@ -32,6 +29,7 @@ mobiscroll.settings = {
   providers: [Services, Auth, MyTools],
 })
 export class SchoolprofilePage {
+  
   // mobiscroll
   schooltabs: string = "days";
   noticountdata:any='';
@@ -52,7 +50,7 @@ export class SchoolprofilePage {
     Type : 'Period',
     Description :'',
   };
-  seldays:any={Monday:'',Tuesday:'',Wednesday:'',Thursday:'',Friday:'',Saturday:'',Sunday:''};
+  seldays:any ={Monday:'',Tuesday:'',Wednesday:'',Thursday:'',Friday:'',Saturday:'',Sunday:''};
   seltimeslots:any={slot1:'',slot2:'',slot3:'',slot4:'',slot5:'',slot6:'',slot7:''};
   selstandrads:any={};
   Logo:any;
@@ -101,8 +99,11 @@ export class SchoolprofilePage {
             this.storage.get('searchCriteriaperiods').then((periodsdata) => {
               this.datasaveperiods=periodsdata;
               this.storage.get('selectdays').then((selectdays) => {
-                this.seldays=selectdays;
+                console.log('test : ',selectdays);
+                if(selectdays!='' && selectdays!=null)
+                  // this.seldays=selectdays;
                 this.storage.get('selectperiods').then((selectperiods) => {
+                  if(selectperiods!='' && selectperiods!=null)
                   this.seltimeslots=selectperiods;
                   this.storage.get('selectstandrads').then((selectstandrads) => {
                     // this.schoolDay.Standard=periodsdata;
@@ -338,7 +339,7 @@ toggledays(value){
   
   
   if (value == 'Monday'){
-    if(this.seldays.Monday==1){
+    if(this.seldays.Monday=='1'){
       this.seldays.Monday='';
     }
     else{
