@@ -34,8 +34,8 @@ export class Schoolregister3Page {
       "BillingCity": "",
       "BillingPostalCode": "",
       "BillingCountry": "",
-      "AgreeOnTermsAndConditions": true,
-      "isAdult": true,
+      "AgreeOnTermsAndConditions": false,
+      "isAdult": false,
     
   };
   schoolDetail : any;

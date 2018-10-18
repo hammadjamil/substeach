@@ -24,8 +24,8 @@ export class Teacherregister3Page {
     DOB: '', 
     TimeOfAvaliabilityFrom: '',  
     TimeOfAvaliabilityTo: '', 
-    age:true ,
-    terms:true 
+    age:false ,
+    terms:false 
   };
   disableButton;
   userDetail : any;
