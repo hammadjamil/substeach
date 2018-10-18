@@ -32,6 +32,8 @@ export class Teacherregister3Page {
   userPhoneNumber : any;
   frontimg : any;
   backimg : any;
+  FileName : any;
+  FileCode : any;
   userlogin = { username: '', password: '', udid: '',platform:'' };
 
   constructor(public navCtrl: NavController, 
@@ -44,7 +46,6 @@ export class Teacherregister3Page {
     private alertCtrl: AlertController) {
       this.storage.get('RegisterTeacherPhoneNumber').then((val) => {
         this.userPhoneNumber = val;
-        console.log('dddd',val);
         
       });
       this.storage.get('Front').then((val) => {
@@ -53,6 +54,12 @@ export class Teacherregister3Page {
       this.storage.get('Back').then((val) => {
         this.backimg = val;
       });
+      // this.storage.get('FileCode').then((val) => {
+      //   this.FileCode = val;
+      // });
+      // this.storage.get('FileName').then((val) => {
+      //   this.FileName = val;
+      // });
   }
   ionViewDidEnter() {
     this.menu.swipeEnable(false);
@@ -178,6 +185,8 @@ export class Teacherregister3Page {
           body.append('DOB', '1');
           body.append('TimeOfAvaliabilityFrom', '1');
           body.append('TimeOfAvaliabilityTo','1');
+          // body.append('FileCode',this.FileCode);
+          // body.append('FileName',this.FileName);
               this.services.registerTeacher(body).subscribe(
                 //Successfully Logged in
                 success => {

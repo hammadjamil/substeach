@@ -49,6 +49,7 @@
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-facebook4": "^3.0.0",
     "cordova-plugin-file": "^6.0.1",
+    "cordova-plugin-file-selector": "git+https://github.com/cinthiaro/cordova-plugin-file-selector.git",
     "cordova-plugin-file-transfer": "^1.7.1",
     "cordova-plugin-filechooser": "^1.0.1",
     "cordova-plugin-filepath": "^1.4.2",

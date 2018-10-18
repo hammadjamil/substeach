@@ -6,6 +6,7 @@
   <div class="registerchoice">
     <h3 text-center>Please Upload Other Documents</h3>
     <img src="../../assets/imgs/documents.png" alt="" class="schoollogo">
+    <div *ngIf="fileName!= ''" style="text-align: center;">{{fileName}}</div>
     <ion-col col-12 float-left>
       <button ion-button block (click)="loadDoc()">Select File</button>
     </ion-col>

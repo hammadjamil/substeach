@@ -73,7 +73,7 @@ export class MyApp {
           }
           else{
             this.homepage=2;
-            this.rootPage = TeacherprofilePage;
+            this.rootPage = Teacherregister2Page;
 
           }
         }else{
