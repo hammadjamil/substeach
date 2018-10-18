@@ -192,9 +192,7 @@ updateTeacher(){
 
 
   getImgContent() {
-    console.log('hit :',this.baseLogo);
-    
-    return this.sanitizer.bypassSecurityTrustUrl(this.baseLogo);
+      return this.sanitizer.bypassSecurityTrustUrl(this.baseLogo);
   }
 
   public takePicture(sourceType) {

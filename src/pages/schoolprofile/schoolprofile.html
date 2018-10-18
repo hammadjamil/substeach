@@ -1,7 +1,14 @@
 <ion-header>
   <ion-navbar>
     <button ion-button  class="menubtn" float-left (click)="editprofilepage()">
+<<<<<<< HEAD
         <img  src="../../assets/imgs/profileimg.jpg" alt="" width="30px" height="30px" style="border-radius:50%">
+=======
+       
+        <!-- <img *ngIf="userData.LogoPath!=''" [src]="userData.LogoPath" alt="" width="30px" height="30px" style="border-radius:50%"> -->
+        <!-- *ngIf="userData.LogoPath=='' || userData.LogoPath == null" -->
+        <img  [src]="Logo" alt="" width="30px" height="30px" style="border-radius:50%">
+>>>>>>> 22cbc9dc7dc5181d5e1c0033b863fc987b8db731
     </button>
     <ion-title float-left >School Profile</ion-title>
     <button ion-button  class="menubtn" text-right float-right (click)="shownoti()">

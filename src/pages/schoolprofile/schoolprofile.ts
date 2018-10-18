@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { mobiscroll, MbscSelectOptions } from '@mobiscroll/angular';
 import { IonicPage, NavController, NavParams, MenuController, Platform } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
@@ -22,9 +21,7 @@ import { AppSettings } from '../../app/appSettings';
 // import { ChatPage } from  '../chat/chat';
 import * as firebase from 'Firebase';
 // home page data
-mobiscroll.settings = {
-  theme: 'ios'
-};
+
 @IonicPage()
 @Component({
   selector: 'page-schoolprofile',
@@ -32,6 +29,11 @@ mobiscroll.settings = {
   providers: [Services, Auth, MyTools],
 })
 export class SchoolprofilePage {
+<<<<<<< HEAD
+=======
+  
+  // mobiscroll
+>>>>>>> 22cbc9dc7dc5181d5e1c0033b863fc987b8db731
   schooltabs: string = "days";
   noticountdata:any='';
   userData:any='';
@@ -51,9 +53,10 @@ export class SchoolprofilePage {
     Type : 'Period',
     Description :'',
   };
-  seldays:any={Monday:'',Tuesday:'',Wednesday:'',Thursday:'',Friday:'',Saturday:'',Sunday:''};
+  seldays:any ={Monday:'',Tuesday:'',Wednesday:'',Thursday:'',Friday:'',Saturday:'',Sunday:''};
   seltimeslots:any={slot1:'',slot2:'',slot3:'',slot4:'',slot5:'',slot6:'',slot7:''};
   selstandrads:any={};
+  Logo:any;
   test:any='';
   datasavedays:any='';
   datasaveperiods:any='';
@@ -83,6 +86,7 @@ export class SchoolprofilePage {
        
       this.storage.get('user').then((val) => {
           this.userData=val;
+<<<<<<< HEAD
           // this.storage.get('searchCriteriadays').then((daysdata) => {
             // this.datasavedays=daysdata;
             // this.storage.get('searchCriteriaperiods').then((periodsdata) => {
@@ -92,6 +96,31 @@ export class SchoolprofilePage {
                 // this.storage.get('selectperiods').then((selectperiods) => {
                   // this.seltimeslots=selectperiods;
                   // this.storage.get('selectstandrads').then((selectstandrads) => {
+=======
+          // console.log('userdata',this.userData);
+
+          
+          if(this.userData.Usertype == "School"){
+            this.Logo = this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+this.userData.LogoPath);
+          }else{
+            this.Logo = this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+this.userData.ImagePath);
+          }
+              
+
+
+          this.storage.get('searchCriteriadays').then((daysdata) => {
+            this.datasavedays=daysdata;
+            this.storage.get('searchCriteriaperiods').then((periodsdata) => {
+              this.datasaveperiods=periodsdata;
+              this.storage.get('selectdays').then((selectdays) => {
+                console.log('test : ',selectdays);
+                if(selectdays!='' && selectdays!=null)
+                  // this.seldays=selectdays;
+                this.storage.get('selectperiods').then((selectperiods) => {
+                  if(selectperiods!='' && selectperiods!=null)
+                  this.seltimeslots=selectperiods;
+                  this.storage.get('selectstandrads').then((selectstandrads) => {
+>>>>>>> 22cbc9dc7dc5181d5e1c0033b863fc987b8db731
                     // this.schoolDay.Standard=periodsdata;
                     // console.log('this.datasaveperiods',this.datasaveperiods);
                     // console.log('this.datasavedays',this.datasavedays);
@@ -329,7 +358,7 @@ toggledays(value){
   
   
   if (value == 'Monday'){
-    if(this.seldays.Monday==1){
+    if(this.seldays.Monday=='1'){
       this.seldays.Monday='';
     }
     else{

@@ -8,6 +8,7 @@ import { EditprofilePage } from '../editprofile/editprofile';
 import { FavouritesPage } from '../favourites/favourites';
 import { Services } from '../../providers/services';
 import { Events } from 'ionic-angular';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @IonicPage()
 @Component({
@@ -23,6 +24,8 @@ export class TeacherprofilePage {
   };
   Standard:any;
   userID:any;
+  Logo:any;
+  userData:any;
   noticountdata:any='';
   seldays:any={Monday:'',Tuesday:'',Wednesday:'',Thursday:'',Friday:'',Saturday:'',Sunday:''};
   seltimeslots:any={slot1:'',slot2:'',slot3:'',slot4:'',slot5:'',slot6:'',slot7:''};
@@ -32,11 +35,18 @@ export class TeacherprofilePage {
     public services: Services,
     private alertCtrl: AlertController,
     public events: Events,
+    private sanitizer: DomSanitizer,
     public loadingCtrl: LoadingController) {
       this.events.publish('user:login');
       this.storage.get('user').then((val) => {
-        console.log('val :', val );
+        this.userData = val;
+        // console.log('val :', val );
         this.userID = val.Id;
+        if(this.userData.Usertype == "School"){
+          this.Logo = this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+this.userData.LogoPath);
+        }else{
+          this.Logo = this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+this.userData.ImagePath);
+        }
       });
     this.services.getStandards().subscribe(
       //Successfully Logged in
