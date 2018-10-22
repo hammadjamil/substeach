@@ -82,6 +82,8 @@ export class SchoolprofilePage {
        
       this.storage.get('user').then((val) => {
           this.userData=val;
+          console.log(val);
+          
           // this.storage.get('searchCriteriadays').then((daysdata) => {
             // this.datasavedays=daysdata;
             // this.storage.get('searchCriteriaperiods').then((periodsdata) => {

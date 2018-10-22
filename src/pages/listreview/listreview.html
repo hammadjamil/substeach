@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Reviews</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card  *ngFor="let row of reviewlist">
+      <ion-card-header>
+        <div>Rated by school : {{row.SchoolName}}</div>
+        Ratings : {{row.Rating}}
+      </ion-card-header>
+      <ion-card-content>
+        {{row.Text}}
+      </ion-card-content>
+    </ion-card>
+    <ion-row *ngIf="reviewlist=='' || reviewlist==null">
+      <ion-col col-12 text-center >
+          <img src="../../assets/imgs/hold.png" alt="" padding>
+          <p padding>No Reviews Found.</p>
+      </ion-col>
+  </ion-row>
+</ion-content>

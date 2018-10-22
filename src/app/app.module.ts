@@ -43,6 +43,8 @@ import { NotificationPage } from '../pages/notification/notification';
 import { PaymentPage } from '../pages/payment/payment';
 import { ChatPage } from '../pages/chat/chat';
 import { TeacherreviewsPage } from '../pages/teacherreviews/teacherreviews';
+import { AddreviewPage } from '../pages/addreview/addreview';
+import { ListreviewPage } from '../pages/listreview/listreview';
 import { FiltersPage } from '../pages/filters/filters';
 import { SMS } from '@ionic-native/sms';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
@@ -82,7 +84,9 @@ import { Stripe } from '@ionic-native/stripe';
     PaymentPage,
     ChatPage,
     FiltersPage,
-    TeacherreviewsPage
+    TeacherreviewsPage,
+    AddreviewPage,
+    ListreviewPage
   ],
   imports: [ 
     FormsModule, 
@@ -123,7 +127,9 @@ import { Stripe } from '@ionic-native/stripe';
     PaymentPage,
     ChatPage,
     FiltersPage,
-    TeacherreviewsPage
+    TeacherreviewsPage,
+    AddreviewPage,
+    ListreviewPage
   ],
   providers: [
     StatusBar,

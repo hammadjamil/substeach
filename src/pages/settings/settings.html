@@ -4,8 +4,8 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-  <button ion-button full style="margin-bottom:20px;">
-      PAY
+  <button *ngIf="userDetail.Ispaid=='no'" ion-button full style="margin-bottom:20px;" (click)="pay()">
+      Premium feature
     </button>
   <button ion-button icon-start full (click)="logout()">
     <ion-icon name="md-log-out"></ion-icon>

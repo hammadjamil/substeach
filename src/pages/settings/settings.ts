@@ -5,7 +5,8 @@ import { LoginPage } from '../login/login';
 import { LogoutPage } from '../logout/logout';
 import { MyTools } from '../../providers/tools';
 import { Services } from '../../providers/services';
-
+import { PaymentPage } from '../payment/payment';
+import { MyStorage } from '../../app/localstorage';
 @IonicPage()
 @Component({
   selector: 'page-settings',
@@ -18,8 +19,17 @@ export class SettingsPage {
   userData : any='';
   homepage:any;
   Logo:any = '';
-  constructor(public navCtrl: NavController,public toastCtrl: ToastController,private services: Services,public tools: MyTools,private auth: Auth,public navParams: NavParams) {
-  }
+  userDetail:any = '';
+  constructor(public navCtrl: NavController,public toastCtrl: ToastController,
+    private storage: MyStorage,private services: Services,public tools: MyTools,private auth: Auth,public navParams: NavParams) {
+  
+    this.storage.get('user').then(
+      (val) => {
+        if (val != null) {
+          this.userDetail = val;
+        }
+      }
+    )}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SettingsPage');
@@ -52,5 +62,8 @@ export class SettingsPage {
       console.log('Dismissed toast');
     });
     toast.present();
+  }
+  pay(){
+    this.navCtrl.push(PaymentPage,{})
   }
 }

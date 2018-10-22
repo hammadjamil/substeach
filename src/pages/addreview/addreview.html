@@ -1,0 +1,23 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Add Review</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div>
+    <ion-item>
+      <ion-label  stacked><ion-icon name="ios-school"></ion-icon>add rating</ion-label>
+      <ion-input  type="text" [(ngModel)]="review.rating"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label  stacked><ion-icon name="ios-school"></ion-icon> Add review</ion-label>
+      <ion-input  type="text" [(ngModel)]="review.text"></ion-input>
+    </ion-item>
+
+    <button ion-button block class="home_teachers_slide_btn" (click)="saveReview()">Add Review</button>
+  </div>
+</ion-content>
