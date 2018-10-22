@@ -7,5 +7,32 @@
     </ion-navbar>
 </ion-header>
 <ion-content padding>
+    <ion-list text-center>
+        
+      <ion-item class="p-0">
+        <ion-label style="margin-bottom: 0;margin-right: 10px;">
+          <ion-icon name="ios-school"></ion-icon>
+        </ion-label>
+        <ion-input type="text" placeholder="Card number"  [(ngModel)]="user.number" class="marginset" style="font-size: 16px;"></ion-input>
+      </ion-item>
+      <ion-item class="p-0">
+        <ion-label style="margin-bottom: 0;margin-right: 10px;">
+          <ion-icon name="ios-school"></ion-icon>
+        </ion-label>
+        <ion-input type="text" placeholder="Exp month"  [(ngModel)]="user.expMonth" class="marginset" style="font-size: 16px;"></ion-input>
+      </ion-item>
+      <ion-item class="p-0">
+        <ion-label style="margin-bottom: 0;margin-right: 10px;">
+          <ion-icon name="ios-school"></ion-icon>
+        </ion-label>
+        <ion-input type="text" placeholder="Exp year"  [(ngModel)]="user.expYear" class="marginset" style="font-size: 16px;"></ion-input>
+      </ion-item>
+      <ion-item class="p-0">
+        <ion-label style="margin-bottom: 0;margin-right: 10px;">
+          <ion-icon name="ios-school"></ion-icon>
+        </ion-label>
+        <ion-input type="text" placeholder="cvc"  [(ngModel)]="user.cvc" class="marginset" style="font-size: 16px;"></ion-input>
+      </ion-item>
+    </ion-list>
 <button (click)="pay()">Pay</button>
 </ion-content>

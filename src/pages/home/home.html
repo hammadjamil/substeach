@@ -9,26 +9,32 @@
 
 <ion-content>
   <ion-slides class="home_teachers" *ngIf="teacherList!=''">
-    <ion-slide class="home_teachers_slide" *ngFor="let teacher of teacherList">
-      <div class="sliderimgg">
-                <img [src]="sanitizerfn(teacher.ImagePath)" alt="" class="home_teachers_slide_img">
+    <div *ngFor="let teacher of teacherList">
+      <ion-slide class="home_teachers_slide" *ngIf="teacher.blockID=='' || teacher.blockID==null" >
+        <div class="sliderimgg">
+                  <img [src]="sanitizerfn(teacher.ImagePath)" alt="" class="home_teachers_slide_img">
 
-      </div>
-      <h1 class="home_teachers_slide_name">{{teacher.FirstName+' '+teacher.LastName}} 
-        <span><ion-icon *ngIf="teacher.favId=='' || teacher.favId==null" float-right (click)="addToFav(teacher.DeputyPersonId)" name="ios-heart-outline"></ion-icon><ion-icon *ngIf="teacher.favId!='' && teacher.favId!=null" float-right (click)="addToFav(teacher.DeputyPersonId)" name="ios-heart"></ion-icon></span></h1>
-      <p class="home_teachers_slide_reviews">Top Review</p>
-      <p class="home_teachers_slide_desc">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-      </p>
-      <p class="home_teachers_slide_cost">
-        Rate: $24/hr
-      </p>
-      <p class="home_teachers_slide_view" (click)="profilepage(teacher.DeputyPersonId)">
-        Teacher Profile Detail
-      </p>
-      <button *ngIf="teacher.bookingID!='' && teacher.bookingID!=null" ion-button block class="home_teachers_slide_btn" (click)="inviteTeacher(teacher.userId)">Booking</button>
-      <button *ngIf="teacher.bookingID=='' || teacher.bookingID==null" ion-button block class="home_teachers_slide_btn" (click)="inviteTeacher(teacher.userId)">Invite</button>
-    </ion-slide>
+        </div>
+        <h1 class="home_teachers_slide_name">{{teacher.FirstName+' '+teacher.LastName}} 
+          <span *ngIf="userDetail.Ispaid=='yes'"><ion-icon *ngIf="teacher.favId=='' || teacher.favId==null" float-right (click)="addToFav(teacher.DeputyPersonId)" name="ios-heart-outline"></ion-icon><ion-icon *ngIf="teacher.favId!='' && teacher.favId!=null" float-right (click)="addToFav(teacher.DeputyPersonId)" name="ios-heart"></ion-icon></span></h1>
+        <p class="home_teachers_slide_reviews">Top Review</p>
+        <p class="home_teachers_slide_desc">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+        </p>
+        <p class="home_teachers_slide_cost">
+          Rate: $24/hr
+        </p>
+        <p class="home_teachers_slide_view" (click)="profilepage(teacher.DeputyPersonId)">
+          Teacher Profile Detail
+        </p>
+        <button *ngIf="teacher.bookingID!='' && teacher.bookingID!=null" ion-button block class="home_teachers_slide_btn" (click)="inviteTeacher(teacher.userId)">Booking</button>
+        <button *ngIf="teacher.bookingID!='' && teacher.bookingID!=null && userDetail.Ispaid=='yes'" ion-button block class="" (click)="addReview(teacher.userId)">Add Review</button>
+        <button *ngIf="teacher.bookingID!='' && teacher.bookingID!=null && userDetail.Ispaid=='yes'" ion-button block class="" (click)="viewReview(teacher.userId)">View Reviews</button>
+        <button *ngIf="teacher.HireDirectly==1 && userDetail.Ispaid=='yes'" ion-button block class="" (click)="hire(teacher.userId)">Hire Directly</button>
+        <button *ngIf="teacher.bookingID=='' || teacher.bookingID==null" ion-button block class="home_teachers_slide_btn" (click)="inviteTeacher(teacher.userId)">Invite</button>
+        <button ion-button block class="" (click)="block(teacher.userId)">Block</button>
+      </ion-slide>
+    </div>
   </ion-slides>
   <ion-row *ngIf="teacherList=='' || teacherList==null">
       <ion-col col-12 text-center >

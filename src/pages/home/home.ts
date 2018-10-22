@@ -12,7 +12,9 @@ import { ChatPage } from  '../chat/chat';
 import * as firebase from 'Firebase';
 import { DomSanitizer } from '@angular/platform-browser';
 import { TeacherreviewsPage } from '../teacherreviews/teacherreviews';
+import { AddreviewPage } from '../addreview/addreview';
 
+import { ListreviewPage } from '../listreview/listreview';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
@@ -47,21 +49,25 @@ export class HomePage {
             console.log(val);
             this.data.nickname = val.UserName;
             this.userDetail = val;
+
+            this.storage.get('searchCriteria').then(
+              (val) => {
+                if (val != null) {
+                  console.log('val',val);
+                  this.searchCriteria = val;
+                  if(val.Type=='Days')
+                    this.matchByDay();
+                  else
+                  this.matchByPeriod();
+                }
+              }
+            )
+
+
           }
         }
       )
-      this.storage.get('searchCriteria').then(
-        (val) => {
-          if (val != null) {
-            console.log('val',val);
-            this.searchCriteria = val;
-            if(val.Type=='Days')
-              this.matchByDay();
-            else
-            this.matchByPeriod();
-          }
-        }
-      )
+      
   }
 
   sanitizerfn(img){
@@ -187,10 +193,64 @@ addToFav(dID){
         }
       )
 }
+
+
+hire(teacherID){
+  this.showLoader();
+  //Applying Validations
+  let body = new FormData();
+  body.append('SchoolUserId', this.userDetail.Id);
+  body.append('TeacherUserId', teacherID);
+      this.services.bookTeacher(body).subscribe(
+        //Successfully Logged in
+        success => {
+          console.log('success bhai', success);
+            this.loader.dismiss();
+            this.presentAlert('Alert!', 'Teacher Successfully booked.');
+            this.navCtrl.push(HomePage,{})
+        },
+        error => {
+          this.loader.dismiss();
+          console.log('error bhai', error);
+          this.presentAlert('Alert!', error.message);
+        }
+      )
+}
+
+
+block(teacherID){
+  this.showLoader();
+  //Applying Validations
+  let body = new FormData();
+  body.append('SchoolUserId', this.userDetail.Id);
+  body.append('TeacherUserId', teacherID);
+      this.services.blockTeacher(body).subscribe(
+        //Successfully Logged in
+        success => {
+          console.log('success bhai', success);
+            this.loader.dismiss();
+            this.presentAlert('Alert!', 'Teacher Successfully booked.');
+            this.navCtrl.push(HomePage,{})
+        },
+        error => {
+          this.loader.dismiss();
+          console.log('error bhai', error);
+          this.presentAlert('Alert!', error.message);
+        }
+      )
+}
+
 profilepage(idd){
   console.log('idd',idd);
   this.navCtrl.push(PublicprofilePage,{
     id: idd
+  })
+}
+
+
+viewReview(id){
+  this.navCtrl.push(ListreviewPage,{
+    reviewTeacherID: id
   })
 }
 
@@ -220,10 +280,18 @@ inviteTeacher(id){
   )
 }
 
+addReview(id){
+  // this.storage.set('reviewTeacherID',id);
+  // this.storage.set('reviewSchoolID',this.userDetail.Id);
+  this.navCtrl.push(AddreviewPage,{
+    reviewTeacherID: id,
+    reviewSchoolID :this.userDetail.Id
+  })
+}
+
   
 startChat() {
   this.addRoom();
-
 }
 
 

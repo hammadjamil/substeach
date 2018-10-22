@@ -1478,6 +1478,136 @@ updateTeacher(params) {
         )
     })
   }
+
+
+    /**
+ * RemoveCoins
+ */
+addreview(params) {
+  
+  var headers = new Headers();
+  headers.append('Content-Type', 'application/x-www-form-urlencoded');
+
+  let options = new RequestOptions({ headers: headers });
+  
+  return Observable.create(observer => {
+    const url = this.baseUrl + 'addReview';
+    this.http.post(url,params)
+        .map(res => res.json())
+        .subscribe(
+          (response) => {
+            if (response.code != '200') {
+              observer.error(response);
+            }
+            else {
+              observer.next(response);
+
+            }
+            observer.complete();
+
+          },
+          (error) => {
+            observer.error(error);
+          }
+        )
+    })
+  }
+
+
+
+
+
+getreview(params) {
+  
+  var headers = new Headers();
+  headers.append('Content-Type', 'application/x-www-form-urlencoded');
+
+  let options = new RequestOptions({ headers: headers });
+  
+  return Observable.create(observer => {
+    const url = this.baseUrl + 'getreview';
+    this.http.post(url,params)
+        .map(res => res.json())
+        .subscribe(
+          (response) => {
+            if (response.code != '200') {
+              observer.error(response);
+            }
+            else {
+              observer.next(response);
+
+            }
+            observer.complete();
+
+          },
+          (error) => {
+            observer.error(error);
+          }
+        )
+    })
+  }
+
+
+  bookTeacher(params) {
+  
+  var headers = new Headers();
+  headers.append('Content-Type', 'application/x-www-form-urlencoded');
+
+  let options = new RequestOptions({ headers: headers });
+  
+  return Observable.create(observer => {
+    const url = this.baseUrl + 'bookTeacher';
+    this.http.post(url,params)
+        .map(res => res.json())
+        .subscribe(
+          (response) => {
+            if (response.code != '200') {
+              observer.error(response);
+            }
+            else {
+              observer.next(response);
+
+            }
+            observer.complete();
+
+          },
+          (error) => {
+            observer.error(error);
+          }
+        )
+    })
+  }
+
+
+  blockTeacher(params) {
+  
+  var headers = new Headers();
+  headers.append('Content-Type', 'application/x-www-form-urlencoded');
+
+  let options = new RequestOptions({ headers: headers });
+  
+  return Observable.create(observer => {
+    const url = this.baseUrl + 'blockTeacher';
+    this.http.post(url,params)
+        .map(res => res.json())
+        .subscribe(
+          (response) => {
+            if (response.code != '200') {
+              observer.error(response);
+            }
+            else {
+              observer.next(response);
+
+            }
+            observer.complete();
+
+          },
+          (error) => {
+            observer.error(error);
+          }
+        )
+    })
+  }
     /**
  * RemoveCoins
  */
@@ -1518,6 +1648,34 @@ updateUserImage(params) {
     if (id) {
       return Observable.create(observer => {
         const url = this.baseUrl + 'ShowNotification';
+        this.http.post(url, id)
+          .map(res => res.json())
+          .subscribe(
+          (response) => {
+            console.log('response:::::',response);
+            if (response.code != '200') {
+              observer.error(response);
+            }
+            else {
+              observer.next(response);
+            }
+            observer.complete();
+          },
+          (error) => {
+            console.log('errrrror',error);
+            observer.error(error);
+          }
+          )
+      })
+    }
+  }
+
+
+  stripePayment(id) { 
+    console.log('user id', id);
+    if (id) {
+      return Observable.create(observer => {
+        const url = this.baseUrl + 'stripePayment';
         this.http.post(url, id)
           .map(res => res.json())
           .subscribe(

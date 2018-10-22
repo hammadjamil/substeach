@@ -43,6 +43,10 @@
             <ion-datetime [(ngModel)]="user.TimeOfAvaliabilityTo" displayFormat="HH:mm" placeholder="To Available Time" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>            
           </ion-item> -->
           <ion-item class="p-0 itmm"  style=" height:60px;">
+            <ion-label style="color: black;white-space: unset;font-weight: 300;font-size: 16px;padding: 0px 0 0 10px !important;text-align: left;">Want's to book directly</ion-label>
+            <ion-checkbox  (ngModelChange)="ageconsole($event)"  [(ngModel)]="user.bookdirectly" color="dark" style="    margin: 10px;"></ion-checkbox>
+          </ion-item>
+          <ion-item class="p-0 itmm"  style=" height:60px;">
             <ion-label style="color: black;white-space: unset;font-weight: 300;font-size: 16px;padding: 0px 0 0 10px !important;text-align: left;">I confirm that I am over 18 years of age</ion-label>
             <ion-checkbox  (ngModelChange)="ageconsole($event)"  [(ngModel)]="user.age" color="dark" style="    margin: 10px;"></ion-checkbox>
           </ion-item>

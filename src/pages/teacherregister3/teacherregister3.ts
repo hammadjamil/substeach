@@ -19,7 +19,7 @@ export class Teacherregister3Page {
   user: any = 
   { 
     // FirstName: '', 
-    // LastName: '',
+    bookdirectly:false,
     region:'', 
     DOB: '', 
     TimeOfAvaliabilityFrom: '',  
@@ -182,6 +182,7 @@ export class Teacherregister3Page {
           body.append('LogoPath', '');
           body.append('FirstName', this.userDetail.FirstName);
           body.append('LastName', this.userDetail.LastName);
+          body.append('bookdirectly', this.user.bookdirectly);
           body.append('DOB', '1');
           body.append('TimeOfAvaliabilityFrom', '1');
           body.append('TimeOfAvaliabilityTo','1');
@@ -204,7 +205,7 @@ export class Teacherregister3Page {
                   console.log('error bhai', error);
                   setTimeout(() => {
                     // if (error.message.length==1){
-                      this.presentAlert('Alert!', error.message[0]);
+                      this.presentAlert('Alert!', error.message);
                       this.loader.dismiss();
                     // }
                   }, 500);
