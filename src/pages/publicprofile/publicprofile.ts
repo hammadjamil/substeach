@@ -8,7 +8,7 @@ import { Auth } from '../../providers/auth';
 import { MyTools } from '../../providers/tools';
 import { LoadingController, Platform } from 'ionic-angular';
 import { AppSettings } from '../../app/appSettings';
-
+import { DomSanitizer } from '@angular/platform-browser';
 @IonicPage()
 @Component({
   selector: 'page-publicprofile',
@@ -26,7 +26,8 @@ export class PublicprofilePage {
     private storage: MyStorage,
     public tools: MyTools,
     private navParams: NavParams,
-    private alertCtrl: AlertController) {
+    private alertCtrl: AlertController,
+    private sanitizer: DomSanitizer) {
       this.seeprofileid = navParams.get('id');
       if(this.seeprofileid!=0 && this.seeprofileid!='' && this.seeprofileid!=null){
         this.profileService(this.seeprofileid);        
@@ -82,6 +83,9 @@ profileService(id) {
       )
       
   
+}
+sanitizerfn(img){
+  return this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+img);
 }
 
 }

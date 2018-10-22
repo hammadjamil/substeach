@@ -8,12 +8,14 @@
 
 
 <ion-content padding>
-    <ion-card  *ngFor="let row of reviewlist">
-      <ion-card-header>
-        <div>Rated by school : {{row.SchoolName}}</div>
-        Ratings : {{row.Rating}}
+    <ion-card  *ngFor="let row of reviewlist" style="    border-radius: 10px;">
+      <ion-card-header style="background-color: #ae2b72;">
+        <div>
+          <p style="font-size:16px;font-weight:600;color:#fff;">{{row.SchoolName}}</p>
+          <p style="font-size:13px;font-weight:300;color:#fff;">Ratings : {{row.Rating}} star</p>
+        </div>
       </ion-card-header>
-      <ion-card-content>
+      <ion-card-content padding>
         {{row.Text}}
       </ion-card-content>
     </ion-card>

@@ -88,12 +88,12 @@ export class HomePage {
       success => {
         console.log('Success : ',success);
         this.teacherList = success.data;
-        this.loader.dismiss();
+        // this.loader.dismiss();
       },
       error => {
         setTimeout(() => {
             // this.presentAlert('Alert!', error.message);
-            this.loader.dismiss();
+            // this.loader.dismiss();
             this.teacherList=1;
           
         }, 500);
@@ -117,14 +117,14 @@ export class HomePage {
         console.log('Success : ',success);
         this.teacherList = success.data;
         console.log('teacherList',this.teacherList);
-        this.loader.dismiss();
+        // this.loader.dismiss();
       },
       error => {
         setTimeout(() => {
           // console.log('teacherList',this.teacherList);
             // this.presentAlert('Alert!', error.message);
             // this.errormsg=1
-            this.loader.dismiss();  
+            // this.loader.dismiss();  
             this.teacherList=1;        
             // console.log('teacherList',this.teacherList);
         }, 500);
@@ -151,7 +151,7 @@ export class HomePage {
   
 teacherService() {
   
-  this.showLoader();
+  // this.showLoader();
   //Applying Validations
   
    
@@ -161,11 +161,11 @@ teacherService() {
         success => {
           console.log('success bhai', success);
           this.teacherList = success.teacherList;
-            this.loader.dismiss();
+            // this.loader.dismiss();
 
         },
         error => {
-          this.loader.dismiss();
+          // this.loader.dismiss();
           console.log('error bhai', error);
           this.presentAlert('Alert!', error.data);
         }

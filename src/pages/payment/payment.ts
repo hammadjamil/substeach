@@ -25,10 +25,10 @@ export class PaymentPage {
   userDetail: any;
   user: any = 
   { 
-      "number": "4242424242424242",
-      "expMonth": "12",
-      "expYear": "2020",
-      "cvc": "220"
+      "number": "",
+      "expMonth": "",
+      "expYear": "",
+      "cvc": ""
   };
   constructor(public navCtrl: NavController, public navParams: NavParams, private stripe: Stripe, private http: Http,
     public services: Services, 
@@ -36,9 +36,6 @@ export class PaymentPage {
     private storage: MyStorage,
     public tools: MyTools) {
     this.stripe.setPublishableKey('pk_test_anELvfZYT3CKgUubCpD5uov6');
-
-
-
     this.storage.get('user').then(
       (val) => {
         if (val != null) {
@@ -46,10 +43,6 @@ export class PaymentPage {
         }
       }
     )
-
-
-
-
   }
 
   ionViewDidLoad() {
