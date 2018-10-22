@@ -11,6 +11,7 @@ import { AppSettings } from '../../app/appSettings';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 
+import { DomSanitizer } from '@angular/platform-browser';
 @IonicPage()
 @Component({
   selector: 'page-publicprofile',
@@ -32,7 +33,8 @@ export class PublicprofilePage {
     private storage: MyStorage,
     public tools: MyTools,private transfer: FileTransfer, private file: File,
     private navParams: NavParams,
-    private alertCtrl: AlertController) {
+    private alertCtrl: AlertController,
+    private sanitizer: DomSanitizer) {
       this.seeprofileid = navParams.get('id');
       
       if(this.seeprofileid!=0 && this.seeprofileid!='' && this.seeprofileid!=null){
@@ -135,6 +137,9 @@ profileService(id) {
       )
       
   
+}
+sanitizerfn(img){
+  return this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+img);
 }
 
 }

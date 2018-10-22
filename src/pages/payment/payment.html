@@ -11,28 +11,28 @@
         
       <ion-item class="p-0">
         <ion-label style="margin-bottom: 0;margin-right: 10px;">
-          <ion-icon name="ios-school"></ion-icon>
+          <ion-icon name="ios-card"></ion-icon>
         </ion-label>
-        <ion-input type="text" placeholder="Card number"  [(ngModel)]="user.number" class="marginset" style="font-size: 16px;"></ion-input>
+        <ion-input type="text" placeholder="Card Number"  [(ngModel)]="user.number" class="marginset" style="font-size: 16px;    padding-left: 10px;"></ion-input>
       </ion-item>
       <ion-item class="p-0">
         <ion-label style="margin-bottom: 0;margin-right: 10px;">
-          <ion-icon name="ios-school"></ion-icon>
+          <ion-icon name="ios-calendar"></ion-icon>
         </ion-label>
-        <ion-input type="text" placeholder="Exp month"  [(ngModel)]="user.expMonth" class="marginset" style="font-size: 16px;"></ion-input>
+        <ion-input type="text" placeholder="Exp Month"  [(ngModel)]="user.expMonth" class="marginset" style="font-size: 16px;    padding-left: 10px;"></ion-input>
+      </ion-item>
+      <ion-item class="p-0">
+        <ion-label style="margin-bottom: 0;margin-right: 10px; ">
+          <ion-icon name="ios-calendar"></ion-icon>
+        </ion-label>
+        <ion-input type="text" placeholder="Exp year"  [(ngModel)]="user.expYear" class="marginset" style="font-size: 16px;    padding-left: 10px;"></ion-input>
       </ion-item>
       <ion-item class="p-0">
         <ion-label style="margin-bottom: 0;margin-right: 10px;">
-          <ion-icon name="ios-school"></ion-icon>
+          <ion-icon name="ios-lock"></ion-icon>
         </ion-label>
-        <ion-input type="text" placeholder="Exp year"  [(ngModel)]="user.expYear" class="marginset" style="font-size: 16px;"></ion-input>
-      </ion-item>
-      <ion-item class="p-0">
-        <ion-label style="margin-bottom: 0;margin-right: 10px;">
-          <ion-icon name="ios-school"></ion-icon>
-        </ion-label>
-        <ion-input type="text" placeholder="cvc"  [(ngModel)]="user.cvc" class="marginset" style="font-size: 16px;"></ion-input>
+        <ion-input type="text" placeholder="CVC"  [(ngModel)]="user.cvc" class="marginset" style="font-size: 16px;    padding-left: 10px;"></ion-input>
       </ion-item>
     </ion-list>
-<button (click)="pay()">Pay</button>
+<button (click)="pay()" full ion-button>Pay</button>
 </ion-content>

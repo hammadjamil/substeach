@@ -12,12 +12,13 @@
     <div *ngFor="let teacher of teacherList">
       <ion-slide class="home_teachers_slide" *ngIf="teacher.blockID=='' || teacher.blockID==null" >
         <div class="sliderimgg">
-                  <img [src]="sanitizerfn(teacher.ImagePath)" alt="" class="home_teachers_slide_img">
-
+          <img [src]="sanitizerfn(teacher.ImagePath)" alt="" class="home_teachers_slide_img">
         </div>
         <h1 class="home_teachers_slide_name">{{teacher.FirstName+' '+teacher.LastName}} 
           <span *ngIf="userDetail.Ispaid=='yes'"><ion-icon *ngIf="teacher.favId=='' || teacher.favId==null" float-right (click)="addToFav(teacher.DeputyPersonId)" name="ios-heart-outline"></ion-icon><ion-icon *ngIf="teacher.favId!='' && teacher.favId!=null" float-right (click)="addToFav(teacher.DeputyPersonId)" name="ios-heart"></ion-icon></span></h1>
-        <p class="home_teachers_slide_reviews">Top Review</p>
+        <p class="home_teachers_slide_reviews"  *ngIf="teacher.bookingID!='' && teacher.bookingID!=null && userDetail.Ispaid=='yes'" (click)="viewReview(teacher.userId)" float-left style="width:50%;">Top Review </p>
+        <p class="home_teachers_slide_reviews"  *ngIf="userDetail.Ispaid=='no'" float-left style="width:100%;">Top Review </p>
+        <p class="home_teachers_slide_reviews" *ngIf="teacher.bookingID!='' && teacher.bookingID!=null && userDetail.Ispaid=='yes'" float-right style="width:50%;text-align: right;"><ion-icon (click)="addReview(teacher.userId)" name="add" text-right></ion-icon></p>
         <p class="home_teachers_slide_desc">
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
         </p>
@@ -27,16 +28,24 @@
         <p class="home_teachers_slide_view" (click)="profilepage(teacher.DeputyPersonId)">
           Teacher Profile Detail
         </p>
-        <button *ngIf="teacher.bookingID!='' && teacher.bookingID!=null" ion-button block class="home_teachers_slide_btn" (click)="inviteTeacher(teacher.userId)">Booking</button>
-        <button *ngIf="teacher.bookingID!='' && teacher.bookingID!=null && userDetail.Ispaid=='yes'" ion-button block class="" (click)="addReview(teacher.userId)">Add Review</button>
-        <button *ngIf="teacher.bookingID!='' && teacher.bookingID!=null && userDetail.Ispaid=='yes'" ion-button block class="" (click)="viewReview(teacher.userId)">View Reviews</button>
-        <button *ngIf="teacher.HireDirectly==1 && userDetail.Ispaid=='yes'" ion-button block class="" (click)="hire(teacher.userId)">Hire Directly</button>
-        <button *ngIf="teacher.bookingID=='' || teacher.bookingID==null" ion-button block class="home_teachers_slide_btn" (click)="inviteTeacher(teacher.userId)">Invite</button>
-        <button ion-button block class="" (click)="block(teacher.userId)">Block</button>
+        <button style="width:80%;margin-left:10%;height: 40px;" float-left *ngIf="teacher.bookingID!='' && teacher.bookingID!=null" ion-button block class="home_teachers_slide_btn" (click)="inviteTeacher(teacher.userId)">Booking</button>
+        <!-- <button style="width:80%;margin-left:10%;height: 40px;" float-left *ngIf="teacher.bookingID!='' && teacher.bookingID!=null && userDetail.Ispaid=='yes'" ion-button block class="home_teachers_slide_btn" (click)="addReview(teacher.userId)">Add Review</button> -->
+        <!-- <button style="width:80%;margin-left:10%;height: 40px;" float-left *ngIf="teacher.bookingID!='' && teacher.bookingID!=null && userDetail.Ispaid=='yes'" ion-button block class="home_teachers_slide_btn" (click)="viewReview(teacher.userId)">View Reviews</button> -->
+        <button style="width:80%;margin-left:10%;height: 40px;" float-left *ngIf="teacher.HireDirectly==1 && userDetail.Ispaid=='yes'" ion-button block class="" (click)="hire(teacher.userId)">Hire Directly</button>
+        <button style="width:80%;margin-left:10%;height: 40px;" float-left *ngIf="teacher.bookingID=='' || teacher.bookingID==null" ion-button block class="home_teachers_slide_btn" (click)="inviteTeacher(teacher.userId)">Invite</button>
+        <button style="position: absolute;background: white !important;color: #a51463;box-shadow: none !important;top: 0;left: 5px;width: 25%;font-size: 14px;" float-left ion-button block class="home_teachers_slide_btn" (click)="block(teacher.userId)">
+          <ion-icon name="ios-information-circle" style="padding-right:5px;color:#a51463;"></ion-icon>
+          Block
+        </button>
       </ion-slide>
     </div>
   </ion-slides>
   <ion-row *ngIf="teacherList=='' || teacherList==null">
+      <ion-col col-12 text-center >
+          <img src="../../assets/imgs/loaderhome.gif" alt="" padding>
+      </ion-col>
+  </ion-row>
+  <ion-row *ngIf="teacherList==1">
       <ion-col col-12 text-center >
           <img src="../../assets/imgs/hold.png" alt="" padding>
           <p padding>No Matching Found</p>

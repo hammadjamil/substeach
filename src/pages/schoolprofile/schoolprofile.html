@@ -96,7 +96,7 @@
                         03:00 -04:00
                     </ion-item>
                 </ion-list>
-                <p style="font-size: 22px;font-weight: 700;padding-bottom: 0;margin-bottom: 0;text-align: center;">Select Standrads</p>
+                <p style="font-size: 22px;font-weight: 700;padding-bottom: 0;margin-bottom: 0;text-align: center;" *ngIf="Standard!=''">Select Standrads</p>
                 <ion-list style="padding: 5px;width:100%;float: left;margin-bottom: 0;">
                     <ion-item *ngFor="let row of Standard" class="contesttypefilter" [ngClass]="{'coloractive': schoolDay.Standard.indexOf(row.Id)>=0 }" (click)="togglestandrads(row.Id,'day')">
                         {{row.StandardName}}

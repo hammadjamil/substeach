@@ -39,7 +39,7 @@ export class SchoolprofilePage {
     Type : 'Days',
     Description :'',
   };
-  Standard : any;
+  Standard : any='';
   schoolPeriod : any={
     ToDate :'',
     FromDate :'',
@@ -164,7 +164,7 @@ export class SchoolprofilePage {
       setTimeout(() => {
         // if (error.message.length==1){
           this.presentAlert('Alert!', error.message);
-          this.loader.dismiss();
+          // this.loader.dismiss();
         // }
         
       }, 500);
