@@ -8,26 +8,33 @@ import { Auth } from '../../providers/auth';
 import { MyTools } from '../../providers/tools';
 import { LoadingController, Platform } from 'ionic-angular';
 import { AppSettings } from '../../app/appSettings';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
 
 @IonicPage()
 @Component({
   selector: 'page-publicprofile',
   templateUrl: 'publicprofile.html',
+  providers: [
+    File,
+    FileTransfer]
 })
 export class PublicprofilePage {
   loader: any;
   profileList: any='';
   userDetail: any;
   seeprofileid:any=0;
+  Documents: any ;
   LogoUrl = AppSettings.LogoUrl;
   constructor(public navCtrl: NavController,
     public loadingCtrl: LoadingController,
     public services: Services,
     private storage: MyStorage,
-    public tools: MyTools,
+    public tools: MyTools,private transfer: FileTransfer, private file: File,
     private navParams: NavParams,
     private alertCtrl: AlertController) {
       this.seeprofileid = navParams.get('id');
+      
       if(this.seeprofileid!=0 && this.seeprofileid!='' && this.seeprofileid!=null){
         this.profileService(this.seeprofileid);        
       }
@@ -37,6 +44,9 @@ export class PublicprofilePage {
             if (val != null) {
               console.log('val',val);
               this.userDetail = val;
+              if(this.userDetail.Usertype=='Teacher'){
+                this.getDocuments(this.userDetail.Id);
+              }
               this.profileService(this.userDetail.Id);
             }
           }
@@ -44,6 +54,46 @@ export class PublicprofilePage {
       }
       
       // this.profileService();
+  }
+
+  download(name) {
+    console.log('name',name);
+    
+    const fileTransfer: FileTransferObject = this.transfer.create();
+    const url = 'http://setchemdemo.ezsoftpk.com/SchoolSubtituionApi/api/documents/'+name;
+    fileTransfer.download(url, this.file.externalRootDirectory  + 'new_'+name).then((entry) => {
+      console.log('download complete: ' + entry.toURL());
+      this.presentAlert('Alert!', "Document successfully downloaded.");
+    }, (error) => {
+      console.log(error);
+      
+      this.presentAlert('Alert!', error);
+      // handle error
+    });
+  }
+
+  
+  getDocuments(id){
+    let body = new FormData();
+    body.append('userId', id);
+    this.services.getDocuments(body).subscribe(
+      //Successfully Logged in
+      success => {
+        console.log('Success : ',success);
+        this.Documents = success.data;
+        console.log('Standard : ',this.Documents);
+      },
+      error => {
+        console.log('error bhai', error);
+        setTimeout(() => {
+          // if (error.message.length==1){
+            this.presentAlert('Alert!', error.message);
+            this.loader.dismiss();
+          // }
+          
+        }, 500);
+      }
+    )
   }
 
   ionViewDidLoad() {
@@ -71,6 +121,9 @@ profileService(id) {
         success => {
           // console.log('profile data', success);
           this.profileList = success.userData;
+          if(this.profileList.Usertype=='Teacher'){
+            this.getDocuments(this.profileList.Id);
+          }
           console.log('profile data',  this.profileList);
             this.loader.dismiss();
         },

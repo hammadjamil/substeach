@@ -33,7 +33,8 @@ declare let cordova: any;
 export class Teacherregister2Page {
   basefile : any = '';
   baseUrl = AppSettings.API;
-  fileName :any='';
+  fileName :any=[];
+  currentfileName :any='';
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     private fileChooser: FileChooser,
@@ -108,7 +109,7 @@ export class Teacherregister2Page {
     
 
     // File name only
-    var filename = 'document.docx';
+    var filename = this.currentfileName;
 
     var options = {
       fileKey: "profilePic",
@@ -148,17 +149,12 @@ export class Teacherregister2Page {
       this.filePath.resolveNativePath(uri)
         .then((filePath) => {
             console.log(filePath)  ;
-            this.fileName = filePath.substr(filePath.lastIndexOf('/') + 1);  
-            console.log(this.fileName) ;           
+            this.currentfileName = filePath.substr(filePath.lastIndexOf('/') + 1);  
             
-            this.base64.encodeFile(filePath).then((base64File: string) => {
-              console.log(base64File);
-              // this.storage.set('FileCode',base64File.replace('data:image/*;charset=utf-8;base64,',''));
-              // this.storage.set('FileName',this.fileName);
-            }, (err) => {
-              console.log(err);
-            });
-
+            this.fileName.push(this.currentfileName);
+            console.log(this.fileName) ;           
+            this.uploadPhotoService();
+            this.storage.set('Documents',this.fileName);
 
         }, (err) => {
           console.log(err);
@@ -171,7 +167,12 @@ export class Teacherregister2Page {
     
    }
 
+
+
   
+
+
+
 
 
 

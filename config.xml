@@ -98,7 +98,6 @@
         <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.511898450722-p37neueatg7980t4hfv4b55lqvgpfpip" />
     </plugin>
     <plugin name="cordova-plugin-filechooser" spec="^1.0.1" />
-    <plugin name="cordova-plugin-file" spec="^6.0.1" />
     <plugin name="cordova-plugin-filepath" spec="^1.4.2" />
     <plugin name="cordova-plugin-camera" spec="^4.0.3" />
     <plugin name="cordova-plugin-chooser" spec="^1.2.3" />
@@ -110,5 +109,6 @@
     <plugin name="com.paypal.cordova.mobilesdk" spec="^3.5.0" />
     <plugin name="cordova-plugin-stripe" spec="^1.5.3" />
     <plugin name="cordova-plugin-file-transfer" spec="^1.7.1" />
+    <plugin name="cordova-plugin-file" spec="^6.0.1" />
     <engine name="android" spec="7.1.0" />
 </widget>

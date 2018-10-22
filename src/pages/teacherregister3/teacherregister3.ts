@@ -34,6 +34,7 @@ export class Teacherregister3Page {
   backimg : any;
   FileName : any;
   FileCode : any;
+  Documents : any;
   userlogin = { username: '', password: '', udid: '',platform:'' };
 
   constructor(public navCtrl: NavController, 
@@ -53,6 +54,9 @@ export class Teacherregister3Page {
       });
       this.storage.get('Back').then((val) => {
         this.backimg = val;
+      });
+      this.storage.get('Documents').then((val) => {
+        this.Documents = val;
       });
       // this.storage.get('FileCode').then((val) => {
       //   this.FileCode = val;
@@ -186,6 +190,7 @@ export class Teacherregister3Page {
           body.append('DOB', '1');
           body.append('TimeOfAvaliabilityFrom', '1');
           body.append('TimeOfAvaliabilityTo','1');
+          body.append('Documents',this.Documents);
           // body.append('FileCode',this.FileCode);
           // body.append('FileName',this.FileName);
               this.services.registerTeacher(body).subscribe(

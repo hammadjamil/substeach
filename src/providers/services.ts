@@ -1697,6 +1697,34 @@ updateUserImage(params) {
       })
     }
   }
+
+
+  getDocuments(id) { 
+    console.log('user id', id);
+    if (id) {
+      return Observable.create(observer => {
+        const url = this.baseUrl + 'getDocuments';
+        this.http.post(url, id)
+          .map(res => res.json())
+          .subscribe(
+          (response) => {
+            console.log('response:::::',response);
+            if (response.code != '200') {
+              observer.error(response);
+            }
+            else {
+              observer.next(response);
+            }
+            observer.complete();
+          },
+          (error) => {
+            console.log('errrrror',error);
+            observer.error(error);
+          }
+          )
+      })
+    }
+  }
     /**
    * notificationcount
    */

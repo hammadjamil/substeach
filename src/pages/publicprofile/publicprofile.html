@@ -103,5 +103,9 @@
       <ion-label  stacked>Email</ion-label>
       <ion-label  class="txtbig" stacked>{{profileList.Email}}</ion-label>
     </ion-item>
+    <ion-item>
+      <ion-label  stacked>Documents</ion-label>
+      <ion-label  style="margin:10px;" class="txtbig" stacked *ngFor="let row of Documents" (click)="download(row.DocumentsName)" >{{row.DocumentsName}}</ion-label>
+    </ion-item>
   </div>
 </ion-content>

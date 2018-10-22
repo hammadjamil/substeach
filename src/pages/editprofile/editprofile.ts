@@ -42,6 +42,7 @@ export class EditprofilePage {
   fileSelected = false;
   lastImage: any;
   logo: any ='';
+  
   baseUrl = AppSettings.API;
   public baseLogo ='';
   user = { username: '', password: '', udid: '',platform:'' };
@@ -68,11 +69,14 @@ export class EditprofilePage {
           if (val != null) {
             console.log('val',val);
             this.userDetail = val;
+            
             this.profileService(this.userDetail);
           }
         }
       )
   }
+
+
   presentAlert(title1,msgs) {
     let alert = this.alertCtrl.create({
       title: title1,

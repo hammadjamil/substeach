@@ -30,6 +30,7 @@ export class TeacherprofilePage {
   seldays:any={Monday:'',Tuesday:'',Wednesday:'',Thursday:'',Friday:'',Saturday:'',Sunday:''};
   seltimeslots:any={slot1:'',slot2:'',slot3:'',slot4:'',slot5:'',slot6:'',slot7:''};
   selstandrads:any={};
+  Documents:any;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private storage: Storage,
     public services: Services,
@@ -40,6 +41,7 @@ export class TeacherprofilePage {
       this.events.publish('user:login');
       this.storage.get('user').then((val) => {
         this.userData = val;
+        
         // console.log('val :', val );
         this.userID = val.Id;
         if(this.userData.Usertype == "School"){
@@ -67,6 +69,9 @@ export class TeacherprofilePage {
       }
     )
   }
+
+  
+
   presentAlert(title, msgs) {
     let alert = this.alertCtrl.create({
       title: title,
