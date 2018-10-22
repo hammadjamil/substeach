@@ -24,7 +24,7 @@ export class HomePage {
   ref = firebase.database().ref('chatrooms/');
   loader: any;
   teacherList: any = '';
-  // errormsg=0;
+  errormsg=0;
   userDetail: any;
   searchCriteria: any;
   LogoUrl = AppSettings.LogoUrl;
@@ -70,7 +70,7 @@ export class HomePage {
 
   
   matchByDay(){
-    this.showLoader();
+    // this.showLoader();
     let body = new FormData();
     body.append('Day', this.searchCriteria.Day);
     body.append('TimeSlote', this.searchCriteria.TimeSlote);
@@ -88,6 +88,7 @@ export class HomePage {
         setTimeout(() => {
             // this.presentAlert('Alert!', error.message);
             this.loader.dismiss();
+            this.teacherList=1;
           
         }, 500);
       }
@@ -117,7 +118,8 @@ export class HomePage {
           // console.log('teacherList',this.teacherList);
             // this.presentAlert('Alert!', error.message);
             // this.errormsg=1
-            this.loader.dismiss();          
+            this.loader.dismiss();  
+            this.teacherList=1;        
             // console.log('teacherList',this.teacherList);
         }, 500);
       }

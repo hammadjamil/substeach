@@ -32,6 +32,11 @@
   </ion-slides>
   <ion-row *ngIf="teacherList=='' || teacherList==null">
       <ion-col col-12 text-center >
+          <img src="../../assets/imgs/loaderhome.gif" alt="" padding>
+      </ion-col>
+  </ion-row>
+  <ion-row *ngIf="teacherList==1">
+      <ion-col col-12 text-center >
           <img src="../../assets/imgs/hold.png" alt="" padding>
           <p padding>No Matching Found</p>
       </ion-col>
