@@ -15,7 +15,8 @@
     <ion-row class="home_teachers" *ngIf="favList!=''">
         <ion-col col-6 *ngFor="let fav of favList">
           <div class="home_teachers_slide">
-              <img [src]="sanitizerfn(fav.ImagePath)" alt="" class="home_teachers_slide_img">
+              <img *ngIf="fav.ImagePath=='teachers4.jpg' || fav.ImagePath=='' || fav.ImagePath==null || fav.ImagePath==undefined" src="../../assets/imgs/profileimg.jpg" alt="" class="home_teachers_slide_img">
+              <img *ngIf="fav.ImagePath!='teachers4.jpg' || fav.ImagePath!='' || fav.ImagePath!=null || fav.ImagePath!=undefined" [src]="sanitizerfn(fav.ImagePath)" alt="" class="home_teachers_slide_img">
               <p class="home_teachers_slide_name">{{fav.FirstName+' '+fav.LastName}}</p>
               <p class="home_teachers_slide_cost">$24/hr</p>
           </div>

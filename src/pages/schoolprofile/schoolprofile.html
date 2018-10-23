@@ -4,7 +4,8 @@
        
         <!-- <img *ngIf="userData.LogoPath!=''" [src]="userData.LogoPath" alt="" width="30px" height="30px" style="border-radius:50%"> -->
         <!-- *ngIf="userData.LogoPath=='' || userData.LogoPath == null" -->
-        <img  [src]="Logo" alt="" width="30px" height="30px" style="border-radius:50%">
+        <img  *ngIf="!userData.LogoPath" src="../../assets/imgs/profileimg.jpg"  alt="" width="30px" height="30px" style="border-radius:50%">
+        <img  *ngIf="userData.LogoPath!='' || userData.LogoPath != null || userData.LogoPath"  [src]="Logo"  alt="" width="30px" height="30px" style="border-radius:50%">
     </button>
     <ion-title float-left >School Profile</ion-title>
     <button ion-button  class="menubtn" text-right float-right (click)="shownoti()">

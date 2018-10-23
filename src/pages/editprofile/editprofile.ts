@@ -20,6 +20,8 @@ import { Chooser } from '@ionic-native/chooser';
 import { DomSanitizer } from '@angular/platform-browser';
 import { PublicprofilePage } from '../publicprofile/publicprofile';
 import { SchoolprofilePage } from '../schoolprofile/schoolprofile';
+import { TeacherprofilePage } from '../teacherprofile/teacherprofile';
+
 import { SettingsPage } from '../settings/settings';
 
 declare let cordova: any;
@@ -69,7 +71,6 @@ export class EditprofilePage {
           if (val != null) {
             console.log('val',val);
             this.userDetail = val;
-            
             this.profileService(this.userDetail);
           }
         }
@@ -92,13 +93,6 @@ export class EditprofilePage {
   
   }
   goHome(){
-    // if(this.profileList.Usertype=='School'){
-    //   this.navCtrl.setRoot(SchoolprofilePage);
-      
-    // }else{
-    //   this.navCtrl.setRoot(PublicprofilePage);
-      
-    // }
     this.navCtrl.pop();
   }
 //Login
@@ -106,8 +100,19 @@ profileService(userdata) {
           this.profileList = userdata;
           if(this.profileList.Usertype == "School"){
             this.profileList.LogoPath = this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+this.profileList.LogoPath);
+            console.log('this.profileList.LogoPath ',this.profileList.LogoPath );
+            if(this.profileList.LogoPath==null || this.profileList.LogoPath==''){
+              console.log('hnamza');
+              
+            }
+            
           }else{
             this.profileList.ImagePath = this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+this.profileList.ImagePath);
+            console.log('this.profileList.LogoPath ',this.profileList.ImagePath );
+            if(this.profileList.LogoPath==null){
+              console.log('hnamza');
+              
+            }
           }
 }
 updateSchool(){ 
@@ -150,7 +155,13 @@ getprofilee(){
       this.storage.set('user', success.userData);
       this.presentAlert('Success!', 'You are successfully updated.');
       this.loader.dismiss();
-      this.navCtrl.pop();
+      if(success.userData.Usertype=='School'){
+        this.navCtrl.setRoot(SchoolprofilePage,{});
+      }
+      else
+      {
+        this.navCtrl.setRoot(TeacherprofilePage,{});                      
+      }
     },error =>{
       this.presentAlert('Alert!',error.data);
       this.loader.dismiss();
@@ -163,6 +174,13 @@ getprofilee1(){
       console.log('success:::::',success.userData);
       this.storage.set('user', success.userData);
       this.loader.dismiss();
+      if(success.userData.Usertype=='School'){
+        this.navCtrl.setRoot(SchoolprofilePage,{});
+      }
+      else
+      {
+        this.navCtrl.setRoot(TeacherprofilePage,{});                      
+      }
     },error =>{
       this.presentAlert('Alert!',error.data);
       this.loader.dismiss();
@@ -221,11 +239,14 @@ updateTeacher(){
             let correctPath = filePath.substr(0, filePath.lastIndexOf('/') + 1);
             let currentName = imagePath.substring(imagePath.lastIndexOf('/') + 1, imagePath.lastIndexOf('?'));
             this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
+            // this.getprofilee();
           });
-      } else {
+      } 
+      else {
         var currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
         var correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
         this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
+        // this.getprofilee();
       }
     }, (err) => {
       this.presentAlert('Alert!', "Your photo could not be uploaded. Please upload JPG, JPEG, PNG and Bitmap files");

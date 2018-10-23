@@ -7,12 +7,44 @@
 </ion-header>
 <ion-content padding>
   <ion-list text-center>
-    <ion-item class="p-0">
+    <ion-item  class="p-0">
+      <ion-label style="color: #9c9c9c !important;background: transparent !important;padding: 0;margin: 0 !important;text-align: center;width: 50px;text-align: left;">
+        <ion-icon name="ios-star" style="width: 50px;padding: 13px;text-align:center;background: #a51463;color: white;margin-right: 13px;"></ion-icon> Add Rating
+      </ion-label>
+      <ion-select [(ngModel)]="review.rating">
+        <ion-option value="1">1 Star
+          <!-- <img src="../../assets/icon/star.png" alt=""> -->
+        </ion-option>
+        <ion-option value="2">2 Star
+          <!-- <img src="../../assets/icon/star.png" alt=""> -->
+          <!-- <img src="../../assets/icon/star.png" alt=""> -->
+        </ion-option>
+        <ion-option value="3">3 Star
+          <!-- <img src="../../assets/icon/star.png" alt=""> -->
+          <!-- <img src="../../assets/icon/star.png" alt=""> -->
+          <!-- <img src="../../assets/icon/star.png" alt=""> -->
+        </ion-option>
+        <ion-option value="4">4 Star
+          <!-- <img src="../../assets/icon/star.png" alt=""> -->
+          <!-- <img src="../../assets/icon/star.png" alt=""> -->
+          <!-- <img src="../../assets/icon/star.png" alt=""> -->
+          <!-- <img src="../../assets/icon/star.png" alt=""> -->
+        </ion-option>
+        <ion-option value="5">5 Star
+          <!-- <img src="../../assets/icon/star.png" alt=""> -->
+          <!-- <img src="../../assets/icon/star.png" alt=""> -->
+          <!-- <img src="../../assets/icon/star.png" alt=""> -->
+          <!-- <img src="../../assets/icon/star.png" alt=""> -->
+          <!-- <img src="../../assets/icon/star.png" alt=""> -->
+        </ion-option>
+      </ion-select> 
+    </ion-item>
+    <!-- <ion-item class="p-0">
       <ion-label style="margin-bottom: 0;margin-right: 10px;">
         <ion-icon name="ios-star"></ion-icon>
       </ion-label>
       <ion-input type="text" placeholder="Add Rating"   [(ngModel)]="review.rating" class="marginset" style="font-size: 16px;    padding-left: 10px;"></ion-input>
-    </ion-item>
+    </ion-item> -->
     <ion-item class="p-0">
       <ion-label style="margin-bottom: 0;margin-right: 10px;">
         <ion-icon name="md-clipboard"></ion-icon>

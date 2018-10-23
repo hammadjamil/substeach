@@ -51,7 +51,7 @@ export class NotificationPage {
         this.services.ShowNotification(body).subscribe(
           //Successfully Logged in
           success => {
-            console.log('Success : ',success);
+            console.log('Success notification: ',success);
             this.notificationList = success.data;
           },
           error => {

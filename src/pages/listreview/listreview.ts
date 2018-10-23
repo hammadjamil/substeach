@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Services } from '../../providers/services';
 import { AlertController } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { AddreviewPage } from '../addreview/addreview';
 
 import { MyTools } from '../../providers/tools';
 @IonicPage()
@@ -62,5 +63,7 @@ export class ListreviewPage {
 
 
   }
-
+  addreviewpage(){
+    this.navCtrl.push(AddreviewPage);
+  }
 }

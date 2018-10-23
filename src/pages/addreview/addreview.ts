@@ -75,7 +75,8 @@ export class AddreviewPage {
           success => {
             console.log('addreview success ::::', success);
             this.presentAlert('Alert!', 'Review successfully added.');
-            this.navCtrl.push(HomePage,{})
+            // this.navCtrl.push(HomePage,{})
+            this.navCtrl.pop();
           },
           error => {
             console.log('error bhai favlist', error);

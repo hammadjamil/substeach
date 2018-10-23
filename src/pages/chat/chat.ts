@@ -2,14 +2,8 @@
 import { Component , ViewChild } from '@angular/core';
 import { NavController, NavParams, Content } from 'ionic-angular';
 import * as firebase from 'Firebase';
-/**
- * Generated class for the ChatPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Keyboard } from 'ionic-angular';
 
- 
 @Component({
   selector: 'page-chat',
   templateUrl: 'chat.html',
@@ -19,7 +13,9 @@ export class ChatPage {
   rooms = [];
   ref = firebase.database().ref('chatrooms/');
   
-   
+  btnmargin:any = '';
+  btnmargin2:any = '';
+
     data = { type:'', nickname:'', message:'' };
     chats = [];
     roomkey:string;
@@ -27,7 +23,10 @@ export class ChatPage {
     offStatus:boolean = false;
     chatusername:string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private keyboard: Keyboard) {
+    this.keyboard.onClose(this.closeCallback);
+    
+    // this.keyboard.isOpen()
     this.ref.on('value', resp => {
       this.rooms = [];
       this.rooms = snapshotToArray(resp);
@@ -57,6 +56,9 @@ export class ChatPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChatPage');
   }
+  closeCallback(){
+    console.log('Closing time');
+  }
   sendMessage() {
     let newData = firebase.database().ref('chatrooms/'+this.roomkey+'/chats').push();
     newData.set({
@@ -66,6 +68,17 @@ export class ChatPage {
       sendDate:Date()
     });
     this.data.message = '';
+  }
+  keyboardCheck() {
+    console.log('The keyboard is open:', this.keyboard.isOpen());
+    if(this.keyboard.isOpen()==true){
+      this.btnmargin = "300px"
+      this.btnmargin2 = "350px"
+    }
+    else{
+      this.btnmargin = "0"
+      this.btnmargin2 = "0"
+    }
   }
   exitChat() {
     let exitData = firebase.database().ref('chatrooms/'+this.roomkey+'/chats').push();

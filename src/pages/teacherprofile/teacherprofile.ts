@@ -31,6 +31,7 @@ export class TeacherprofilePage {
   seltimeslots:any={slot1:'',slot2:'',slot3:'',slot4:'',slot5:'',slot6:'',slot7:''};
   selstandrads:any={};
   Documents:any;
+  myDate: String = new Date().toISOString();
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private storage: Storage,
     public services: Services,

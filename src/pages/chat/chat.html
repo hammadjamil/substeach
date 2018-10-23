@@ -20,9 +20,9 @@
     </ion-col>
   </ion-row>
 </ion-content>
-<ion-footer>
+<ion-footer [style.margin-bottom]="btnmargin" style="background:white;">
   <ion-col col-10 float-left class="input_div">
-    <ion-input type="text" placeholder="Type a message" [(ngModel)]="data.message" name="message"></ion-input>
+    <ion-input type="text" (ionBlur)="keyboardCheck()" (ionFocus)="keyboardCheck()" placeholder="Type a message" [(ngModel)]="data.message" name="message"></ion-input>
   </ion-col>
   <ion-col col-2 class="sendbtn" (click)="sendMessage()" float-left text-center>
     <ion-icon name="paper-plane" class="send_icon"></ion-icon>

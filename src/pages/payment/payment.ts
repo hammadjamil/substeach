@@ -6,6 +6,8 @@ import { AlertController ,Events} from 'ionic-angular';
 import { Services } from '../../providers/services';
 import { MyTools } from '../../providers/tools';
 import { HomePage } from '../home/home';
+import { SchoolprofilePage } from '../schoolprofile/schoolprofile';
+import { TeacherprofilePage } from '../teacherprofile/teacherprofile';
 
 import { MyStorage } from '../../app/localstorage';
 @IonicPage()
@@ -39,6 +41,8 @@ export class PaymentPage {
     this.storage.get('user').then(
       (val) => {
         if (val != null) {
+          console.log('userdata payment', val);
+          
           this.userDetail = val;
         }
       }
@@ -48,7 +52,15 @@ export class PaymentPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad PaymentPage');
   }
-
+pay1(){
+  if(this.userDetail.Usertype=='School'){
+    this.navCtrl.setRoot(SchoolprofilePage,{});
+  }
+  else
+  {
+    this.navCtrl.setRoot(TeacherprofilePage,{});                      
+  }
+}
   pay(){
     this.showLoader();
     let card = {
@@ -71,7 +83,13 @@ export class PaymentPage {
                   console.log('success bhai', success);
                     this.loader.dismiss();
                     this.presentAlert('Alert!', 'you have Successfully paid. Now you can avail our premium features.');
-                    this.navCtrl.push(HomePage,{})
+                    if(this.userDetail.Usertype=='School'){
+                      this.navCtrl.setRoot(SchoolprofilePage,{});
+                    }
+                    else
+                    {
+                      this.navCtrl.setRoot(TeacherprofilePage,{});                      
+                    }
                 },
                 error => {
                   this.loader.dismiss();

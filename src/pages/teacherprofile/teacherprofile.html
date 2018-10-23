@@ -132,13 +132,13 @@
                 <ion-label style="margin-bottom: 0;margin-right: 10px;text-align: center;">
                     <ion-icon name="md-calendar"></ion-icon>
                 </ion-label>
-                <ion-datetime displayFormat="MM/DD/YYYY" placeholder="From Available Date" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>
+                <ion-datetime displayFormat="MM/DD/YYYY"  [min]="myDate" max="2019" placeholder="From Available Date" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>
                 </ion-item>
             <ion-item  class="p-0">
                 <ion-label style="margin-bottom: 0;margin-right: 10px;text-align: center;">
                     <ion-icon name="md-calendar"></ion-icon>
                 </ion-label>
-                <ion-datetime displayFormat="MM/DD/YYYY" placeholder="To Available Date" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>
+                <ion-datetime displayFormat="MM/DD/YYYY"  [min]="myDate" max="2019" placeholder="To Available Date" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>
                 </ion-item>
                 <ion-item >
                 <ion-label>Time Slots</ion-label>

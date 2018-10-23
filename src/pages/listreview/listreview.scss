@@ -31,4 +31,16 @@ page-listreview {
     button.back-button ion-icon{
         color: $themecolor !important;
     }
+    .addreviews{
+        position: fixed;
+    right: 10px;
+    bottom: 5px;
+    color: black;
+    z-index: 999;
+    ion-icon{
+        color: #ae2b72;
+        font-size: 60px;
+    }
+    }
+    
 }

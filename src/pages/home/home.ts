@@ -186,7 +186,18 @@ addToFav(dID){
           console.log('success bhai', success);
             this.loader.dismiss();
             this.presentAlert('Alert!', 'Teacher added to your favourite list');
-
+            this.storage.get('searchCriteria').then(
+              (val) => {
+                if (val != null) {
+                  console.log('val',val);
+                  this.searchCriteria = val;
+                  if(val.Type=='Days')
+                    this.matchByDay();
+                  else
+                  this.matchByPeriod();
+                }
+              }
+            )
         },
         error => {
           this.loader.dismiss();
@@ -231,7 +242,7 @@ block(teacherID){
         success => {
           console.log('success bhai', success);
             this.loader.dismiss();
-            this.presentAlert('Alert!', 'Teacher Successfully booked.');
+            this.presentAlert('Alert!', 'Teacher Successfully blocked.');
             this.navCtrl.push(HomePage,{})
         },
         error => {
