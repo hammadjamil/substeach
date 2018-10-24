@@ -22,13 +22,15 @@
         </h1>
         <p class="home_teachers_slide_reviews"  *ngIf="userDetail.Ispaid=='no'" float-left style="width:100%;">Top Review </p>        
         <p class="home_teachers_slide_reviews"  *ngIf="userDetail.Ispaid=='yes'" (click)="viewReview(teacher.userId)" float-left style="width:50%;">Top Review </p>
-        <p class="home_teachers_slide_reviews" *ngIf="userDetail.Ispaid=='yes'" float-right style="width:50%;text-align: right;"><ion-icon (click)="addReview(teacher.userId)" name="add" text-right></ion-icon></p>
-        <p class="home_teachers_slide_desc">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-        </p>
-        <p class="home_teachers_slide_cost">
+        <p class="home_teachers_slide_reviews" *ngIf="userDetail.Ispaid=='yes'" float-right style="width:50%;text-align: right;"><ion-icon (click)="addReview(teacher.userId)" name="md-add-circle" text-right></ion-icon></p>
+        <div class="home_teachers_slide_desc">
+          <p *ngIf="teacher.bookingID==null || teacher.bookingID==''">Availability : Available</p>
+          <p *ngIf="teacher.Region!=''">Region: {{teacher.Region}}</p>
+          <p *ngIf="teacher.HireDirectly=='1'">You can Directly Hire {{teacher.FirstName+' '+teacher.LastName}}</p>
+        </div>
+        <!-- <p class="home_teachers_slide_cost">
           Rate: $24/hr
-        </p>
+        </p> -->
         <p class="home_teachers_slide_view" (click)="profilepage(teacher.DeputyPersonId)">
           Teacher Profile Detail
         </p>

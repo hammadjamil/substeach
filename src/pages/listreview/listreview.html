@@ -8,11 +8,43 @@
 
 
 <ion-content padding>
-    <ion-card  *ngFor="let row of reviewlist" style="    border-radius: 10px;">
-      <ion-card-header style="background-color: #ae2b72;">
+    <ion-card  *ngFor="let row of reviewlist" style="border-radius: 10px;margin-left: 0;margin-right: 0;width: 100%;margin-top: 0;">
+      <ion-card-header style="background-color: #fff;padding: 5px 16px;">
         <div>
-          <p style="font-size:16px;font-weight:600;color:#fff;">{{row.SchoolName}}</p>
-          <p style="font-size:13px;font-weight:300;color:#fff;">Ratings : {{row.Rating}} star</p>
+          <p style="font-size:16px;font-weight:700;">{{row.SchoolName}}</p>
+
+          <img *ngIf="row.Rating=='1'" src="../../assets/icon/star.png" alt="" style="float:left;width:20px;margin-left: 3px;margin-right: 3px;">
+          <img *ngIf="row.Rating=='1'" src="../../assets/icon/staru.png" alt="" style="float:left;width:20px;margin-left: 3px;margin-right: 3px;">
+          <img *ngIf="row.Rating=='1'" src="../../assets/icon/staru.png" alt="" style="float:left;width:20px;margin-left: 3px;margin-right: 3px;">
+          <img *ngIf="row.Rating=='1'" src="../../assets/icon/staru.png" alt="" style="float:left;width:20px;margin-left: 3px;margin-right: 3px;">
+          <img *ngIf="row.Rating=='1'" src="../../assets/icon/staru.png" alt="" style="float:left;width:20px;margin-left: 3px;margin-right: 3px;">
+
+
+          <img *ngIf="row.Rating=='2'" src="../../assets/icon/star.png" alt="" style="float:left;width:20px;margin-left: 3px;margin-right: 3px;">
+          <img *ngIf="row.Rating=='2'" src="../../assets/icon/star.png" alt="" style="float:left;width:20px;margin-left: 3px;margin-right: 3px;">
+          <img *ngIf="row.Rating=='2'" src="../../assets/icon/staru.png" alt="" style="float:left;width:20px;margin-left: 3px;margin-right: 3px;">
+          <img *ngIf="row.Rating=='2'" src="../../assets/icon/staru.png" alt="" style="float:left;width:20px;margin-left: 3px;margin-right: 3px;">
+          <img *ngIf="row.Rating=='2'" src="../../assets/icon/staru.png" alt="" style="float:left;width:20px;margin-left: 3px;margin-right: 3px;">
+
+
+          <img *ngIf="row.Rating=='3'" src="../../assets/icon/star.png" alt="" style="float:left;width:20px;margin-left: 3px;margin-right: 3px;">
+          <img *ngIf="row.Rating=='3'" src="../../assets/icon/star.png" alt="" style="float:left;width:20px;margin-left: 3px;margin-right: 3px;">
+          <img *ngIf="row.Rating=='3'" src="../../assets/icon/star.png" alt="" style="float:left;width:20px;margin-left: 3px;margin-right: 3px;">
+          <img *ngIf="row.Rating=='3'" src="../../assets/icon/staru.png" alt="" style="float:left;width:20px;margin-left: 3px;margin-right: 3px;">
+          <img *ngIf="row.Rating=='3'" src="../../assets/icon/staru.png" alt="" style="float:left;width:20px;margin-left: 3px;margin-right: 3px;">
+
+
+          <img *ngIf="row.Rating=='4'" src="../../assets/icon/star.png" alt="" style="float:left;width:20px;margin-left: 3px;margin-right: 3px;">
+          <img *ngIf="row.Rating=='4'" src="../../assets/icon/star.png" alt="" style="float:left;width:20px;margin-left: 3px;margin-right: 3px;">
+          <img *ngIf="row.Rating=='4'" src="../../assets/icon/star.png" alt="" style="float:left;width:20px;margin-left: 3px;margin-right: 3px;">
+          <img *ngIf="row.Rating=='4'" src="../../assets/icon/star.png" alt="" style="float:left;width:20px;margin-left: 3px;margin-right: 3px;">
+          <img *ngIf="row.Rating=='4'" src="../../assets/icon/staru.png" alt="" style="float:left;width:20px;margin-left: 3px;margin-right: 3px;">
+
+          <img *ngIf="row.Rating=='5'" src="../../assets/icon/star.png" alt="" style="float:left;width:20px;margin-left: 3px;margin-right: 3px;">
+          <img *ngIf="row.Rating=='5'" src="../../assets/icon/star.png" alt="" style="float:left;width:20px;margin-left: 3px;margin-right: 3px;">
+          <img *ngIf="row.Rating=='5'" src="../../assets/icon/star.png" alt="" style="float:left;width:20px;margin-left: 3px;margin-right: 3px;">
+          <img *ngIf="row.Rating=='5'" src="../../assets/icon/star.png" alt="" style="float:left;width:20px;margin-left: 3px;margin-right: 3px;">
+          <img *ngIf="row.Rating=='5'" src="../../assets/icon/star.png" alt="" style="float:left;width:20px;margin-left: 3px;margin-right: 3px;">
         </div>
       </ion-card-header>
       <ion-card-content padding>
