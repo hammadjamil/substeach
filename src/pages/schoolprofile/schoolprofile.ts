@@ -65,7 +65,7 @@ export class SchoolprofilePage {
   // teacherList: any;
   // userDetail: any;
   // searchCriteria: any;
-  // LogoUrl = AppSettings.LogoUrl;
+  LogoUrl = AppSettings.LogoUrl;
   // home page data
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public loadingCtrl: LoadingController,
@@ -97,10 +97,13 @@ export class SchoolprofilePage {
 
           
           if(this.userData.Usertype == "School"){
-            this.Logo = this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+this.userData.LogoPath);
+            this.Logo = this.userData.LogoPath;
           }else{
-            this.Logo = this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+this.userData.ImagePath);
+            this.Logo = this.userData.ImagePath;
           }
+
+          console.log('fff',this.Logo);
+          
                     // this.schoolDay.Standard=periodsdata;
                     // console.log('this.datasaveperiods',this.datasaveperiods);
                     // console.log('this.datasavedays',this.datasavedays);

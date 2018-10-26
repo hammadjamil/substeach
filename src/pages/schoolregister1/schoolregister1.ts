@@ -3,9 +3,11 @@ import { IonicPage, NavController , NavParams, MenuController} from 'ionic-angul
 import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import { Services } from '../../assets/providers/services';
+// import { Services } from '../../assets/providers/services';
 import { LoginPage } from '../login/login';
 import { Schoolregister2Page } from '../schoolregister2/schoolregister2';
+
+import { Services } from '../../providers/services';
 /**
  * Generated class for the Schoolregister1Page page.
  *
@@ -23,6 +25,7 @@ export class Schoolregister1Page {
   spin: any = 0;
   minDate:any;
   ageconfirm:any;
+  region:any;
   termcondition:any;
   disableButton;
   user: any = 
@@ -78,6 +81,26 @@ export class Schoolregister1Page {
               private menu: MenuController,
               public navParams: NavParams) {
     this.minDate = new Date().toISOString();
+
+    this.services.getRegions().subscribe(
+      //Successfully Logged in
+      success => {
+        console.log('success bhai', success);
+        this.region = success.data
+        setTimeout(() => {
+          console.log('login success',success);
+          
+        }, 500);
+
+      },
+      error => {
+        this.loader.dismiss();
+        console.log('error bhai', error);
+        this.presentAlert('Alert!', error.message);
+      }
+    )
+
+
   }
 
   RegisterStepOne(){

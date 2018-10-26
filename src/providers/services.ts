@@ -528,6 +528,37 @@ export class Services {
       })
     
   }
+  /**
+   * Login Service
+   */
+  getRegions() {
+
+   
+      return Observable.create(observer => {
+        const url = this.baseUrl + 'getRegions';
+        this.http.get(url, {
+          search: ''
+        })
+          .map(res => res.json())
+          .subscribe(
+          (response) => {
+            if (response.code != '200') {
+              observer.error(response);
+            }
+            else {
+              observer.next(response);
+
+            }
+            observer.complete();
+
+          },
+          (error) => {
+            observer.error(error);
+          }
+          )
+      })
+    
+  }
 
 
    /**

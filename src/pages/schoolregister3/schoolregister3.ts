@@ -22,6 +22,7 @@ export class Schoolregister3Page {
   minDate:any;
   ageconfirm:any;
   termcondition:any;
+  region:any;
   disableButton;
   userPhoneNumber : any;
   logo = '';
@@ -56,6 +57,26 @@ export class Schoolregister3Page {
                   if(val)
                     this.logo = val;
                 });
+
+                this.services.getRegions().subscribe(
+                  //Successfully Logged in
+                  success => {
+                    console.log('success bhai', success);
+                    this.region = success.data
+                    setTimeout(() => {
+                      console.log('login success',success);
+                      
+                    }, 500);
+          
+                  },
+                  error => {
+                    this.loader.dismiss();
+                    console.log('error bhai', error);
+                    this.presentAlert('Alert!', error.message);
+                  }
+                )
+
+
   }
   ionViewDidEnter() {
     this.menu.swipeEnable(false);

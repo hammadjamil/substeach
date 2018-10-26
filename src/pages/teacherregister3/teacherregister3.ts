@@ -29,6 +29,7 @@ export class Teacherregister3Page {
   };
   disableButton;
   userDetail : any;
+  region : any;
   userPhoneNumber : any;
   frontimg : any;
   backimg : any;
@@ -58,12 +59,25 @@ export class Teacherregister3Page {
       this.storage.get('Documents').then((val) => {
         this.Documents = val;
       });
-      // this.storage.get('FileCode').then((val) => {
-      //   this.FileCode = val;
-      // });
-      // this.storage.get('FileName').then((val) => {
-      //   this.FileName = val;
-      // });
+      
+      this.services.getRegions().subscribe(
+        //Successfully Logged in
+        success => {
+          console.log('success bhai', success);
+          this.region = success.data
+          setTimeout(() => {
+            console.log('login success',success);
+            
+          }, 500);
+
+        },
+        error => {
+          this.loader.dismiss();
+          console.log('error bhai', error);
+          this.presentAlert('Alert!', error.message);
+        }
+      )
+
   }
   ionViewDidEnter() {
     this.menu.swipeEnable(false);
@@ -187,6 +201,7 @@ export class Teacherregister3Page {
           body.append('FirstName', this.userDetail.FirstName);
           body.append('LastName', this.userDetail.LastName);
           body.append('bookdirectly', this.user.bookdirectly);
+          body.append('region', this.user.region);
           body.append('DOB', '1');
           body.append('TimeOfAvaliabilityFrom', '1');
           body.append('TimeOfAvaliabilityTo','1');

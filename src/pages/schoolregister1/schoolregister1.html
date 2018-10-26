@@ -29,7 +29,7 @@
       <ion-input type="text" placeholder="Visiting Address 2"  [(ngModel)]="user.VisitingAddress2" class="marginset" style="font-size: 16px;"></ion-input>
     </ion-item>
     
-    <ion-item class="p-0">
+    <ion-item class="p-0"> 
       <ion-label style="margin-bottom: 0;margin-right: 10px;">
         <ion-icon name="md-train"></ion-icon>
       </ion-label>
@@ -46,10 +46,7 @@
         <ion-icon name="ios-flag" style="width: 50px;padding: 13px;background: #a51463;color: white;margin-right: 13px;"></ion-icon> Visiting Country
       </ion-label>
       <ion-select [(ngModel)]="user.VisitingCountry">
-        <ion-option value="Pakistan">Pakistan</ion-option>
-        <ion-option value="England">England</ion-option>
-        <ion-option value="Sweden">Sweden</ion-option>
-        <ion-option value="Germany">Germany</ion-option> 
+        <ion-option *ngFor="let re of region" value="{{re.Name}}">{{re.Name}}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item class="p-0">

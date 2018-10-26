@@ -7,6 +7,8 @@ import { HomePage } from '../home/home';
 import { Services } from '../../providers/services';
 import { ChatPage } from '../chat/chat';
 import * as firebase from 'Firebase';
+import { AppSettings } from '../../app/appSettings';
+
 @IonicPage()
 @Component({
   selector: 'page-notification',
@@ -22,6 +24,7 @@ export class NotificationPage {
   teacherList : any;
   userdata:any='';
   notificationList : any = '';
+  LogoUrl = AppSettings.LogoUrl;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public loadingCtrl: LoadingController,
     private storage: Storage,

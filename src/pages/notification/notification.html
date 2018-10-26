@@ -9,7 +9,7 @@
 
 <ion-content padding>
   <ion-card  *ngFor="let row of notificationList">
-    <img src="../../assets/imgs/myprofileimg.png" style="border-radius: 50%;width: 100px;height: 100px;"/>
+    <img [src]="LogoUrl+row.logo" style="border-radius: 50%;width: 100px;height: 100px;"/>
     <ion-card-content>
       <ion-card-title>
         {{row.UserName}} 

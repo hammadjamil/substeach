@@ -40,6 +40,7 @@ export class EditprofilePage {
   loader: any;
   profileList: any='';
   userDetail: any;
+  region: any;
   LogoUrl = AppSettings.LogoUrl;
   fileSelected = false;
   lastImage: any;
@@ -75,6 +76,29 @@ export class EditprofilePage {
           }
         }
       )
+
+
+      this.services.getRegions().subscribe(
+        //Successfully Logged in
+        success => {
+          console.log('success bhai', success);
+          this.region = success.data
+          setTimeout(() => {
+            console.log('login success',success);
+            
+          }, 500);
+  
+        },
+        error => {
+          this.loader.dismiss();
+          console.log('error bhai', error);
+          this.presentAlert('Alert!', error.message);
+        }
+      )
+
+
+
+
   }
 
 
@@ -98,22 +122,8 @@ export class EditprofilePage {
 //Login
 profileService(userdata) {
           this.profileList = userdata;
-          if(this.profileList.Usertype == "School"){
-            this.profileList.LogoPath = this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+this.profileList.LogoPath);
-            console.log('this.profileList.LogoPath ',this.profileList.LogoPath );
-            if(this.profileList.LogoPath==null || this.profileList.LogoPath==''){
-              console.log('hnamza');
-              
-            }
-            
-          }else{
-            this.profileList.ImagePath = this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+this.profileList.ImagePath);
-            console.log('this.profileList.LogoPath ',this.profileList.ImagePath );
-            if(this.profileList.LogoPath==null){
-              console.log('hnamza');
-              
-            }
-          }
+          console.log('this.profileList:',this.profileList);
+          
 }
 updateSchool(){ 
   
@@ -214,7 +224,7 @@ updateTeacher(){
 
 
   getImgContent() {
-      return this.sanitizer.bypassSecurityTrustUrl(this.baseLogo);
+      return this.LogoUrl+this.baseLogo;
   }
 
   public takePicture(sourceType) {
@@ -264,30 +274,52 @@ updateTeacher(){
     return newFileName;
   }
 
-  // Copy the image to a local folder
-  private copyFileToLocalDir(namePath, currentName, newFileName) {
-    this.file.copyFile(namePath, currentName, cordova.file.dataDirectory, newFileName).then(success => {
-      this.lastImage = newFileName;
-      this.fileSelected = true;
+  
 
-      this.logo = this.pathForImage(newFileName);
-      this.base64.encodeFile(this.logo).then((base64File: string) => {
-        this.baseLogo = base64File;
-        
-        console.log('tetttttttttt : :',this.baseLogo.replace('data:image/*;charset=utf-8;base64,',''));
-        this.storage.set('TeacherLogo',this.baseLogo.replace('data:image/*;charset=utf-8;base64,','')
-        );
+  uploadPhotoService() {
+    this.showLoader();
+
+    var url = this.baseUrl + "updateImg";
+    console.log('url',url);
+    
+    // File for Upload
+    var targetPath = this.logo;
+
+    
+
+    // File name only
+    var filename = this.lastImage;
+
+    var options = {
+      fileKey: "profilePic",
+      fileName: filename,
+      chunkedMode: false,
+      mimeType: "multipart/form-data",
+      params: {
+        'fileName': filename,
+      }
+    };
+    console.log('options',options);
+    
+
+    const fileTransfer: TransferObject = this.transfer.create();
+    fileTransfer.upload(targetPath, url, options).then(data => {
+      this.loader.dismiss();
+      console.log('data',data);
+        this.storage.set('TeacherLogo',this.lastImage);
+
+
         this.showLoader();
 
         let body = new FormData();
-          body.append('image', this.baseLogo.replace('data:image/*;charset=utf-8;base64,','') );
+          body.append('image', this.lastImage );
           body.append('userId', this.profileList.userId);
           body.append('type', this.userDetail.Usertype);
           
               this.services.updateUserImage(body).subscribe(
                 //Successfully Logged in
                 success => {
-                    // this.presentAlert('Success!', 'Your image is successfully uploaded');
+                    this.presentAlert('Success!', 'Your image is successfully uploaded');
                     setTimeout(() => {
                       this.getprofilee1();
                     }, 500);
@@ -304,12 +336,85 @@ updateTeacher(){
                   }, 500);
                 }
               )
+
+              this.getImgContent();
+
         // this.presentAlert('Success!', 'You File successfully uploaded');
-        this.getImgContent();
-        //console.log('base64File : :',this.baseLogo);
-      }, (err) => {
-        console.log(err);
-      });
+      // let p_data = JSON.parse(data.response);
+      
+    }, err => {
+      this.loader.dismiss();
+      console.log('error', err);
+    });
+
+
+  }
+
+  // Copy the image to a local folder
+  private copyFileToLocalDir(namePath, currentName, newFileName) {
+    this.file.copyFile(namePath, currentName, cordova.file.dataDirectory, newFileName).then(success => {
+      this.lastImage = newFileName;
+      this.fileSelected = true;
+
+      this.logo = this.pathForImage(newFileName);
+      this.uploadPhotoService();
+
+
+
+
+
+
+
+      // this.logo = this.pathForImage(newFileName);
+      // this.base64.encodeFile(this.logo).then((base64File: string) => {
+      //   this.baseLogo = base64File;
+        
+      //   console.log('tetttttttttt : :',this.baseLogo.replace('data:image/*;charset=utf-8;base64,',''));
+      //   this.storage.set('TeacherLogo',this.baseLogo.replace('data:image/*;charset=utf-8;base64,','')
+      //   );
+      //   this.showLoader();
+
+      //   let body = new FormData();
+      //     body.append('image', this.baseLogo.replace('data:image/*;charset=utf-8;base64,','') );
+      //     body.append('userId', this.profileList.userId);
+      //     body.append('type', this.userDetail.Usertype);
+          
+      //         this.services.updateUserImage(body).subscribe(
+      //           //Successfully Logged in
+      //           success => {
+      //               // this.presentAlert('Success!', 'Your image is successfully uploaded');
+      //               setTimeout(() => {
+      //                 this.getprofilee1();
+      //               }, 500);
+      //           },
+      //           error => {
+      //             // this.spin = 0;
+      //             console.log('error bhai', error);
+      //             setTimeout(() => {
+      //               // if (error.message.length==1){
+      //                 this.presentAlert('Alert!', error.message);
+      //                 this.loader.dismiss();
+      //               // }
+                    
+      //             }, 500);
+      //           }
+      //         )
+      //   // this.presentAlert('Success!', 'You File successfully uploaded');
+      //   this.getImgContent();
+      //   //console.log('base64File : :',this.baseLogo);
+      // }, (err) => {
+      //   console.log(err);
+      // });
+
+
+
+
+
+
+
+
+
+
       
     }, error => {
       console.log(error);

@@ -35,6 +35,7 @@ export class Schoolregister2Page {
   logo: any ='';
   uploadedimg:any='';
   baseUrl = AppSettings.API;
+  LogoUrl = AppSettings.LogoUrl;
   public baseLogo ='';
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -61,7 +62,7 @@ export class Schoolregister2Page {
   }
 
   getImgContent() {
-    return this.sanitizer.bypassSecurityTrustUrl(this.baseLogo);
+    return this.LogoUrl+this.lastImage;
   }
   ionViewDidEnter() {
     this.menu.swipeEnable(false);
@@ -166,18 +167,17 @@ export class Schoolregister2Page {
       this.fileSelected = true;
 
       this.logo = this.pathForImage(newFileName);
-      this.base64.encodeFile(this.logo).then((base64File: string) => {
-        this.baseLogo = base64File;
+      this.uploadPhotoService();
+      // this.base64.encodeFile(this.logo).then((base64File: string) => {
+      //   this.baseLogo = base64File;
         
-        console.log('tetttttttttt : :',this.baseLogo.replace('data:image/*;charset=utf-8;base64,',''));
-        this.storage.set('TeacherLogo',this.baseLogo.replace('data:image/*;charset=utf-8;base64,','')
-        );
-        this.presentAlert('Success!', 'You File successfully uploaded');
-        this.getImgContent();
-        //console.log('base64File : :',this.baseLogo);
-      }, (err) => {
-        console.log(err);
-      });
+      //   this.storage.set('TeacherLogo',this.baseLogo)
+      //   this.presentAlert('Success!', 'You File successfully uploaded');
+      //   this.getImgContent();
+      //   //console.log('base64File : :',this.baseLogo);
+      // }, (err) => {
+      //   console.log(err);
+      // });
       
     }, error => {
       console.log(error);
@@ -236,7 +236,48 @@ export class Schoolregister2Page {
 
 
 
+  uploadPhotoService() {
+    this.showLoader();
 
+    var url = this.baseUrl + "updateImg";
+    console.log('url',url);
+    
+    // File for Upload
+    var targetPath = this.logo;
+
+    
+
+    // File name only
+    var filename = this.lastImage;
+
+    var options = {
+      fileKey: "profilePic",
+      fileName: filename,
+      chunkedMode: false,
+      mimeType: "multipart/form-data",
+      params: {
+        'fileName': filename,
+      }
+    };
+    console.log('options',options);
+    
+
+    const fileTransfer: TransferObject = this.transfer.create();
+    fileTransfer.upload(targetPath, url, options).then(data => {
+      this.loader.dismiss();
+      console.log('data',data);
+        this.storage.set('TeacherLogo',this.lastImage)
+        this.presentAlert('Success!', 'You File successfully uploaded');
+        this.baseLogo = this.lastImage;
+      // let p_data = JSON.parse(data.response);
+      
+    }, err => {
+      this.loader.dismiss();
+      console.log('error', err);
+    });
+
+
+  }
 
     
 

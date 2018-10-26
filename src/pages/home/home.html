@@ -12,7 +12,7 @@
     <div *ngFor="let teacher of teacherList">
       <ion-slide class="home_teachers_slide" *ngIf="teacher.blockID=='' || teacher.blockID==null" >
         <div class="sliderimgg">
-          <img [src]="sanitizerfn(teacher.ImagePath)" alt="" class="home_teachers_slide_img">
+          <img [src]="LogoUrl+teacher.ImagePath" alt="" class="home_teachers_slide_img">
         </div>
         <h1 class="home_teachers_slide_name">{{teacher.FirstName+' '+teacher.LastName}} 
           <span *ngIf="userDetail.Ispaid=='yes'">

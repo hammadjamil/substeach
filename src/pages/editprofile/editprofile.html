@@ -9,7 +9,7 @@
 <ion-content>
     <div *ngIf="profileList.Usertype=='School'" class="imgprofile" text-center padding>
       <img *ngIf="(profileList.LogoPath=='' || profileList.LogoPath==null ) && baseLogo==''" src="../../assets/imgs/profileimg.jpg" alt="" style="border-radius: 50%;width: 150px;height: 150px;">
-      <img *ngIf="(profileList.LogoPath!='' && profileList.LogoPath!=null) && profileList.Usertype=='School' && baseLogo==''" [src]="profileList.LogoPath" alt="" style="border-radius: 50%;width: 150px;height: 150px;">
+      <img *ngIf="(profileList.LogoPath!='' && profileList.LogoPath!=null) && profileList.Usertype=='School' && baseLogo==''" [src]="LogoUrl+profileList.LogoPath" alt="" style="border-radius: 50%;width: 150px;height: 150px;">
       <img *ngIf="baseLogo!=''" [src]="getImgContent()"  alt="" style="border-radius: 50%;width: 150px;height: 150px;">
       <div class="penabs" style="transition-delay: 0s; transition-property: none;">
           <img (click)="uploadPhoto()" src="../../assets/imgs/penimg.png">    
@@ -24,7 +24,7 @@
     </div>
   <div *ngIf="profileList.Usertype!='School'" class="imgprofile" text-center padding>
       <img *ngIf="(profileList.ImagePath=='' || profileList.ImagePath==null ) && baseLogo==''" src="../../assets/imgs/profileimg.jpg" alt="" style="border-radius: 50%;width: 150px;height: 150px;">
-      <img *ngIf="(profileList.ImagePath!='' && profileList.ImagePath!=null) && profileList.Usertype!='School' && baseLogo==''" [src]="profileList.ImagePath" alt="" style="border-radius: 50%;width: 150px;height: 150px;">
+      <img *ngIf="(profileList.ImagePath!='' && profileList.ImagePath!=null) && profileList.Usertype!='School' && baseLogo==''" [src]="LogoUrl+profileList.ImagePath" alt="" style="border-radius: 50%;width: 150px;height: 150px;">
       <img *ngIf="baseLogo!=''" [src]="getImgContent()"  alt="" style="border-radius: 50%;width: 150px;height: 150px;">
       <div class="penabs" style="transition-delay: 0s; transition-property: none;">
           <img (click)="uploadPhoto()" src="../../assets/imgs/penimg.png">    
@@ -56,6 +56,13 @@
           <ion-input  type="text" [(ngModel)]="profileList.VisitingCity"></ion-input>
         </ion-item>
         <ion-item>
+          <ion-label  stacked><ion-icon name="md-bus"></ion-icon> Visiting Country</ion-label>
+          <ion-select [(ngModel)]="profileList.VisitingCountry" style="margin-top:-5px;">
+            <ion-option *ngFor="let re of region" value="{{re.Name}}">{{re.Name}}</ion-option>
+          </ion-select> 
+          <!-- <ion-input  type="text" [(ngModel)]="profileList.VisitingCountry"></ion-input> -->
+        </ion-item>
+        <ion-item>
           <ion-label  stacked><ion-icon name="md-mail-open"></ion-icon> Visiting PostalCode</ion-label>
           <ion-input  type="text" [(ngModel)]="profileList.VisitingPostalCode"></ion-input>
         </ion-item>
@@ -82,10 +89,7 @@
         <ion-item>
           <ion-label  stacked><ion-icon name="md-mail-open"></ion-icon> Billing Country</ion-label>
           <ion-select [(ngModel)]="profileList.BillingCountry" style="margin-top:-5px;">
-            <ion-option value="Pakistan">Pakistan</ion-option>
-            <ion-option value="England">England</ion-option>
-            <ion-option value="Sweden">Sweden</ion-option>
-            <ion-option value="Germany">Germany</ion-option>
+            <ion-option *ngFor="let re of region" value="{{re.Name}}">{{re.Name}}</ion-option>
           </ion-select> 
         </ion-item>
         

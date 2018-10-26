@@ -10,6 +10,7 @@ import { Services } from '../../providers/services';
 import { Events } from 'ionic-angular';
 import { DomSanitizer } from '@angular/platform-browser';
 
+import { AppSettings } from '../../app/appSettings';
 @IonicPage()
 @Component({
   selector: 'page-teacherprofile',
@@ -32,6 +33,8 @@ export class TeacherprofilePage {
   selstandrads:any={};
   Documents:any;
   myDate: String = new Date().toISOString();
+  LogoUrl = AppSettings.LogoUrl;
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private storage: Storage,
     public services: Services,
@@ -46,9 +49,9 @@ export class TeacherprofilePage {
         // console.log('val :', val );
         this.userID = val.Id;
         if(this.userData.Usertype == "School"){
-          this.Logo = this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+this.userData.LogoPath);
+          this.Logo = this.LogoUrl+this.userData.LogoPath;
         }else{
-          this.Logo = this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+this.userData.ImagePath);
+          this.Logo = this.LogoUrl+this.userData.ImagePath;
         }
       });
     this.services.getStandards().subscribe(

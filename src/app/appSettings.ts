@@ -1,6 +1,6 @@
 export class AppSettings {
    public static API='http://setchemdemo.ezsoftpk.com/SchoolSubtituionApi/api/services.php/';
-   public static LogoUrl='http://setchemdemo.ezsoftpk.com/SchoolSubtituionApi/api/logo/';
+   public static LogoUrl='http://setchemdemo.ezsoftpk.com/SchoolSubtituionApi/api/images/';
 //    public static API='http://localhost/substeach/api/services.php/';
 //    public static LogoUrl='http://localhost/substeach/api/logo/';
 //    public static API='http://setchemdemo.ezsoftpk.com/SchoolSubtituionApi/api/Subtitute/';
