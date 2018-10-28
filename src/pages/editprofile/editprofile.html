@@ -23,16 +23,16 @@
       <!-- <p text-right>Change Password</p> -->
     </div>
   <div *ngIf="profileList.Usertype!='School'" class="imgprofile" text-center padding>
-      <img *ngIf="(profileList.ImagePath=='' || profileList.ImagePath==null ) && baseLogo==''" src="../../assets/imgs/profileimg.jpg" alt="" style="border-radius: 50%;width: 150px;height: 150px;">
-      <img *ngIf="(profileList.ImagePath!='' && profileList.ImagePath!=null) && profileList.Usertype!='School' && baseLogo==''" [src]="LogoUrl+profileList.ImagePath" alt="" style="border-radius: 50%;width: 150px;height: 150px;">
-      <img *ngIf="baseLogo!=''" [src]="getImgContent()"  alt="" style="border-radius: 50%;width: 150px;height: 150px;">
+      <img *ngIf="profileList.ImagePath=='teachers4.jpg' || profileList.ImagePath=='' || profileList.ImagePath==null" src="../../assets/imgs/profileimg.jpg" alt="" style="border-radius: 50%;width: 150px;height: 150px;">
+      <img  *ngIf="profileList.ImagePath!='teachers4.jpg' || profileList.ImagePath!='' || profileList.ImagePath!=null" [src]="LogoUrl+profileList.ImagePath" alt="" style="border-radius: 50%;width: 150px;height: 150px;">
       <div class="penabs" style="transition-delay: 0s; transition-property: none;">
           <img (click)="uploadPhoto()" src="../../assets/imgs/penimg.png">    
       </div>
       <p>{{profileList.UserName}}</p>
       <p>{{profileList.PhoneNumber}}</p>
       <p>{{profileList.Email}}</p>
-    </div>
+      <!-- <button (click)="viewdoc()" block ion-button>doc</button> -->
+  </div>
   <div class="changepswddiv" *ngIf="profileList!=''&& profileList.Usertype=='School'">
         <ion-item>
           <ion-label  stacked><ion-icon name="ios-school"></ion-icon> School Name</ion-label>
