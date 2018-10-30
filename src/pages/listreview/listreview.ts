@@ -15,11 +15,13 @@ export class ListreviewPage {
   teacherID:any;
   loader: any;
   reviewlist: any;
+  reviewSchoolID:any;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private alertCtrl: AlertController,
     public services: Services,
     public tools: MyTools,) {
     this.teacherID = navParams.get('reviewTeacherID');
+    this.reviewSchoolID = navParams.get('reviewSchoolID');
     this.getReviews();
   }
 
@@ -43,7 +45,6 @@ export class ListreviewPage {
     let body = new FormData();
     body.append('teacherID',this.teacherID);
     console.log('body : ',body);
-    
         this.services.getreview(body).subscribe(
           //Successfully Logged in
           success => {
@@ -55,15 +56,13 @@ export class ListreviewPage {
           error => {
             this.loader.dismiss();  
             console.log('error bhai revie list', error);
-            // this.presentAlert('Alert!', error.message);
           }
         )
-
-
-
-
   }
   addreviewpage(){
-    this.navCtrl.push(AddreviewPage);
+    this.navCtrl.push(AddreviewPage,{
+      reviewTeacherID: this.teacherID,
+      reviewSchoolID :this.reviewSchoolID
+    })
   }
 }

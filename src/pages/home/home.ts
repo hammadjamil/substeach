@@ -263,7 +263,8 @@ profilepage(idd){
 
 viewReview(id){
   this.navCtrl.push(ListreviewPage,{
-    reviewTeacherID: id
+    reviewTeacherID: id,
+    reviewSchoolID :this.userDetail.Id
   })
 }
 
