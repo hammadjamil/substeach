@@ -110,12 +110,13 @@ export class HomePage {
     body.append('FromDate', this.searchCriteria.FromDate);
     body.append('TimeSlote', this.searchCriteria.TimeSlote);
     body.append('Standard', this.searchCriteria.Standard);
-    body.append('SchoolId', this.userDetail.Id);
+    body.append('userId', this.userDetail.Id);
     this.services.getMatchesByPeriod(body).subscribe(
       //Successfully Logged in
       success => {
         console.log('Success : ',success);
         this.teacherList = success.data;
+        this.loader.dismiss();
         console.log('teacherList',this.teacherList);
         // this.loader.dismiss();
       },
@@ -124,7 +125,7 @@ export class HomePage {
           // console.log('teacherList',this.teacherList);
             // this.presentAlert('Alert!', error.message);
             // this.errormsg=1
-            // this.loader.dismiss();  
+            this.loader.dismiss();  
             this.teacherList=1;        
             // console.log('teacherList',this.teacherList);
         }, 500);

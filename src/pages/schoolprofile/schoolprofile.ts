@@ -154,6 +154,13 @@ export class SchoolprofilePage {
   // changestate(eve){
   //   console.log('this.test',this.test);
   // }
+
+  setTab(type){
+    this.seltimeslots={slot1:'',slot2:'',slot3:'',slot4:'',slot5:'',slot6:'',slot7:''};
+
+  }
+
+
  getstandrads(){
   this.services.getStandards().subscribe(
     //Successfully Logged in

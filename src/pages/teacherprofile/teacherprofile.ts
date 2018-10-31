@@ -18,8 +18,14 @@ import { AppSettings } from '../../app/appSettings';
 })
 export class TeacherprofilePage {
   schooltabs: string = "days";
-  schoolDay : any ={
+  teacherDay : any ={
     Day :'',
+    TimeSlote :'',
+    Standard :'',
+  };
+  teacherPeriod : any ={
+    FromDate :'',
+    ToDate :'',
     TimeSlote :'',
     Standard :'',
   };
@@ -108,12 +114,24 @@ export class TeacherprofilePage {
     console.log('ionViewDidLoad TeacherprofilePage');
   }
   save(){
-    console.log('schoolDay : ',this.schoolDay);
+    console.log('schooltabs : ',this.schooltabs);
     let body = new FormData();
-    body.append('Day', this.schoolDay.Day);
-    body.append('TimeSlote', this.schoolDay.TimeSlote);
-    body.append('Standard', this.schoolDay.Standard);
-    body.append('userID', this.userID);
+    if(this.schooltabs!='peroids'){
+      body.append('Day', this.teacherDay.Day);
+      body.append('TimeSlote', this.teacherDay.TimeSlote);
+      body.append('Standard', this.teacherDay.Standard);
+      body.append('userId', this.userID);
+      body.append('type', 'day');
+    }else{
+      
+      body.append('FromDate', this.teacherPeriod.FromDate);
+      body.append('ToDate', this.teacherPeriod.ToDate);
+      body.append('TimeSlote', this.teacherPeriod.TimeSlote);
+      body.append('Standard', this.teacherPeriod.Standard);
+      body.append('userId', this.userID);
+      body.append('type', 'period');
+    }
+   
     this.services.saveTeachersettings(body).subscribe(
       //Successfully Logged in
       success => {
@@ -217,7 +235,22 @@ export class TeacherprofilePage {
       }
     }
   }
-  toggletimeslot(value){
+
+  toggletimeslot(value,type){
+    if(type=='day'){
+      if(this.teacherDay.TimeSlote.indexOf(value)<0){
+        this.teacherDay.TimeSlote.push(value);
+      }else{
+        this.teacherDay.TimeSlote.splice(this.teacherDay.TimeSlote.indexOf(value), 1);     
+      }
+    }else{
+      if(this.teacherPeriod.TimeSlote.indexOf(value)<0){
+        this.teacherPeriod.TimeSlote.push(value);
+      }else{
+        this.teacherPeriod.TimeSlote.splice(this.teacherPeriod.TimeSlote.indexOf(value), 1);     
+      }
+    }
+    
     if (value == '9:00 -10:00'){
       if(this.seltimeslots.slot1==1){
         this.seltimeslots.slot1='';
@@ -275,6 +308,8 @@ export class TeacherprofilePage {
       }
     }
   }
+
+  
   togglestandrads(value){
     if (value == 'Monday'){
       if(this.seldays.Monday==1){
