@@ -4,11 +4,26 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-  <button *ngIf="userDetail.Ispaid=='no'" ion-button full style="margin-bottom:20px;" (click)="pay()">
-      Premium feature
-    </button>
+    <ion-list>
+        <button *ngIf="userDetail.Ispaid=='no'" ion-item  (click)="pay()">
+            Premium feature
+        </button> 
+        <button ion-item (click)="blocklist()">
+            Block List
+        </button>  
+        <button ion-item (click)="logout()">
+            <span style="color:brown;font-weight:700;">Logout</span> 
+        </button> 
+      </ion-list>
+  <!-- <button *ngIf="userDetail.Ispaid=='no'" ion-button full style="margin-bottom:20px;" (click)="pay()">
+    Premium feature
+  </button>
+  <button ion-button icon-start full (click)="blocklist()">
+    <ion-icon name="md-log-out"></ion-icon>
+    Block List
+  </button>
   <button ion-button icon-start full (click)="logout()">
     <ion-icon name="md-log-out"></ion-icon>
     LOGOUT
-  </button>
+  </button> -->
 </ion-content>

@@ -7,6 +7,8 @@ import { MyTools } from '../../providers/tools';
 import { Services } from '../../providers/services';
 import { PaymentPage } from '../payment/payment';
 import { MyStorage } from '../../app/localstorage';
+import { BlocklistPage } from '../blocklist/blocklist';
+
 @IonicPage()
 @Component({
   selector: 'page-settings',
@@ -65,5 +67,8 @@ export class SettingsPage {
   }
   pay(){
     this.navCtrl.push(PaymentPage,{})
+  }
+  blocklist(){
+    this.navCtrl.push(BlocklistPage);
   }
 }

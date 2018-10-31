@@ -1759,4 +1759,60 @@ updateUserImage(params) {
     /**
    * notificationcount
    */
+  blocklist(id){
+    console.log('user id', id);
+    if(id){
+      return Observable.create(observer => {
+        const url = 'http://setchemdemo.ezsoftpk.com/SchoolSubtituionApi/api/services.php/blockList?userId='+id;
+        this.http.get(url, {
+          search: ''
+        })
+          .map(res => res.json())
+          .subscribe(
+          (response) => {
+            if (response.code != '200') {
+              observer.error(response);
+            }
+            else {
+              observer.next(response);
+  
+            }
+            observer.complete();
+  
+          },
+          (error) => {
+            observer.error(error);
+          }
+          )
+      })
+    }
+  }
+  unblock(id){
+    console.log('block id', id);
+    if(id){
+      return Observable.create(observer => {
+        const url = 'http://setchemdemo.ezsoftpk.com/SchoolSubtituionApi/api/services.php/unblock?blockID='+id;
+        this.http.get(url, {
+          search: ''
+        })
+          .map(res => res.json())
+          .subscribe(
+          (response) => {
+            if (response.code != '200') {
+              observer.error(response);
+            }
+            else {
+              observer.next(response);
+  
+            }
+            observer.complete();
+  
+          },
+          (error) => {
+            observer.error(error);
+          }
+          )
+      })
+    }
+  }
 }

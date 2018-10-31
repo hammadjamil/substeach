@@ -46,6 +46,8 @@ import { TeacherreviewsPage } from '../pages/teacherreviews/teacherreviews';
 import { AddreviewPage } from '../pages/addreview/addreview';
 import { ListreviewPage } from '../pages/listreview/listreview';
 import { FiltersPage } from '../pages/filters/filters';
+import { BlocklistPage } from '../pages/blocklist/blocklist';
+
 import { SMS } from '@ionic-native/sms';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { Stripe } from '@ionic-native/stripe';
@@ -86,7 +88,8 @@ import { Stripe } from '@ionic-native/stripe';
     FiltersPage,
     TeacherreviewsPage,
     AddreviewPage,
-    ListreviewPage
+    ListreviewPage,
+    BlocklistPage
   ],
   imports: [ 
     FormsModule, 
@@ -129,7 +132,8 @@ import { Stripe } from '@ionic-native/stripe';
     FiltersPage,
     TeacherreviewsPage,
     AddreviewPage,
-    ListreviewPage
+    ListreviewPage,
+    BlocklistPage
   ],
   providers: [
     StatusBar,
