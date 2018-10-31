@@ -25,6 +25,7 @@ export class NotificationPage {
   userdata:any='';
   notificationList : any = '';
   LogoUrl = AppSettings.LogoUrl;
+  chatlogo:any;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public loadingCtrl: LoadingController,
     private storage: Storage,
@@ -131,20 +132,23 @@ export class NotificationPage {
   }
 
   
-startChat(no ,chatusername) {
+startChat(no ,chatusername,chatlogo) {
   this.chatuser=chatusername;
+  this.chatlogo=chatlogo;
+  console.log(this.chatlogo);
   this.addRoom(no);
-
 }
 
 
 
 joinRoom(key) {
-  console.log('this.data.nickname',this.data.nickname);
+  console.log('this.data.nickname',this.data.nickname,'chatlogo',this.chatlogo);
+
   this.navCtrl.push(ChatPage, {
     key:key,
     nickname:this.data.nickname,
-    chatusername: this.chatuser
+    chatusername: this.chatuser,
+    chatlogo: this.chatlogo
   });
 }
 

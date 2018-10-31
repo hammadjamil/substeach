@@ -1,9 +1,3 @@
-<!--
-  Generated template for the FavouritesPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar  style="box-shadow: 1px 0px 10px 0px black;">
     <ion-title>Favourites</ion-title>
@@ -15,10 +9,10 @@
     <ion-row class="home_teachers" *ngIf="favList!=''">
         <ion-col col-6 *ngFor="let fav of favList">
           <div class="home_teachers_slide">
-              <img *ngIf="fav.ImagePath=='teachers4.jpg' || fav.ImagePath=='' || fav.ImagePath==null || fav.ImagePath==undefined" src="../../assets/imgs/profileimg.jpg" alt="" class="home_teachers_slide_img">
-              <img *ngIf="fav.ImagePath!='teachers4.jpg' || fav.ImagePath!='' || fav.ImagePath!=null || fav.ImagePath!=undefined" [src]="LogoUrl+fav.ImagePath" alt="" class="home_teachers_slide_img">
+              <img *ngIf="fav.ImagePath=='teachers5.jpg' || fav.ImagePath=='' || fav.ImagePath==null || fav.ImagePath==undefined" src="../../assets/imgs/profileimg.jpg" alt="" class="home_teachers_slide_img">
+              <img *ngIf="fav.ImagePath!='teachers5.jpg' && fav.ImagePath!='' && fav.ImagePath!=null && fav.ImagePath!=undefined" [src]="LogoUrl+fav.ImagePath" alt="" class="home_teachers_slide_img">
               <p class="home_teachers_slide_name">{{fav.FirstName+' '+fav.LastName}}</p>
-              <p class="home_teachers_slide_cost">$24/hr</p>
+              <!-- <p class="home_teachers_slide_cost">$24/hr</p> -->
           </div>
         </ion-col>
     </ion-row>

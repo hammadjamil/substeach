@@ -32,7 +32,7 @@ export class TeacherprofilePage {
   Standard:any;
   userID:any;
   Logo:any;
-  userData:any;
+  userData:any='';
   noticountdata:any='';
   seldays:any={Monday:'',Tuesday:'',Wednesday:'',Thursday:'',Friday:'',Saturday:'',Sunday:''};
   seltimeslots:any={slot1:'',slot2:'',slot3:'',slot4:'',slot5:'',slot6:'',slot7:''};

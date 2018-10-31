@@ -3,6 +3,7 @@ import { Component , ViewChild } from '@angular/core';
 import { NavController, NavParams, Content } from 'ionic-angular';
 import * as firebase from 'Firebase';
 import { Keyboard } from 'ionic-angular';
+import { AppSettings } from '../../app/appSettings';
 
 @Component({
   selector: 'page-chat',
@@ -15,7 +16,8 @@ export class ChatPage {
   
   btnmargin:any = '';
   btnmargin2:any = '';
-
+  LogoUrl = AppSettings.LogoUrl;
+  chatlogo:any;
     data = { type:'', nickname:'', message:'' };
     chats = [];
     roomkey:string;
@@ -34,6 +36,8 @@ export class ChatPage {
       this.roomkey = this.navParams.get("key") as string;
       this.nickname = this.navParams.get("nickname") as string;
       this.chatusername = this.navParams.get("chatusername") as string;
+      this.chatlogo = this.navParams.get("chatlogo");
+      console.log('chat logo::::',this.chatlogo);
       this.data.type = 'message';
       this.data.nickname = this.nickname;
       let joinData = firebase.database().ref('chatrooms/'+this.roomkey+'/chats').push();
@@ -72,8 +76,8 @@ export class ChatPage {
   keyboardCheck() {
     console.log('The keyboard is open:', this.keyboard.isOpen());
     if(this.keyboard.isOpen()==true){
-      this.btnmargin = "300px"
-      this.btnmargin2 = "350px"
+      this.btnmargin = "250px"
+      this.btnmargin2 = "300px"
     }
     else{
       this.btnmargin = "0"

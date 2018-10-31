@@ -23,6 +23,8 @@ import { SchoolprofilePage } from '../schoolprofile/schoolprofile';
 import { TeacherprofilePage } from '../teacherprofile/teacherprofile';
 
 import { SettingsPage } from '../settings/settings';
+import { DocumentViewer ,DocumentViewerOptions} from '@ionic-native/document-viewer';
+
 
 declare let cordova: any;
 @IonicPage()
@@ -49,6 +51,7 @@ export class EditprofilePage {
   baseUrl = AppSettings.API;
   public baseLogo ='';
   user = { username: '', password: '', udid: '',platform:'' };
+  
   constructor(public navCtrl: NavController,
     public loadingCtrl: LoadingController,
     public services: Services,
@@ -66,6 +69,7 @@ export class EditprofilePage {
     public platform: Platform,
     private base64: Base64,
     public chooser: Chooser,
+    private document: DocumentViewer,
     private sanitizer: DomSanitizer) {
       this.storage.get('user').then(
         (val) => {
@@ -100,7 +104,12 @@ export class EditprofilePage {
 
 
   }
-
+  viewdoc(){
+    const options: DocumentViewerOptions = {
+      title: 'My PDF'
+    }
+    this.document.viewDocument('../../assets/imgs/doc.docx', 'application/docx', options)
+  }
 
   presentAlert(title1,msgs) {
     let alert = this.alertCtrl.create({

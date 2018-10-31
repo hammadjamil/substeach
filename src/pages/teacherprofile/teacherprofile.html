@@ -3,8 +3,9 @@
           <!-- <button ion-button menuToggle class="menubtn">
             <ion-icon name="menu"></ion-icon>
           </button> -->
-          <button ion-button  class="menubtn" float-left (click)="editprofilepage()">
-              <img *ngIf="userData!=''" [src]="Logo" alt="" width="30px" height="30px" style="border-radius:50%">
+          <button ion-button *ngIf="userData!=''" class="menubtn" float-left (click)="editprofilepage()">
+              <img *ngIf="userData.ImagePath=='teachers4.jpg' || userData.ImagePath=='' || userData.ImagePath==null" src="../../assets/imgs/profileimg.jpg" alt="" width="30px" height="30px" style="border-radius:50%">
+              <img *ngIf="userData.ImagePath!='teachers4.jpg' || userData.ImagePath!='' || userData.ImagePath!=null" [src]="LogoUrl+userData.ImagePath" alt="" width="30px" height="30px" style="border-radius:50%">
           </button>
           <ion-title float-left>Teacher Profile</ion-title>
           <button ion-button  class="menubtn" text-right float-right (click)="shownoti()">
