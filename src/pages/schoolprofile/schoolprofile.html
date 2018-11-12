@@ -74,42 +74,6 @@
                         Sunday
                     </ion-item>
                 </ion-list>
-                <p style="font-size: 22px;font-weight: 700;padding-bottom: 0;margin-bottom: 0;text-align: center;">Select Time To</p>
-                <ion-list style="padding: 5px;width:100%;float: left;margin-bottom: 0;">
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot1 == '1'}" (click)="toggletimeslot('9:00','day')">
-                        9:00 
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot2 == '1'}" (click)="toggletimeslot('10:00','day')">
-                        10:00 
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot3 == '1'}" (click)="toggletimeslot('11:00','day')">
-                        11:00
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot4 == '1'}" (click)="toggletimeslot('12:00','day')">
-                        12:00
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot5 == '1'}" (click)="toggletimeslot('13:00','day')">
-                        13:00 
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot6 == '1'}" (click)="toggletimeslot('14:00','day')">
-                        14:00
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot7 == '1'}" (click)="toggletimeslot('15:00','day')">
-                        15:00
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot8 == '1'}" (click)="toggletimeslot('16:00','day')">
-                        16:00
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot9 == '1'}" (click)="toggletimeslot('17:00','day')">
-                        17:00
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot10 == '1'}" (click)="toggletimeslot('18:00','day')">
-                        18:00
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot11 == '1'}" (click)="toggletimeslot('19:00','day')">
-                        19:00
-                    </ion-item>
-                </ion-list>
                 <p style="font-size: 22px;font-weight: 700;padding-bottom: 0;margin-bottom: 0;text-align: center;">Select Time From</p>
                 <ion-list style="padding: 5px;width:100%;float: left;margin-bottom: 0;">
                     <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsFrom.slot1 == '1'}" (click)="toggletimeslot('9:00','dayfrom')">
@@ -146,6 +110,43 @@
                         19:00
                     </ion-item>
                 </ion-list>
+                <p style="font-size: 22px;font-weight: 700;padding-bottom: 0;margin-bottom: 0;text-align: center;">Select Time To</p>
+                <ion-list style="padding: 5px;width:100%;float: left;margin-bottom: 0;">
+                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot1 == '1'}" (click)="toggletimeslot('9:00','day')">
+                        9:00 
+                    </ion-item>
+                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot2 == '1'}" (click)="toggletimeslot('10:00','day')">
+                        10:00 
+                    </ion-item>
+                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot3 == '1'}" (click)="toggletimeslot('11:00','day')">
+                        11:00
+                    </ion-item>
+                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot4 == '1'}" (click)="toggletimeslot('12:00','day')">
+                        12:00
+                    </ion-item>
+                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot5 == '1'}" (click)="toggletimeslot('13:00','day')">
+                        13:00 
+                    </ion-item>
+                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot6 == '1'}" (click)="toggletimeslot('14:00','day')">
+                        14:00
+                    </ion-item>
+                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot7 == '1'}" (click)="toggletimeslot('15:00','day')">
+                        15:00
+                    </ion-item>
+                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot8 == '1'}" (click)="toggletimeslot('16:00','day')">
+                        16:00
+                    </ion-item>
+                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot9 == '1'}" (click)="toggletimeslot('17:00','day')">
+                        17:00
+                    </ion-item>
+                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot10 == '1'}" (click)="toggletimeslot('18:00','day')">
+                        18:00
+                    </ion-item>
+                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot11 == '1'}" (click)="toggletimeslot('19:00','day')">
+                        19:00
+                    </ion-item>
+                </ion-list>
+                
                 <!-- <p style="font-size: 22px;font-weight: 700;padding-bottom: 0;margin-bottom: 0;text-align: center;" *ngIf="Standard!=''">Select Standrads</p>
                 <ion-list style="padding: 5px;width:100%;float: left;margin-bottom: 0;">
                     <ion-item *ngFor="let row of Standard" class="contesttypefilter" [ngClass]="{'coloractive': schoolDay.Standard.indexOf(row.Id)>=0 }" (click)="togglestandrads(row.Id,'day')">

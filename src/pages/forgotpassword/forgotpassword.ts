@@ -67,7 +67,9 @@ export class ForgotpasswordPage {
   loginpage(){
     this.navCtrl.push(LoginPage);
   }
+
   forgotpswd(){
+    console.log('body',this.user.email);
     this.disableButton = true;
     // this.showLoader();
     //Applying Validations
@@ -81,11 +83,11 @@ export class ForgotpasswordPage {
     }
     //Requesting API 
     else {
-      let body = new FormData();
-      body.append('Email', this.user.email);
-      console.log(body);
+      // let body = new FormData();
+      // body.append('Email', this.user.email);
+      // console.log(body);
       
-          this.services.forgotpassword(body).subscribe(
+          this.services.forgotpassword(this.user.email).subscribe(
             //Successfully Logged in
             success => {
               console.log(' login success',success);
