@@ -67,7 +67,7 @@ export class MyApp {
       this.storage.get('user').then((val) => {
         if(val!='' && val!=null){
           this.userData=val;
-          if(val.Usertype=='School'){
+          if(val.RoleId==6){
             this.homepage=1;
             this.rootPage = SchoolprofilePage;
           }

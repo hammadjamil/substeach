@@ -79,7 +79,8 @@ export class HomePage {
     // this.showLoader();
     let body = new FormData();
     body.append('Day', this.searchCriteria.Day);
-    body.append('TimeSlote', this.searchCriteria.TimeSlote);
+    body.append('TimeSloteTo', this.searchCriteria.TimeSloteTo);
+    body.append('TimeSloteFrom', this.searchCriteria.TimeSloteFrom);
     body.append('Standard', this.searchCriteria.Standard);
     body.append('SchoolId', this.userDetail.Id);
     body.append('userId', this.userDetail.userId);
@@ -179,8 +180,8 @@ addToFav(dID){
   this.showLoader();
   //Applying Validations
   let body = new FormData();
-  body.append('userId', this.userDetail.Id);
-  body.append('DeputyPersonId', dID);
+  body.append('SchoolID', this.userDetail.SchoolID);
+  body.append('TeacherID', dID);
       this.services.addToFav(body).subscribe(
         //Successfully Logged in
         success => {
@@ -273,8 +274,8 @@ viewReview(id){
 inviteTeacher(id){
   this.showLoader();
   let body = new FormData();
-  body.append('userId', this.userDetail.Id);
-  body.append('toUserId',id );console.log(id);
+  body.append('SenderId', this.userDetail.Id);
+  body.append('ReceiverId',id );console.log(id);
   
   this.services.SendNotification(body).subscribe(
     //Successfully Logged in

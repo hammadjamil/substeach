@@ -1759,11 +1759,11 @@ updateUserImage(params) {
     /**
    * notificationcount
    */
-  blocklist(id){
+  acceptList(id){
     console.log('user id', id);
     if(id){
       return Observable.create(observer => {
-        const url = 'http://setchemdemo.ezsoftpk.com/SchoolSubtituionApi/api/services.php/blockList?userId='+id;
+        const url = 'http://setchemdemo.ezsoftpk.com/SchoolSubtituionApi/api/services.php/acceptList?SchoolID='+id;
         this.http.get(url, {
           search: ''
         })
@@ -1787,11 +1787,11 @@ updateUserImage(params) {
       })
     }
   }
-  unblock(id){
+  block(id,type){
     console.log('block id', id);
     if(id){
       return Observable.create(observer => {
-        const url = 'http://setchemdemo.ezsoftpk.com/SchoolSubtituionApi/api/services.php/unblock?blockID='+id;
+        const url = 'http://setchemdemo.ezsoftpk.com/SchoolSubtituionApi/api/services.php/block?ID='+id+'&type='+type;
         this.http.get(url, {
           search: ''
         })

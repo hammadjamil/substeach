@@ -53,7 +53,7 @@ export class PaymentPage {
     console.log('ionViewDidLoad PaymentPage');
   }
 pay1(){
-  if(this.userDetail.Usertype=='School'){
+  if(this.userDetail.RoleId==6){
     this.navCtrl.setRoot(SchoolprofilePage,{});
   }
   else
@@ -83,7 +83,7 @@ pay1(){
                   console.log('success bhai', success);
                     this.loader.dismiss();
                     this.presentAlert('Alert!', 'you have Successfully paid. Now you can avail our premium features.');
-                    if(this.userDetail.Usertype=='School'){
+                    if(this.userDetail.RoleId==6){
                       this.navCtrl.setRoot(SchoolprofilePage,{});
                     }
                     else

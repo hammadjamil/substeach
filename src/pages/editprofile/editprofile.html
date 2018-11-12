@@ -7,9 +7,9 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-    <div *ngIf="profileList.Usertype=='School'" class="imgprofile" text-center padding>
+    <div *ngIf="profileList.RoleId==6" class="imgprofile" text-center padding>
       <img *ngIf="(profileList.LogoPath=='' || profileList.LogoPath==null ) && baseLogo==''" src="../../assets/imgs/profileimg.jpg" alt="" style="border-radius: 50%;width: 150px;height: 150px;">
-      <img *ngIf="(profileList.LogoPath!='' && profileList.LogoPath!=null) && profileList.Usertype=='School' && baseLogo==''" [src]="LogoUrl+profileList.LogoPath" alt="" style="border-radius: 50%;width: 150px;height: 150px;">
+      <img *ngIf="(profileList.LogoPath!='' && profileList.LogoPath!=null) && profileList.RoleId==6 && baseLogo==''" [src]="LogoUrl+profileList.LogoPath" alt="" style="border-radius: 50%;width: 150px;height: 150px;">
       <img *ngIf="baseLogo!=''" [src]="getImgContent()"  alt="" style="border-radius: 50%;width: 150px;height: 150px;">
       <div class="penabs" style="transition-delay: 0s; transition-property: none;">
           <img (click)="uploadPhoto()" src="../../assets/imgs/penimg.png">    
@@ -22,7 +22,7 @@
       
       <!-- <p text-right>Change Password</p> -->
     </div>
-  <div *ngIf="profileList.Usertype!='School'" class="imgprofile" text-center padding>
+  <div *ngIf="profileList.RoleId!=6" class="imgprofile" text-center padding>
       <img *ngIf="profileList.ImagePath=='teachers4.jpg' || profileList.ImagePath=='' || profileList.ImagePath==null" src="../../assets/imgs/profileimg.jpg" alt="" style="border-radius: 50%;width: 150px;height: 150px;">
       <img  *ngIf="profileList.ImagePath!='teachers4.jpg' || profileList.ImagePath!='' || profileList.ImagePath!=null" [src]="LogoUrl+profileList.ImagePath" alt="" style="border-radius: 50%;width: 150px;height: 150px;">
       <div class="penabs" style="transition-delay: 0s; transition-property: none;">
@@ -33,7 +33,7 @@
       <p>{{profileList.Email}}</p>
       <!-- <button (click)="viewdoc()" block ion-button>doc</button> -->
   </div>
-  <div class="changepswddiv" *ngIf="profileList!=''&& profileList.Usertype=='School'">
+  <div class="changepswddiv" *ngIf="profileList!=''&& profileList.RoleId==6">
         <ion-item>
           <ion-label  stacked><ion-icon name="ios-school"></ion-icon> School Name</ion-label>
           <ion-input  type="text" [(ngModel)]="profileList.SchoolName"></ion-input>
@@ -96,7 +96,7 @@
   </div>
 
 
-  <div class="changepswddiv" *ngIf="profileList!=''&& profileList.Usertype=='Teacher'">
+  <div class="changepswddiv" *ngIf="profileList!=''&& profileList.RoleId==5">
     <ion-item >
       <ion-label stacked>User Name</ion-label>
       <ion-input type="text" value="{{profileList.UserName}}" [disabled]="true"></ion-input>
@@ -120,7 +120,7 @@
     
   </div>
 </ion-content>
-<div class="footerabs"  *ngIf="profileList!=''&& profileList.Usertype=='Teacher'">
+<div class="footerabs"  *ngIf="profileList!=''&& profileList.RoleId==5">
     <ion-col col-6 float-left>
       <button (click)="goHome()" ion-button full class="btnstyling" style="background:#a19f9f !important;">CANCEL</button>
     </ion-col>
@@ -128,7 +128,7 @@
         <button ion-button full class="btnstyling" (click)="updateTeacher()">UPDATE</button>
     </ion-col>
   </div>
-  <div class="footerabs"  *ngIf="profileList!=''&& profileList.Usertype!='Teacher'">
+  <div class="footerabs"  *ngIf="profileList!=''&& profileList.RoleId!=5">
       <ion-col col-6 float-left>
         <button  (click)="goHome()" ion-button full class="btnstyling" style="background:#a19f9f !important;">CANCEL</button>
     </ion-col>

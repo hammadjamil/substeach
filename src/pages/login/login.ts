@@ -91,7 +91,7 @@ loginService() {
             setTimeout(() => {
               this.loader.dismiss();
               console.log('login success',success);
-              if(success.userData.Usertype=='School')
+              if(success.userData.RoleId==6)
                 this.navCtrl.setRoot(SchoolprofilePage);
               else
                 this.navCtrl.setRoot(TeacherprofilePage);
@@ -222,7 +222,7 @@ loginService() {
                 this.auth.loginUser(success);
                 
                 setTimeout(() => {
-                  if (success.userData.Usertype=='School'){
+                  if (success.userData.RoleId==6){
                     this.loader.dismiss();
                     this.navCtrl.setRoot(SchoolprofilePage);
                     this.loader.dismiss();

@@ -151,11 +151,13 @@ updateSchool(){
       body.append('BillingPostalCode', this.profileList.BillingPostalCode);
       body.append('BillingCountry', this.profileList.BillingCountry);
       body.append('userId', this.profileList.userId);
-      body.append('ClientID', this.profileList.ClientID);
+      body.append('SchoolID', this.profileList.SchoolID);
       
       this.services.updateSchool(body).subscribe(
         //Successfully Logged in
         success => {
+          console.log('testtme ');
+          
             setTimeout(() => {
               this.getprofilee();
             }, 500);
@@ -174,7 +176,7 @@ getprofilee(){
       this.storage.set('user', success.userData);
       this.presentAlert('Success!', 'You are successfully updated.');
       this.loader.dismiss();
-      if(success.userData.Usertype=='School'){
+      if(success.userData.RoleId==6){
         this.navCtrl.setRoot(SchoolprofilePage,{});
       }
       else
@@ -193,7 +195,7 @@ getprofilee1(){
       console.log('success:::::',success.userData);
       this.storage.set('user', success.userData);
       this.loader.dismiss();
-      if(success.userData.Usertype=='School'){
+      if(success.userData.RoleId==6){
         this.navCtrl.setRoot(SchoolprofilePage,{});
       }
       else
@@ -212,7 +214,7 @@ updateTeacher(){
   body.append('FirstName', this.profileList.FirstName);
   body.append('LastName', this.profileList.LastName);
   body.append('userId', this.profileList.userId);
-      body.append('ClientID', this.profileList.ClientID);
+      body.append('SchoolID', this.profileList.ClientID);
       this.services.updateTeacher(body).subscribe(
         //Successfully Logged in
         success => {
@@ -323,7 +325,7 @@ updateTeacher(){
         let body = new FormData();
           body.append('image', this.lastImage );
           body.append('userId', this.profileList.userId);
-          body.append('type', this.userDetail.Usertype);
+          body.append('type', this.userDetail.RoleId);
           
               this.services.updateUserImage(body).subscribe(
                 //Successfully Logged in
@@ -386,7 +388,7 @@ updateTeacher(){
       //   let body = new FormData();
       //     body.append('image', this.baseLogo.replace('data:image/*;charset=utf-8;base64,','') );
       //     body.append('userId', this.profileList.userId);
-      //     body.append('type', this.userDetail.Usertype);
+      //     body.append('type', this.userDetail.RoleId);
           
       //         this.services.updateUserImage(body).subscribe(
       //           //Successfully Logged in

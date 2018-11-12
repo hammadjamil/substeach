@@ -39,7 +39,7 @@ export class NotificationPage {
     this.storage.get('user').then((val) => {
       this.userdata=val;
       this.userID = val.Id;
-      this.Usertype = val.Usertype;
+      this.Usertype = val.RoleId;
       this.data.nickname = val.UserName;
       this.getData();
     });

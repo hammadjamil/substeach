@@ -46,7 +46,7 @@ export class PublicprofilePage {
             if (val != null) {
               console.log('val',val);
               this.userDetail = val;
-              if(this.userDetail.Usertype=='Teacher'){
+              if(this.userDetail.RoleId==5){
                 this.getDocuments(this.userDetail.Id);
               }
               this.profileService(this.userDetail.Id);
@@ -123,7 +123,7 @@ profileService(id) {
         success => {
           // console.log('profile data', success);
           this.profileList = success.userData;
-          if(this.profileList.Usertype=='Teacher'){
+          if(this.profileList.RoleId==5){
             this.getDocuments(this.profileList.Id);
           }
           console.log('profile data',  this.profileList);

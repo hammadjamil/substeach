@@ -4,18 +4,18 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <div *ngIf="profileList!=''">
-      <ion-title *ngIf="profileList.Usertype=='School'">SCHOOL PROFILE</ion-title>
-      <ion-title *ngIf="profileList.Usertype=='Teacher'">TEACHER PROFILE</ion-title>
+      <ion-title *ngIf="profileList.RoleId==6">SCHOOL PROFILE</ion-title>
+      <ion-title *ngIf="profileList.RoleId==5">TEACHER PROFILE</ion-title>
     </div>
   </ion-navbar>
 </ion-header>
 
 <ion-content >
     <div class="imgprofile" text-center padding>
-      <img *ngIf="profileList.Usertype=='School'" [src]="LogoUrl+profileList.LogoPath" alt="" style="border-radius: 50%;width: 150px;height: 150px;">
-      <img *ngIf="profileList.Usertype=='Teacher'" [src]="LogoUrl+profileList.ImagePath" alt="" style="border-radius: 50%;width: 150px;height: 150px;">
+      <img *ngIf="profileList.RoleId==6" [src]="LogoUrl+profileList.LogoPath" alt="" style="border-radius: 50%;width: 150px;height: 150px;">
+      <img *ngIf="profileList.RoleId==5" [src]="LogoUrl+profileList.ImagePath" alt="" style="border-radius: 50%;width: 150px;height: 150px;">
     </div>
-  <div class="changepswddiv" *ngIf="profileList!=''&& profileList.Usertype=='School'">
+  <div class="changepswddiv" *ngIf="profileList!=''&& profileList.RoleId==6">
       <ion-item >
           <ion-label stacked>User Name</ion-label>
           <ion-label class="txtbig" stacked>{{profileList.UserName}}</ion-label>
@@ -83,7 +83,7 @@
   </div>
 
 
-  <div class="changepswddiv" *ngIf="profileList!=''&& profileList.Usertype=='Teacher'">
+  <div class="changepswddiv" *ngIf="profileList!=''&& profileList.RoleId==5">
     <ion-item >
       <ion-label stacked>User Name</ion-label>
       <ion-label class="txtbig" stacked>{{profileList.UserName}}</ion-label>

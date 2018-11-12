@@ -24,13 +24,13 @@ export class BlocklistPage {
         if (val != null) {
           console.log('userDetail:::::',val)
           this.userDetail = val;
-          this.getblocklist();
+          this.getacceptlist();
         }
       }
     )
   }
-  getblocklist(){
-    this.services.blocklist(this.userDetail.Id).subscribe(
+  getacceptlist(){
+    this.services.acceptList(this.userDetail.SchoolID).subscribe(
       //Successfully Logged in
       success => {
         
@@ -44,13 +44,13 @@ export class BlocklistPage {
       }
     )
   }
-  unblock(blockid){
-    this.services.unblock(blockid).subscribe(
+  block(blockid,type){
+    this.services.block(blockid,type).subscribe(
       //Successfully Logged in
       success => {
         console.log('success bhai', success);
         this.blocklist='';
-        this.getblocklist();
+        this.getacceptlist();
       },
       error => {
         console.log('error bhai', error);

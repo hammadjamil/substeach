@@ -19,15 +19,15 @@ import { AppSettings } from '../../app/appSettings';
 export class TeacherprofilePage {
   schooltabs: string = "days";
   teacherDay : any ={
-    Day :'',
-    TimeSlote :'',
-    Standard :'',
-  };
-  teacherPeriod : any ={
     FromDate :'',
     ToDate :'',
-    TimeSlote :'',
-    Standard :'',
+    Monday:{To:"",From:''},
+    Tuesday:{To:"",From:''},
+    Wednesday:{To:"",From:''},
+    Thursday:{To:"",From:''},
+    Friday:{To:"",From:''},
+    Saturday:{To:"",From:''},
+    Sunday:{To:"",From:''}
   };
   Standard:any;
   userID:any;
@@ -54,7 +54,7 @@ export class TeacherprofilePage {
         
         // console.log('val :', val );
         this.userID = val.Id;
-        if(this.userData.Usertype == "School"){
+        if(this.userData.RoleId == 6){
           this.Logo = this.LogoUrl+this.userData.LogoPath;
         }else{
           this.Logo = this.LogoUrl+this.userData.ImagePath;
@@ -114,23 +114,10 @@ export class TeacherprofilePage {
     console.log('ionViewDidLoad TeacherprofilePage');
   }
   save(){
-    console.log('schooltabs : ',this.schooltabs);
+
     let body = new FormData();
-    if(this.schooltabs!='peroids'){
-      body.append('Day', this.teacherDay.Day);
-      body.append('TimeSlote', this.teacherDay.TimeSlote);
-      body.append('Standard', this.teacherDay.Standard);
-      body.append('userId', this.userID);
-      body.append('type', 'day');
-    }else{
-      
-      body.append('FromDate', this.teacherPeriod.FromDate);
-      body.append('ToDate', this.teacherPeriod.ToDate);
-      body.append('TimeSlote', this.teacherPeriod.TimeSlote);
-      body.append('Standard', this.teacherPeriod.Standard);
-      body.append('userId', this.userID);
-      body.append('type', 'period');
-    }
+    body.append('Data', JSON.stringify(this.teacherDay));
+    body.append('userId', this.userID);
    
     this.services.saveTeachersettings(body).subscribe(
       //Successfully Logged in
@@ -244,11 +231,7 @@ export class TeacherprofilePage {
         this.teacherDay.TimeSlote.splice(this.teacherDay.TimeSlote.indexOf(value), 1);     
       }
     }else{
-      if(this.teacherPeriod.TimeSlote.indexOf(value)<0){
-        this.teacherPeriod.TimeSlote.push(value);
-      }else{
-        this.teacherPeriod.TimeSlote.splice(this.teacherPeriod.TimeSlote.indexOf(value), 1);     
-      }
+      
     }
     
     if (value == '9:00 -10:00'){

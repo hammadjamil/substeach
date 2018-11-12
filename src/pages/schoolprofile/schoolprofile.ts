@@ -34,7 +34,8 @@ export class SchoolprofilePage {
   userData:any='';
   schoolDay : any ={
     Day :[],
-    TimeSlote :[],
+    TimeSloteTo :[],
+    TimeSloteFrom :[],
     Standard :[],
     Type : 'Days',
     Description :'',
@@ -49,7 +50,8 @@ export class SchoolprofilePage {
     Description :'',
   };
   seldays:any ={Monday:'',Tuesday:'',Wednesday:'',Thursday:'',Friday:'',Saturday:'',Sunday:''};
-  seltimeslots:any={slot1:'',slot2:'',slot3:'',slot4:'',slot5:'',slot6:'',slot7:''};
+  seltimeslotsTo:any={slot1:'',slot2:'',slot3:'',slot4:'',slot5:'',slot6:'',slot7:'',slot8:'',slot9:'',slot10:'',slot11:''};
+  seltimeslotsFrom:any={slot1:'',slot2:'',slot3:'',slot4:'',slot5:'',slot6:'',slot7:'',slot8:'',slot9:'',slot10:'',slot11:''};
   selstandrads:any={};
   Logo:any;
   test:any='';
@@ -96,7 +98,7 @@ export class SchoolprofilePage {
           // console.log('userdata',this.userData);
 
           
-          if(this.userData.Usertype == "School"){
+          if(this.userData.RoleId == 6){
             this.Logo = this.userData.LogoPath;
           }else{
             this.Logo = this.userData.ImagePath;
@@ -155,10 +157,10 @@ export class SchoolprofilePage {
   //   console.log('this.test',this.test);
   // }
 
-  setTab(type){
-    this.seltimeslots={slot1:'',slot2:'',slot3:'',slot4:'',slot5:'',slot6:'',slot7:''};
+  // setTab(type){
+  //   this.seltimeslots={slot1:'',slot2:'',slot3:'',slot4:'',slot5:'',slot6:'',slot7:''};
 
-  }
+  // }
 
 
  getstandrads(){
@@ -257,18 +259,23 @@ export class SchoolprofilePage {
       }, 500);
       return;
     }
-    else if (this.schoolDay.TimeSlote == '') {
+    else if (this.schoolDay.TimeSloteTo == '') {
       setTimeout(() => {
-        this.presentAlert('Alert!', 'Please enter your Time Slote');
+        this.presentAlert('Alert!', 'Please enter your Time Slote To');
+      }, 500);
+      return;
+    }else if (this.schoolDay.TimeSloteFrom == '') {
+      setTimeout(() => {
+        this.presentAlert('Alert!', 'Please enter your Time Slote From');
       }, 500);
       return;
     }
-    else if (this.schoolDay.Standard == '') {
-      setTimeout(() => {
-        this.presentAlert('Alert!', 'Please enter your Standard');
-      }, 500);
-      return;
-    }
+    // else if (this.schoolDay.Standard == '') {
+    //   setTimeout(() => {
+    //     this.presentAlert('Alert!', 'Please enter your Standard');
+    //   }, 500);
+    //   return;
+    // }
     this.storage.set('searchCriteria',this.schoolDay);
     this.navCtrl.push(HomePage);
     
@@ -348,7 +355,7 @@ toggledays(value){
   }
   
   
-  if (value == 'Monday'){
+  if (value == '1'){
     if(this.seldays.Monday=='1'){
       this.seldays.Monday='';
     }
@@ -356,7 +363,7 @@ toggledays(value){
       this.seldays.Monday=1;
     }
   }
-  if (value == 'Tuesday'){
+  if (value == '2'){
     if(this.seldays.Tuesday==1){
       this.seldays.Tuesday='';
     }
@@ -364,7 +371,7 @@ toggledays(value){
       this.seldays.Tuesday=1;
     }
   }
-  if (value == 'Wednesday'){
+  if (value == '3'){
     if(this.seldays.Wednesday==1){
       this.seldays.Wednesday='';
     }
@@ -372,7 +379,7 @@ toggledays(value){
       this.seldays.Wednesday=1;
     }
   }
-  if (value == 'Thursday'){
+  if (value == '4'){
     if(this.seldays.Thursday==1){
       this.seldays.Thursday='';
     }
@@ -380,7 +387,7 @@ toggledays(value){
       this.seldays.Thursday=1;
     }
   }
-  if (value == 'Friday'){
+  if (value == '5'){
     if(this.seldays.Friday==1){
       this.seldays.Friday='';
     }
@@ -388,7 +395,7 @@ toggledays(value){
       this.seldays.Friday=1;
     }
   }
-  if (value == 'Saturday'){
+  if (value == '6'){
     if(this.seldays.Saturday==1){
       this.seldays.Saturday='';
     }
@@ -396,7 +403,7 @@ toggledays(value){
       this.seldays.Saturday=1;
     }
   }
-  if (value == 'Sunday'){
+  if (value == '7'){
     if(this.seldays.Sunday==1){
       this.seldays.Sunday='';
     }
@@ -409,75 +416,207 @@ toggledays(value){
 }
 toggletimeslot(value,type){
   if(type=='day'){
-    if(this.schoolDay.TimeSlote.indexOf(value)<0){
-      this.schoolDay.TimeSlote.push(value);
+    if(this.schoolDay.TimeSloteTo.indexOf(value)<0){
+      this.schoolDay.TimeSloteTo.push(value);
     }else{
-      this.schoolDay.TimeSlote.splice(this.schoolDay.TimeSlote.indexOf(value), 1);     
+      this.schoolDay.TimeSloteTo.splice(this.schoolDay.TimeSloteTo.indexOf(value), 1);     
     }
+
+
+    
+    if (value == '9:00'){
+      if(this.seltimeslotsTo.slot1==1){
+        this.seltimeslotsTo.slot1='';
+      }
+      else{
+        this.seltimeslotsTo.slot1=1;
+      }
+    }
+    if (value == '10:00'){
+      if(this.seltimeslotsTo.slot2==1){
+        this.seltimeslotsTo.slot2='';
+      }
+      else{
+        this.seltimeslotsTo.slot2=1;
+      }
+    }
+    if (value == '11:00'){
+      if(this.seltimeslotsTo.slot3==1){
+        this.seltimeslotsTo.slot3='';
+      }
+      else{
+        this.seltimeslotsTo.slot3=1;
+      }
+    }
+    if (value == '12:00'){
+      if(this.seltimeslotsTo.slot4==1){
+        this.seltimeslotsTo.slot4='';
+      }
+      else{
+        this.seltimeslotsTo.slot4=1;
+      }
+    }
+    if (value == '13:00'){
+      if(this.seltimeslotsTo.slot5==1){
+        this.seltimeslotsTo.slot5='';
+      }
+      else{
+        this.seltimeslotsTo.slot5=1;
+      }
+    }
+    if (value == '14:00'){
+      if(this.seltimeslotsTo.slot6==1){
+        this.seltimeslotsTo.slot6='';
+      }
+      else{
+        this.seltimeslotsTo.slot6=1;
+      }
+    }
+    if (value == '15:00'){
+      if(this.seltimeslotsTo.slot7==1){
+        this.seltimeslotsTo.slot7='';
+      }
+      else{
+        this.seltimeslotsTo.slot7=1;
+      }
+    }
+    if (value == '16:00'){
+      if(this.seltimeslotsTo.slot8==1){
+        this.seltimeslotsTo.slot8='';
+      }
+      else{
+        this.seltimeslotsTo.slot8=1;
+      }
+    }
+    if (value == '17:00'){
+      if(this.seltimeslotsTo.slot9==1){
+        this.seltimeslotsTo.slot9='';
+      }
+      else{
+        this.seltimeslotsTo.slot9=1;
+      }
+    }
+    if (value == '18:00'){
+      if(this.seltimeslotsTo.slot10==1){
+        this.seltimeslotsTo.slot10='';
+      }
+      else{
+        this.seltimeslotsTo.slot10=1;
+      }
+    }
+    if (value == '19:00'){
+      if(this.seltimeslotsTo.slot11==1){
+        this.seltimeslotsTo.slot11='';
+      }
+      else{
+        this.seltimeslotsTo.slot11=1;
+      }
+    }
+
+
   }else{
-    if(this.schoolPeriod.TimeSlote.indexOf(value)<0){
-      this.schoolPeriod.TimeSlote.push(value);
+    if(this.schoolDay.TimeSloteFrom.indexOf(value)<0){
+      this.schoolDay.TimeSloteFrom.push(value);
     }else{
-      this.schoolPeriod.TimeSlote.splice(this.schoolPeriod.TimeSlote.indexOf(value), 1);     
+      this.schoolDay.TimeSloteFrom.splice(this.schoolDay.TimeSloteFrom.indexOf(value), 1);     
     }
+
+
+    if (value == '9:00'){
+      if(this.seltimeslotsFrom.slot1==1){
+        this.seltimeslotsFrom.slot1='';
+      }
+      else{
+        this.seltimeslotsFrom.slot1=1;
+      }
+    }
+    if (value == '10:00'){
+      if(this.seltimeslotsFrom.slot2==1){
+        this.seltimeslotsFrom.slot2='';
+      }
+      else{
+        this.seltimeslotsFrom.slot2=1;
+      }
+    }
+    if (value == '11:00'){
+      if(this.seltimeslotsFrom.slot3==1){
+        this.seltimeslotsFrom.slot3='';
+      }
+      else{
+        this.seltimeslotsFrom.slot3=1;
+      }
+    }
+    if (value == '12:00'){
+      if(this.seltimeslotsFrom.slot4==1){
+        this.seltimeslotsFrom.slot4='';
+      }
+      else{
+        this.seltimeslotsFrom.slot4=1;
+      }
+    }
+    if (value == '13:00'){
+      if(this.seltimeslotsFrom.slot5==1){
+        this.seltimeslotsFrom.slot5='';
+      }
+      else{
+        this.seltimeslotsFrom.slot5=1;
+      }
+    }
+    if (value == '14:00'){
+      if(this.seltimeslotsFrom.slot6==1){
+        this.seltimeslotsFrom.slot6='';
+      }
+      else{
+        this.seltimeslotsFrom.slot6=1;
+      }
+    }
+    if (value == '15:00'){
+      if(this.seltimeslotsFrom.slot7==1){
+        this.seltimeslotsFrom.slot7='';
+      }
+      else{
+        this.seltimeslotsFrom.slot7=1;
+      }
+    }
+    if (value == '16:00'){
+      if(this.seltimeslotsFrom.slot8==1){
+        this.seltimeslotsFrom.slot8='';
+      }
+      else{
+        this.seltimeslotsFrom.slot8=1;
+      }
+    }
+    if (value == '17:00'){
+      if(this.seltimeslotsFrom.slot9==1){
+        this.seltimeslotsFrom.slot9='';
+      }
+      else{
+        this.seltimeslotsFrom.slot9=1;
+      }
+    }
+    if (value == '18:00'){
+      if(this.seltimeslotsFrom.slot10==1){
+        this.seltimeslotsFrom.slot10='';
+      }
+      else{
+        this.seltimeslotsFrom.slot10=1;
+      }
+    }
+    if (value == '19:00'){
+      if(this.seltimeslotsFrom.slot11==1){
+        this.seltimeslotsFrom.slot11='';
+      }
+      else{
+        this.seltimeslotsFrom.slot11=1;
+      }
+    }
+
+
+
+
   }
   
-  if (value == '9:00 -10:00'){
-    if(this.seltimeslots.slot1==1){
-      this.seltimeslots.slot1='';
-    }
-    else{
-      this.seltimeslots.slot1=1;
-    }
-  }
-  if (value == '10:00 -11:00'){
-    if(this.seltimeslots.slot2==1){
-      this.seltimeslots.slot2='';
-    }
-    else{
-      this.seltimeslots.slot2=1;
-    }
-  }
-  if (value == '11:00 -12:00'){
-    if(this.seltimeslots.slot3==1){
-      this.seltimeslots.slot3='';
-    }
-    else{
-      this.seltimeslots.slot3=1;
-    }
-  }
-  if (value == '12:00 -01:00'){
-    if(this.seltimeslots.slot4==1){
-      this.seltimeslots.slot4='';
-    }
-    else{
-      this.seltimeslots.slot4=1;
-    }
-  }
-  if (value == '01:00 -02:00'){
-    if(this.seltimeslots.slot5==1){
-      this.seltimeslots.slot5='';
-    }
-    else{
-      this.seltimeslots.slot5=1;
-    }
-  }
-  if (value == '02:00 -03:00'){
-    if(this.seltimeslots.slot6==1){
-      this.seltimeslots.slot6='';
-    }
-    else{
-      this.seltimeslots.slot6=1;
-    }
-  }
-  if (value == '03:00 -04:00'){
-    if(this.seltimeslots.slot7==1){
-      this.seltimeslots.slot7='';
-    }
-    else{
-      this.seltimeslots.slot7=1;
-    }
-  }
+  
 }
   togglestandrads(value, type){
     if(type=='day'){
@@ -486,12 +625,20 @@ toggletimeslot(value,type){
       }else{
         this.schoolDay.Standard.splice(this.schoolDay.Standard.indexOf(value), 1);     
       }
+
+
+
     }else{
       if(this.schoolPeriod.Standard.indexOf(value)<0){
         this.schoolPeriod.Standard.push(value);
       }else{
         this.schoolPeriod.Standard.splice(this.schoolPeriod.Standard.indexOf(value), 1);     
       }
+
+
+      
+
+
     }
     
     

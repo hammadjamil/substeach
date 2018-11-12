@@ -3,7 +3,7 @@
     <button ion-button menuToggle class="menubtn">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Block List</ion-title>
+    <ion-title>Accept List</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -13,16 +13,18 @@
     <ion-item no-padding *ngFor="let blist of blocklist">
       <ion-thumbnail item-start>
         <img *ngIf="blist.ImagePath=='teachers4.jpg' || blist.ImagePath=='' || blist.ImagePath==null" src="../../assets/imgs/profileimg.jpg" width="30px" height="30px">
-        <img *ngIf="blist.ImagePath!='teachers4.jpg' || blist.ImagePath!='' || blist.ImagePath!=null" [src]="logopath+blist.ImagePath" width="30px" height="30px">
+        <img *ngIf="blist.ImagePath!='teachers4.jpg' && blist.ImagePath!='' && blist.ImagePath!=null" [src]="logopath+blist.ImagePath" width="30px" height="30px">
       </ion-thumbnail>
       <h2>{{blist.FirstName}} {{blist.LastName}}</h2>
-      <button ion-button clear item-end (click)="unblock(blist.blockedID)">Unblock</button>
+      <button ion-button clear item-end *ngIf="blist.isBlocked=='false'" (click)="block(blist.Id,'true')">block</button>
+      <button ion-button clear item-end *ngIf="blist.isBlocked=='true'" (click)="block(blist.Id,'false')">Unblock</button>
+      <!-- <button ion-button clear item-end (click)="book(blist.blockedID)">Book</button> -->
     </ion-item>
   </ion-list>
   <ion-row *ngIf="blocklist=='' || blocklist==null">
     <ion-col col-12 text-center >
         <img src="../../assets/imgs/hold.png" alt="" padding>
-        <p padding>No Block List Found.</p>
+        <p padding>No List Found.</p>
     </ion-col>
   </ion-row>
 </ion-content>
