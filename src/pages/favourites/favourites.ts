@@ -24,13 +24,13 @@ export class FavouritesPage {
     public tools: MyTools,
     private alertCtrl: AlertController,
     private sanitizer: DomSanitizer) {
-      this.storage.get('favlist').then(
+      this.storage.get('user').then(
         (val) => {
           if (val != null) {
-            console.log('favlist',val);
+            console.log('useruser',val);
             this.favList=val.data;
-            // this.userDetail = val;
-            // this.getFav();
+            this.userDetail = val;
+            this.getFav();
           }
         }
       )
@@ -40,24 +40,24 @@ export class FavouritesPage {
     return this.sanitizer.bypassSecurityTrustUrl('data:image/*;charset=utf-8;base64,'+img);
   }
   //Login
-// getFav() {
-//   this.showLoader();
-//   let body = new FormData();
-//   body.append('UserID',this.userDetail.Id);
-//       this.services.getFav(body).subscribe(
-//         //Successfully Logged in
-//         success => {
-//           console.log('success bhai', success);
-//           this.favList = success.data;
-//             this.loader.dismiss();
-//         },
-//         error => {
-//           this.loader.dismiss();
-//           console.log('error bhai', error);
-//           // this.presentAlert('Alert!', error.message);
-//         }
-//       )
-// }
+getFav() {
+  this.showLoader();
+  let body = new FormData();
+  body.append('UserID',this.userDetail.SchoolID);
+      this.services.getFav(body).subscribe(
+        //Successfully Logged in
+        success => {
+          console.log('success bhai', success);
+          this.favList = success.data;
+            this.loader.dismiss();
+        },
+        error => {
+          this.loader.dismiss();
+          console.log('error bhai', error);
+          // this.presentAlert('Alert!', error.message);
+        }
+      )
+}
 presentAlert(title1,msgs) {
   let alert = this.alertCtrl.create({
     title: title1,

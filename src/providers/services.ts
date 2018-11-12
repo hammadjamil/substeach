@@ -60,39 +60,41 @@ export class Services {
   /**
    * Forgot Service
    */
-  forgotpassword(credentials) {
+  // forgotpassword(credentials) {
+  //   console.log('credentials',credentials);
+    
 
-    if (!credentials.email ) {
-      Observable.throw('Please provide credentials');
-    }
-    else {
-      let params: URLSearchParams = new URLSearchParams();
-      params.set('email', credentials.email);
-      return Observable.create(observer => {
-        const url = this.baseUrl + 'forgotPassword';
-        this.http.get(url, {
-          search: params
-        })
-          .map(res => res.json())
-          .subscribe(
-          (response) => {
-            if (response.code != '200') {
-              observer.error(response);
-            }
-            else {
-              observer.next(response);
+  //   if (!credentials.email ) {
+  //     Observable.throw('Please provide credentials');
+  //   }
+  //   else {
+  //     let params: URLSearchParams = new URLSearchParams();
+  //     params.set('email', credentials.email);
+  //     return Observable.create(observer => {
+  //       const url = this.baseUrl + 'forgotPassword';
+  //       this.http.get(url, {
+  //         search: params
+  //       })
+  //         .map(res => res.json())
+  //         .subscribe(
+  //         (response) => {
+  //           if (response.code != '200') {
+  //             observer.error(response);
+  //           }
+  //           else {
+  //             observer.next(response);
 
-            }
-            observer.complete();
+  //           }
+  //           observer.complete();
 
-          },
-          (error) => {
-            observer.error(error);
-          }
-          )
-      })
-    }
-  }
+  //         },
+  //         (error) => {
+  //           observer.error(error);
+  //         }
+  //         )
+  //     })
+  //   }
+  // }
 
   /**
    * logout
@@ -1815,4 +1817,36 @@ updateUserImage(params) {
       })
     }
   }
+
+
+  
+  forgotpassword(email){
+    console.log('credentials', email);
+    if(email){
+      return Observable.create(observer => {
+        const url = this.baseUrl + 'forgotPassword?email='+email;
+        this.http.get(url, {
+        })
+          .map(res => res.json())
+          .subscribe(
+          (response) => {
+            if (response.code != '200') {
+              observer.error(response);
+            }
+            else {
+              observer.next(response);
+  
+            }
+            observer.complete();
+  
+          },
+          (error) => {
+            observer.error(error);
+          }
+          )
+      })
+    }
+  }
+
+    
 }

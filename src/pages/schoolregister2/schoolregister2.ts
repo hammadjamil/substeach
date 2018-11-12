@@ -89,7 +89,11 @@ export class Schoolregister2Page {
       title: title,
       // subTitle: msg,
       message: msgs,
+<<<<<<< HEAD
       buttons: ['OK']
+=======
+      buttons: ['Ok']
+>>>>>>> 6cfeb592e6fdc0fc389e69c7b5bf53b7800b1e19
     });
     alert.present();
   }

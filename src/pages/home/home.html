@@ -38,10 +38,10 @@
         <button style="width:80%;margin-left:10%;height: 40px;" float-left *ngIf="teacher.bookingID!='' && teacher.bookingID!=null" ion-button block class="home_teachers_slide_btn" (click)="inviteTeacher(teacher.userId)">Booking</button>
         <button style="width:80%;margin-left:10%;height: 40px;" float-left *ngIf="teacher.HireDirectly==1 && userDetail.Ispaid=='yes'" ion-button block class="" (click)="hire(teacher.userId)" style="background: transparent !important;color: #a51463;box-shadow: none !important;text-align: right !important;width: 30%;float: right !important;height: 15px;font-weight: 700;position: absolute;top: 10px;right: 5px;font-size: 12px;padding: 0 !important;">Hire Directly</button>
         <button style="width:80%;margin-left:10%;height: 40px;" float-left *ngIf="teacher.bookingID=='' || teacher.bookingID==null" ion-button block class="home_teachers_slide_btn" (click)="inviteTeacher(teacher.userId)">Invite</button>
-        <button *ngIf="userDetail.Ispaid=='yes'" style="position: absolute;background: white !important;color: #a51463;box-shadow: none !important;top: 0;left: 5px;width: 25%;font-size: 14px;" float-left ion-button block class="home_teachers_slide_btn" (click)="block(teacher.userId)">
+        <!-- <button *ngIf="userDetail.Ispaid=='yes'" style="position: absolute;background: white !important;color: #a51463;box-shadow: none !important;top: 0;left: 5px;width: 25%;font-size: 14px;" float-left ion-button block class="home_teachers_slide_btn" (click)="block(teacher.userId)">
           <ion-icon name="ios-information-circle" style="padding-right:5px;color:#a51463;"></ion-icon>
           Block
-        </button>
+        </button> -->
       </ion-slide>
     </div>
   </ion-slides>
