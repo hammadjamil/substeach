@@ -73,7 +73,7 @@ export class Teacherregister2Page {
     let alert = this.alertCtrl.create({
       title: title,
       message: msgs,
-      buttons: ['Dismiss']
+      buttons: ['OK']
     });
     alert.present();
   }

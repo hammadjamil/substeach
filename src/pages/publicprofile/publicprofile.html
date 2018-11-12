@@ -12,8 +12,8 @@
 
 <ion-content >
     <div class="imgprofile" text-center padding>
-      <img *ngIf="profileList.RoleId==6" [src]="LogoUrl+profileList.LogoPath" alt="" style="border-radius: 50%;width: 150px;height: 150px;">
-      <img *ngIf="profileList.RoleId==5" [src]="LogoUrl+profileList.ImagePath" alt="" style="border-radius: 50%;width: 150px;height: 150px;">
+      <img *ngIf="profileList.RoleId==6" [src]="LogoUrl+profileList.LogoPath" alt="" style="border-radius: 50%;width: 150px;height: 150px;    object-fit: cover;">
+      <img *ngIf="profileList.RoleId==5" [src]="LogoUrl+profileList.ImagePath" alt="" style="border-radius: 50%;width: 150px;height: 150px;    object-fit: cover;">
     </div>
   <div class="changepswddiv" *ngIf="profileList!=''&& profileList.RoleId==6">
       <ion-item >

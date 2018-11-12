@@ -32,7 +32,7 @@
         <!-- <p class="home_teachers_slide_cost">
           Rate: $24/hr
         </p> -->
-        <p class="home_teachers_slide_view" (click)="profilepage(teacher.DeputyPersonId)">
+        <p class="home_teachers_slide_view" (click)="profilepage(teacher.TeacherID)">
           Teacher Profile Detail
         </p>
         <button style="width:80%;margin-left:10%;height: 40px;" float-left *ngIf="teacher.bookingID!='' && teacher.bookingID!=null" ion-button block class="home_teachers_slide_btn" (click)="inviteTeacher(teacher.userId)">Booking</button>

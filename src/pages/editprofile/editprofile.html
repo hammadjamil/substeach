@@ -24,7 +24,7 @@
     </div>
   <div *ngIf="profileList.RoleId!=6" class="imgprofile" text-center padding>
       <img *ngIf="profileList.ImagePath=='teachers4.jpg' || profileList.ImagePath=='' || profileList.ImagePath==null" src="../../assets/imgs/profileimg.jpg" alt="" style="border-radius: 50%;width: 150px;height: 150px;">
-      <img  *ngIf="profileList.ImagePath!='teachers4.jpg' || profileList.ImagePath!='' || profileList.ImagePath!=null" [src]="LogoUrl+profileList.ImagePath" alt="" style="border-radius: 50%;width: 150px;height: 150px;">
+      <img  *ngIf="profileList.ImagePath!='teachers4.jpg' && profileList.ImagePath!='' && profileList.ImagePath!=null" [src]="LogoUrl+profileList.ImagePath" alt="" style="border-radius: 50%;width: 150px;height: 150px;">
       <div class="penabs" style="transition-delay: 0s; transition-property: none;">
           <img (click)="uploadPhoto()" src="../../assets/imgs/penimg.png">    
       </div>
