@@ -103,7 +103,7 @@ export class NotificationPage {
       title: title,
       // subTitle: msg,
       message: msgs,
-      buttons: ['Dismiss']
+      buttons: ['OK']
     });
     alert.present();
   }

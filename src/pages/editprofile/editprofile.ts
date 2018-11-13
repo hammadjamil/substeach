@@ -115,7 +115,7 @@ export class EditprofilePage {
     let alert = this.alertCtrl.create({
       title: title1,
       message: msgs,
-      buttons: ['Dismiss']
+      buttons: ['OK']
     });
     alert.present();
   }

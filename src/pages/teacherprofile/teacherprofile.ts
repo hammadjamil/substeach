@@ -51,8 +51,7 @@ export class TeacherprofilePage {
       this.events.publish('user:login');
       this.storage.get('user').then((val) => {
         this.userData = val;
-        
-        // console.log('val :', val );
+        console.log(this.userData);
         this.userID = val.Id;
         if(this.userData.RoleId == 6){
           this.Logo = this.LogoUrl+this.userData.LogoPath;
@@ -87,7 +86,7 @@ export class TeacherprofilePage {
       title: title,
       // subTitle: msg,
       message: msgs,
-      buttons: ['Dismiss']
+      buttons: ['OK']
     });
     alert.present();
   }

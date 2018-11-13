@@ -111,7 +111,7 @@ export class Schoolregister3Page {
       title: title,
       // subTitle: msg,
       message: msgs,
-      buttons: ['Dismiss']
+      buttons: ['OK']
     });
     alert.present();
   }

@@ -5,7 +5,7 @@
           </button> -->
           <button ion-button *ngIf="userData!=''" class="menubtn" float-left (click)="editprofilepage()">
               <img *ngIf="userData.ImagePath=='teachers4.jpg' || userData.ImagePath=='' || userData.ImagePath==null" src="../../assets/imgs/profileimg.jpg" alt="" width="30px" height="30px" style="border-radius:50%">
-              <img *ngIf="userData.ImagePath!='teachers4.jpg' || userData.ImagePath!='' || userData.ImagePath!=null" [src]="LogoUrl+userData.ImagePath" alt="" width="30px" height="30px" style="border-radius:50%">
+              <img *ngIf="userData.ImagePath!='teachers4.jpg' && userData.ImagePath!='' && userData.ImagePath!=null" [src]="LogoUrl+userData.ImagePath" alt="" width="30px" height="30px" style="border-radius:50%">
           </button>
           <ion-title float-left>Teacher Profile</ion-title>
           <button ion-button  class="menubtn" text-right float-right (click)="shownoti()">
@@ -26,337 +26,242 @@
 <ion-content>
     <div >
         <ion-list >
-                <p style="font-size: 20px;text-align: center;font-weight: 600;">Add Availability Days</p>
-                <ion-grid>
-                    <ion-row>
-                      <ion-col>
-                        
-                        <ion-item  class="p-0">
-                            <ion-label style="margin-bottom: 0;margin-right: 10px;text-align: center;">
-                                <ion-icon name="md-calendar"></ion-icon>
-                            </ion-label>
-                            <ion-datetime displayFormat="MM/DD/YYYY"  [min]="myDate" max="2019" [(ngModel)]="teacherDay.ToDate" placeholder="To Available Date" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>
-                        </ion-item>
-
-
-                      </ion-col>
-                      <ion-col>
-
-                        <ion-item  class="p-0">
-                            <ion-label style="margin-bottom: 0;margin-right: 10px;text-align: center;">
-                                <ion-icon name="md-calendar"></ion-icon>
-                            </ion-label>
-                            <ion-datetime displayFormat="MM/DD/YYYY"  [min]="myDate" max="2019" [(ngModel)]="teacherDay.FromDate" placeholder="From Available Date" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>
-                        </ion-item>
-                          
-
-                      </ion-col>
-                    </ion-row>
-
-                    <ion-row>
-                        <ion-col>
-                            Monday
-                        </ion-col>
-                        <ion-col>
-                            <ion-item>
-                                <ion-label>Time To</ion-label>
-                                <ion-select [(ngModel)]="teacherDay.Monday.To">
-                                  <ion-option value="9:00">9:00</ion-option>
-                                  <ion-option value="10:00">10:00</ion-option>
-                                  <ion-option value="11:00">11:00</ion-option>
-                                  <ion-option value="12:00">12:00</ion-option>
-                                  <ion-option value="13:00">13:00</ion-option>
-                                  <ion-option value="14:00">14:00</ion-option>
-                                  <ion-option value="15:00">15:00</ion-option>
-                                  <ion-option value="16:00">16:00</ion-option>
-                                  <ion-option value="17:00">17:00</ion-option>
-                                  <ion-option value="18:00">18:00</ion-option>
-                                  <ion-option value="19:00">19:00</ion-option>
-                                </ion-select>
-                              </ion-item>
-                        </ion-col>
-                        <ion-col>
-                            <ion-item>
-                                <ion-label>Time From</ion-label>
-                                <ion-select [(ngModel)]="teacherDay.Monday.From">
-                                  <ion-option value="9:00">9:00</ion-option>
-                                  <ion-option value="10:00">10:00</ion-option>
-                                  <ion-option value="11:00">11:00</ion-option>
-                                  <ion-option value="12:00">12:00</ion-option>
-                                  <ion-option value="13:00">13:00</ion-option>
-                                  <ion-option value="14:00">14:00</ion-option>
-                                  <ion-option value="15:00">15:00</ion-option>
-                                  <ion-option value="16:00">16:00</ion-option>
-                                  <ion-option value="17:00">17:00</ion-option>
-                                  <ion-option value="18:00">18:00</ion-option>
-                                  <ion-option value="19:00">19:00</ion-option>
-                                </ion-select>
-                              </ion-item>
-                              
-                        </ion-col>
-                    </ion-row>
-
-                    <ion-row>
-                        <ion-col>
-                            Tuesday
-                        </ion-col>
-                        <ion-col>
-                            <ion-item>
-                                <ion-label>Time To</ion-label>
-                                <ion-select [(ngModel)]="teacherDay.Tuesday.To">
-                                  <ion-option value="9:00">9:00</ion-option>
-                                  <ion-option value="10:00">10:00</ion-option>
-                                  <ion-option value="11:00">11:00</ion-option>
-                                  <ion-option value="12:00">12:00</ion-option>
-                                  <ion-option value="13:00">13:00</ion-option>
-                                  <ion-option value="14:00">14:00</ion-option>
-                                  <ion-option value="15:00">15:00</ion-option>
-                                  <ion-option value="16:00">16:00</ion-option>
-                                  <ion-option value="17:00">17:00</ion-option>
-                                  <ion-option value="18:00">18:00</ion-option>
-                                  <ion-option value="19:00">19:00</ion-option>
-                                </ion-select>
-                              </ion-item>
-                        </ion-col>
-                        <ion-col>
-                            <ion-item>
-                                <ion-label>Time From</ion-label>
-                                <ion-select [(ngModel)]="teacherDay.Tuesday.From">
-                                  <ion-option value="9:00">9:00</ion-option>
-                                  <ion-option value="10:00">10:00</ion-option>
-                                  <ion-option value="11:00">11:00</ion-option>
-                                  <ion-option value="12:00">12:00</ion-option>
-                                  <ion-option value="13:00">13:00</ion-option>
-                                  <ion-option value="14:00">14:00</ion-option>
-                                  <ion-option value="15:00">15:00</ion-option>
-                                  <ion-option value="16:00">16:00</ion-option>
-                                  <ion-option value="17:00">17:00</ion-option>
-                                  <ion-option value="18:00">18:00</ion-option>
-                                  <ion-option value="19:00">19:00</ion-option>
-                                </ion-select>
-                              </ion-item>
-                              
-                        </ion-col>
-                    </ion-row>
-
-                    <ion-row>
-                        <ion-col>
-                            Wednesday
-                        </ion-col>
-                        <ion-col>
-                            <ion-item>
-                                <ion-label>Time To</ion-label>
-                                <ion-select [(ngModel)]="teacherDay.Wednesday.To">
-                                  <ion-option value="9:00">9:00</ion-option>
-                                  <ion-option value="10:00">10:00</ion-option>
-                                  <ion-option value="11:00">11:00</ion-option>
-                                  <ion-option value="12:00">12:00</ion-option>
-                                  <ion-option value="13:00">13:00</ion-option>
-                                  <ion-option value="14:00">14:00</ion-option>
-                                  <ion-option value="15:00">15:00</ion-option>
-                                  <ion-option value="16:00">16:00</ion-option>
-                                  <ion-option value="17:00">17:00</ion-option>
-                                  <ion-option value="18:00">18:00</ion-option>
-                                  <ion-option value="19:00">19:00</ion-option>
-                                </ion-select>
-                              </ion-item>
-                        </ion-col>
-                        <ion-col>
-                            <ion-item>
-                                <ion-label>Time From</ion-label>
-                                <ion-select [(ngModel)]="teacherDay.Wednesday.From">
-                                  <ion-option value="9:00">9:00</ion-option>
-                                  <ion-option value="10:00">10:00</ion-option>
-                                  <ion-option value="11:00">11:00</ion-option>
-                                  <ion-option value="12:00">12:00</ion-option>
-                                  <ion-option value="13:00">13:00</ion-option>
-                                  <ion-option value="14:00">14:00</ion-option>
-                                  <ion-option value="15:00">15:00</ion-option>
-                                  <ion-option value="16:00">16:00</ion-option>
-                                  <ion-option value="17:00">17:00</ion-option>
-                                  <ion-option value="18:00">18:00</ion-option>
-                                  <ion-option value="19:00">19:00</ion-option>
-                                </ion-select>
-                              </ion-item>
-                              
-                        </ion-col>
-                    </ion-row>
-
-                    <ion-row>
-                        <ion-col>
-                            Thursday
-                        </ion-col>
-                        <ion-col>
-                            <ion-item>
-                                <ion-label>Time To</ion-label>
-                                <ion-select [(ngModel)]="teacherDay.Thursday.To">
-                                  <ion-option value="9:00">9:00</ion-option>
-                                  <ion-option value="10:00">10:00</ion-option>
-                                  <ion-option value="11:00">11:00</ion-option>
-                                  <ion-option value="12:00">12:00</ion-option>
-                                  <ion-option value="13:00">13:00</ion-option>
-                                  <ion-option value="14:00">14:00</ion-option>
-                                  <ion-option value="15:00">15:00</ion-option>
-                                  <ion-option value="16:00">16:00</ion-option>
-                                  <ion-option value="17:00">17:00</ion-option>
-                                  <ion-option value="18:00">18:00</ion-option>
-                                  <ion-option value="19:00">19:00</ion-option>
-                                </ion-select>
-                              </ion-item>
-                        </ion-col>
-                        <ion-col>
-                            <ion-item>
-                                <ion-label>Time From</ion-label>
-                                <ion-select [(ngModel)]="teacherDay.Thursday.From">
-                                  <ion-option value="9:00">9:00</ion-option>
-                                  <ion-option value="10:00">10:00</ion-option>
-                                  <ion-option value="11:00">11:00</ion-option>
-                                  <ion-option value="12:00">12:00</ion-option>
-                                  <ion-option value="13:00">13:00</ion-option>
-                                  <ion-option value="14:00">14:00</ion-option>
-                                  <ion-option value="15:00">15:00</ion-option>
-                                  <ion-option value="16:00">16:00</ion-option>
-                                  <ion-option value="17:00">17:00</ion-option>
-                                  <ion-option value="18:00">18:00</ion-option>
-                                  <ion-option value="19:00">19:00</ion-option>
-                                </ion-select>
-                              </ion-item>
-                              
-                        </ion-col>
-                    </ion-row>
-
-                    <ion-row>
-                        <ion-col>
-                            Friday
-                        </ion-col>
-                        <ion-col>
-                            <ion-item>
-                                <ion-label>Time To</ion-label>
-                                <ion-select [(ngModel)]="teacherDay.Friday.To">
-                                  <ion-option value="9:00">9:00</ion-option>
-                                  <ion-option value="10:00">10:00</ion-option>
-                                  <ion-option value="11:00">11:00</ion-option>
-                                  <ion-option value="12:00">12:00</ion-option>
-                                  <ion-option value="13:00">13:00</ion-option>
-                                  <ion-option value="14:00">14:00</ion-option>
-                                  <ion-option value="15:00">15:00</ion-option>
-                                  <ion-option value="16:00">16:00</ion-option>
-                                  <ion-option value="17:00">17:00</ion-option>
-                                  <ion-option value="18:00">18:00</ion-option>
-                                  <ion-option value="19:00">19:00</ion-option>
-                                </ion-select>
-                              </ion-item>
-                        </ion-col>
-                        <ion-col>
-                            <ion-item>
-                                <ion-label>Time From</ion-label>
-                                <ion-select [(ngModel)]="teacherDay.Friday.From">
-                                  <ion-option value="9:00">9:00</ion-option>
-                                  <ion-option value="10:00">10:00</ion-option>
-                                  <ion-option value="11:00">11:00</ion-option>
-                                  <ion-option value="12:00">12:00</ion-option>
-                                  <ion-option value="13:00">13:00</ion-option>
-                                  <ion-option value="14:00">14:00</ion-option>
-                                  <ion-option value="15:00">15:00</ion-option>
-                                  <ion-option value="16:00">16:00</ion-option>
-                                  <ion-option value="17:00">17:00</ion-option>
-                                  <ion-option value="18:00">18:00</ion-option>
-                                  <ion-option value="19:00">19:00</ion-option>
-                                </ion-select>
-                              </ion-item>
-                              
-                        </ion-col>
-                    </ion-row>
-
-                    <ion-row>
-                        <ion-col>
-                            Saturday
-                        </ion-col>
-                        <ion-col>
-                            <ion-item>
-                                <ion-label>Time To</ion-label>
-                                <ion-select [(ngModel)]="teacherDay.Saturday.To">
-                                  <ion-option value="9:00">9:00</ion-option>
-                                  <ion-option value="10:00">10:00</ion-option>
-                                  <ion-option value="11:00">11:00</ion-option>
-                                  <ion-option value="12:00">12:00</ion-option>
-                                  <ion-option value="13:00">13:00</ion-option>
-                                  <ion-option value="14:00">14:00</ion-option>
-                                  <ion-option value="15:00">15:00</ion-option>
-                                  <ion-option value="16:00">16:00</ion-option>
-                                  <ion-option value="17:00">17:00</ion-option>
-                                  <ion-option value="18:00">18:00</ion-option>
-                                  <ion-option value="19:00">19:00</ion-option>
-                                </ion-select>
-                              </ion-item>
-                        </ion-col>
-                        <ion-col>
-                            <ion-item>
-                                <ion-label>Time From</ion-label>
-                                <ion-select [(ngModel)]="teacherDay.Saturday.From">
-                                  <ion-option value="9:00">9:00</ion-option>
-                                  <ion-option value="10:00">10:00</ion-option>
-                                  <ion-option value="11:00">11:00</ion-option>
-                                  <ion-option value="12:00">12:00</ion-option>
-                                  <ion-option value="13:00">13:00</ion-option>
-                                  <ion-option value="14:00">14:00</ion-option>
-                                  <ion-option value="15:00">15:00</ion-option>
-                                  <ion-option value="16:00">16:00</ion-option>
-                                  <ion-option value="17:00">17:00</ion-option>
-                                  <ion-option value="18:00">18:00</ion-option>
-                                  <ion-option value="19:00">19:00</ion-option>
-                                </ion-select>
-                              </ion-item>
-                              
-                        </ion-col>
-                    </ion-row>
-
-                    <ion-row>
-                        <ion-col>
-                            Sunday
-                        </ion-col>
-                        <ion-col>
-                            <ion-item>
-                                <ion-label>Time To</ion-label>
-                                <ion-select [(ngModel)]="teacherDay.Sunday.To">
-                                  <ion-option value="9:00">9:00</ion-option>
-                                  <ion-option value="10:00">10:00</ion-option>
-                                  <ion-option value="11:00">11:00</ion-option>
-                                  <ion-option value="12:00">12:00</ion-option>
-                                  <ion-option value="13:00">13:00</ion-option>
-                                  <ion-option value="14:00">14:00</ion-option>
-                                  <ion-option value="15:00">15:00</ion-option>
-                                  <ion-option value="16:00">16:00</ion-option>
-                                  <ion-option value="17:00">17:00</ion-option>
-                                  <ion-option value="18:00">18:00</ion-option>
-                                  <ion-option value="19:00">19:00</ion-option>
-                                </ion-select>
-                              </ion-item>
-                        </ion-col>
-                        <ion-col>
-                            <ion-item>
-                                <ion-label>Time From</ion-label>
-                                <ion-select [(ngModel)]="teacherDay.Sunday.From">
-                                  <ion-option value="9:00">9:00</ion-option>
-                                  <ion-option value="10:00">10:00</ion-option>
-                                  <ion-option value="11:00">11:00</ion-option>
-                                  <ion-option value="12:00">12:00</ion-option>
-                                  <ion-option value="13:00">13:00</ion-option>
-                                  <ion-option value="14:00">14:00</ion-option>
-                                  <ion-option value="15:00">15:00</ion-option>
-                                  <ion-option value="16:00">16:00</ion-option>
-                                  <ion-option value="17:00">17:00</ion-option>
-                                  <ion-option value="18:00">18:00</ion-option>
-                                  <ion-option value="19:00">19:00</ion-option>
-                                </ion-select>
-                              </ion-item>
-                              
-                        </ion-col>
-                    </ion-row>
-
-
-                </ion-grid>
-
+            <p style="font-size: 20px;text-align: center;font-weight: 600;">Add Availability Days</p>
+            <ion-item  class="p-0 col-12">
+                <ion-label style="margin-bottom: 0;margin-right: 10px;text-align: center;">
+                    <ion-icon name="md-calendar"></ion-icon>
+                </ion-label>
+                <ion-datetime displayFormat="MM/DD/YYYY"  [min]="myDate" max="2019" [(ngModel)]="teacherDay.ToDate" placeholder="To Available Date" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>
+            </ion-item>
+            <ion-item  class="p-0 col-12">
+                <ion-label style="margin-bottom: 0;margin-right: 10px;text-align: center;">
+                    <ion-icon name="md-calendar"></ion-icon>
+                </ion-label>
+                <ion-datetime displayFormat="MM/DD/YYYY"  [min]="myDate" max="2019" [(ngModel)]="teacherDay.FromDate" placeholder="From Available Date" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>
+            </ion-item>
+            <div class="col-3 float-left pl-0 pt-3 pr-1">Monday</div>
+            <ion-item class="col-4 pl-2 float-left mr-4">
+                <ion-select placeholder="Time From" [(ngModel)]="teacherDay.Monday.From">
+                    <ion-option value="9:00">9:00</ion-option>
+                    <ion-option value="10:00">10:00</ion-option>
+                    <ion-option value="11:00">11:00</ion-option>
+                    <ion-option value="12:00">12:00</ion-option>
+                    <ion-option value="13:00">13:00</ion-option>
+                    <ion-option value="14:00">14:00</ion-option>
+                    <ion-option value="15:00">15:00</ion-option>
+                    <ion-option value="16:00">16:00</ion-option>
+                    <ion-option value="17:00">17:00</ion-option>
+                    <ion-option value="18:00">18:00</ion-option>
+                    <ion-option value="19:00">19:00</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item class="col-4 pl-2 float-left" > 
+                <ion-select placeholder="Time To" [(ngModel)]="teacherDay.Monday.To">
+                    <ion-option value="9:00">9:00</ion-option>
+                    <ion-option value="10:00">10:00</ion-option>
+                    <ion-option value="11:00">11:00</ion-option>
+                    <ion-option value="12:00">12:00</ion-option>
+                    <ion-option value="13:00">13:00</ion-option>
+                    <ion-option value="14:00">14:00</ion-option>
+                    <ion-option value="15:00">15:00</ion-option>
+                    <ion-option value="16:00">16:00</ion-option>
+                    <ion-option value="17:00">17:00</ion-option>
+                    <ion-option value="18:00">18:00</ion-option>
+                    <ion-option value="19:00">19:00</ion-option>
+                </ion-select>
+            </ion-item>
+            
+            <div class="col-3 float-left pl-0 pt-3 pr-1">Tuesday</div>
+            <ion-item class="col-4 pl-2 float-left  mr-4">
+                <ion-select placeholder="Time From" [(ngModel)]="teacherDay.Tuesday.From">
+                    <ion-option value="9:00">9:00</ion-option>
+                    <ion-option value="10:00">10:00</ion-option>
+                    <ion-option value="11:00">11:00</ion-option>
+                    <ion-option value="12:00">12:00</ion-option>
+                    <ion-option value="13:00">13:00</ion-option>
+                    <ion-option value="14:00">14:00</ion-option>
+                    <ion-option value="15:00">15:00</ion-option>
+                    <ion-option value="16:00">16:00</ion-option>
+                    <ion-option value="17:00">17:00</ion-option>
+                    <ion-option value="18:00">18:00</ion-option>
+                    <ion-option value="19:00">19:00</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item class="col-4 pl-2 float-left">
+                <ion-select placeholder="Time To" [(ngModel)]="teacherDay.Tuesday.To">
+                    <ion-option value="9:00">9:00</ion-option>
+                    <ion-option value="10:00">10:00</ion-option>
+                    <ion-option value="11:00">11:00</ion-option>
+                    <ion-option value="12:00">12:00</ion-option>
+                    <ion-option value="13:00">13:00</ion-option>
+                    <ion-option value="14:00">14:00</ion-option>
+                    <ion-option value="15:00">15:00</ion-option>
+                    <ion-option value="16:00">16:00</ion-option>
+                    <ion-option value="17:00">17:00</ion-option>
+                    <ion-option value="18:00">18:00</ion-option>
+                    <ion-option value="19:00">19:00</ion-option>
+                </ion-select>
+            </ion-item>
+            
+            <div class="col-3 float-left pl-0 pt-3 pr-1">Wednesday</div> 
+            <ion-item class="col-4 pl-2 float-left  mr-4">
+                <ion-select placeholder="Time From" [(ngModel)]="teacherDay.Wednesday.From">
+                    <ion-option value="9:00">9:00</ion-option>
+                    <ion-option value="10:00">10:00</ion-option>
+                    <ion-option value="11:00">11:00</ion-option>
+                    <ion-option value="12:00">12:00</ion-option>
+                    <ion-option value="13:00">13:00</ion-option>
+                    <ion-option value="14:00">14:00</ion-option>
+                    <ion-option value="15:00">15:00</ion-option>
+                    <ion-option value="16:00">16:00</ion-option>
+                    <ion-option value="17:00">17:00</ion-option>
+                    <ion-option value="18:00">18:00</ion-option>
+                    <ion-option value="19:00">19:00</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item class="col-4 pl-2 float-left">
+                <ion-select placeholder="Time To" [(ngModel)]="teacherDay.Wednesday.To">
+                    <ion-option value="9:00">9:00</ion-option>
+                    <ion-option value="10:00">10:00</ion-option>
+                    <ion-option value="11:00">11:00</ion-option>
+                    <ion-option value="12:00">12:00</ion-option>
+                    <ion-option value="13:00">13:00</ion-option>
+                    <ion-option value="14:00">14:00</ion-option>
+                    <ion-option value="15:00">15:00</ion-option>
+                    <ion-option value="16:00">16:00</ion-option>
+                    <ion-option value="17:00">17:00</ion-option>
+                    <ion-option value="18:00">18:00</ion-option>
+                    <ion-option value="19:00">19:00</ion-option>
+                </ion-select>
+            </ion-item>
+            
+            <div class="col-3 float-left pl-0 pt-3 pr-1">Thursday</div>
+            <ion-item class="col-4 pl-2 float-left  mr-4">
+                <ion-select placeholder="Time From" [(ngModel)]="teacherDay.Thursday.From">
+                    <ion-option value="9:00">9:00</ion-option>
+                    <ion-option value="10:00">10:00</ion-option>
+                    <ion-option value="11:00">11:00</ion-option>
+                    <ion-option value="12:00">12:00</ion-option>
+                    <ion-option value="13:00">13:00</ion-option>
+                    <ion-option value="14:00">14:00</ion-option>
+                    <ion-option value="15:00">15:00</ion-option>
+                    <ion-option value="16:00">16:00</ion-option>
+                    <ion-option value="17:00">17:00</ion-option>
+                    <ion-option value="18:00">18:00</ion-option>
+                    <ion-option value="19:00">19:00</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item class="col-4 pl-2 float-left">
+                <ion-select placeholder="Time To" [(ngModel)]="teacherDay.Thursday.To">
+                    <ion-option value="9:00">9:00</ion-option>
+                    <ion-option value="10:00">10:00</ion-option>
+                    <ion-option value="11:00">11:00</ion-option>
+                    <ion-option value="12:00">12:00</ion-option>
+                    <ion-option value="13:00">13:00</ion-option>
+                    <ion-option value="14:00">14:00</ion-option>
+                    <ion-option value="15:00">15:00</ion-option>
+                    <ion-option value="16:00">16:00</ion-option>
+                    <ion-option value="17:00">17:00</ion-option>
+                    <ion-option value="18:00">18:00</ion-option>
+                    <ion-option value="19:00">19:00</ion-option>
+                </ion-select>
+            </ion-item>
+            
+            <div class="col-3 float-left pl-0 pt-3 pr-1">Friday</div>
+            <ion-item class="col-4 pl-2 float-left mr-4">
+                <ion-select placeholder="Time From" [(ngModel)]="teacherDay.Friday.From">
+                    <ion-option value="9:00">9:00</ion-option>
+                    <ion-option value="10:00">10:00</ion-option>
+                    <ion-option value="11:00">11:00</ion-option>
+                    <ion-option value="12:00">12:00</ion-option>
+                    <ion-option value="13:00">13:00</ion-option>
+                    <ion-option value="14:00">14:00</ion-option>
+                    <ion-option value="15:00">15:00</ion-option>
+                    <ion-option value="16:00">16:00</ion-option>
+                    <ion-option value="17:00">17:00</ion-option>
+                    <ion-option value="18:00">18:00</ion-option>
+                    <ion-option value="19:00">19:00</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item class="col-4 pl-2 float-left">
+                <ion-select placeholder="Time To" [(ngModel)]="teacherDay.Friday.To">
+                    <ion-option value="9:00">9:00</ion-option>
+                    <ion-option value="10:00">10:00</ion-option>
+                    <ion-option value="11:00">11:00</ion-option>
+                    <ion-option value="12:00">12:00</ion-option>
+                    <ion-option value="13:00">13:00</ion-option>
+                    <ion-option value="14:00">14:00</ion-option>
+                    <ion-option value="15:00">15:00</ion-option>
+                    <ion-option value="16:00">16:00</ion-option>
+                    <ion-option value="17:00">17:00</ion-option>
+                    <ion-option value="18:00">18:00</ion-option>
+                    <ion-option value="19:00">19:00</ion-option>
+                </ion-select>
+            </ion-item>
+            
+            <div class="col-3 float-left pl-0 pt-3 pr-1">Saturday</div>
+            <ion-item class="col-4 pl-2 float-left mr-4">
+                <ion-select placeholder="Time From" [(ngModel)]="teacherDay.Saturday.From">
+                    <ion-option value="9:00">9:00</ion-option>
+                    <ion-option value="10:00">10:00</ion-option>
+                    <ion-option value="11:00">11:00</ion-option>
+                    <ion-option value="12:00">12:00</ion-option>
+                    <ion-option value="13:00">13:00</ion-option>
+                    <ion-option value="14:00">14:00</ion-option>
+                    <ion-option value="15:00">15:00</ion-option>
+                    <ion-option value="16:00">16:00</ion-option>
+                    <ion-option value="17:00">17:00</ion-option>
+                    <ion-option value="18:00">18:00</ion-option>
+                    <ion-option value="19:00">19:00</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item class="col-4 pl-2 float-left">
+                <ion-select placeholder="Time To" [(ngModel)]="teacherDay.Saturday.To">
+                    <ion-option value="9:00">9:00</ion-option>
+                    <ion-option value="10:00">10:00</ion-option>
+                    <ion-option value="11:00">11:00</ion-option>
+                    <ion-option value="12:00">12:00</ion-option>
+                    <ion-option value="13:00">13:00</ion-option>
+                    <ion-option value="14:00">14:00</ion-option>
+                    <ion-option value="15:00">15:00</ion-option>
+                    <ion-option value="16:00">16:00</ion-option>
+                    <ion-option value="17:00">17:00</ion-option>
+                    <ion-option value="18:00">18:00</ion-option>
+                    <ion-option value="19:00">19:00</ion-option>
+                </ion-select>
+            </ion-item>
+            
+            <div class="col-3 float-left pl-0 pt-3 pr-1">Sunday</div>
+            <ion-item class="col-4 pl-2 float-left mr-4">
+                <ion-select placeholder="Time From" [(ngModel)]="teacherDay.Sunday.From">
+                    <ion-option value="9:00">9:00</ion-option>
+                    <ion-option value="10:00">10:00</ion-option>
+                    <ion-option value="11:00">11:00</ion-option>
+                    <ion-option value="12:00">12:00</ion-option>
+                    <ion-option value="13:00">13:00</ion-option>
+                    <ion-option value="14:00">14:00</ion-option>
+                    <ion-option value="15:00">15:00</ion-option>
+                    <ion-option value="16:00">16:00</ion-option>
+                    <ion-option value="17:00">17:00</ion-option>
+                    <ion-option value="18:00">18:00</ion-option>
+                    <ion-option value="19:00">19:00</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item class="col-4 pl-2 float-left">
+                <ion-select placeholder="Time To" [(ngModel)]="teacherDay.Sunday.To">
+                    <ion-option value="9:00">9:00</ion-option>
+                    <ion-option value="10:00">10:00</ion-option>
+                    <ion-option value="11:00">11:00</ion-option>
+                    <ion-option value="12:00">12:00</ion-option>
+                    <ion-option value="13:00">13:00</ion-option>
+                    <ion-option value="14:00">14:00</ion-option>
+                    <ion-option value="15:00">15:00</ion-option>
+                    <ion-option value="16:00">16:00</ion-option>
+                    <ion-option value="17:00">17:00</ion-option>
+                    <ion-option value="18:00">18:00</ion-option>
+                    <ion-option value="19:00">19:00</ion-option>
+                </ion-select>
+            </ion-item>
             
               <!-- <ion-item>
                 <ion-label>Days</ion-label>
@@ -370,8 +275,6 @@
                   <ion-option value="Sunday">Sunday</ion-option>
                 </ion-select>
               </ion-item> -->
-              
-              
               <!-- <ion-item>
                 <ion-label>Standrads</ion-label>
                   <ion-select [(ngModel)]="teacherDay.Standard" multiple="true">
