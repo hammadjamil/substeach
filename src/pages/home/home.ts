@@ -176,7 +176,10 @@ teacherService() {
   
 }
 
-addToFav(dID){
+addToFav(dID,index)
+
+{
+  console.log('index',index);
   this.showLoader();
   //Applying Validations
   let body = new FormData();

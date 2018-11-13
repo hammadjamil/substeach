@@ -17,8 +17,8 @@
         </div>
         <h1 class="home_teachers_slide_name">{{teacher.FirstName+' '+teacher.LastName}} 
           <span *ngIf="userDetail.Ispaid=='yes'">
-            <ion-icon *ngIf="teacher.favId=='' || teacher.favId==null" float-right (click)="addToFav(teacher.TeacherID)" name="ios-heart-outline"></ion-icon>
-            <ion-icon *ngIf="teacher.favId!='' && teacher.favId!=null" float-right (click)="addToFav(teacher.TeacherID)" name="ios-heart"></ion-icon>
+            <ion-icon *ngIf="teacher.favId=='' || teacher.favId==null" float-right (click)="addToFav(teacher.TeacherID,teacher.key)" name="ios-heart-outline"></ion-icon>
+            <ion-icon *ngIf="teacher.favId!='' && teacher.favId!=null" float-right (click)="addToFav(teacher.TeacherID,teacher.key)" name="ios-heart"></ion-icon>
           </span>
         </h1>
         <p class="home_teachers_slide_reviews"  *ngIf="userDetail.Ispaid=='no'" float-left style="width:100%;">Top Review </p>        
