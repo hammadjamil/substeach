@@ -32,6 +32,17 @@ export class SchoolprofilePage {
   schooltabs: string = "days";
   noticountdata:any='';
   userData:any='';
+  teacherDay : any ={
+    FromDate :'',
+    ToDate :'',
+    Monday:{To:"",From:''},
+    Tuesday:{To:"",From:''},
+    Wednesday:{To:"",From:''},
+    Thursday:{To:"",From:''},
+    Friday:{To:"",From:''},
+    Saturday:{To:"",From:''},
+    Sunday:{To:"",From:''}
+  };
   schoolDay : any ={
     Day :[],
     TimeSloteTo :[],
@@ -86,17 +97,6 @@ export class SchoolprofilePage {
           this.userData=val;
           console.log(val);
           
-          // this.storage.get('searchCriteriadays').then((daysdata) => {
-            // this.datasavedays=daysdata;
-            // this.storage.get('searchCriteriaperiods').then((periodsdata) => {
-              // this.datasaveperiods=periodsdata;
-              // this.storage.get('selectdays').then((selectdays) => {
-                // this.seldays=selectdays;
-                // this.storage.get('selectperiods').then((selectperiods) => {
-                  // this.seltimeslots=selectperiods;
-                  // this.storage.get('selectstandrads').then((selectstandrads) => {
-          // console.log('userdata',this.userData);
-
           
           if(this.userData.RoleId == 6){
             this.Logo = this.userData.LogoPath;
@@ -106,17 +106,7 @@ export class SchoolprofilePage {
 
           console.log('fff',this.Logo);
           
-                    // this.schoolDay.Standard=periodsdata;
-                    // console.log('this.datasaveperiods',this.datasaveperiods);
-                    // console.log('this.datasavedays',this.datasavedays);
-                    // console.log('this.seldays',this.seldays);
-                    // console.log('this.seltimeslots',this.seltimeslots);
-                    // console.log('this.schoolDay.Standard',this.schoolDay.Standard);
-          //         });
-          //       });
-          //     });
-          //   });
-          // });
+                    
           setTimeout(() => {
             this.getFav();
             this.getstandrads();
@@ -124,44 +114,9 @@ export class SchoolprofilePage {
           }, 500);
       });
     
-    // home page data
-    // this.ref.on('value', resp => {
-    //   this.rooms = [];
-    //   this.rooms = snapshotToArray(resp);
-    // });
-    // //this.teacherService();
-    // this.storage.get('user').then(
-    //   (val) => {
-    //     if (val != null) {
-    //       console.log(val);
-    //       this.data.nickname = val.UserName;
-    //       this.userDetail = val;
-    //     }
-    //   }
-    // )
-    // this.storage.get('searchCriteria').then(
-    //   (val) => {
-    //     if (val != null) {
-    //       console.log('val',val);
-    //       this.searchCriteria = val;
-    //       if(val.Type=='Days')
-    //         this.matchByDay1();
-    //       else
-    //       this.matchByPeriod2();
-    //     }
-    //   }
-    // )
-    // home page data
+    
   }
-  // changestate(eve){
-  //   console.log('this.test',this.test);
-  // }
-
-  // setTab(type){
-  //   this.seltimeslots={slot1:'',slot2:'',slot3:'',slot4:'',slot5:'',slot6:'',slot7:''};
-
-  // }
-
+  
 
  getstandrads(){
   this.services.getStandards().subscribe(
@@ -183,56 +138,7 @@ export class SchoolprofilePage {
     }
   )
   }
-  // homepagefun(){
-  //   console.log('this.test',this.test);
-       
-  //     this.storage.get('user').then((val) => {
-  //         this.userData=val;
-  //         this.storage.get('searchCriteriadays').then((daysdata) => {
-  //           this.datasavedays=daysdata;
-  //           this.storage.get('searchCriteriaperiods').then((periodsdata) => {
-  //             this.datasaveperiods=periodsdata;
-  //             this.storage.get('selectdays').then((selectdays) => {
-  //               this.seldays=selectdays;
-  //               this.storage.get('selectperiods').then((selectperiods) => {
-  //                 this.seltimeslots=selectperiods;
-  //                 this.storage.get('selectstandrads').then((selectstandrads) => {
-  //                   this.storage.get('user').then(
-  //                     (val) => {
-  //                       if (val != null) {
-  //                         console.log(val);
-  //                         this.data.nickname = val.UserName;
-  //                         this.userDetail = val;
-  //                       }
-  //                     }
-  //                   )
-  //                   this.storage.get('searchCriteria').then(
-  //                     (val) => {
-  //                       if (val != null) {
-  //                         console.log('val',val);
-  //                         this.searchCriteria = val;
-  //                         if(val.Type=='Days')
-  //                           this.matchByDay1();
-  //                         else
-  //                         this.matchByPeriod2();
-  //                       }
-  //                     }
-  //                   )
-  //                   // this.schoolDay.Standard=periodsdata;
-  //                   console.log('this.datasaveperiods',this.datasaveperiods);
-  //                   console.log('this.datasavedays',this.datasavedays);
-  //                   console.log('this.seldays',this.seldays);
-  //                   console.log('this.seltimeslots',this.seltimeslots);
-  //                   // console.log('this.schoolDay.Standard',this.schoolDay.Standard);
-  //                 });
-  //               });
-  //             });
-  //           });
-  //         });
-  //     });
-  //   //this.teacherService();
-    
-  // }
+  
   // loader
   getLoader() {
     console.log('showing loader now');
@@ -252,47 +158,35 @@ export class SchoolprofilePage {
   }
 
   matchByDay(){
-    if (this.schoolDay.Day == '') {
-      // this.loader.dismiss();
-      setTimeout(() => {
-        this.presentAlert('Alert!', 'Please enter Day');
-      }, 500);
-      return;
-    }
-    else if (this.schoolDay.TimeSloteTo == '') {
-      setTimeout(() => {
-        this.presentAlert('Alert!', 'Please enter your Time Slote To');
-      }, 500);
-      return;
-    }else if (this.schoolDay.TimeSloteFrom == '') {
-      setTimeout(() => {
-        this.presentAlert('Alert!', 'Please enter your Time Slote From');
-      }, 500);
-      return;
-    }
+    // if (this.schoolDay.Day == '') {
+    //   // this.loader.dismiss();
+    //   setTimeout(() => {
+    //     this.presentAlert('Alert!', 'Please enter Day');
+    //   }, 500);
+    //   return;
+    // }
+    // else if (this.schoolDay.TimeSloteTo == '') {
+    //   setTimeout(() => {
+    //     this.presentAlert('Alert!', 'Please enter your Time Slote To');
+    //   }, 500);
+    //   return;
+    // }else if (this.schoolDay.TimeSloteFrom == '') {
+    //   setTimeout(() => {
+    //     this.presentAlert('Alert!', 'Please enter your Time Slote From');
+    //   }, 500);
+    //   return;
+    // }
     // else if (this.schoolDay.Standard == '') {
     //   setTimeout(() => {
     //     this.presentAlert('Alert!', 'Please enter your Standard');
     //   }, 500);
     //   return;
     // }
-    this.storage.set('searchCriteria',this.schoolDay);
+    this.storage.set('searchCriteria',this.teacherDay);
     this.navCtrl.push(HomePage);
     
   }
-  // matchByPeriod1(){
-  //   this.storage.set('searchCriteriadays',this.schoolDay);
-  //   this.storage.set('searchCriteriaperiods',this.schoolPeriod);
-  //   this.storage.set('selectdays',this.seldays);
-  //   this.storage.set('selectperiods',this.seltimeslots);
-  //   this.storage.set('selectstandrads',this.schoolDay.Standard);
-  //   console.log('schoolDay : ',this.schoolDay);
-  //   console.log('schoolPeriod : ',this.schoolPeriod);
-  //   console.log('selectdays : ',this.seldays);
-  //   console.log('selectperiods : ',this.seltimeslots);
-  //   console.log('selectstandrads : ',this.schoolDay.Standard);
-  //   // this.homepagefun();
-  // }
+ 
 
   matchByPeriod(){
     if (this.schoolPeriod.ToDate == '') {
