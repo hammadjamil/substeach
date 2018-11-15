@@ -1817,6 +1817,35 @@ updateUserImage(params) {
       })
     }
   }
+  book(SchoolID,TeacherID){
+    console.log('book SchoolID', SchoolID);
+    console.log('book TeacherID', TeacherID);
+    
+      return Observable.create(observer => {
+        const url = 'http://setchemdemo.ezsoftpk.com/SchoolSubtituionApi/api/services.php/bookings?SchoolID='+SchoolID+'&TeacherID='+TeacherID;
+        this.http.get(url, {
+          search: ''
+        })
+          .map(res => res.json())
+          .subscribe(
+          (response) => {
+            if (response.code != '200') {
+              observer.error(response);
+            }
+            else {
+              observer.next(response);
+  
+            }
+            observer.complete();
+  
+          },
+          (error) => {
+            observer.error(error);
+          }
+          )
+      })
+    
+  }
 
 
   
