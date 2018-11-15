@@ -29,6 +29,7 @@ export class BookinglistPage {
     public services: Services,
     public tools: MyTools) {
       this.ref.on('value', resp => {
+        this.getbookinglist()
         this.rooms = [];
         this.rooms = snapshotToArray(resp);
       });
@@ -45,16 +46,10 @@ export class BookinglistPage {
     )
   }
   getbookinglist(){
-    let body = new FormData();
-    body.append('SchoolID', this.userDetail.username);
-    body.append('TeacherID', this.userDetail.email);
-    body.append('SubjectId', this.userDetail.confemail);
-    body.append('StandardId', this.userDetail.pswd);
-    body.append('TimeFor', this.userDetail.pswd);
-    body.append('DateFor', this.userDetail.pswd);
-    this.services.register(body).subscribe(
+    this.services.bookinglist(this.userDetail.Id).subscribe(
+      //Successfully Logged in
       success => {
-        console.log('success booking ::: ',success);
+        console.log('success bhai', success);
       },
       error => {
         console.log('error bhai', error);

@@ -32,10 +32,9 @@
       </ion-item>
       <ion-item  class="p-0">
         <ion-label style="color: #9c9c9c !important;background: transparent !important;padding: 0;margin: 0 !important;text-align: center;width: 50px;text-align: left;">
-          <ion-icon name="ios-flag" style="width: 50px;padding: 13px;text-align:center;background: #a51463;color: white;margin-right: 13px;"></ion-icon> Billing Country
+          <ion-icon name="ios-flag" style="width: 50px;padding: 13px;text-align:center;background: #a51463;color: white;margin-right: 13px;"></ion-icon>
         </ion-label>
-        
-        <ion-select [(ngModel)]="user.BillingCountry">
+        <ion-select [(ngModel)]="user.BillingCountry" placeholder="Billing Country">
           <ion-option *ngFor="let re of region" value="{{re.Name}}">{{re.Name}}</ion-option>
         </ion-select>
       </ion-item>

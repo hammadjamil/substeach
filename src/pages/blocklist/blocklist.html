@@ -16,11 +16,10 @@
         <img *ngIf="blist.ImagePath!='teachers4.jpg' && blist.ImagePath!='' && blist.ImagePath!=null" [src]="logopath+blist.ImagePath" width="30px" height="30px">
       </ion-thumbnail>
       <h2>{{blist.FirstName}} {{blist.LastName}}</h2>
-      <button ion-button clear item-end *ngIf="blist.isBlocked=='false'" (click)="startChat(blist.roomNo ,blist.UserName ,blist.ImagePath)"><ion-icon name="ios-chatbubbles"></ion-icon></button>
-      <button ion-button clear item-end *ngIf="blist.isBlocked=='false'" (click)="block(blist.Id,'true')">block</button>
-      <button ion-button clear item-end *ngIf="blist.isBlocked=='true'" (click)="block(blist.Id,'false')">Unblock</button>
-      <button ion-button clear item-end  (click)="book(blist.SchoolID, blist.TeacherID)">Book</button>
-      <!-- <button ion-button clear item-end (click)="book(blist.blockedID)">Book</button> -->
+      <button ion-button class="m-0" clear item-end *ngIf="blist.isBlocked=='false'" (click)="startChat(blist.roomNo ,blist.UserName ,blist.ImagePath)"><ion-icon name="ios-chatbubbles" style="font-size:30px;"></ion-icon></button>
+      <button ion-button class="m-0"clear item-end *ngIf="blist.isBlocked=='false'" (click)="block(blist.Id,'true')">Block</button>
+      <button ion-button class="m-0" clear item-end *ngIf="blist.isBlocked=='true'" (click)="block(blist.Id,'false')">Unblock</button>
+      <button ion-button class="m-0" clear item-end (click)="book(blist.SubjectId,blist.TeacherID,blist.StandardId,blist.TimeFor,blist.DateFor)">Book</button>
     </ion-item>
   </ion-list>
   <ion-row *ngIf="blocklist=='' || blocklist==null">

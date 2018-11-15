@@ -43,9 +43,9 @@
     </ion-item>
     <ion-item  class="p-0">
       <ion-label style="color: #9c9c9c !important;background: transparent !important;padding: 0;margin: 0 !important;text-align: center;width: 50px;text-align: left;">
-        <ion-icon name="ios-flag" style="width: 50px;padding: 13px;background: #a51463;color: white;margin-right: 13px;"></ion-icon> Visiting Country
+        <ion-icon name="ios-flag" style="width: 50px;padding: 13px;background: #a51463;color: white;margin-right: 13px;"></ion-icon>
       </ion-label>
-      <ion-select [(ngModel)]="user.VisitingCountry">
+      <ion-select [(ngModel)]="user.VisitingCountry" placeholder="Visiting Country" >
         <ion-option *ngFor="let re of region" value="{{re.Name}}">{{re.Name}}</ion-option>
       </ion-select>
     </ion-item>
@@ -75,7 +75,7 @@
         color: white;
         margin-right: 13px;"></i> School Type
       </ion-label>
-      <ion-select [(ngModel)]="user.SchoolType">
+      <ion-select [(ngModel)]="user.SchoolType"  placeholder="School Type">
         <ion-option value="middle">Middle</ion-option>
         <ion-option value="hign">High</ion-option>
         <ion-option value="college">College</ion-option>

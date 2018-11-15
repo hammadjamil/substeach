@@ -4,6 +4,7 @@ import { MyStorage } from '../../app/localstorage';
 import { MyTools } from '../../providers/tools';
 import { Services } from '../../providers/services';
 import { AppSettings } from '../../app/appSettings';
+import { AlertController ,Events} from 'ionic-angular';
 
 import * as firebase from 'Firebase';
 import { ChatPage } from '../chat/chat';
@@ -28,6 +29,7 @@ export class BlocklistPage {
     private storage: MyStorage, 
     public navParams: NavParams,
     public services: Services,
+    private alertCtrl: AlertController,
     public tools: MyTools) {
       this.ref.on('value', resp => {
         this.rooms = [];
@@ -71,16 +73,22 @@ export class BlocklistPage {
       }
     )
   }
-  book(SchoolID,TeacherID){
-    this.services.block(TeacherID,TeacherID).subscribe(
-      //Successfully Logged in
+  book(SubjectId,TeacherID,StandardId,TimeFor,DateFor){
+    let body = new FormData();
+    body.append('SchoolID', this.userDetail.Id);
+    body.append('TeacherID', TeacherID);
+    body.append('SubjectId', SubjectId);
+    body.append('StandardId', StandardId);
+    body.append('TimeFor', TimeFor);
+    body.append('DateFor', DateFor);
+    this.services.bookingteacher(body).subscribe(
       success => {
-        console.log('success bhai', success);
-        this.blocklist='';
-        this.getacceptlist();
+        console.log('success booking ::: ',success);
+        this.presentAlert('Success!', success.message);
       },
       error => {
         console.log('error bhai', error);
+        this.presentAlert('Alert!', error.message);
       }
     )
   }
@@ -115,7 +123,14 @@ joinRoom(key) {
     chatlogo: this.chatlogo
   });
 }
-
+presentAlert(title1,msgs) {
+  let alert = this.alertCtrl.create({
+    title: title1,
+    message: msgs,
+    buttons: ['OK']
+  });
+  alert.present();
+}
 addRoom(number) {
   console.log(' this.rooms', this.rooms);
   

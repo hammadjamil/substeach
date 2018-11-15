@@ -41,12 +41,12 @@ export class ChatPage {
       this.data.type = 'message';
       this.data.nickname = this.nickname;
       let joinData = firebase.database().ref('chatrooms/'+this.roomkey+'/chats').push();
-      joinData.set({
-        type:'join',
-        user:this.nickname,
-        message:this.nickname+' has joined this room.',
-        sendDate:Date()
-      });
+      // joinData.set({
+      //   type:'join',
+      //   user:this.nickname,
+      //   // message:this.nickname+' has joined this room.',
+      //   sendDate:Date()
+      // });
       this.data.message = '';
       firebase.database().ref('chatrooms/'+this.roomkey+'/chats').on('value', resp => {
         this.chats = [];

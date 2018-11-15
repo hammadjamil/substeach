@@ -37,6 +37,10 @@ page-addreview {
         -webkit-box-shadow: none !important;
         box-shadow: none !important;
     }
+    ion-select{
+        max-width: 100%;
+          min-width: 85%;
+      }
 }
 // .alert-radio-icon{
 //     border-radius: 0 !important;

@@ -3,7 +3,7 @@
     <button ion-button menuToggle class="menubtn">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title style="padding:0 40px !important;"> <img [src]="LogoUrl+chatlogo" alt="" width="40px" height="40px" style="border-radius: 50px;"> {{chatusername}}</ion-title>
+    <ion-title style="padding:0 40px !important;"> <img [src]="LogoUrl+chatlogo" *ngIf="chatlogo!=null" alt="" width="40px" height="40px" style="border-radius: 50px;"><img src="../../assets/imgs/profileimg.jpg" *ngIf="chatlogo==null" alt="" width="40px" height="40px" style="border-radius: 50px;"> {{chatusername}}</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content padding>

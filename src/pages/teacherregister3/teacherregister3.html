@@ -8,9 +8,9 @@
         <ion-list>
           <ion-item  class="p-0">
             <ion-label style="color: #9c9c9c !important;background: transparent !important;padding: 0;margin: 0 !important;text-align: center;width: 50px;text-align: left;">
-              <ion-icon name="md-navigate" style="width: 50px;padding: 13px;background: #a51463;color: white;margin-right: 13px;"></ion-icon> Select Region
+              <ion-icon name="md-navigate" style="width: 50px;padding: 13px;background: #a51463;color: white;margin-right: 13px;"></ion-icon>
             </ion-label>
-            <ion-select [(ngModel)]="user.region">
+            <ion-select [(ngModel)]="user.region" placeholder="Select Region">
               <ion-option *ngFor="let re of region" value="{{re.RegionId}}">{{re.Name}}</ion-option>
             </ion-select>
           </ion-item>

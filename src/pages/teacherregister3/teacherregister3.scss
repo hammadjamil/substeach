@@ -123,6 +123,10 @@ page-teacherregister3 {
 ion-datetime {
   padding-left: 15px !important;
 }
+ion-select{
+  max-width: 100%;
+    min-width: 85%;
+}
 }
 .picker-button, .picker-button.activated {
   margin: 0;
