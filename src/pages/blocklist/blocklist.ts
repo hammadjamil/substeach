@@ -73,6 +73,19 @@ export class BlocklistPage {
       }
     )
   }
+  book(SchoolID,TeacherID){
+    this.services.block(TeacherID,TeacherID).subscribe(
+      //Successfully Logged in
+      success => {
+        console.log('success bhai', success);
+        this.blocklist='';
+        this.getacceptlist();
+      },
+      error => {
+        console.log('error bhai', error);
+      }
+    )
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad BlocklistPage');
   }
