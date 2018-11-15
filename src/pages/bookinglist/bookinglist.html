@@ -3,7 +3,7 @@
     <button ion-button menuToggle class="menubtn">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Accept List</ion-title>
+    <ion-title>Booking List</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -16,7 +16,7 @@
         <img *ngIf="blist.ImagePath!='teachers4.jpg' && blist.ImagePath!='' && blist.ImagePath!=null" [src]="logopath+blist.ImagePath" width="30px" height="30px">
       </ion-thumbnail>
       <h2>{{blist.FirstName}} {{blist.LastName}}</h2>
-      <button ion-button clear item-end *ngIf="blist.isBlocked=='false'" (click)="startChat(blist.roomNo ,blist.UserName ,blist.ImagePath)"><ion-icon name="ios-chatbubbles"></ion-icon></button>
+      <button ion-button clear item-end *ngIf="blist.isBlocked=='false'" (click)="startChat(blist.roomNo ,blist.UserName ,blist.ImagePath)">Chat</button>
       <button ion-button clear item-end *ngIf="blist.isBlocked=='false'" (click)="block(blist.Id,'true')">block</button>
       <button ion-button clear item-end *ngIf="blist.isBlocked=='true'" (click)="block(blist.Id,'false')">Unblock</button>
       <!-- <button ion-button clear item-end (click)="book(blist.blockedID)">Book</button> -->

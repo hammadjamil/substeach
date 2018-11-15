@@ -4,16 +4,15 @@ import { MyStorage } from '../../app/localstorage';
 import { MyTools } from '../../providers/tools';
 import { Services } from '../../providers/services';
 import { AppSettings } from '../../app/appSettings';
-
 import * as firebase from 'Firebase';
 import { ChatPage } from '../chat/chat';
 
 @IonicPage()
 @Component({
-  selector: 'page-blocklist',
-  templateUrl: 'blocklist.html',
+  selector: 'page-bookinglist',
+  templateUrl: 'bookinglist.html',
 })
-export class BlocklistPage {
+export class BookinglistPage {
   data = { nickname:"" };
   rooms = [];
   chatuser:any;
@@ -40,31 +39,22 @@ export class BlocklistPage {
           console.log('userDetail:::::',val)
           this.userDetail = val;
           this.data.nickname = val.UserName;
-          this.getacceptlist();
+          // this.getbookinglist();
         }
       }
     )
   }
-  getacceptlist(){
-    this.services.acceptList(this.userDetail.SchoolID).subscribe(
-      //Successfully Logged in
+  getbookinglist(){
+    let body = new FormData();
+    body.append('SchoolID', this.userDetail.username);
+    body.append('TeacherID', this.userDetail.email);
+    body.append('SubjectId', this.userDetail.confemail);
+    body.append('StandardId', this.userDetail.pswd);
+    body.append('TimeFor', this.userDetail.pswd);
+    body.append('DateFor', this.userDetail.pswd);
+    this.services.register(body).subscribe(
       success => {
-        console.log('success bhai', success);
-        this.blocklist=success.data;
-        console.log('blocklist bhai', this.blocklist);
-      },
-      error => {
-        console.log('error bhai', error);
-      }
-    )
-  }
-  block(blockid,type){
-    this.services.block(blockid,type).subscribe(
-      //Successfully Logged in
-      success => {
-        console.log('success bhai', success);
-        this.blocklist='';
-        this.getacceptlist();
+        console.log('success booking ::: ',success);
       },
       error => {
         console.log('error bhai', error);
@@ -74,14 +64,10 @@ export class BlocklistPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad BlocklistPage');
   }
-
   chatpg(){
     this.navCtrl.push(ChatPage);
   }
-
-  
 startChat(no ,chatusername,chatlogo) {
-  
   console.log('no',no);
   console.log('chatusername',chatusername);
   console.log('chatlogo',chatlogo);
@@ -89,12 +75,8 @@ startChat(no ,chatusername,chatlogo) {
   this.chatlogo=chatlogo;
   this.addRoom(no);
 }
-
-
-
 joinRoom(key) {
   console.log('this.data.nickname',this.data.nickname,'chatlogo',this.chatlogo);
-
   this.navCtrl.push(ChatPage, {
     key:key,
     nickname:this.data.nickname,
@@ -102,10 +84,8 @@ joinRoom(key) {
     chatlogo: this.chatlogo
   });
 }
-
 addRoom(number) {
   console.log(' this.rooms', this.rooms);
-  
   var temp = false;
   this.rooms.forEach(obj => {
     if(obj.roomname == number){
@@ -118,7 +98,6 @@ addRoom(number) {
     newData.set({
       roomname: number
     });
-
     setTimeout( () => {
       this.rooms.forEach(obj => {
         if(obj.roomname == number){
@@ -127,26 +106,18 @@ addRoom(number) {
       });
       console.log(' this.rooms if', this.rooms);
     }, 500)
-
-    
   }else{
     console.log(' this.rooms else', this.rooms);
   }
-
 }
-
 }
-
-
 
 export const snapshotToArray = snapshot => {
   let returnArr = [];
-
   snapshot.forEach(childSnapshot => {
       let item = childSnapshot.val();
       item.key = childSnapshot.key;
       returnArr.push(item);
   });
-
   return returnArr;
 }

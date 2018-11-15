@@ -8,6 +8,7 @@ import { Services } from '../../providers/services';
 import { PaymentPage } from '../payment/payment';
 import { MyStorage } from '../../app/localstorage';
 import { BlocklistPage } from '../blocklist/blocklist';
+import { BookinglistPage } from '../bookinglist/bookinglist';
 
 @IonicPage()
 @Component({
@@ -70,5 +71,8 @@ export class SettingsPage {
   }
   blocklist(){
     this.navCtrl.push(BlocklistPage);
+  }
+  bookinglist(){
+    this.navCtrl.push(BookinglistPage);
   }
 }

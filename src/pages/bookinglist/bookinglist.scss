@@ -1,0 +1,60 @@
+$themecolor: #a51463;
+$themecolorw: #a51463;
+page-bookinglist {
+    .toolbar-background{
+        background: $themecolor;
+    }
+    .toolbar-title {
+        color: white;
+    }
+    .bar-button-default {
+        color: #fff !important;
+        background-color: transparent;
+    }
+    .toolbar-title {
+        color: $themecolor !important;
+    }
+    .toolbar-background{
+        background: #fff;
+    }
+    .menubtn {
+        box-shadow: none !important;
+        background: #fff !important;
+
+    }
+    .menubtn ion-icon{
+        color: $themecolor !important;
+    }
+    button.back-button {
+        background: #fff !important;
+    }
+    button.back-button ion-icon{
+        color: $themecolor !important;
+    }
+    ion-item {
+        border: inherit !important;
+        border-radius: unset !important;
+        margin-bottom: 0px !important;
+        height: auto;
+        border-top: 2px solid #d2c7c7 !important;
+        border-bottom: 2px solid #d2c7c7 !important;
+    }
+    ion-label {
+        color: #000 !important;
+        background: #fff !important;
+        padding: 13px 0;
+        margin: 0 !important;
+        text-align: left;
+        width: 50px;
+    }
+    ion-thumbnail img{
+        border-radius: 50%;
+    }
+    button{
+        background: white !important;
+        color: #a51463 !important;
+        box-shadow: none !important;
+        font-size: 15px !important;
+        font-weight: 700;
+    }
+}
