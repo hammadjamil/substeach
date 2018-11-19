@@ -13,13 +13,12 @@ import { ChatPage } from '../chat/chat';
   templateUrl: 'bookinglist.html',
 })
 export class BookinglistPage {
+  bookinglist:any='';
   data = { nickname:"" };
   rooms = [];
   chatuser:any;
   ref = firebase.database().ref('chatrooms/');
-  
   chatlogo:any;
-  
   userDetail:any='';
   blocklist:any='';
   logopath:any=AppSettings.LogoUrl;
@@ -28,20 +27,32 @@ export class BookinglistPage {
     public navParams: NavParams,
     public services: Services,
     public tools: MyTools) {
-      this.ref.on('value', resp => {
-        this.getbookinglist()
-        this.rooms = [];
-        this.rooms = snapshotToArray(resp);
-      });
-
+      // this.ref.on('value', resp => {
+      //   this.getbookinglist()
+      //   this.rooms = [];
+      //   this.rooms = snapshotToArray(resp);
+      // });
     this.storage.get('user').then(
       (val) => {
         if (val != null) {
           console.log('userDetail:::::',val)
           this.userDetail = val;
-          this.data.nickname = val.UserName;
-          // this.getbookinglist();
+          // this.data.nickname = val.UserName;
+          this.getbookinglist();
         }
+      }
+    )
+  }
+  block(blockid,type){
+    this.services.block(blockid,type).subscribe(
+      //Successfully Logged in
+      success => {
+        console.log('success bhai', success);
+        this.blocklist='';
+        this.getbookinglist();
+      },
+      error => {
+        console.log('error bhai', error);
       }
     )
   }
@@ -50,6 +61,7 @@ export class BookinglistPage {
       //Successfully Logged in
       success => {
         console.log('success bhai', success);
+        this.bookinglist=success.data;
       },
       error => {
         console.log('error bhai', error);
@@ -57,62 +69,62 @@ export class BookinglistPage {
     )
   }
   ionViewDidLoad() {
-    console.log('ionViewDidLoad BlocklistPage');
+    console.log('ionViewDidLoad bookinglist');
   }
-  chatpg(){
-    this.navCtrl.push(ChatPage);
-  }
-startChat(no ,chatusername,chatlogo) {
-  console.log('no',no);
-  console.log('chatusername',chatusername);
-  console.log('chatlogo',chatlogo);
-  this.chatuser=chatusername;
-  this.chatlogo=chatlogo;
-  this.addRoom(no);
-}
-joinRoom(key) {
-  console.log('this.data.nickname',this.data.nickname,'chatlogo',this.chatlogo);
-  this.navCtrl.push(ChatPage, {
-    key:key,
-    nickname:this.data.nickname,
-    chatusername: this.chatuser,
-    chatlogo: this.chatlogo
-  });
-}
-addRoom(number) {
-  console.log(' this.rooms', this.rooms);
-  var temp = false;
-  this.rooms.forEach(obj => {
-    if(obj.roomname == number){
-      this.joinRoom(obj.key);
-      temp = true;
-    }
-  });
-  if(temp == false){
-    let newData = this.ref.push();
-    newData.set({
-      roomname: number
-    });
-    setTimeout( () => {
-      this.rooms.forEach(obj => {
-        if(obj.roomname == number){
-          this.joinRoom(obj.key);
-        }
-      });
-      console.log(' this.rooms if', this.rooms);
-    }, 500)
-  }else{
-    console.log(' this.rooms else', this.rooms);
-  }
-}
+  // chatpg(){
+  //   this.navCtrl.push(ChatPage);
+  // }
+// startChat(no ,chatusername,chatlogo) {
+//   console.log('no',no);
+//   console.log('chatusername',chatusername);
+//   console.log('chatlogo',chatlogo);
+//   this.chatuser=chatusername;
+//   this.chatlogo=chatlogo;
+//   this.addRoom(no);
+// }
+// joinRoom(key) {
+//   console.log('this.data.nickname',this.data.nickname,'chatlogo',this.chatlogo);
+//   this.navCtrl.push(ChatPage, {
+//     key:key,
+//     nickname:this.data.nickname,
+//     chatusername: this.chatuser,
+//     chatlogo: this.chatlogo
+//   });
+// }
+// addRoom(number) {
+//   console.log(' this.rooms', this.rooms);
+//   var temp = false;
+//   this.rooms.forEach(obj => {
+//     if(obj.roomname == number){
+//       this.joinRoom(obj.key);
+//       temp = true;
+//     }
+//   });
+//   if(temp == false){
+//     let newData = this.ref.push();
+//     newData.set({
+//       roomname: number
+//     });
+//     setTimeout( () => {
+//       this.rooms.forEach(obj => {
+//         if(obj.roomname == number){
+//           this.joinRoom(obj.key);
+//         }
+//       });
+//       console.log(' this.rooms if', this.rooms);
+//     }, 500)
+//   }else{
+//     console.log(' this.rooms else', this.rooms);
+//   }
+// }
 }
 
-export const snapshotToArray = snapshot => {
-  let returnArr = [];
-  snapshot.forEach(childSnapshot => {
-      let item = childSnapshot.val();
-      item.key = childSnapshot.key;
-      returnArr.push(item);
-  });
-  return returnArr;
-}
+// export const snapshotToArray = snapshot => {
+//   let returnArr = [];
+//   snapshot.forEach(childSnapshot => {
+//       let item = childSnapshot.val();
+//       item.key = childSnapshot.key;
+//       returnArr.push(item);
+//   });
+//   return returnArr;
+// }
