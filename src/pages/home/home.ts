@@ -199,9 +199,7 @@ addToFav(dID,index)
                 if (val != null) {
                   console.log('val',val);
                   this.searchCriteria = val;
-                  
                     this.matchByDay();
-                 
                 }
               }
             )
@@ -210,6 +208,15 @@ addToFav(dID,index)
           this.loader.dismiss();
           console.log('error bhai', error);
           this.presentAlert('Alert!', error.message);
+          this.storage.get('searchCriteria').then(
+            (val) => {
+              if (val != null) {
+                console.log('val',val);
+                this.searchCriteria = val;
+                  this.matchByDay();
+              }
+            }
+          )
         }
       )
 }
