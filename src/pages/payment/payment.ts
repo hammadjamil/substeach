@@ -8,6 +8,7 @@ import { MyTools } from '../../providers/tools';
 import { HomePage } from '../home/home';
 import { SchoolprofilePage } from '../schoolprofile/schoolprofile';
 import { TeacherprofilePage } from '../teacherprofile/teacherprofile';
+import { LoginPage } from '../login/login';
 
 import { MyStorage } from '../../app/localstorage';
 @IonicPage()
@@ -68,42 +69,52 @@ pay1(){
       expMonth: this.user.expMonth,
       expYear: this.user.expYear,
       cvc: this.user.cvc
-     };
-     
-     this.stripe.createCardToken(card)
-        .then(token =>{
-          console.log('token',token.id);
-          let body = new FormData();
-          body.append('stripetoken',token.id);
-          body.append('amount', '5');
-          body.append('SchoolUserId', this.userDetail.Id);
-              this.services.stripePayment(body).subscribe(
-                //Successfully Logged in
-                success => {
-                  console.log('success bhai', success);
-                    this.loader.dismiss();
-                    this.presentAlert('Alert!', 'you have Successfully paid. Now you can avail our premium features.');
-                    if(this.userDetail.RoleId==6){
-                      this.navCtrl.setRoot(SchoolprofilePage,{});
-                    }
-                    else
-                    {
-                      this.navCtrl.setRoot(TeacherprofilePage,{});                      
-                    }
-                },
-                error => {
+    };
+    this.stripe.createCardToken(card)
+      .then(token =>{
+        console.log('token',token.id);
+        let body = new FormData();
+        body.append('stripetoken',token.id);
+        body.append('amount', '5');
+        body.append('SchoolUserId', this.userDetail.Id);
+            this.services.stripePayment(body).subscribe(
+              //Successfully Logged in
+              success => {
+                console.log('success bhai', success);
                   this.loader.dismiss();
-                  console.log('error bhai', error);
-                  this.presentAlert('Alert!', error.message);
-                }
-              )
+                  // this.storage.get('pswdd').then(
+                  //   (val) => {
+                  //     if (val != null) {
+                  //       console.log('pswdd',val);
+                  //     }
+                  //   }
+                  // )
+                  this.presentAlert('Alert!', 'you have Successfully paid. Now you can avail our premium features.');
+                  this.storage.set('username', '');
+                  this.storage.set('password', '');
+                  this.storage.set('user', '');
+                  this.navCtrl.setRoot(LoginPage);
+                  // if(this.userDetail.RoleId==6){
+                  //   this.navCtrl.setRoot(SchoolprofilePage,{});
+                  // }
+                  // else
+                  // {
+                  //   this.navCtrl.setRoot(TeacherprofilePage,{});                      
+                  // }
+              },
+              error => {
+                this.loader.dismiss();
+                console.log('error bhai', error);
+                this.presentAlert('Alert!', error.message);
+              }
+            )
 
-        })
-        .catch(error =>{
-          this.loader.dismiss();
-          this.presentAlert('Alert!', error);
-          console.error(error);
-        });
+      })
+      .catch(error =>{
+        this.loader.dismiss();
+        this.presentAlert('Alert!', error);
+        console.error(error);
+      });
   }
   
 
