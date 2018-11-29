@@ -8,10 +8,13 @@ import { MyTools } from '../../providers/tools';
 import { LoadingController, Platform } from 'ionic-angular';
 import { AppSettings } from '../../app/appSettings';
 
+import { DocumentViewer,DocumentViewerOptions  } from '@ionic-native/document-viewer';
 import { ActionSheetController } from 'ionic-angular'
 import { FileChooser } from '@ionic-native/file-chooser';
 import { File } from '@ionic-native/file';
 import { Transfer, TransferObject } from '@ionic-native/transfer' ;
+
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { FilePath } from '@ionic-native/file-path'; 
 import { Camera } from '@ionic-native/camera';
 import { Storage } from '@ionic/storage';
@@ -35,7 +38,7 @@ declare let cordova: any;
     FileChooser,
     File,
     Transfer,
-    Camera,
+    Camera,FileTransfer,
     FilePath]
 })
 export class EditprofilePage {
@@ -47,7 +50,7 @@ export class EditprofilePage {
   fileSelected = false;
   lastImage: any;
   logo: any ='';
-  
+  Documents:any;
   baseUrl = AppSettings.API;
   public baseLogo ='';
   user = { username: '', password: '', udid: '',platform:'' };
@@ -63,19 +66,23 @@ export class EditprofilePage {
     private fileChooser: FileChooser,
     private camera: Camera,
     public actionSheetCtrl: ActionSheetController,
-    private transfer: Transfer,
-    private file: File,
+    private transfernew: Transfer,
+    // private file: File,
     private filePath: FilePath,
     public platform: Platform,
     private base64: Base64,
     public chooser: Chooser,
-    // private document: DocumentViewer,
-    private sanitizer: DomSanitizer) {
+    private document: DocumentViewer,
+    private sanitizer: DomSanitizer,
+    private transfer: FileTransfer, private file: File,) {
       this.storage.get('user').then(
         (val) => {
           if (val != null) {
             console.log('val',val);
             this.userDetail = val;
+             if(this.userDetail.RoleId=='5'){
+                this.getDocuments(this.userDetail.Id);
+              }
             this.profileService(this.userDetail);
           }
         }
@@ -100,16 +107,103 @@ export class EditprofilePage {
         }
       )
 
-
-
-
   }
-  // viewdoc(){
-  //   const options: DocumentViewerOptions = {
-  //     title: 'My PDF'
-  //   }
-  //   this.document.viewDocument('../../assets/imgs/doc.docx', 'application/docx', options)
-  // }
+
+  
+
+  /**
+   * Profile Photo update
+   */
+
+  Selection(name) {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Action',
+      buttons: [
+        {
+          text: 'View',
+          handler: () => {
+            this.view(name)
+          }
+        },
+        {
+          text: 'Download',
+          handler: () => {
+            this.download(name);
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        }
+      ]
+    });
+    actionSheet.present();
+  }
+
+  getDocuments(id){
+    let body = new FormData();
+    body.append('userId', id);
+    this.services.getDocuments(body).subscribe(
+      //Successfully Logged in
+      success => {
+        console.log('Success : ',success);
+        this.Documents = success.data;
+        console.log('Standard : ',this.Documents);
+      },
+      error => {
+        console.log('error bhai', error);
+        setTimeout(() => {
+          // if (error.message.length==1){
+            this.presentAlert('Alert!', error.message);
+            this.loader.dismiss();
+          // }
+          
+        }, 500);
+      }
+    )
+  }
+
+
+  view(name){
+
+
+    let path = null;
+ 
+    // if (this.platform.is('ios')) {
+    //   path = this.file.documentsDirectory;
+    // } else if (this.platform.is('android')) {
+      path = this.file.dataDirectory;
+    // }
+ 
+    const transfer = this.transfer.create();
+    transfer.download('http://setchemdemo.ezsoftpk.com/SchoolSubtituionApi/api/documents/'+name, path + 'myfile.pdf').then(entry => {
+      let url = entry.toURL();
+      this.document.viewDocument(url, 'application/pdf', {});
+    });
+
+
+    // const options: DocumentViewerOptions = {
+    //   title: 'My PDF'
+    // }
+    
+    // this.document.viewDocument('http://setchemdemo.ezsoftpk.com/SchoolSubtituionApi/api/documents/'+name, 'application/pdf', options)
+  }
+
+  download(name) {
+    console.log('name',name);
+    
+    const fileTransfer: FileTransferObject = this.transfer.create();
+    const url = 'http://setchemdemo.ezsoftpk.com/SchoolSubtituionApi/api/documents/'+name;
+    fileTransfer.download(url, this.file.externalRootDirectory  + 'new_'+name).then((entry) => {
+      console.log('download complete: ' + entry.toURL());
+      this.presentAlert('Alert!', "Document successfully downloaded.");
+    }, (error) => {
+      console.log(error);
+      
+      this.presentAlert('Alert!', error);
+      // handle error
+    });
+  }
 
   presentAlert(title1,msgs) {
     let alert = this.alertCtrl.create({
@@ -313,10 +407,11 @@ updateTeacher(){
     console.log('options',options);
     
 
-    const fileTransfer: TransferObject = this.transfer.create();
+    const fileTransfer: TransferObject = this.transfernew.create();
     fileTransfer.upload(targetPath, url, options).then(data => {
       this.loader.dismiss();
-      console.log('data',data);
+      console.log('data',data.response);
+      this.lastImage = data.response;
         this.storage.set('TeacherLogo',this.lastImage);
 
 

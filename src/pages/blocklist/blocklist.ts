@@ -24,6 +24,7 @@ export class BlocklistPage {
   
   userDetail:any='';
   blocklist:any='';
+  Role:any='';
   logopath:any=AppSettings.LogoUrl;
   constructor(public navCtrl: NavController,
     private storage: MyStorage, 
@@ -42,13 +43,21 @@ export class BlocklistPage {
           console.log('userDetail:::::',val)
           this.userDetail = val;
           this.data.nickname = val.UserName;
+          this.Role = this.userDetail.RoleId;
           this.getacceptlist();
         }
       }
     )
   }
   getacceptlist(){
-    this.services.acceptList(this.userDetail.SchoolID).subscribe(
+    let id ='';
+    if(this.userDetail.RoleId==6){
+      id= this.userDetail.SchoolID;
+    }else{
+      id= this.userDetail.TeacherID;
+    }
+
+    this.services.acceptList(id,this.userDetail.RoleId).subscribe(
       //Successfully Logged in
       success => {
         console.log('success bhai', success);

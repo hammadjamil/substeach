@@ -10,7 +10,7 @@ import { LoadingController, Platform } from 'ionic-angular';
 import { AppSettings } from '../../app/appSettings';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
-
+import { DocumentViewer,DocumentViewerOptions  } from '@ionic-native/document-viewer';
 import { DomSanitizer } from '@angular/platform-browser';
 @IonicPage()
 @Component({
@@ -34,7 +34,8 @@ export class PublicprofilePage {
     public tools: MyTools,private transfer: FileTransfer, private file: File,
     private navParams: NavParams,
     private alertCtrl: AlertController,
-    private sanitizer: DomSanitizer) {
+    private sanitizer: DomSanitizer,
+    private document: DocumentViewer) {
       this.seeprofileid = navParams.get('id');
       
       if(this.seeprofileid!=0 && this.seeprofileid!='' && this.seeprofileid!=null){
@@ -46,7 +47,8 @@ export class PublicprofilePage {
             if (val != null) {
               console.log('val',val);
               this.userDetail = val;
-              if(this.userDetail.RoleId==5){
+              console.log('this.userDetail.RoleId',this.userDetail.RoleId);
+              if(this.userDetail.RoleId=='5'){
                 this.getDocuments(this.userDetail.Id);
               }
               this.profileService(this.userDetail.Id);
@@ -56,6 +58,14 @@ export class PublicprofilePage {
       }
       
       // this.profileService();
+  }
+
+  view(name){
+    const options: DocumentViewerOptions = {
+      title: 'My PDF'
+    }
+    
+    this.document.viewDocument('http://setchemdemo.ezsoftpk.com/SchoolSubtituionApi/api/documents/'+name, 'application/pdf', options)
   }
 
   download(name) {

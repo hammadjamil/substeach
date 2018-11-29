@@ -9,8 +9,8 @@
 
 <ion-content padding>
   <ion-card  *ngFor="let row of notificationList">
-    <img *ngIf="row.logo=='teachers4.jpg' || row.logo=='' || row.logo==null" src="../../assets/imgs/profileimg.jpg" alt="" style="border-radius: 50%;width: 100px;height: 100px;">
-    <img *ngIf="row.logo!='teachers4.jpg' && row.logo!='' && row.logo!=null" [src]="LogoUrl+row.logo" alt="" style="border-radius: 50%;width: 100px;height: 100px;">
+    <img *ngIf=" row.img=='' || row.img==null" src="../../assets/imgs/profileimg.jpg" alt="" style="border-radius: 50%;width: 100px;height: 100px;">
+    <img *ngIf="row.img!='' && row.img!=null" [src]="LogoUrl+row.img" alt="" style="border-radius: 50%;width: 100px;height: 100px;">
   
     <!-- <img [src]="LogoUrl+row.logo" style="border-radius: 50%;width: 100px;height: 100px;"/> -->
     <ion-card-content>

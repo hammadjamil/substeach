@@ -1761,11 +1761,11 @@ updateUserImage(params) {
     /**
    * notificationcount
    */
-  acceptList(id){
+  acceptList(id,RoleId){
     console.log('user id', id);
     if(id){
       return Observable.create(observer => {
-        const url = 'http://setchemdemo.ezsoftpk.com/SchoolSubtituionApi/api/services.php/acceptList?SchoolID='+id;
+        const url = 'http://setchemdemo.ezsoftpk.com/SchoolSubtituionApi/api/services.php/acceptList?ID='+id+'&RoleId='+RoleId;
         this.http.get(url, {
           search: ''
         })
@@ -1905,10 +1905,10 @@ updateUserImage(params) {
       })
     }
   }
-  bookinglist(id){
+  bookinglist(id, role){
     console.log('book id', id);
       return Observable.create(observer => {
-        const url = 'http://setchemdemo.ezsoftpk.com/SchoolSubtituionApi/api/services.php/showbookings?SchoolID='+id;
+        const url = 'http://setchemdemo.ezsoftpk.com/SchoolSubtituionApi/api/services.php/showbookings?ID='+id+'&role='+role;
         this.http.get(url, {
           search: ''
         })

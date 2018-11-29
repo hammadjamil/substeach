@@ -20,8 +20,10 @@ export class BookinglistPage {
   
   chatlogo:any;
   
+  Role:any='';
   userDetail:any='';
   blocklist:any='';
+  bookinglist:any='';
   logopath:any=AppSettings.LogoUrl;
   constructor(public navCtrl: NavController,
     private storage: MyStorage, 
@@ -29,27 +31,35 @@ export class BookinglistPage {
     public services: Services,
     public tools: MyTools) {
       this.ref.on('value', resp => {
-        this.getbookinglist()
+        
         this.rooms = [];
         this.rooms = snapshotToArray(resp);
+
+        this.storage.get('user').then(
+          (val) => {
+            if (val != null) {
+              console.log('userDetail:::::',val)
+              this.userDetail = val;
+              this.data.nickname = val.UserName;
+              this.Role = this.userDetail.RoleId;
+              this.getbookinglist()
+              // this.getbookinglist();
+            }
+          }
+        )
+
+
       });
 
-    this.storage.get('user').then(
-      (val) => {
-        if (val != null) {
-          console.log('userDetail:::::',val)
-          this.userDetail = val;
-          this.data.nickname = val.UserName;
-          // this.getbookinglist();
-        }
-      }
-    )
+    
   }
   getbookinglist(){
-    this.services.bookinglist(this.userDetail.Id).subscribe(
+    this.services.bookinglist(this.userDetail.Id,this.userDetail.RoleId).subscribe(
       //Successfully Logged in
       success => {
-        console.log('success bhai', success);
+        this.bookinglist = success.data;
+
+        console.log('success bhai', this.bookinglist);
       },
       error => {
         console.log('error bhai', error);

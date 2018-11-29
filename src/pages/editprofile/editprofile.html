@@ -117,6 +117,13 @@
       <ion-label  stacked>Email</ion-label>
       <ion-input  type="text" value="{{profileList.Email}}" [disabled]="true"></ion-input>
     </ion-item>
+
+    <ion-item>
+        <ion-label  stacked>Documents</ion-label>
+        <ion-label  style="margin:10px;" class="txtbig" stacked *ngFor="let row of Documents" (click)="Selection(row.DocumentsName)" >
+          {{row.DocumentsName}}
+        </ion-label>
+      </ion-item>
     
   </div>
 </ion-content>

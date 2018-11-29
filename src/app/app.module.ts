@@ -49,6 +49,7 @@ import { FiltersPage } from '../pages/filters/filters';
 import { BlocklistPage } from '../pages/blocklist/blocklist';
 import { BookinglistPage } from '../pages/bookinglist/bookinglist';
 
+import { DocumentViewer,DocumentViewerOptions  } from '@ionic-native/document-viewer';
 import { SMS } from '@ionic-native/sms';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { Stripe } from '@ionic-native/stripe';
@@ -149,10 +150,8 @@ import { Stripe } from '@ionic-native/stripe';
     Base64,
     Chooser,
     Push,
-    // FileTransfer,
-    // PayPal,PayPalPayment,PayPalConfiguration,
-    // File,
     Stripe,
+    DocumentViewer,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

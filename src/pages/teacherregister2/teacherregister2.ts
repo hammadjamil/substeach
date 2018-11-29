@@ -127,7 +127,9 @@ export class Teacherregister2Page {
     fileTransfer.upload(targetPath, url, options).then(data => {
       this.loader.dismiss();
       console.log('data',data);
-      
+      this.fileName.push(data.response);
+      this.storage.set('Documents',this.fileName);
+
       // let p_data = JSON.parse(data.response);
       
     }, err => {
@@ -151,11 +153,10 @@ export class Teacherregister2Page {
             console.log(filePath)  ;
             this.currentfileName = filePath.substr(filePath.lastIndexOf('/') + 1);  
             
-            this.fileName.push(this.currentfileName);
-            console.log(this.fileName) ;           
+            
+            // console.log(this.fileName) ;           
             this.uploadPhotoService();
-            this.storage.set('Documents',this.fileName);
-
+            
         }, (err) => {
           console.log(err);
         })

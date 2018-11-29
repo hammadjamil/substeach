@@ -5,25 +5,23 @@
 </ion-header>
 <ion-content padding>
     <ion-list>
-        <button *ngIf="userDetail.Ispaid=='no'" ion-item  (click)="pay()">
+        <!-- <button *ngIf="userDetail.Ispaid=='no'" ion-item  (click)="pay()">
             Premium feature
-        </button> 
+        </button>  -->
         <button ion-item (click)="blocklist()">
           Accept List
         </button>  
         <button ion-item (click)="bookinglist()">
-          Booking List
+          Booking List 
         </button>
-        <!-- <button ion-item (click)="acceptlist()">
-            Accept List
-        </button>   -->
+        <button *ngIf="userDetail.Ispaid=='no'" ion-item (click)="pay()">
+          Get Monthly Subscription 
+        </button>
         <button ion-item (click)="logout()">
             <span style="color:brown;font-weight:700;">Logout</span> 
         </button> 
       </ion-list>
-  <!-- <button *ngIf="userDetail.Ispaid=='no'" ion-button full style="margin-bottom:20px;" (click)="pay()">
-    Premium feature
-  </button>
+  <!-- 
   <button ion-button icon-start full (click)="blocklist()">
     <ion-icon name="md-log-out"></ion-icon>
     Block List
