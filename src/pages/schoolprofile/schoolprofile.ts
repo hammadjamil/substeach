@@ -96,17 +96,12 @@ export class SchoolprofilePage {
       this.storage.get('user').then((val) => {
           this.userData=val;
           console.log(val);
-          
-          
           if(this.userData.RoleId == 6){
             this.Logo = this.userData.LogoPath;
           }else{
             this.Logo = this.userData.ImagePath;
           }
-
-          console.log('fff',this.Logo);
-          
-                    
+          console.log('fff',this.Logo);           
           setTimeout(() => {
             this.getFav();
             this.getstandrads();

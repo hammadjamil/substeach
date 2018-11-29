@@ -86,6 +86,7 @@ loginService() {
         this.services.login(this.user).subscribe(
           //Successfully Logged in
           success => {
+            this.storage.set('pswdd', this.user.password);
             console.log('success bhai', success);
             this.auth.loginUser(success);
             setTimeout(() => {
