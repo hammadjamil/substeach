@@ -119,7 +119,7 @@ export class SchoolprofilePage {
     success => {
       console.log('Success : ',success);
       this.Standard = success.userData;
-      this.getnotificationcount();
+      // this.getnotificationcount();
     },
     error => {
       console.log('error bhai', error);
@@ -211,11 +211,10 @@ export class SchoolprofilePage {
    }
 
    getnotificationcount(){
-     console.log(this.userData.Id);
+    console.log(this.userData.Id);
     let body = new FormData();
     body.append('userId', this.userData.Id);
     this.services.notificationcount(body).subscribe(
-      //Successfully Logged in
       success => {
         setTimeout(() => {
           console.log(success);
@@ -227,8 +226,25 @@ export class SchoolprofilePage {
       }
     )
    }
+   notificationcountzero(){
+    console.log(this.userData.Id);
+    let body = new FormData();
+    body.append('userId', this.userData.Id);
+    this.services.notificationcountzero(body).subscribe(
+      success => {
+        setTimeout(() => {
+          console.log(success);
+          this.noticountdata=success;
+          this.navCtrl.push(NotificationPage);
+        }, 500);
+      },
+      error => {
+        console.log('error bhai', error);
+      }
+    )
+   }
 shownoti(){
-  this.navCtrl.push(NotificationPage);
+  this.notificationcountzero();
 }
 editprofilepage(){
   this.navCtrl.push(EditprofilePage);

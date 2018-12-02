@@ -6,14 +6,11 @@
     <ion-title>Accept List</ion-title>
   </ion-navbar>
 </ion-header>
-
-
 <ion-content padding>
   <div *ngIf="Role==6">
     <ion-list *ngIf="blocklist!=''">
-      
       <ion-item no-padding *ngFor="let blist of blocklist">
-        <ion-thumbnail item-start>
+        <ion-thumbnail item-start (click)="profilepage(blist.TeacherID)">
           <img *ngIf="blist.ImagePath=='teachers4.jpg' || blist.ImagePath=='' || blist.ImagePath==null" src="../../assets/imgs/profileimg.jpg" width="30px" height="30px">
           <img *ngIf="blist.ImagePath!='teachers4.jpg' && blist.ImagePath!='' && blist.ImagePath!=null" [src]="logopath+blist.ImagePath" width="30px" height="30px">
         </ion-thumbnail>
@@ -27,9 +24,8 @@
   </div>
   <div *ngIf="Role==5">
       <ion-list *ngIf="blocklist!=''">
-        
         <ion-item no-padding *ngFor="let blist of blocklist">
-          <ion-thumbnail item-start>
+          <ion-thumbnail item-start (click)="profilepage(blist.TeacherID)">
             <img *ngIf="blist.LogoPath=='teachers4.jpg' || blist.LogoPath=='' || blist.LogoPath==null" src="../../assets/imgs/profileimg.jpg" width="30px" height="30px">
             <img *ngIf="blist.LogoPath!='teachers4.jpg' && blist.LogoPath!='' && blist.LogoPath!=null" [src]="logopath+blist.LogoPath" width="30px" height="30px">
           </ion-thumbnail>
@@ -37,7 +33,6 @@
           <button ion-button class="m-0" clear item-end *ngIf="blist.isBlocked=='false'" (click)="startChat(blist.roomNo ,blist.SchoolName ,blist.LogoPath)"><ion-icon name="ios-chatbubbles" style="font-size:30px;"></ion-icon></button>
           <button ion-button class="m-0"clear item-end *ngIf="blist.isBlocked=='false'" (click)="block(blist.Id,'true')">Block</button>
           <button ion-button class="m-0" clear item-end *ngIf="blist.isBlocked=='true'" (click)="block(blist.Id,'false')">Unblock</button>
-          <!-- <button ion-button class="m-0" clear item-end (click)="book(blist.SubjectId,blist.TeacherID,blist.StandardId,blist.TimeFor,blist.DateFor)">Book</button> -->
         </ion-item>
       </ion-list>
     </div>

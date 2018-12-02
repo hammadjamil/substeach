@@ -6,38 +6,25 @@
     <ion-title>Booking List</ion-title>
   </ion-navbar>
 </ion-header>
-
-
 <ion-content padding>
   <ion-list *ngIf="bookinglist!='' && Role==6">
     <ion-item no-padding *ngFor="let blist of bookinglist">
-      <ion-thumbnail item-start>
+      <ion-thumbnail item-start (click)="profilepage(blist.TeacherID)">
         <img *ngIf="blist.img=='teachers4.jpg' || blist.img=='' || blist.img==null" src="../../assets/imgs/profileimg.jpg" width="30px" height="30px">
         <img *ngIf="blist.img!='teachers4.jpg' && blist.img!='' && blist.img!=null" [src]="logopath+blist.img" width="30px" height="30px">
       </ion-thumbnail>
       <h2>{{blist.TeacherName}}</h2>
-      <!-- <button ion-button clear item-end *ngIf="blist.isBlocked=='false'" (click)="startChat(blist.roomNo ,blist.UserName ,blist.img)">Chat</button> -->
-      <!-- <button ion-button clear item-end *ngIf="blist.isBlocked=='false'" (click)="block(blist.Id,'true')">block</button>
-      <button ion-button clear item-end *ngIf="blist.isBlocked=='true'" (click)="block(blist.Id,'false')">Unblock</button> -->
-      <!-- <button ion-button clear item-end (click)="book(blist.blockedID)">Book</button> -->
     </ion-item>
   </ion-list>
-  
   <ion-list *ngIf="bookinglist!='' && Role==5">
       <ion-item no-padding *ngFor="let blist of bookinglist">
-        <ion-thumbnail item-start>
+        <ion-thumbnail item-start (click)="profilepage(blist.TeacherID)">
           <img *ngIf="blist.img=='teachers4.jpg' || blist.img=='' || blist.img==null" src="../../assets/imgs/profileimg.jpg" width="30px" height="30px">
           <img *ngIf="blist.img!='teachers4.jpg' && blist.img!='' && blist.img!=null" [src]="logopath+blist.img" width="30px" height="30px">
         </ion-thumbnail>
         <h2>{{blist.SchoolName}}</h2>
-        <!-- <button ion-button clear item-end *ngIf="blist.isBlocked=='false'" (click)="startChat(blist.roomNo ,blist.SchoolName ,blist.img)">Chat</button> -->
-        <!-- <button ion-button clear item-end *ngIf="blist.isBlocked=='false'" (click)="block(blist.Id,'true')">block</button>
-        <button ion-button clear item-end *ngIf="blist.isBlocked=='true'" (click)="block(blist.Id,'false')">Unblock</button> -->
-        <!-- <button ion-button clear item-end (click)="book(blist.blockedID)">Book</button> -->
       </ion-item>
     </ion-list>
-
-
   <ion-row *ngIf="bookinglist=='' || bookinglist==null">
     <ion-col col-12 text-center >
         <img src="../../assets/imgs/hold.png" alt="" padding>
