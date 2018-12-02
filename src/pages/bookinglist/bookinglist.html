@@ -9,7 +9,7 @@
 <ion-content padding>
   <ion-list *ngIf="bookinglist!='' && Role==6">
     <ion-item no-padding *ngFor="let blist of bookinglist">
-      <ion-thumbnail item-start (click)="profilepage(blist.TeacherID)">
+      <ion-thumbnail item-start (click)="profilepage(blist.TeacherId)">
         <img *ngIf="blist.img=='teachers4.jpg' || blist.img=='' || blist.img==null" src="../../assets/imgs/profileimg.jpg" width="30px" height="30px">
         <img *ngIf="blist.img!='teachers4.jpg' && blist.img!='' && blist.img!=null" [src]="logopath+blist.img" width="30px" height="30px">
       </ion-thumbnail>
@@ -20,7 +20,7 @@
   </ion-list>
   <ion-list *ngIf="bookinglist!='' && Role==5">
       <ion-item no-padding *ngFor="let blist of bookinglist">
-        <ion-thumbnail item-start (click)="profilepage(blist.TeacherID)">
+        <ion-thumbnail item-start (click)="profilepage(blist.TeacherId)">
           <img *ngIf="blist.img=='teachers4.jpg' || blist.img=='' || blist.img==null" src="../../assets/imgs/profileimg.jpg" width="30px" height="30px">
           <img *ngIf="blist.img!='teachers4.jpg' && blist.img!='' && blist.img!=null" [src]="logopath+blist.img" width="30px" height="30px">
         </ion-thumbnail>
