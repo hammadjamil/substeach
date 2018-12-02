@@ -83,6 +83,8 @@ pay1(){
                   console.log('success bhai', success);
                     this.loader.dismiss();
                     this.presentAlert('Alert!', 'you have Successfully subscribed. Now you can avail our premium features.');
+                    this.userDetail.Ispaid='yes';
+                    this.storage.set('user',this.userDetail);
                     if(this.userDetail.RoleId==6){
                       this.navCtrl.setRoot(SchoolprofilePage,{});
                     }
