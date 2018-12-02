@@ -9,8 +9,8 @@
 
 <ion-content padding>
   <ion-card  *ngFor="let row of notificationList">
-    <img *ngIf=" row.img=='' || row.img==null" src="../../assets/imgs/profileimg.jpg" alt="" style="border-radius: 50%;width: 100px;height: 100px;">
-    <img *ngIf="row.img!='' && row.img!=null" [src]="LogoUrl+row.img" alt="" style="border-radius: 50%;width: 100px;height: 100px;">
+    <img *ngIf=" row.img=='teachers4.jpg' || row.img=='' || row.img==null" src="../../assets/imgs/profileimg.jpg" alt="" style="border-radius: 50%;width: 100px;height: 100px;">
+    <img *ngIf="row.img!='teachers4.jpg' && row.img!='' && row.img!=null" [src]="LogoUrl+row.img" alt="" style="border-radius: 50%;width: 100px;height: 100px;">
   
     <!-- <img [src]="LogoUrl+row.logo" style="border-radius: 50%;width: 100px;height: 100px;"/> -->
     <ion-card-content>
@@ -27,7 +27,7 @@
         <button ion-button full *ngIf="row.Status=='Pending'" (click)="updateStatus(row.ReceiverID, 'accept',row.SenderByID, row.roomNo)">Accept</button>
       </ion-col>
       <ion-col col-12 float-left *ngIf="row.Status=='accept'">
-        <button ion-button full (click)="startChat(row.roomNo ,row.UserName ,row.logo)">Chat</button>
+        <button ion-button full (click)="startChat(row.roomNo ,row.UserName ,row.img)">Chat</button>
       </ion-col>
     </ion-card-content>
   </ion-card>

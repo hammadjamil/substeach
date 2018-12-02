@@ -13,7 +13,6 @@ export class ChatPage {
   @ViewChild(Content) content: Content;
   rooms = [];
   ref = firebase.database().ref('chatrooms/');
-  
   btnmargin:any = '';
   btnmargin2:any = '';
   LogoUrl = AppSettings.LogoUrl;
