@@ -57,6 +57,8 @@ export class BookinglistPage {
     this.services.bookinglist(this.userDetail.Id,this.userDetail.RoleId).subscribe(
       //Successfully Logged in
       success => {
+        console.log('bookinglist',success.data);
+        
         this.bookinglist = success.data;
 
         console.log('success bhai', this.bookinglist);

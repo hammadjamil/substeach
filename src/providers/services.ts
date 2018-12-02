@@ -1905,6 +1905,40 @@ updateUserImage(params) {
       })
     }
   }
+
+
+  unbookteacher(user){
+    console.log('user is ', user);
+    if (user) {
+      return Observable.create(observer => {
+        const url = this.baseUrl + 'unbookteacher';
+        this.http.post(url, user)
+          .map(res => res.json())
+          .subscribe(
+          (response) => {
+            console.log('responaw L: ',response);
+            if (response.code != '200') {
+              observer.error(response);
+            }
+            else {
+              observer.next(response);
+
+            }
+            observer.complete();
+
+          },
+          (error) => {
+            console.log('errrrror',error);
+            observer.error(error);
+          }
+          )
+      })
+    }
+  }
+
+  
+  
+  
   bookinglist(id, role){
     console.log('book id', id);
       return Observable.create(observer => {

@@ -21,7 +21,8 @@
         <button ion-button class="m-0" clear item-end *ngIf="blist.isBlocked=='false'" (click)="startChat(blist.roomNo ,blist.UserName ,blist.ImagePath)"><ion-icon name="ios-chatbubbles" style="font-size:30px;"></ion-icon></button>
         <button ion-button class="m-0"clear item-end *ngIf="blist.isBlocked=='false'" (click)="block(blist.Id,'true')">Block</button>
         <button ion-button class="m-0" clear item-end *ngIf="blist.isBlocked=='true'" (click)="block(blist.Id,'false')">Unblock</button>
-        <button ion-button class="m-0" clear item-end (click)="book(blist.SubjectId,blist.TeacherID,blist.StandardId,blist.TimeFor,blist.DateFor)">Book</button>
+        <button *ngIf="blist.BookingID =='' ||  blist.BookingID==null" ion-button class="m-0" clear item-end (click)="book(blist.SubjectId,blist.TeacherID,blist.StandardId,blist.TimeFor,blist.DateFor)">Book</button>
+        <button *ngIf="blist.BookingID !='' && blist.BookingID!=null" ion-button class="m-0" clear item-end (click)="unbook(blist.BookingID)">Unbook</button>
       </ion-item>
     </ion-list>
   </div>

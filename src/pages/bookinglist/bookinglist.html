@@ -16,10 +16,8 @@
         <img *ngIf="blist.img!='teachers4.jpg' && blist.img!='' && blist.img!=null" [src]="logopath+blist.img" width="30px" height="30px">
       </ion-thumbnail>
       <h2>{{blist.TeacherName}}</h2>
-      <!-- <button ion-button clear item-end *ngIf="blist.isBlocked=='false'" (click)="startChat(blist.roomNo ,blist.UserName ,blist.img)">Chat</button> -->
-      <!-- <button ion-button clear item-end *ngIf="blist.isBlocked=='false'" (click)="block(blist.Id,'true')">block</button>
-      <button ion-button clear item-end *ngIf="blist.isBlocked=='true'" (click)="block(blist.Id,'false')">Unblock</button> -->
-      <!-- <button ion-button clear item-end (click)="book(blist.blockedID)">Book</button> -->
+      <button ion-button class="m-0" clear item-end *ngIf="blist.isBlocked=='false'" (click)="startChat(blist.roomNo ,blist.UserName ,blist.img)"><ion-icon name="ios-chatbubbles" style="font-size:30px;"></ion-icon></button>
+  
     </ion-item>
   </ion-list>
   
@@ -30,10 +28,8 @@
           <img *ngIf="blist.img!='teachers4.jpg' && blist.img!='' && blist.img!=null" [src]="logopath+blist.img" width="30px" height="30px">
         </ion-thumbnail>
         <h2>{{blist.SchoolName}}</h2>
-        <!-- <button ion-button clear item-end *ngIf="blist.isBlocked=='false'" (click)="startChat(blist.roomNo ,blist.SchoolName ,blist.img)">Chat</button> -->
-        <!-- <button ion-button clear item-end *ngIf="blist.isBlocked=='false'" (click)="block(blist.Id,'true')">block</button>
-        <button ion-button clear item-end *ngIf="blist.isBlocked=='true'" (click)="block(blist.Id,'false')">Unblock</button> -->
-        <!-- <button ion-button clear item-end (click)="book(blist.blockedID)">Book</button> -->
+        <button ion-button class="m-0" clear item-end *ngIf="blist.isBlocked=='false'" (click)="startChat(blist.roomNo ,blist.UserName ,blist.img)"><ion-icon name="ios-chatbubbles" style="font-size:30px;"></ion-icon></button>
+        
       </ion-item>
     </ion-list>
 

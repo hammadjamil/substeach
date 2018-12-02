@@ -266,9 +266,9 @@ export class Schoolregister2Page {
     fileTransfer.upload(targetPath, url, options).then(data => {
       this.loader.dismiss();
       console.log('data',data);
-        this.storage.set('TeacherLogo',this.lastImage)
+        this.storage.set('TeacherLogo',data.response)
         this.presentAlert('Success!', 'You File successfully uploaded');
-        this.baseLogo = this.lastImage;
+        this.baseLogo = data.response;
       // let p_data = JSON.parse(data.response);
       
     }, err => {
