@@ -14,6 +14,8 @@
         <img *ngIf="blist.img!='teachers4.jpg' && blist.img!='' && blist.img!=null" [src]="logopath+blist.img" width="30px" height="30px">
       </ion-thumbnail>
       <h2>{{blist.TeacherName}}</h2>
+      <button ion-button class="m-0" clear item-end *ngIf="blist.isBlocked=='false'" (click)="startChat(blist.roomNo ,blist.UserName ,blist.img)"><ion-icon name="ios-chatbubbles" style="font-size:30px;"></ion-icon></button>
+  
     </ion-item>
   </ion-list>
   <ion-list *ngIf="bookinglist!='' && Role==5">
@@ -23,6 +25,8 @@
           <img *ngIf="blist.img!='teachers4.jpg' && blist.img!='' && blist.img!=null" [src]="logopath+blist.img" width="30px" height="30px">
         </ion-thumbnail>
         <h2>{{blist.SchoolName}}</h2>
+        <button ion-button class="m-0" clear item-end *ngIf="blist.isBlocked=='false'" (click)="startChat(blist.roomNo ,blist.UserName ,blist.img)"><ion-icon name="ios-chatbubbles" style="font-size:30px;"></ion-icon></button>
+        
       </ion-item>
     </ion-list>
   <ion-row *ngIf="bookinglist=='' || bookinglist==null">

@@ -102,6 +102,23 @@ export class BlocklistPage {
       }
     )
   }
+
+
+  unbook(BookingID){
+    let body = new FormData();
+    body.append('BookingID', BookingID);
+
+    this.services.unbookteacher(body).subscribe(
+      success => {
+        console.log('success booking ::: ',success);
+        this.presentAlert('Success!', success.message);
+      },
+      error => {
+        console.log('error bhai', error);
+        this.presentAlert('Alert!', error.message);
+      }
+    )
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad BlocklistPage');
   }
