@@ -1,9 +1,6 @@
 <ion-header>
   <ion-navbar style="box-shadow: 1px 0px 10px 0px black;">
     <button ion-button  class="menubtn" float-left (click)="editprofilepage()">
-       
-        <!-- <img *ngIf="userData.LogoPath!=''" [src]="userData.LogoPath" alt="" width="30px" height="30px" style="border-radius:50%"> -->
-        <!-- *ngIf="userData.LogoPath=='' || userData.LogoPath == null" -->
         <img  *ngIf="!userData.LogoPath" src="../../assets/imgs/profileimg.jpg"  alt="" width="30px" height="30px" style="border-radius:50%">
         <img  *ngIf="userData.LogoPath!='' || userData.LogoPath != null || userData.LogoPath"  [src]="LogoUrl+Logo"  alt="" width="30px" height="30px" style="border-radius:50%">
     </button>
@@ -12,11 +9,8 @@
         <ion-icon name="notifications" style="font-size:30px;"></ion-icon><ion-badge *ngIf="noticountdata!='' && noticountdata.code=='200'">{{noticountdata.count}}</ion-badge>
     </button>
   </ion-navbar>
-  
 </ion-header>
-
 <ion-content>
-    
         <div>
             <ion-list >
                 <p style="font-size: 20px;text-align: center;font-weight: 600;">Search Teacher</p>
@@ -32,7 +26,6 @@
                     </ion-label>
                     <ion-datetime displayFormat="MM/DD/YYYY"  [min]="myDate" max="2019" [(ngModel)]="teacherDay.ToDate" placeholder="To Available Date" style="    width: 84%;font-size: 16px; position: relative;padding: 5px;padding-left: 0;"></ion-datetime>
                 </ion-item>
-                
                 <div class="col-3 float-left pl-0 pt-3 pr-1">Monday</div>
                 <ion-item class="col-4 pl-2 float-left mr-4">
                     <ion-select placeholder="Time From" [(ngModel)]="teacherDay.Monday.From">
@@ -64,7 +57,6 @@
                         <ion-option value="19:00">19:00</ion-option>
                     </ion-select>
                 </ion-item>
-                
                 <div class="col-3 float-left pl-0 pt-3 pr-1">Tuesday</div>
                 <ion-item class="col-4 pl-2 float-left  mr-4">
                     <ion-select placeholder="Time From" [(ngModel)]="teacherDay.Tuesday.From">
@@ -96,7 +88,6 @@
                         <ion-option value="19:00">19:00</ion-option>
                     </ion-select>
                 </ion-item>
-                
                 <div class="col-3 float-left pl-0 pt-3 pr-1">Wednesday</div> 
                 <ion-item class="col-4 pl-2 float-left  mr-4">
                     <ion-select placeholder="Time From" [(ngModel)]="teacherDay.Wednesday.From">
@@ -128,7 +119,6 @@
                         <ion-option value="19:00">19:00</ion-option>
                     </ion-select>
                 </ion-item>
-                
                 <div class="col-3 float-left pl-0 pt-3 pr-1">Thursday</div>
                 <ion-item class="col-4 pl-2 float-left  mr-4">
                     <ion-select placeholder="Time From" [(ngModel)]="teacherDay.Thursday.From">
@@ -160,7 +150,6 @@
                         <ion-option value="19:00">19:00</ion-option>
                     </ion-select>
                 </ion-item>
-                
                 <div class="col-3 float-left pl-0 pt-3 pr-1">Friday</div>
                 <ion-item class="col-4 pl-2 float-left mr-4">
                     <ion-select placeholder="Time From" [(ngModel)]="teacherDay.Friday.From">
@@ -192,7 +181,6 @@
                         <ion-option value="19:00">19:00</ion-option>
                     </ion-select>
                 </ion-item>
-                
                 <div class="col-3 float-left pl-0 pt-3 pr-1">Saturday</div>
                 <ion-item class="col-4 pl-2 float-left mr-4">
                     <ion-select placeholder="Time From" [(ngModel)]="teacherDay.Saturday.From">
@@ -224,7 +212,6 @@
                         <ion-option value="19:00">19:00</ion-option>
                     </ion-select>
                 </ion-item>
-                
                 <div class="col-3 float-left pl-0 pt-3 pr-1">Sunday</div>
                 <ion-item class="col-4 pl-2 float-left mr-4">
                     <ion-select placeholder="Time From" [(ngModel)]="teacherDay.Sunday.From">
@@ -256,192 +243,10 @@
                         <ion-option value="19:00">19:00</ion-option>
                     </ion-select>
                 </ion-item>
-                
-                  <!-- <ion-item>
-                    <ion-label>Days</ion-label>
-                    <ion-select [(ngModel)]="teacherDay.Day" multiple="true">
-                      <ion-option value="Monday">Monday</ion-option>
-                      <ion-option value="Tuesday" >Tuesday</ion-option>
-                      <ion-option value="Wednesday">Wednesday</ion-option>
-                      <ion-option value="Thursday">Thursday</ion-option>
-                      <ion-option value="Friday">Friday</ion-option>
-                      <ion-option value="Saturday">Saturday</ion-option>
-                      <ion-option value="Sunday">Sunday</ion-option>
-                    </ion-select>
-                  </ion-item> -->
-                  <!-- <ion-item>
-                    <ion-label>Standrads</ion-label>
-                      <ion-select [(ngModel)]="teacherDay.Standard" multiple="true">
-                        <ion-option *ngFor="let row of Standard" value="{{row.Id}}">{{row.StandardName}}</ion-option>
-                      </ion-select>
-                  </ion-item> -->
-                
-                  <ion-item style="border:none !important;" class="booking">
-                    <ion-label style="color:black;">Want to book directly</ion-label>
-                    <ion-checkbox [(ngModel)]="sausage"></ion-checkbox>
-                  </ion-item>
                   <button ion-button block style="margin-top: 10px;" (click)="matchByDay()">Matching</button>
             </ion-list>
-            <!-- <ion-list >
-                <p style="font-size: 22px;font-weight: 700;padding-bottom: 0;margin-bottom: 0;text-align: center;">Select Days</p>
-                <ion-list style="padding: 5px;width:100%;float: left;margin-bottom: 0;">
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seldays.Monday == '1'}" (click)="toggledays('1')">
-                        Monday
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seldays.Tuesday == '1'}" (click)="toggledays('2')">
-                        Tuesday
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seldays.Wednesday == '1'}" (click)="toggledays('3')">
-                        Wednesday
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seldays.Thursday == '1'}" (click)="toggledays('4')">
-                        Thursday
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seldays.Friday == '1'}" (click)="toggledays('5')">
-                        Friday
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seldays.Saturday == '1'}" (click)="toggledays('6')">
-                        Saturday
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seldays.Sunday == '1'}" (click)="toggledays('7')">
-                        Sunday
-                    </ion-item>
-                </ion-list>
-                <p style="font-size: 22px;font-weight: 700;padding-bottom: 0;margin-bottom: 0;text-align: center;">Select Time From</p>
-                <ion-list style="padding: 5px;width:100%;float: left;margin-bottom: 0;">
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsFrom.slot1 == '1'}" (click)="toggletimeslot('9:00','dayfrom')">
-                        9:00 
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsFrom.slot2 == '1'}" (click)="toggletimeslot('10:00','dayfrom')">
-                        10:00 
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsFrom.slot3 == '1'}" (click)="toggletimeslot('11:00','dayfrom')">
-                        11:00
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsFrom.slot4 == '1'}" (click)="toggletimeslot('12:00','dayfrom')">
-                        12:00
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsFrom.slot5 == '1'}" (click)="toggletimeslot('13:00','dayfrom')">
-                        13:00 
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsFrom.slot6 == '1'}" (click)="toggletimeslot('14:00','dayfrom')">
-                        14:00
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsFrom.slot7 == '1'}" (click)="toggletimeslot('15:00','dayfrom')">
-                        15:00
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsFrom.slot8 == '1'}" (click)="toggletimeslot('16:00','dayfrom')">
-                        16:00
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsFrom.slot9 == '1'}" (click)="toggletimeslot('17:00','dayfrom')">
-                        17:00
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsFrom.slot10 == '1'}" (click)="toggletimeslot('18:00','dayfrom')">
-                        18:00
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsFrom.slot11 == '1'}" (click)="toggletimeslot('19:00','dayfrom')">
-                        19:00
-                    </ion-item>
-                </ion-list>
-                <p style="font-size: 22px;font-weight: 700;padding-bottom: 0;margin-bottom: 0;text-align: center;">Select Time To</p>
-                <ion-list style="padding: 5px;width:100%;float: left;margin-bottom: 0;">
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot1 == '1'}" (click)="toggletimeslot('9:00','day')">
-                        9:00 
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot2 == '1'}" (click)="toggletimeslot('10:00','day')">
-                        10:00 
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot3 == '1'}" (click)="toggletimeslot('11:00','day')">
-                        11:00
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot4 == '1'}" (click)="toggletimeslot('12:00','day')">
-                        12:00
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot5 == '1'}" (click)="toggletimeslot('13:00','day')">
-                        13:00 
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot6 == '1'}" (click)="toggletimeslot('14:00','day')">
-                        14:00
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot7 == '1'}" (click)="toggletimeslot('15:00','day')">
-                        15:00
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot8 == '1'}" (click)="toggletimeslot('16:00','day')">
-                        16:00
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot9 == '1'}" (click)="toggletimeslot('17:00','day')">
-                        17:00
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot10 == '1'}" (click)="toggletimeslot('18:00','day')">
-                        18:00
-                    </ion-item>
-                    <ion-item class="contesttypefilter" [ngClass]="{'coloractive': seltimeslotsTo.slot11 == '1'}" (click)="toggletimeslot('19:00','day')">
-                        19:00
-                    </ion-item>
-                </ion-list>
-                
-                
-                <button ion-button block style="margin-top: 10px;" (click)="matchByDay()">Matching</button>
-            </ion-list> -->
-
-
         </div>
-        <!-- mobi scroll -->
-        <!-- <mbsc-form>
-                <mbsc-form-group>
-                    <mbsc-form-group-title>Country picker</mbsc-form-group-title>
-                    <label>
-                        Group wheel
-                        <input [(ngModel)]="select" mbsc-select [mbsc-options]="selectSettings" [mbsc-data]="myData" />
-                    </label>
-                    <label>
-                        Filter
-                       <input [(ngModel)]="filter" mbsc-select [mbsc-options]="filterSettings" [mbsc-data]="myData" />
-                    </label>
-                </mbsc-form-group>
-                <mbsc-form-group class="mbsc-padding">
-                    <p class="mbsc-thin">Use it on any element or non-mobiscroll form.</p>
-                </mbsc-form-group>
-            </mbsc-form>
-            <ion-item>
-                <ion-label>Select</ion-label>
-                <ion-input [(ngModel)]="myselect" mbsc-select [mbsc-options]="myselectSettings" [mbsc-data]="myData"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label>External button</ion-label>
-                <ion-input [(ngModel)]="external" mbsc-select [mbsc-options]="externalSettings" [mbsc-data]="myData" #externalSelect="mobiscroll"></ion-input>
-                <button ion-button item-right (click)="externalSelect.instance.show()">Show</button>
-            </ion-item> -->
-            <!-- mobi scroll -->
         <div *ngIf="userData.Ispaid=='yes'" (click)="showfav()" style="float: right;background: #ef5368;border-radius: 50px;color: white;position: fixed;bottom: 5px;right: 5px;height: 50px !important;box-shadow: 0px 0px 5px 0px grey;">
             <img src="../../assets/imgs/love.gif" style="width:50px;height:50px;margin-right: 0;" float-left/><p float-left style="margin:0;font-size: 18px;    padding-top: 10px;padding-right: 10px;">Favourites</p>
         </div>
-
-        <!-- </div> -->
-        <!-- <div *ngSwitchCase="'matching'"> -->
-            <!-- <ion-slides class="home_teachers">
-                <ion-slide class="home_teachers_slide" *ngFor="let teacher of teacherList">
-                    <div class="sliderimgg">
-                    </div>
-                    <h1 class="home_teachers_slide_name">{{teacher.FirstName+' '+teacher.LastName}} <span><ion-icon *ngIf="teacher.favId=='' || teacher.favId==null" float-right (click)="addToFav(teacher.DeputyPersonId)" name="ios-heart-outline"></ion-icon><ion-icon *ngIf="teacher.favId!='' && teacher.favId!=null" float-right (click)="addToFav(teacher.DeputyPersonId)" name="ios-heart"></ion-icon></span></h1>
-                    <p class="home_teachers_slide_reviews" (click)="rateteacher()">Top Review</p>
-                    <p class="home_teachers_slide_desc">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                    </p>
-                    <p class="home_teachers_slide_cost">
-                        Rate: $24/hr
-                    </p>
-                    <p class="home_teachers_slide_view" (click)="profilepage(teacher.DeputyPersonId)">
-                        Teacher Profile Detail
-                    </p>
-                    <button *ngIf="teacher.bookingID!='' && teacher.bookingID!=null" ion-button block class="home_teachers_slide_btn" (click)="inviteTeacher(teacher.userId)">Booking</button>
-                    <button *ngIf="teacher.bookingID=='' || teacher.bookingID==null" ion-button block class="home_teachers_slide_btn" (click)="inviteTeacher(teacher.userId)">Invite</button>
-                </ion-slide>
-            </ion-slides> -->
-        <!-- </div> -->
-    <!-- </div> -->
-    <!-- settting tab -->
-    <!-- settting tab -->
-    
-    
 </ion-content> 

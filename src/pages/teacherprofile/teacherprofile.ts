@@ -59,27 +59,59 @@ export class TeacherprofilePage {
           this.Logo = this.LogoUrl+this.userData.ImagePath;
         }
       });
-    this.services.getStandards().subscribe(
-      //Successfully Logged in
-      success => {
-        console.log('Success : ',success);
-        this.Standard = success.userData;
-        console.log('Standard : ',this.Standard);
-      },
-      error => {
-        console.log('error bhai', error);
-        setTimeout(() => {
-          // if (error.message.length==1){
-            this.presentAlert('Alert!', error.message);
-            this.loader.dismiss();
-          // }
-          
-        }, 500);
-      }
-    )
+      this.getstandrads();
+      this.getnotificationcount();
+    
   }
-
-  
+getstandrads(){
+  this.services.getStandards().subscribe(
+    //Successfully Logged in
+    success => {
+      this.Standard = success.userData;
+      console.log('Standard : ',this.Standard);
+    },
+    error => {
+      console.log('error bhai', error);
+      setTimeout(() => {
+          this.presentAlert('Alert!', error.message);
+          this.loader.dismiss();
+      }, 500);
+    }
+  )
+}
+getnotificationcount(){
+  console.log(this.userData.Id);
+  let body = new FormData();
+  body.append('userId', this.userData.Id);
+  this.services.notificationcount(body).subscribe(
+    success => {
+      setTimeout(() => {
+        console.log(success);
+        this.noticountdata=success;
+      }, 500);
+    },
+    error => {
+      console.log('error bhai', error);
+    }
+  )
+ }
+ notificationcountzero(){
+  console.log(this.userData.Id);
+  let body = new FormData();
+  body.append('userId', this.userData.Id);
+  this.services.notificationcountzero(body).subscribe(
+    success => {
+      setTimeout(() => {
+        console.log(success);
+        this.noticountdata=success;
+        this.navCtrl.push(NotificationPage);
+      }, 500);
+    },
+    error => {
+      console.log('error bhai', error);
+    }
+  )
+ }
 
   presentAlert(title, msgs) {
     let alert = this.alertCtrl.create({
@@ -137,25 +169,9 @@ export class TeacherprofilePage {
       }
     )
   }
-  getnotificationcount(){
-    console.log(this.userID.Id);
-   let body = new FormData();
-   body.append('userId', this.userID.Id);
-   this.services.notificationcount(body).subscribe(
-     //Successfully Logged in
-     success => {
-       setTimeout(() => {
-         console.log(success);
-         this.noticountdata=success;
-       }, 500);
-     },
-     error => {
-       console.log('error bhai', error);
-     }
-   )
-  }
   shownoti(){
-    this.navCtrl.push(NotificationPage);
+    this.notificationcountzero();
+    // this.navCtrl.push(NotificationPage);
   }
   editprofilepage(){
     this.navCtrl.push(EditprofilePage);

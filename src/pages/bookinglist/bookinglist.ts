@@ -6,6 +6,7 @@ import { Services } from '../../providers/services';
 import { AppSettings } from '../../app/appSettings';
 import * as firebase from 'Firebase';
 import { ChatPage } from '../chat/chat';
+import { PublicprofilePage } from '../publicprofile/publicprofile';
 
 @IonicPage()
 @Component({
@@ -67,6 +68,12 @@ export class BookinglistPage {
         console.log('error bhai', error);
       }
     )
+  }
+  profilepage(idd){
+    console.log('idd',idd);
+    this.navCtrl.push(PublicprofilePage,{
+      id: idd
+    })
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad BlocklistPage');

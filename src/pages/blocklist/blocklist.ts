@@ -8,6 +8,7 @@ import { AlertController ,Events} from 'ionic-angular';
 
 import * as firebase from 'Firebase';
 import { ChatPage } from '../chat/chat';
+import { PublicprofilePage } from '../publicprofile/publicprofile';
 
 @IonicPage()
 @Component({
@@ -138,7 +139,12 @@ startChat(no ,chatusername,chatlogo) {
 }
 
 
-
+profilepage(idd){
+  console.log('idd',idd);
+  this.navCtrl.push(PublicprofilePage,{
+    id: idd
+  })
+}
 joinRoom(key) {
   console.log('this.data.nickname',this.data.nickname,'chatlogo',this.chatlogo);
 

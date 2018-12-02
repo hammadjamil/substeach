@@ -135,15 +135,11 @@ export class NotificationPage {
 startChat(no ,chatusername,chatlogo) {
   this.chatuser=chatusername;
   this.chatlogo=chatlogo;
-  console.log(this.chatlogo);
+  console.log('chat logo notification' ,this.chatlogo);
   this.addRoom(no);
 }
-
-
-
 joinRoom(key) {
   console.log('this.data.nickname',this.data.nickname,'chatlogo',this.chatlogo);
-
   this.navCtrl.push(ChatPage, {
     key:key,
     nickname:this.data.nickname,
@@ -151,10 +147,8 @@ joinRoom(key) {
     chatlogo: this.chatlogo
   });
 }
-
 addRoom(number) {
   console.log(' this.rooms', this.rooms);
-  
   var temp = false;
   this.rooms.forEach(obj => {
     if(obj.roomname == number){
@@ -167,7 +161,6 @@ addRoom(number) {
     newData.set({
       roomname: number
     });
-
     setTimeout( () => {
       this.rooms.forEach(obj => {
         if(obj.roomname == number){
@@ -176,25 +169,17 @@ addRoom(number) {
       });
       console.log(' this.rooms if', this.rooms);
     }, 500)
-
-    
   }else{
     console.log(' this.rooms else', this.rooms);
   }
-
 }
-
-
 }
-
 export const snapshotToArray = snapshot => {
   let returnArr = [];
-
   snapshot.forEach(childSnapshot => {
       let item = childSnapshot.val();
       item.key = childSnapshot.key;
       returnArr.push(item);
   });
-
   return returnArr;
 }
