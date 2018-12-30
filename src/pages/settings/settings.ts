@@ -9,6 +9,7 @@ import { PaymentPage } from '../payment/payment';
 import { MyStorage } from '../../app/localstorage';
 import { BlocklistPage } from '../blocklist/blocklist';
 import { BookinglistPage } from '../bookinglist/bookinglist';
+import { HelpPage } from '../help/help';
 
 @IonicPage()
 @Component({
@@ -74,5 +75,8 @@ export class SettingsPage {
   }
   bookinglist(){
     this.navCtrl.push(BookinglistPage);
+  }
+  help(){
+    this.navCtrl.push(HelpPage,{setting:1});
   }
 }

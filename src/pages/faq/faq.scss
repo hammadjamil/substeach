@@ -1,0 +1,45 @@
+page-faq {
+    .toolbar-background{
+        background: $themecolor;
+    }
+    .toolbar-title {
+        color: white;
+    }
+    .bar-button-default {
+        color: #fff !important;
+        background-color: transparent;
+    }
+    .toolbar-title {
+        color: $themecolor !important;
+    }
+    .toolbar-background{
+        background: #fff;
+    }
+    .menubtn {
+        box-shadow: none !important;
+        background: #fff !important;
+
+    }
+    .menubtn ion-icon{
+        color: $themecolor !important;
+    }
+    button.back-button {
+        background: #fff !important;
+    }
+    button.back-button ion-icon{
+        color: $themecolor !important;
+    }
+    button {
+        border-radius: 0 !important;
+        background: #fff !important;
+        box-shadow: none !important;
+    }
+    ion-label {
+        color: #000 !important;
+        background: #fff !important;
+        padding: 13px 0;
+        margin: 0 !important;
+        text-align: left;
+        width: 50px;
+    }
+}

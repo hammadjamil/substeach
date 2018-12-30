@@ -43,6 +43,11 @@ ion-checkbox button{
   height: 60px !important;
 }
 page-login {
+//   .scroll-content{
+//     background-repeat: no-repeat;
+// background-image: url(../../assets/imgs/registerbg.jpeg);
+// background-position: center;
+// }
  #loginpage ion-label{
     color: $themecolorw;
 }
@@ -108,6 +113,20 @@ page-login {
   font-size: 30px !important;
   color: $themecolorw;
 }
+    .help {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .help p {
+      font-size: 17px !important;
+      font-weight: 700 !important;
+      background: #a51463;
+      color: white;
+      border-bottom-right-radius: 10px;
+  }
+  
+  
 }
 
 

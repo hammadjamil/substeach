@@ -17,6 +17,7 @@ import { GooglePlus } from '@ionic-native/google-plus';
 import { SchoolprofilePage } from '../schoolprofile/schoolprofile';
 import { TeacherprofilePage } from '../teacherprofile/teacherprofile';
 import { Schoolregister2Page } from '../schoolregister2/schoolregister2';
+import { HelpPage } from '../help/help';
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -38,8 +39,8 @@ export class LoginPage {
               public events: Events,
               private auth: Auth,
               private storage: MyStorage,
-              public fb: Facebook,
-              public google: GooglePlus,
+              // public fb: Facebook,
+              // public google: GooglePlus,
               public tools: MyTools,
               private alertCtrl: AlertController) {
                 //initializing facebook
@@ -126,7 +127,7 @@ loginService() {
     });
     alert.present();
   }
-  //Facebook Login
+  // Facebook Login
   fbSignIn() {
     this.fb.logout().then(
         (success) => {
@@ -247,5 +248,8 @@ loginService() {
               // this.sendDataToParent(user);
           }
       )
+  }
+  help(){
+    this.navCtrl.push(HelpPage);
   }
 }

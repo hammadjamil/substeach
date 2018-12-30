@@ -18,6 +18,7 @@ import { LoadingController } from 'ionic-angular/index';
 import { MyTools } from '../providers/tools';
 import { Services } from '../providers/services';
 import { DomSanitizer } from '@angular/platform-browser';
+import { RegisterrPage } from '../pages/registerr/registerr';
 
 @Component({
   templateUrl: 'app.html',
@@ -25,7 +26,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
+  // rootPage: any = LoginPage;  
   rootPage: any = LoginPage;  
+  
   loader: any;
   pages: Array<{title: string, component: any}>;
   exitApp = 0;
