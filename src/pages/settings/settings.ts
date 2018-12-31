@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams , ToastController} from 'ionic-angular';
 import { Auth } from '../../providers/auth';
+import { AlertController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { LogoutPage } from '../logout/logout';
 import { MyTools } from '../../providers/tools';
@@ -23,7 +24,7 @@ export class SettingsPage {
   homepage:any;
   Logo:any = '';
   userDetail:any = '';
-  constructor(public navCtrl: NavController,public toastCtrl: ToastController,
+  constructor(public navCtrl: NavController,public toastCtrl: ToastController, private alertCtrl: AlertController,
     private storage: MyStorage,private services: Services,public tools: MyTools,private auth: Auth,public navParams: NavParams) {
   
     this.storage.get('user').then(
@@ -34,12 +35,9 @@ export class SettingsPage {
       }
     )}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SettingsPage');
-  }
+ 
   logout() {
     this.auth.logout();
-    console.log('showing loader now');
     this.showLoader();
     this.logoutNow(this.loader);      
   }
@@ -75,4 +73,47 @@ export class SettingsPage {
   bookinglist(){
     this.navCtrl.push(BookinglistPage);
   }
+
+
+  presentAlert(title, msgs) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      // subTitle: msg,
+      message: msgs,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+
+  Unsubscribe(){
+    
+    console.log('this.userDetail :',this.userDetail);
+    this.showLoader();
+      let body = new FormData();
+      body.append('SchoolID', this.userDetail.SchoolID);
+      this.services.Unsubscribe(body).subscribe(
+        //Successfully Logged in
+        success => {
+          
+          setTimeout(() => {
+            this.presentAlert('Success!', 'You are successfully Unsubscribed.');
+            this.userDetail.Ispaid='no';
+            this.storage.set('user', this.userDetail);
+              this.loader.dismiss();
+          }, 500);
+        },
+        error => {
+          console.log('error bhai', error);
+          setTimeout(() => {
+            // if (error.message.length==1){
+              this.presentAlert('Alert!', error.message);
+              this.loader.dismiss();
+            // }
+            
+          }, 500);
+        }
+      )
+  }
+
 }

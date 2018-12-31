@@ -36,16 +36,10 @@ export class ChatPage {
       this.nickname = this.navParams.get("nickname") as string;
       this.chatusername = this.navParams.get("chatusername") as string;
       this.chatlogo = this.navParams.get("chatlogo");
-      console.log('chat logo::::',this.chatlogo);
       this.data.type = 'message';
       this.data.nickname = this.nickname;
       let joinData = firebase.database().ref('chatrooms/'+this.roomkey+'/chats').push();
-      // joinData.set({
-      //   type:'join',
-      //   user:this.nickname,
-      //   // message:this.nickname+' has joined this room.',
-      //   sendDate:Date()
-      // });
+      
       this.data.message = '';
       firebase.database().ref('chatrooms/'+this.roomkey+'/chats').on('value', resp => {
         this.chats = [];
@@ -73,7 +67,6 @@ export class ChatPage {
     this.data.message = '';
   }
   keyboardCheck() {
-    console.log('The keyboard is open:', this.keyboard.isOpen());
     if(this.keyboard.isOpen()==true){
       this.btnmargin = "250px"
       this.btnmargin2 = "300px"

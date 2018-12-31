@@ -17,6 +17,9 @@
         <button *ngIf="userDetail.Ispaid=='no'" ion-item (click)="pay()">
           Get Monthly Subscription 
         </button>
+        <button *ngIf="userDetail.Ispaid=='yes'" ion-item (click)="Unsubscribe()">
+          Unsubscribe
+        </button>
         <button ion-item (click)="logout()">
             <span style="color:brown;font-weight:700;">Logout</span> 
         </button> 
