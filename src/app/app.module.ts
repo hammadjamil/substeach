@@ -48,6 +48,11 @@ import { ListreviewPage } from '../pages/listreview/listreview';
 import { FiltersPage } from '../pages/filters/filters';
 import { BlocklistPage } from '../pages/blocklist/blocklist';
 import { BookinglistPage } from '../pages/bookinglist/bookinglist';
+import { RegisterrPage } from '../pages/registerr/registerr';
+import { HelpPage } from '../pages/help/help';
+import { RechtlichesPage } from '../pages/rechtliches/rechtliches';
+import { FaqPage } from '../pages/faq/faq';
+import { TermsPage } from '../pages/terms/terms';
 
 import { DocumentViewer,DocumentViewerOptions  } from '@ionic-native/document-viewer';
 import { SMS } from '@ionic-native/sms';
@@ -92,7 +97,12 @@ import { Stripe } from '@ionic-native/stripe';
     AddreviewPage,
     ListreviewPage,
     BlocklistPage,
-    BookinglistPage
+    BookinglistPage,
+    RegisterrPage,
+    HelpPage,
+    RechtlichesPage,
+    FaqPage,
+    TermsPage,
   ],
   imports: [ 
     FormsModule, 
@@ -137,7 +147,12 @@ import { Stripe } from '@ionic-native/stripe';
     AddreviewPage,
     ListreviewPage,
     BlocklistPage,
-    BookinglistPage
+    BookinglistPage,
+    RegisterrPage,
+    HelpPage,
+    RechtlichesPage,
+    FaqPage,
+    TermsPage,
   ],
   providers: [
     StatusBar,

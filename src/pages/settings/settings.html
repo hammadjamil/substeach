@@ -18,19 +18,14 @@
           Get Monthly Subscription 
         </button>
         <button *ngIf="userDetail.Ispaid=='yes'" ion-item (click)="Unsubscribe()">
-          Unsubscribe
+          
+          Unsubscribe 
+        </button>
+        <button  (click)="help()" ion-item>
+          Help 
         </button>
         <button ion-item (click)="logout()">
             <span style="color:brown;font-weight:700;">Logout</span> 
         </button> 
       </ion-list>
-  <!-- 
-  <button ion-button icon-start full (click)="blocklist()">
-    <ion-icon name="md-log-out"></ion-icon>
-    Block List
-  </button>
-  <button ion-button icon-start full (click)="logout()">
-    <ion-icon name="md-log-out"></ion-icon>
-    LOGOUT
-  </button> -->
 </ion-content>

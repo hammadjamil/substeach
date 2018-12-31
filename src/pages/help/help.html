@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>HELP</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <ion-list>
+        <button ion-item >
+          <a href="tel:+1-1800-555-5555" class="button button-positive">Kundenservice anrufen</a>  
+        </button> 
+        <button ion-item (click)="register()" *ngIf="setting!=1">
+          Produkttour 
+        </button>
+        <button  ion-item  (click)="faq()">
+          FAQ 
+        </button>
+        <button ion-item (click)="rech()">
+          Rechtliches 
+        </button>
+      </ion-list>
+</ion-content>
+
