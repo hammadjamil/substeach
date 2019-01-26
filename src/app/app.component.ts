@@ -7,7 +7,7 @@ import { Events } from 'ionic-angular';
 import { LoginPage } from '../pages/login/login';
 import { LogoutPage } from '../pages/logout/logout';
 import { SchoolprofilePage } from '../pages/schoolprofile/schoolprofile';
-import { Push, PushObject, PushOptions } from '@ionic-native/push';
+// import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { TeacherprofilePage } from '../pages/teacherprofile/teacherprofile';
 import { Teacherregister2Page } from '../pages/teacherregister2/teacherregister2';
 import { PaymentPage } from '../pages/payment/payment';
@@ -45,7 +45,7 @@ export class MyApp {
               private storage: MyStorage,
               public platform: Platform,
               public statusBar: StatusBar,
-              public push: Push,
+              // public push: Push,
               public splashScreen: SplashScreen,
               private sanitizer: DomSanitizer) 
     {
@@ -85,7 +85,7 @@ export class MyApp {
       });
       if(this.platform.is('android')){
         console.log('mww tesatde');
-        this.PushSetUp();
+        // this.PushSetUp();
       }
 
       
@@ -120,46 +120,46 @@ export class MyApp {
   openPage(page) {
     this.nav.setRoot(page.component);
   }
-  PushSetUp(){
-    // to check if we have permission
-    this.push.hasPermission()
-    .then((res: any) => {
-      if (res.isEnabled) {
-        console.log('We have permission to send push notifications');
-      } else {
-        console.log('We do not have permission to send push notifications');
-      }
+  // PushSetUp(){
+  //   // to check if we have permission
+  //   this.push.hasPermission()
+  //   .then((res: any) => {
+  //     if (res.isEnabled) {
+  //       console.log('We have permission to send push notifications');
+  //     } else {
+  //       console.log('We do not have permission to send push notifications');
+  //     }
 
-    });
-    // to initialize push notifications
-    const options: PushOptions = {
-    android: {
-      icon : 'drawable-ldpi-icon',
-      sound : true,
-      vibrate : true,
-      forceShow  :true,
-      titleKey : 'Academist'
-    },
-    ios: {
-        alert: 'true',
-        badge: true,
-        sound: 'false'
-    },
-    windows: {},
-    browser: {
-        pushServiceURL: 'http://push.api.phonegap.com/v1/push'
-    }
-    };
-    const pushObject: PushObject = this.push.init(options);
-    pushObject.on('notification').subscribe((notification: any) => {
-      console.log('Received a notification', notification)
-    });
-    pushObject.on('registration').subscribe((registration: any) => 
-    {
-      console.log('vregistration : ',registration)
-      this.storage.set('deviceID', registration.registrationId);
-    });
-    pushObject.on('error').subscribe(error => console.error('Error with Push pluginmm', error));
+  //   });
+  //   // to initialize push notifications
+  //   const options: PushOptions = {
+  //   android: {
+  //     icon : 'drawable-ldpi-icon',
+  //     sound : true,
+  //     vibrate : true,
+  //     forceShow  :true,
+  //     titleKey : 'Academist'
+  //   },
+  //   ios: {
+  //       alert: 'true',
+  //       badge: true,
+  //       sound: 'false'
+  //   },
+  //   windows: {},
+  //   browser: {
+  //       pushServiceURL: 'http://push.api.phonegap.com/v1/push'
+  //   }
+  //   };
+  //   const pushObject: PushObject = this.push.init(options);
+  //   pushObject.on('notification').subscribe((notification: any) => {
+  //     console.log('Received a notification', notification)
+  //   });
+  //   pushObject.on('registration').subscribe((registration: any) => 
+  //   {
+  //     console.log('vregistration : ',registration)
+  //     this.storage.set('deviceID', registration.registrationId);
+  //   });
+  //   pushObject.on('error').subscribe(error => console.error('Error with Push pluginmm', error));
 
-  }
+  // }
 }

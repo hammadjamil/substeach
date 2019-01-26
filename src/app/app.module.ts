@@ -29,8 +29,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Services } from '../assets/providers/services';
 import { HttpModule } from '@angular/http';
-import { Facebook } from '@ionic-native/facebook';
-import { GooglePlus } from '@ionic-native/google-plus';
+// import { Facebook } from '@ionic-native/facebook';
+// import { GooglePlus } from '@ionic-native/google-plus';
 import { Chooser } from '@ionic-native/chooser';
 import { VerifyteacherphonePage } from '../pages/verifyteacherphone/verifyteacherphone';
 import { EditprofilePage } from '../pages/editprofile/editprofile';
@@ -56,8 +56,9 @@ import { TermsPage } from '../pages/terms/terms';
 
 import { DocumentViewer,DocumentViewerOptions  } from '@ionic-native/document-viewer';
 import { SMS } from '@ionic-native/sms';
-import { Push, PushObject, PushOptions } from '@ionic-native/push';
+// import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { Stripe } from '@ionic-native/stripe';
+import { Twilio } from 'twilio';
 // import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 // import { File } from '@ionic-native/file';
 // import { PayPal, PayPalPayment, PayPalConfiguration }  from '@ionic-native/paypal';
@@ -109,6 +110,7 @@ import { Stripe } from '@ionic-native/stripe';
     BrowserModule,
     IonicStorageModule.forRoot(),
     HttpModule,
+    Twilio,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -159,12 +161,12 @@ import { Stripe } from '@ionic-native/stripe';
     SplashScreen,
     Services,
     MyStorage,
-    Facebook,
-    GooglePlus,
+    // Facebook,
+    // GooglePlus,
     MyTools,
     Base64,
     Chooser,
-    Push,
+    // Push,
     Stripe,
     DocumentViewer,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

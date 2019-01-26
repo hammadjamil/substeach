@@ -42,12 +42,6 @@
         <splash density="port-xxhdpi" src="resources/android/splash/drawable-port-xxhdpi-screen.png" />
         <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
     </platform>
-    <platform name="android">
-        <resource-file src="google-services.json" target="app/google-services.json" />
-    </platform>
-    <platform name="android">
-        <preference name="android-minSdkVersion" value="15"/>
-    </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
@@ -92,14 +86,6 @@
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
     <plugin name="cordova-plugin-nativestorage" spec="^2.3.2" />
     <plugin name="cordova-sqlite-storage" spec="^2.4.0" />
-    <plugin name="cordova-plugin-facebook4" spec="^3.0.0">
-        <variable name="APP_ID" value="476300759536162" />
-        <variable name="APP_NAME" value="Substeach" />
-        <variable name="FACEBOOK_ANDROID_SDK_VERSION" value="4.36.0" />
-    </plugin>
-    <plugin name="cordova-plugin-googleplus" spec="^5.3.1">
-        <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.511898450722-p37neueatg7980t4hfv4b55lqvgpfpip" />
-    </plugin>
     <plugin name="cordova-plugin-filechooser" spec="^1.0.1" />
     <plugin name="cordova-plugin-filepath" spec="^1.4.2" />
     <plugin name="cordova-plugin-camera" spec="^4.0.3" />
@@ -111,10 +97,5 @@
     <plugin name="cordova-plugin-file-transfer" spec="^1.7.1" />
     <plugin name="cordova-plugin-file" spec="^6.0.1" />
     <plugin name="cordova-plugin-document-viewer" spec="^0.9.10" />
-    <plugin name="phonegap-plugin-push" spec="2.2.3">
-        <variable name="SENDER_ID" value="511898450722" />
-        <variable name="ANDROID_SUPPORT_V13_VERSION" value="27.+" />
-        <variable name="FCM_VERSION" value="11.6.2" />
-    </plugin>
-    <engine name="android" spec="~7.1.0" />
+    <engine name="android" spec="7.1.0" />
 </widget>

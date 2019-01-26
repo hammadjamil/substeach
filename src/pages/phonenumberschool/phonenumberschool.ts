@@ -5,6 +5,7 @@ import { Services } from '../../providers/services';
 import { Storage } from '@ionic/storage';
 import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
+import { Twilio } from 'twilio';
 @IonicPage()
 @Component({
   selector: 'page-phonenumberschool',
@@ -16,14 +17,28 @@ export class PhonenumberschoolPage {
   {   
     phonenumber: '', 
   };
-
+  
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,  
     public loadingCtrl: LoadingController,
     private storage: Storage,
     public services: Services,
+    public twilio: Twilio,
     private alertCtrl: AlertController,
     private menu: MenuController) {
+  }
+  twiliosms(){
+    const accountSid = 'PN61e78a49210cb0c4e4bac82599ae434d';
+    const authToken = '787c88d50156635ed092061a1338950f';
+    const client = require('twilio')(accountSid, authToken);
+    client.messages
+    .create({
+      body: 'test asas',
+      from: '+41798074029',
+      to: '+923045959785'
+    })
+    .then(message => console.log(message.sid))
+    .done();
   }
   ionViewDidEnter() {
     this.menu.swipeEnable(false);
