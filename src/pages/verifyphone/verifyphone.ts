@@ -4,6 +4,12 @@ import { SchoolregisterPage } from '../schoolregister/schoolregister';
 import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 
+import { Storage } from '@ionic/storage';
+import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+
 @IonicPage()
 @Component({
   selector: 'page-verifyphone',
@@ -15,12 +21,31 @@ export class VerifyphonePage {
   { 
     code: '', 
   };
+  RegisterSchoolcountrycode:any;
+  RegisterSchoolPhoneNumber:any;
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
+    private storage: Storage,
      public loadingCtrl: LoadingController,
-     private menu: MenuController,
+     private menu: MenuController,private http: Http,
      private alertCtrl: AlertController) {
+
+      this.storage.get('RegisterSchoolPhoneNumber').then(
+        (val) => {
+          if (val != null) {
+            this.RegisterSchoolPhoneNumber = val;
+          }
+        }
+      )
+
+      this.storage.get('RegisterSchoolcountrycode').then(
+        (val) => {
+          if (val != null) {
+            this.RegisterSchoolcountrycode = val;
+          }
+        }
+      )
   }
   ionViewDidEnter() {
     this.menu.swipeEnable(false);
@@ -59,15 +84,38 @@ export class VerifyphonePage {
   }
   // loader
   verify(){
-    this.showLoader();
-    if(this.user.code == '12345'){
-      this.loader.dismiss();
-      this.schoolregister3();
-    }else{
-      this.presentAlert('Alert!', 'Code does not match');
-      this.loader.dismiss();
-    }
+    // this.showLoader();
+    let res = this.otpVerify(this.RegisterSchoolPhoneNumber, this.user.code, this.RegisterSchoolcountrycode);
+    console.log('dddaataaa: ',res);
+    // if(this.user.code == '12345'){
+      
+    //   this.loader.dismiss();
+    //   this.schoolregister3();
+    // }else{
+    //   this.presentAlert('Alert!', 'Code does not match');
+    //   this.loader.dismiss();
+    // }
   }
+
+
+  otpVerify(phoneNumber, code, countryCode): any {
+ 
+    return new Promise((resolve, reject) => {
+        this.http.get('https://api.authy.com/protected/json/phones/verification/check?api_key=0BRn09UheRZVxSsVS074h6azkngmxwRy'
+            + '&country_code=' + countryCode + '&phone_number=' + phoneNumber + '&verification_code=' + code)
+            .map(res => res.json())
+            .subscribe(data => {
+              console.log('dddaataaa: ',data);
+              
+                resolve(data);
+            }, function (error) {
+                reject(error);
+            });
+    });
+}
+
+
+
   schoolregister3(){
     this.navCtrl.push(SchoolregisterPage);
   }

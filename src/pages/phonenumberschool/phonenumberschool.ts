@@ -5,7 +5,17 @@ import { Services } from '../../providers/services';
 import { Storage } from '@ionic/storage';
 import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
+<<<<<<< HEAD
 import { Twilio } from 'twilio';
+=======
+
+import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+
+
+>>>>>>> 98e034b1767f750fbafa3ee2bb06fbd1a19c452b
 @IonicPage()
 @Component({
   selector: 'page-phonenumberschool',
@@ -16,6 +26,7 @@ export class PhonenumberschoolPage {
   user: any = 
   {   
     phonenumber: '', 
+    countrycode:''
   };
   
   constructor(public navCtrl: NavController, 
@@ -25,7 +36,8 @@ export class PhonenumberschoolPage {
     public services: Services,
     public twilio: Twilio,
     private alertCtrl: AlertController,
-    private menu: MenuController) {
+    private menu: MenuController,
+    private http: Http) {
   }
   twiliosms(){
     const accountSid = 'PN61e78a49210cb0c4e4bac82599ae434d';
@@ -89,7 +101,12 @@ export class PhonenumberschoolPage {
     this.showLoader();
     //Applying Validations
     if (this.user.phonenumber == '') {
-      this.presentAlert('Alert!', 'Please enter your phone number');
+      this.presentAlert('Alert!', 'Please enter your phone number.');
+      this.loader.dismiss();
+      return;
+    }
+    if (this.user.countrycode == '') {
+      this.presentAlert('Alert!', 'Please enter your country code.');
       this.loader.dismiss();
       return;
     }
@@ -98,7 +115,39 @@ export class PhonenumberschoolPage {
     // this.sms.send(this.user.phonenumber, 'Your verification code for substeach is :'+x);
     console.log('setting this user data ',this.user);
     this.storage.set('RegisterSchoolPhoneNumber', this.user.phonenumber);
+    this.storage.set('RegisterSchoolcountrycode', this.user.countrycode);
+
+    let res = this.sendVerificationCode(this.user.phonenumber, this.user.countrycode);
+    console.log('les : ',res);
+    
     this.loader.dismiss();
-    this.next();
+              this.next();
+
+    
   }
+
+  sendVerificationCode(phoneNumber, countryCode): any {
+ 
+    return new Promise((resolve, reject)=>{
+
+
+        let body = new FormData();
+        body.append('api_key', '0BRn09UheRZVxSsVS074h6azkngmxwRy');
+        body.append('country_code',countryCode);
+        body.append('phone_number', phoneNumber);
+        body.append('via', 'sms');
+
+        this.http.post('https://api.authy.com/protected/json/phones/verification/start', body)
+            .map(res => res.json())
+            .subscribe(data => {
+              console.log('data : ',data);
+              // this.loader.dismiss();
+              // this.next();
+                resolve(data);
+            }, function (error) {
+                reject(error);
+            });
+    });
+}
+
 }
