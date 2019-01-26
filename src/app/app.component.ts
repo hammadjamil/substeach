@@ -27,7 +27,7 @@ import { RegisterrPage } from '../pages/registerr/registerr';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
   // rootPage: any = LoginPage;  
-  rootPage: any = LoginPage;  
+  rootPage: any = RegisterrPage;  
   
   loader: any;
   pages: Array<{title: string, component: any}>;
@@ -80,7 +80,7 @@ export class MyApp {
 
           }
         }else{
-          this.rootPage = LoginPage;
+          this.rootPage = RegisterrPage;
         }
       });
       if(this.platform.is('android')){

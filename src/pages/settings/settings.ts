@@ -34,7 +34,8 @@ export class SettingsPage {
           this.userDetail = val;
         }
       }
-    )}
+    )
+  }
 
  
   logout() {
