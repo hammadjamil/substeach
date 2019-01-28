@@ -5,7 +5,7 @@ import { Services } from '../../providers/services';
 import { Storage } from '@ionic/storage';
 import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
-
+import { HTTP } from '@ionic-native/http';
 import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
@@ -29,6 +29,7 @@ export class PhonenumberteacherPage {
     public services: Services,
     private alertCtrl: AlertController,
     private menu: MenuController,
+    private httpi: HTTP,
     private http: Http) {
   }
   ionViewDidEnter() {
@@ -55,7 +56,6 @@ export class PhonenumberteacherPage {
     });
     alert.present();
   }
-
   // loader
   getLoader() {
     let loader = this.loadingCtrl.create({
@@ -74,7 +74,6 @@ export class PhonenumberteacherPage {
     this.loader.present();
   }
   // loader
-
   RegisterUserStep(){
     this.showLoader();
     //Applying Validations
@@ -83,50 +82,36 @@ export class PhonenumberteacherPage {
       this.loader.dismiss();
       return;
     }
-
     if (this.user.countrycode == '') {
       this.presentAlert('Alert!', 'Please enter your country code.');
       this.loader.dismiss();
       return;
     }
-    // var x = Math.floor((Math.random() * 10000) + 1);
-    // this.sms.send(this.user.phonenumber, 'Your verification code for substeach is :'+x);
-    
     console.log('setting this user data ',this.user);
     this.storage.set('RegisterTeacherPhoneNumber', this.user.phonenumber);
     this.storage.set('RegisterSchoolcountrycode', this.user.countrycode);
     let res = this.sendVerificationCode(this.user.phonenumber, this.user.countrycode);
-    
     console.log('les : ',res);
-
     this.loader.dismiss();
-              this.next();
+    if(res==true){
+      this.next();
+    }
   }
-
   sendVerificationCode(phoneNumber, countryCode): any {
- 
-    return new Promise((resolve, reject)=>{
-
-
-
-        let body = new FormData();
-        body.append('api_key', '0BRn09UheRZVxSsVS074h6azkngmxwRy');
-        body.append('country_code',countryCode);
-        body.append('phone_number', phoneNumber);
-        body.append('via', 'sms');
-
-        this.http.post('https://api.authy.com/protected/json/phones/verification/start', body)
-            .map(res => res.json())
-            .subscribe(data => {
-              console.log('data : ',data);
-              
-                resolve(data);
-            }, function (error) {
-                reject(error);
-            });
+    this.httpi.post('https://api.authy.com/protected/json/phones/verification/start', {api_key:'0BRn09UheRZVxSsVS074h6azkngmxwRy',country_code:countryCode,phone_number:phoneNumber,via:'sms'}, {})
+    .then(success => {
+      console.log(success.status);
+      console.log(JSON.parse(success.data)); // data received by server
+      console.log('data : ',success.data);
+      return true;
+    })
+    .catch(error => {
+      this.presentAlert('',error.error);
+      console.log(error);
+      console.log(error.status);
+    console.log(error.error); // error message as string
+    console.log(error.headers);
+    return false;
     });
-}
-
-
-
+  }
 }

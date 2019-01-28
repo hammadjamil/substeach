@@ -4,11 +4,11 @@ import { Teacherregister4Page } from '../teacherregister4/teacherregister4';
 import { AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { LoadingController } from 'ionic-angular';
-
 import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import { HTTP } from '@ionic-native/http';
 @IonicPage()
 @Component({
   selector: 'page-verifyteacherphone',
@@ -20,17 +20,16 @@ export class VerifyteacherphonePage {
   { 
     code: '', 
   };
-  
   RegisterSchoolcountrycode:any;
   RegisterSchoolPhoneNumber:any;
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     private storage: Storage,private http: Http,
-     public loadingCtrl: LoadingController,
-     private menu: MenuController,
-     private alertCtrl: AlertController) {
-
+    public loadingCtrl: LoadingController,
+    private httpi: HTTP,
+    private menu: MenuController,
+    private alertCtrl: AlertController) {
       this.storage.get('RegisterSchoolPhoneNumber').then(
         (val) => {
           if (val != null) {
@@ -38,7 +37,6 @@ export class VerifyteacherphonePage {
           }
         }
       )
-
       this.storage.get('RegisterSchoolcountrycode').then(
         (val) => {
           if (val != null) {
@@ -46,7 +44,6 @@ export class VerifyteacherphonePage {
           }
         }
       )
-
   }
   ionViewDidEnter() {
     this.menu.swipeEnable(false);
@@ -84,37 +81,29 @@ export class VerifyteacherphonePage {
   }
   // loader
   verify(){
-    // this.showLoader();
     let res = this.otpVerify(this.RegisterSchoolPhoneNumber, this.user.code, this.RegisterSchoolcountrycode);
     console.log('dddaataaa: ',res);
-    // if(this.user.code == '12345'){
-    //   this.loader.dismiss();
-    //   this.storage.set('RegisterTeacherPhone', this.user);
-    //   this.teacherregister3();
-    // }else{
-    //   this.presentAlert('Alert!', 'Code does not match');
-    //   this.loader.dismiss();
-    // }
+    if(res==true){
+      this.teacherregister3();
+    }
   }
-
-
-  
   otpVerify(phoneNumber, code, countryCode): any {
- 
-    return new Promise((resolve, reject) => {
-        this.http.get('https://api.authy.com/protected/json/phones/verification/check?api_key=0BRn09UheRZVxSsVS074h6azkngmxwRy'
-            + '&country_code=' + countryCode + '&phone_number=' + phoneNumber + '&verification_code=' + code)
-            .map(res => res.json())
-            .subscribe(data => {
-              console.log('dddaataaa: ',data);
-              
-                resolve(data);
-            }, function (error) {
-                reject(error);
-            });
+    this.httpi.get('https://api.authy.com/protected/json/phones/verification/check?api_key=0BRn09UheRZVxSsVS074h6azkngmxwRy'+ '&country_code=' + countryCode + '&phone_number=' + phoneNumber + '&verification_code=' + code, {}, {})
+    .then(success => {
+      console.log(success.status);
+      console.log(JSON.parse(success.data)); // data received by server
+      console.log('data : ',success.data);
+      return true;
+    })
+    .catch(error => {
+      this.presentAlert('','error de');
+      console.log(error);
+      console.log(error.status);
+      console.log(error.error); // error message as string
+      console.log(error.headers);
+      return false;
     });
-}
-
+  }
   teacherregister3(){
     this.navCtrl.push(Teacherregister4Page);
   }

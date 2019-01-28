@@ -34,19 +34,6 @@ export class PhonenumberschoolPage {
     private httpi: HTTP,
     ) {
   }
-  // twiliosms(){
-  //   const accountSid = 'PN61e78a49210cb0c4e4bac82599ae434d';
-  //   const authToken = '787c88d50156635ed092061a1338950f';
-  //   const client = require('twilio')(accountSid, authToken);
-  //   client.messages
-  //   .create({
-  //     body: 'test asas',
-  //     from: '+41798074029',
-  //     to: '+923045959785'
-  //   })
-  //   .then(message => console.log(message.sid))
-  //   .done();
-  // }
   ionViewDidEnter() {
     this.menu.swipeEnable(false);
   }
@@ -66,13 +53,11 @@ export class PhonenumberschoolPage {
   presentAlert(title, msgs) {
     let alert = this.alertCtrl.create({
       title: title,
-      // subTitle: msg,
       message: msgs,
       buttons: ['OK']
     });
     alert.present();
   }
-
   // loader
   getLoader() {
     let loader = this.loadingCtrl.create({
@@ -91,7 +76,6 @@ export class PhonenumberschoolPage {
     this.loader.present();
   }
   // loader
-
   RegisterUserStep(){
     this.showLoader();
     //Applying Validations
@@ -105,52 +89,31 @@ export class PhonenumberschoolPage {
       this.loader.dismiss();
       return;
     }
-    
-    // var x = Math.floor((Math.random() * 10000) + 1);
-    // this.sms.send(this.user.phonenumber, 'Your verification code for substeach is :'+x);
     console.log('setting this user data ',this.user);
     this.storage.set('RegisterSchoolPhoneNumber', this.user.phonenumber);
     this.storage.set('RegisterSchoolcountrycode', this.user.countrycode);
-
     let res = this.sendVerificationCode(this.user.phonenumber, this.user.countrycode);
     console.log('les : ',res);
-    
     this.loader.dismiss();
-              this.next();
-
-    
+    if(res==true){
+      this.next();
+    }
   }
-
   sendVerificationCode(phoneNumber, countryCode): any {
     this.httpi.post('https://api.authy.com/protected/json/phones/verification/start', {api_key:'0BRn09UheRZVxSsVS074h6azkngmxwRy',country_code:countryCode,phone_number:phoneNumber,via:'sms'}, {})
     .then(success => {
       console.log(success.status);
       console.log(JSON.parse(success.data)); // data received by server
       console.log('data : ',success.data);
+      return true;
     })
     .catch(error => {
-      this.presentAlert('','error de');
+      this.presentAlert('',error.error);
       console.log(error);
       console.log(error.status);
-    console.log(error.error); // error message as string
-    console.log(error.headers);
+      console.log(error.error); // error message as string
+      console.log(error.headers);
+      return false;
     });
-    // return new Promise((resolve, reject)=>{
-    //     let body = new FormData();
-    //     body.append('api_key', '0BRn09UheRZVxSsVS074h6azkngmxwRy');
-    //     body.append('country_code',countryCode);
-    //     body.append('phone_number', phoneNumber);
-    //     body.append('via', 'sms');
-        // this.httpi.post('https://api.authy.com/protected/json/phones/verification/start', body)
-        //     .map(res => res.json())
-        //     .subscribe(data => {
-        //       console.log('data : ',data);
-        //       // this.loader.dismiss();
-        //       // this.next();
-        //         resolve(data);
-        //     }, function (error) {
-        //         reject(error);
-        //     });
-    // });
   }
 }

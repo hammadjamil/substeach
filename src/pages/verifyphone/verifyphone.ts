@@ -9,7 +9,6 @@ import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angul
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-
 @IonicPage()
 @Component({
   selector: 'page-verifyphone',
@@ -31,7 +30,6 @@ export class VerifyphonePage {
     private httpi: HTTP,
      private menu: MenuController,private http: Http,
      private alertCtrl: AlertController) {
-
       this.storage.get('RegisterSchoolPhoneNumber').then(
         (val) => {
           if (val != null) {
@@ -39,7 +37,6 @@ export class VerifyphonePage {
           }
         }
       )
-
       this.storage.get('RegisterSchoolcountrycode').then(
         (val) => {
           if (val != null) {
@@ -60,7 +57,6 @@ export class VerifyphonePage {
   presentAlert(title, msgs) {
     let alert = this.alertCtrl.create({
       title: title,
-      // subTitle: msg,
       message: msgs,
       buttons: ['OK']
     });
@@ -85,26 +81,19 @@ export class VerifyphonePage {
   }
   // loader
   verify(){
-    // this.showLoader();
     let res = this.otpVerify(this.RegisterSchoolPhoneNumber, this.user.code, this.RegisterSchoolcountrycode);
     console.log('dddaataaa: ',res);
-    // if(this.user.code == '12345'){
-      
-    //   this.loader.dismiss();
-    //   this.schoolregister3();
-    // }else{
-    //   this.presentAlert('Alert!', 'Code does not match');
-    //   this.loader.dismiss();
-    // }
+    if(res==true){
+      this.schoolregister3();
+    }
   }
-
-
   otpVerify(phoneNumber, code, countryCode): any {
     this.httpi.get('https://api.authy.com/protected/json/phones/verification/check?api_key=0BRn09UheRZVxSsVS074h6azkngmxwRy'+ '&country_code=' + countryCode + '&phone_number=' + phoneNumber + '&verification_code=' + code, {}, {})
     .then(success => {
       console.log(success.status);
       console.log(JSON.parse(success.data)); // data received by server
       console.log('data : ',success.data);
+      return true;
     })
     .catch(error => {
       this.presentAlert('','error de');
@@ -112,23 +101,9 @@ export class VerifyphonePage {
       console.log(error.status);
     console.log(error.error); // error message as string
     console.log(error.headers);
+    return false;
     });
-    // return new Promise((resolve, reject) => {
-    //     this.http.get('https://api.authy.com/protected/json/phones/verification/check?api_key=0BRn09UheRZVxSsVS074h6azkngmxwRy'
-    //         + '&country_code=' + countryCode + '&phone_number=' + phoneNumber + '&verification_code=' + code)
-    //         .map(res => res.json())
-    //         .subscribe(data => {
-    //           console.log('dddaataaa: ',data);
-              
-    //             resolve(data);
-    //         }, function (error) {
-    //             reject(error);
-    //         });
-    // });
 }
-
-
-
   schoolregister3(){
     this.navCtrl.push(SchoolregisterPage);
   }

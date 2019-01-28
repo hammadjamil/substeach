@@ -6,18 +6,17 @@
     <!-- <div class="text-center pt-5 pb-5">
       <img src="./assets/imgs/loginlogo.png" alt=""  class="w-60" style="    width: 75%;">
     </div> -->
-    <ion-title class="text-center" style="padding-bottom: 20px !important;font-size: 25px;">Enter Country code</ion-title>
-    <ion-item class="p-0">
+    <!-- <ion-title class="text-center" style="padding-bottom: 20px !important;font-size: 25px;">Enter Country code</ion-title> -->
+    <ion-title class="text-center" style="padding-bottom: 20px !important;font-size: 25px;">Enter Phone Number</ion-title>    
+    <ion-item class="p-0" style="width:40%;float:left;border:none !important;border-bottom: 2px solid #a51463 !important;border-right: 2px solid #a514635c !important;border-top: 2px solid #a51463 !important;border-radius: unset !important;">
       <ion-label style="margin-bottom: 0;margin-right: 10px;width: 45px;"><ion-icon name="md-call" style="font-size: 25px;"></ion-icon></ion-label>
-      <ion-input type="number" placeholder="Enter country code" [(ngModel)]="user.countrycode" class="marginset" style="font-size: 16px;padding-left: 10px;"></ion-input>
+      <ion-input type="number" placeholder="Code" [(ngModel)]="user.countrycode" class="marginset" style="font-size: 16px;padding-left: 10px;"></ion-input>
     </ion-item>
-
-    <ion-title class="text-center" style="padding-bottom: 20px !important;font-size: 25px;">Enter Phone Number</ion-title>
-    <ion-item class="p-0">
-      <ion-label style="margin-bottom: 0;margin-right: 10px;width: 45px;"><ion-icon name="md-call" style="font-size: 25px;"></ion-icon></ion-label>
-      <ion-input type="number" placeholder="Enter Phone Number" [(ngModel)]="user.phonenumber" class="marginset" style="font-size: 16px;padding-left: 10px;"></ion-input>
+    <!-- <ion-title class="text-center" style="padding-bottom: 20px !important;font-size: 25px;">Enter Phone Number</ion-title> -->
+    <ion-item class="p-0" style="width:60%;float:left;border:none !important;border-bottom: 2px solid #a51463 !important;border-top: 2px solid #a51463 !important;border-right: 2px solid #a514635c !important;border-radius: unset !important;">
+      <!-- <ion-label style="margin-bottom: 0;margin-right: 10px;width: 45px;"><ion-icon name="md-call" style="font-size: 25px;"></ion-icon></ion-label> -->
+      <ion-input type="number" placeholder="Phone Number" [(ngModel)]="user.phonenumber" class="marginset" style="font-size: 16px;padding-left: 10px;"></ion-input>
     </ion-item>
-
   </ion-list>
   <p style="font-size:15px;">By tapping on Continue.Substeach will send a text with verification code.Message and data rates may apply.The verified phone number is required for registration.</p>
   <button ion-button block class="colfaded" (click)="RegisterUserStep()">Continue</button>
