@@ -29,8 +29,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Services } from '../assets/providers/services';
 import { HttpModule } from '@angular/http';
-// import { Facebook } from '@ionic-native/facebook';
-// import { GooglePlus } from '@ionic-native/google-plus';
+import { Facebook } from '@ionic-native/facebook';
+import { GooglePlus } from '@ionic-native/google-plus';
 import { Chooser } from '@ionic-native/chooser';
 import { VerifyteacherphonePage } from '../pages/verifyteacherphone/verifyteacherphone';
 import { EditprofilePage } from '../pages/editprofile/editprofile';
@@ -53,15 +53,10 @@ import { HelpPage } from '../pages/help/help';
 import { RechtlichesPage } from '../pages/rechtliches/rechtliches';
 import { FaqPage } from '../pages/faq/faq';
 import { TermsPage } from '../pages/terms/terms';
-
+import { HTTP } from '@ionic-native/http';
 import { DocumentViewer,DocumentViewerOptions  } from '@ionic-native/document-viewer';
 import { SMS } from '@ionic-native/sms';
-// import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { Stripe } from '@ionic-native/stripe';
-import { Twilio } from 'twilio';
-// import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
-// import { File } from '@ionic-native/file';
-// import { PayPal, PayPalPayment, PayPalConfiguration }  from '@ionic-native/paypal';
 @NgModule({
   declarations: [
     MyApp,
@@ -110,7 +105,6 @@ import { Twilio } from 'twilio';
     BrowserModule,
     IonicStorageModule.forRoot(),
     HttpModule,
-    Twilio,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -167,6 +161,7 @@ import { Twilio } from 'twilio';
     Base64,
     Chooser,
     // Push,
+    HTTP,
     Stripe,
     DocumentViewer,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

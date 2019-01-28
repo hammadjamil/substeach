@@ -5,17 +5,12 @@ import { Services } from '../../providers/services';
 import { Storage } from '@ionic/storage';
 import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
-<<<<<<< HEAD
-import { Twilio } from 'twilio';
-=======
-
-import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
+// import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import { HTTP } from '@ionic-native/http';
 
-
->>>>>>> 98e034b1767f750fbafa3ee2bb06fbd1a19c452b
 @IonicPage()
 @Component({
   selector: 'page-phonenumberschool',
@@ -34,24 +29,24 @@ export class PhonenumberschoolPage {
     public loadingCtrl: LoadingController,
     private storage: Storage,
     public services: Services,
-    public twilio: Twilio,
     private alertCtrl: AlertController,
     private menu: MenuController,
-    private http: Http) {
+    private httpi: HTTP,
+    ) {
   }
-  twiliosms(){
-    const accountSid = 'PN61e78a49210cb0c4e4bac82599ae434d';
-    const authToken = '787c88d50156635ed092061a1338950f';
-    const client = require('twilio')(accountSid, authToken);
-    client.messages
-    .create({
-      body: 'test asas',
-      from: '+41798074029',
-      to: '+923045959785'
-    })
-    .then(message => console.log(message.sid))
-    .done();
-  }
+  // twiliosms(){
+  //   const accountSid = 'PN61e78a49210cb0c4e4bac82599ae434d';
+  //   const authToken = '787c88d50156635ed092061a1338950f';
+  //   const client = require('twilio')(accountSid, authToken);
+  //   client.messages
+  //   .create({
+  //     body: 'test asas',
+  //     from: '+41798074029',
+  //     to: '+923045959785'
+  //   })
+  //   .then(message => console.log(message.sid))
+  //   .done();
+  // }
   ionViewDidEnter() {
     this.menu.swipeEnable(false);
   }
@@ -127,27 +122,35 @@ export class PhonenumberschoolPage {
   }
 
   sendVerificationCode(phoneNumber, countryCode): any {
- 
-    return new Promise((resolve, reject)=>{
-
-
-        let body = new FormData();
-        body.append('api_key', '0BRn09UheRZVxSsVS074h6azkngmxwRy');
-        body.append('country_code',countryCode);
-        body.append('phone_number', phoneNumber);
-        body.append('via', 'sms');
-
-        this.http.post('https://api.authy.com/protected/json/phones/verification/start', body)
-            .map(res => res.json())
-            .subscribe(data => {
-              console.log('data : ',data);
-              // this.loader.dismiss();
-              // this.next();
-                resolve(data);
-            }, function (error) {
-                reject(error);
-            });
+    this.httpi.post('https://api.authy.com/protected/json/phones/verification/start', {api_key:'0BRn09UheRZVxSsVS074h6azkngmxwRy',country_code:countryCode,phone_number:phoneNumber,via:'sms'}, {})
+    .then(success => {
+      console.log(success.status);
+      console.log(JSON.parse(success.data)); // data received by server
+      console.log('data : ',success.data);
+    })
+    .catch(error => {
+      this.presentAlert('','error de');
+      console.log(error);
+      console.log(error.status);
+    console.log(error.error); // error message as string
+    console.log(error.headers);
     });
-}
-
+    // return new Promise((resolve, reject)=>{
+    //     let body = new FormData();
+    //     body.append('api_key', '0BRn09UheRZVxSsVS074h6azkngmxwRy');
+    //     body.append('country_code',countryCode);
+    //     body.append('phone_number', phoneNumber);
+    //     body.append('via', 'sms');
+        // this.httpi.post('https://api.authy.com/protected/json/phones/verification/start', body)
+        //     .map(res => res.json())
+        //     .subscribe(data => {
+        //       console.log('data : ',data);
+        //       // this.loader.dismiss();
+        //       // this.next();
+        //         resolve(data);
+        //     }, function (error) {
+        //         reject(error);
+        //     });
+    // });
+  }
 }

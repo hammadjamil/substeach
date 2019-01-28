@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angul
 import { SchoolregisterPage } from '../schoolregister/schoolregister';
 import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
-
+import { HTTP } from '@ionic-native/http';
 import { Storage } from '@ionic/storage';
 import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
@@ -28,6 +28,7 @@ export class VerifyphonePage {
     public navParams: NavParams,
     private storage: Storage,
      public loadingCtrl: LoadingController,
+    private httpi: HTTP,
      private menu: MenuController,private http: Http,
      private alertCtrl: AlertController) {
 
@@ -99,19 +100,31 @@ export class VerifyphonePage {
 
 
   otpVerify(phoneNumber, code, countryCode): any {
- 
-    return new Promise((resolve, reject) => {
-        this.http.get('https://api.authy.com/protected/json/phones/verification/check?api_key=0BRn09UheRZVxSsVS074h6azkngmxwRy'
-            + '&country_code=' + countryCode + '&phone_number=' + phoneNumber + '&verification_code=' + code)
-            .map(res => res.json())
-            .subscribe(data => {
-              console.log('dddaataaa: ',data);
-              
-                resolve(data);
-            }, function (error) {
-                reject(error);
-            });
+    this.httpi.get('https://api.authy.com/protected/json/phones/verification/check?api_key=0BRn09UheRZVxSsVS074h6azkngmxwRy'+ '&country_code=' + countryCode + '&phone_number=' + phoneNumber + '&verification_code=' + code, {}, {})
+    .then(success => {
+      console.log(success.status);
+      console.log(JSON.parse(success.data)); // data received by server
+      console.log('data : ',success.data);
+    })
+    .catch(error => {
+      this.presentAlert('','error de');
+      console.log(error);
+      console.log(error.status);
+    console.log(error.error); // error message as string
+    console.log(error.headers);
     });
+    // return new Promise((resolve, reject) => {
+    //     this.http.get('https://api.authy.com/protected/json/phones/verification/check?api_key=0BRn09UheRZVxSsVS074h6azkngmxwRy'
+    //         + '&country_code=' + countryCode + '&phone_number=' + phoneNumber + '&verification_code=' + code)
+    //         .map(res => res.json())
+    //         .subscribe(data => {
+    //           console.log('dddaataaa: ',data);
+              
+    //             resolve(data);
+    //         }, function (error) {
+    //             reject(error);
+    //         });
+    // });
 }
 
 
