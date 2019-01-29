@@ -1,6 +1,7 @@
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
+import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
 import { Base64 } from '@ionic-native/base64';
@@ -56,6 +57,7 @@ import { DocumentViewer  } from '@ionic-native/document-viewer';
 import { Stripe } from '@ionic-native/stripe';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -150,6 +152,7 @@ import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
     TermsPage,
   ],
   providers: [
+    
     StatusBar,
     SplashScreen,
     Services,
@@ -159,7 +162,7 @@ import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
     MyTools,
     Base64,
     Chooser,
-    // Push,
+    Push,
     HTTP,
     Stripe,
     DocumentViewer,
