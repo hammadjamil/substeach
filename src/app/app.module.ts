@@ -29,8 +29,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Services } from '../assets/providers/services';
 import { HttpModule } from '@angular/http';
-import { Facebook } from '@ionic-native/facebook';
-import { GooglePlus } from '@ionic-native/google-plus';
 import { Chooser } from '@ionic-native/chooser';
 import { VerifyteacherphonePage } from '../pages/verifyteacherphone/verifyteacherphone';
 import { EditprofilePage } from '../pages/editprofile/editprofile';
@@ -54,9 +52,10 @@ import { RechtlichesPage } from '../pages/rechtliches/rechtliches';
 import { FaqPage } from '../pages/faq/faq';
 import { TermsPage } from '../pages/terms/terms';
 import { HTTP } from '@ionic-native/http';
-import { DocumentViewer,DocumentViewerOptions  } from '@ionic-native/document-viewer';
-import { SMS } from '@ionic-native/sms';
+import { DocumentViewer  } from '@ionic-native/document-viewer';
 import { Stripe } from '@ionic-native/stripe';
+import { GooglePlus } from '@ionic-native/google-plus';
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 @NgModule({
   declarations: [
     MyApp,
@@ -155,8 +154,8 @@ import { Stripe } from '@ionic-native/stripe';
     SplashScreen,
     Services,
     MyStorage,
-    // Facebook,
-    // GooglePlus,
+    Facebook,
+    GooglePlus,
     MyTools,
     Base64,
     Chooser,

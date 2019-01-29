@@ -95,9 +95,9 @@ export class PhonenumberschoolPage {
     let res = this.sendVerificationCode(this.user.phonenumber, this.user.countrycode);
     console.log('les : ',res);
     this.loader.dismiss();
-    if(res==true){
-      this.next();
-    }
+    // if(res==true){
+      
+    // }
   }
   sendVerificationCode(phoneNumber, countryCode): any {
     this.httpi.post('https://api.authy.com/protected/json/phones/verification/start', {api_key:'0BRn09UheRZVxSsVS074h6azkngmxwRy',country_code:countryCode,phone_number:phoneNumber,via:'sms'}, {})
@@ -105,15 +105,17 @@ export class PhonenumberschoolPage {
       console.log(success.status);
       console.log(JSON.parse(success.data)); // data received by server
       console.log('data : ',success.data);
-      return true;
+      // return true;
+      this.next();
     })
     .catch(error => {
-      this.presentAlert('',error.error);
+      let errorres=JSON.parse(error.error);
+      this.presentAlert('',errorres.message);
       console.log(error);
       console.log(error.status);
       console.log(error.error); // error message as string
       console.log(error.headers);
-      return false;
+      // return false;
     });
   }
 }

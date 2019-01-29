@@ -11,6 +11,8 @@ import { MyStorage } from '../../app/localstorage';
 import { BlocklistPage } from '../blocklist/blocklist';
 import { BookinglistPage } from '../bookinglist/bookinglist';
 import { HelpPage } from '../help/help';
+import { SchoolprofilePage } from '../schoolprofile/schoolprofile';
+import { TeacherprofilePage } from '../teacherprofile/teacherprofile';
 
 @IonicPage()
 @Component({
@@ -103,6 +105,13 @@ export class SettingsPage {
             this.userDetail.Ispaid='no';
             this.storage.set('user', this.userDetail);
               this.loader.dismiss();
+              if(this.userDetail.RoleId==6){
+                this.navCtrl.setRoot(SchoolprofilePage,{});
+              }
+              else
+              {
+                this.navCtrl.setRoot(TeacherprofilePage,{});                      
+              }
           }, 500);
         },
         error => {

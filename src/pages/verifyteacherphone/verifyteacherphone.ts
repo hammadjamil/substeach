@@ -83,9 +83,8 @@ export class VerifyteacherphonePage {
   verify(){
     let res = this.otpVerify(this.RegisterSchoolPhoneNumber, this.user.code, this.RegisterSchoolcountrycode);
     console.log('dddaataaa: ',res);
-    if(res==true){
-      this.teacherregister3();
-    }
+    // if(res==true){
+    // }
   }
   otpVerify(phoneNumber, code, countryCode): any {
     this.httpi.get('https://api.authy.com/protected/json/phones/verification/check?api_key=0BRn09UheRZVxSsVS074h6azkngmxwRy'+ '&country_code=' + countryCode + '&phone_number=' + phoneNumber + '&verification_code=' + code, {}, {})
@@ -93,15 +92,17 @@ export class VerifyteacherphonePage {
       console.log(success.status);
       console.log(JSON.parse(success.data)); // data received by server
       console.log('data : ',success.data);
-      return true;
+      // return true;
+      this.teacherregister3();
     })
     .catch(error => {
-      this.presentAlert('','error de');
+      let errorres=JSON.parse(error.error);
+      this.presentAlert('',errorres.message);
       console.log(error);
       console.log(error.status);
       console.log(error.error); // error message as string
       console.log(error.headers);
-      return false;
+      // return false;
     });
   }
   teacherregister3(){
