@@ -41,7 +41,7 @@ export class LoginPage {
               public tools: MyTools,
               private alertCtrl: AlertController) {
                 //initializing facebook
-    this.fb.browserInit(476300759536162, "v2.10");        
+    // this.fb.browserInit(476300759536162, "v2.10");        
   }
   // ionViewDidEnter() {
   //   this.menu.swipeEnable(false);

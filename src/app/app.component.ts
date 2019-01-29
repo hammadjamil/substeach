@@ -4,13 +4,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MenuController } from 'ionic-angular';
 import { Events } from 'ionic-angular';
-import { LoginPage } from '../pages/login/login';
-import { LogoutPage } from '../pages/logout/logout';
 import { SchoolprofilePage } from '../pages/schoolprofile/schoolprofile';
-import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { TeacherprofilePage } from '../pages/teacherprofile/teacherprofile';
-import { Teacherregister2Page } from '../pages/teacherregister2/teacherregister2';
-import { PaymentPage } from '../pages/payment/payment';
 import * as firebase from 'firebase';
 import { MyStorage } from './localstorage';
 import { Auth } from '../providers/auth';
@@ -19,7 +14,7 @@ import { MyTools } from '../providers/tools';
 import { Services } from '../providers/services';
 import { DomSanitizer } from '@angular/platform-browser';
 import { RegisterrPage } from '../pages/registerr/registerr';
-
+import { Push, PushObject, PushOptions } from '@ionic-native/push';
 @Component({
   templateUrl: 'app.html',
   providers: [Auth, Services]
@@ -35,10 +30,8 @@ export class MyApp {
   userData : any='';
   homepage:any;
   Logo:any = '';
-  constructor(private services: Services,
-              public toastCtrl: ToastController,
+  constructor(public toastCtrl: ToastController,
               public menuCtrl: MenuController,
-              private lodingctrl: LoadingController,
               private auth: Auth,
               public tools: MyTools,
               public events: Events,
@@ -46,8 +39,7 @@ export class MyApp {
               public platform: Platform,
               public statusBar: StatusBar,
               public push: Push,
-              public splashScreen: SplashScreen,
-              private sanitizer: DomSanitizer) 
+              public splashScreen: SplashScreen) 
     {
       const config = {
         apiKey: 'AIzaSyDae-aT3njQhAL3vgRlBrBA0bNsLleEovM',
@@ -111,11 +103,6 @@ export class MyApp {
     this.loader.present();
   }
   presentToast(msg) {
-    const toast = this.toastCtrl.create({
-      message: msg,
-      duration: 3000,
-      position: 'bottom'
-    });
   }
   openPage(page) {
     this.nav.setRoot(page.component);
@@ -138,7 +125,7 @@ export class MyApp {
       sound : true,
       vibrate : true,
       forceShow  :true,
-      titleKey : 'Academist'
+      titleKey : 'Substeach'
     },
     ios: {
         alert: 'true',
