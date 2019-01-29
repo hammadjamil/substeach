@@ -98,7 +98,7 @@
     <plugin name="cordova-plugin-file" spec="^6.0.1" />
     <plugin name="cordova-plugin-document-viewer" spec="^0.9.10" />
     <plugin name="cordova-plugin-advanced-http" spec="2.0.4" />
-    <plugin name="cordova-plugin-googleplus" spec="7.0.0">
+    <!-- <plugin name="cordova-plugin-googleplus" spec="7.0.0">
         <variable name="REVERSED_CLIENT_ID" value="966643566746-8caseo5e9eeo6oooh8bcpin14kvsukjf.apps.googleusercontent.com" />
         <variable name="PLAY_SERVICES_VERSION" value="11.8.0" />
     </plugin>
@@ -107,6 +107,6 @@
         <variable name="APP_NAME" value="Substeach" />
         <variable name="FACEBOOK_HYBRID_APP_EVENTS" value="false" />
         <variable name="FACEBOOK_ANDROID_SDK_VERSION" value="4.38.1" />
-    </plugin>
+    </plugin> -->
     <engine name="android" spec="7.1.4" />
 </widget>
